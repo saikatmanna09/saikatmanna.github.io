@@ -3,47 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Saikat Manna</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
+      padding: 0;
+      background: #101010;
       color: white;
+      font-family: Arial, sans-serif;
       text-align: center;
     }
 
     .container {
       max-width: 700px;
       margin: auto;
-      padding: 50px 20px;
+      padding: 45px 20px;
     }
 
-    .profile-photo {
-      width: 180px;
-      height: 180px;
+    .profile {
+      width: 250px;
+      height: 250px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid white;
-      margin-bottom: 20px;
+      border: 6px solid white;
+      margin-bottom: 25px;
     }
 
     h1 {
-      font-size: 40px;
+      font-size: 48px;
       margin: 10px 0;
     }
 
-    p {
-      font-size: 18px;
-      line-height: 1.6;
+    .welcome {
+      font-size: 22px;
+      margin-bottom: 40px;
     }
 
     .card {
-      margin-top: 30px;
-      padding: 25px;
       background: #222;
-      border-radius: 15px;
+      padding: 30px 25px;
+      margin: 25px 0;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 25px;
+      background: white;
+      color: #111;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #ddd;
+    }
+
+    .uid {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      color: #aaa;
+      font-size: 15px;
     }
   </style>
 </head>
@@ -52,26 +99,76 @@
 
   <div class="container">
 
+    <!-- Profile Photo -->
     <img
-      src="IMG_20250630_110659.jpg"
+      class="profile"
+      src="profile.jpg"
       alt="Saikat Manna"
-      class="profile-photo"
     >
 
     <h1>Saikat Manna</h1>
 
-    <p>
+    <div class="welcome">
       Welcome to my personal website.
-    </p>
+    </div>
 
+
+    <!-- About Me -->
     <div class="card">
       <h2>About Me</h2>
 
       <p>
-        I am Saikat Manna. This is my personal website where
-        I can share my profile and interests.
+        I am Saikat Manna. This is my personal website
+        where I can share my profile, interests and
+        some things about me.
       </p>
     </div>
+
+
+    <!-- BGMI -->
+    <div class="card">
+      <h2>🎮 BGMI Profile</h2>
+
+      <p>
+        <strong>Name:</strong><br>
+        JaCk๛DaNieL's
+      </p>
+
+      <p>
+        <strong>UID:</strong><br>
+        <span class="uid">55619352171</span>
+      </p>
+    </div>
+
+
+    <!-- Someone Special -->
+    <div class="card">
+      <h2>❤️ Someone Special</h2>
+
+      <p>
+        Some people have a special place in our memories
+        and make life more meaningful.
+      </p>
+    </div>
+
+
+    <!-- Instagram -->
+    <div class="card">
+      <h2>📱 Find Me</h2>
+
+      <a
+        class="btn"
+        href="https://www.instagram.com/saikat_manna_09/"
+        target="_blank"
+      >
+        Instagram
+      </a>
+    </div>
+
+
+    <footer>
+      © 2026 Saikat Manna • Personal Website
+    </footer>
 
   </div>
 
