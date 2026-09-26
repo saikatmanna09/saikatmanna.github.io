@@ -4,175 +4,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Saikat Manna</title>
+  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI profile, social media and more.">
+  <meta name="author" content="Saikat Manna">
+
+  <title>Saikat Manna | Personal Website</title>
 
   <style>
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       padding: 0;
-      background: #101010;
+      background: #08080c;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 350px;
+      height: 350px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      filter: blur(80px);
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: glowMove 6s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: -1;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 760px;
       margin: auto;
-      padding: 45px 20px;
+      padding: 55px 18px;
     }
 
     .profile {
-      width: 250px;
-      height: 250px;
+      width: 190px;
+      height: 190px;
       object-fit: cover;
       border-radius: 50%;
-      border: 6px solid white;
-      margin-bottom: 25px;
+      border: 4px solid white;
+      box-shadow: 0 0 35px rgba(255,255,255,0.2);
+      margin-bottom: 20px;
+      animation: profileIn 1.2s ease-out;
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 44px;
       margin: 10px 0;
+      animation: titleIn 1s ease-out 0.3s both;
     }
 
     .welcome {
-      font-size: 22px;
-      margin-bottom: 40px;
+      color: #bbb;
+      font-size: 19px;
+      margin-bottom: 35px;
+      animation: fadeIn 1s ease-out 0.7s both;
     }
 
     .card {
-      background: #222;
-      padding: 30px 25px;
-      margin: 25px 0;
-      border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      background: rgba(23,23,29,0.92);
+      padding: 30px 24px;
+      margin: 24px 0;
+      border-radius: 24px;
+      border: 1px solid #292932;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      animation: cardIn 0.9s ease-out both;
+      transition: 0.3s;
+    }
+
+    .card:nth-of-type(1) {
+      animation-delay: 0.9s;
+    }
+
+    .card:nth-of-type(2) {
+      animation-delay: 1.1s;
+    }
+
+    .card:nth-of-type(3) {
+      animation-delay: 1.3s;
+    }
+
+    .card:nth-of-type(4) {
+      animation-delay: 1.5s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #555;
     }
 
     h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
+      font-size: 28px;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 25px;
+      margin: 15px 0;
+      animation: specialGlow 2s ease-in-out infinite alternate;
     }
 
     p {
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.7;
+      color: #ddd;
+    }
+
+    .uid {
+      font-size: 21px;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
     .btn {
       display: inline-block;
-      margin: 10px;
-      padding: 14px 25px;
+      margin: 8px;
+      padding: 13px 23px;
       background: white;
       color: #111;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      background: #ddd;
-    }
-
-    .uid {
-      font-size: 22px;
-      font-weight: bold;
-      letter-spacing: 1px;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(255,255,255,0.2);
+      background: #eee;
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 45px;
       padding: 20px;
-      color: #aaa;
-      font-size: 15px;
+      color: #777;
+      font-size: 14px;
+      animation: fadeIn 1s ease-out 1.8s both;
     }
-  </style>
-</head>
 
-<body>
+    @keyframes profileIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+      }
 
-  <div class="container">
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
 
-    <!-- Profile Photo -->
-    <img
-  class="profile"
-  src="IMG_20250630_110659.jpg"
-  alt="Saikat Manna"
->
+    @keyframes titleIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
 
-    <h1>Saikat Manna</h1>
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-    <div class="welcome">
-      Welcome to my personal website.
-    </div>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
 
+      to {
+        opacity: 1;
+      }
+    }
 
-    <!-- About Me -->
-    <div class="card">
-      <h2>About Me</h2>
-
-      <p>
-        I am Saikat Manna. This is my personal website
-        where I can share my profile, interests and
-        some things about me.
-      </p>
-    </div>
-
-
-    <!-- BGMI -->
-    <div class="card">
-      <h2>🎮 BGMI Profile</h2>
-
-      <p>
-        <strong>Name:</strong><br>
-        JaCk๛DaNieL's
-      </p>
-
-      <p>
-        <strong>UID:</strong><br>
-        <span class="uid">55619352171</span>
-      </p>
-    </div>
-
-
-    <!-- Someone Special -->
-<div class="card">
-  <h2>❤️ Someone Special</h2>
-
-  <h3>Dhongi 💫</h3>
-
-  <p>
-    She is one of the most important people in my life
-    and someone who has a very special place in my heart.
-  </p>
-</div>
-
-
-    <!-- Instagram -->
-    <div class="card">
-      <h2>📱 Find Me</h2>
-
-      <a
-        class="btn"
-        href="https://www.instagram.com/saikat_manna_09/"
-        target="_blank"
-      >
-        Instagram
-      </a>
-    </div>
-
-
-    <footer>
-      © 2026 Saikat Manna • Personal Website
-    </footer>
-
-  </div>
-
-</body>
-</html>
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+       
