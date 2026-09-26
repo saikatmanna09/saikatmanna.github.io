@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saikat Manna</title>
+
   <style>
     body {
       margin: 0;
@@ -13,39 +14,66 @@
       text-align: center;
     }
 
-    .box {
-      padding: 60px 20px;
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+      font-size: 40px;
+      margin: 10px 0;
     }
 
     p {
-      font-size: 20px;
-      color: #ccc;
+      font-size: 18px;
+      line-height: 1.6;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 25px;
-      background: white;
-      color: #111;
-      text-decoration: none;
-      border-radius: 25px;
+    .card {
+      margin-top: 30px;
+      padding: 25px;
+      background: #222;
+      border-radius: 15px;
     }
   </style>
 </head>
 
 <body>
-  <div class="box">
-    <h1>Hi, I'm Saikat Manna 👋</h1>
-    <p>Welcome to my personal website.</p>
-    <p>Creator • YouTuber • Dreamer</p>
 
-    <a class="btn" href="#">My Profile</a>
+  <div class="container">
+
+    <img
+      src="IMG_20250630_110659.jpg"
+      alt="Saikat Manna"
+      class="profile-photo"
+    >
+
+    <h1>Saikat Manna</h1>
+
+    <p>
+      Welcome to my personal website.
+    </p>
+
+    <div class="card">
+      <h2>About Me</h2>
+
+      <p>
+        I am Saikat Manna. This is my personal website where
+        I can share my profile and interests.
+      </p>
+    </div>
+
   </div>
+
 </body>
 </html>
