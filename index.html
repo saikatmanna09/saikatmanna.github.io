@@ -4,17 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI, social media and mini world.">
+  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI profile, social media and more.">
   <meta name="author" content="Saikat Manna">
 
   <title>Saikat Manna | Mini World 🌎</title>
 
   <style>
-
-    /* =========================
-       RESET
-    ========================= */
-
     * {
       margin: 0;
       padding: 0;
@@ -22,126 +17,60 @@
       scroll-behavior: smooth;
     }
 
-    html {
-      scroll-padding-top: 70px;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      color: #fff;
-      background: #050509;
-      min-height: 100vh;
+      color: white;
+      background: #050505;
       overflow-x: hidden;
-      transition: 0.4s;
     }
 
-
-    /* =========================
-       LOADING SCREEN
-    ========================= */
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #030305;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 999999;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
-    }
-
-    #loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-logo {
-      font-size: 45px;
-      animation: loaderPulse 1.4s infinite alternate;
-    }
-
-    .loader-title {
-      margin-top: 15px;
-      font-size: 22px;
-      text-shadow: 0 0 15px #00ffff;
-    }
-
-    .loader-text {
-      margin-top: 8px;
-      color: #aaa;
-      font-size: 13px;
-    }
-
-    .loader-line {
-      width: 170px;
-      height: 3px;
-      margin-top: 20px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #00ffff,
-        #ff1493,
-        transparent
-      );
-      animation: loaderLine 1.3s infinite;
-    }
-
-    @keyframes loaderPulse {
-      from {
-        transform: scale(1);
-      }
-
-      to {
-        transform: scale(1.2);
-      }
-    }
-
-    @keyframes loaderLine {
-      from {
-        transform: scaleX(0.3);
-      }
-
-      to {
-        transform: scaleX(1);
-      }
-    }
-
-
-    /* =========================
-       BACKGROUND
-    ========================= */
-
+    /* BACKGROUND */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -3;
-
       background:
-        linear-gradient(
-          rgba(0,0,0,0.72),
-          rgba(0,0,0,0.92)
-        ),
-        url("IMG_20260921_105205_456.webp");
-
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+        linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.88)),
+        url("IMG_20260921_105205_456.webp") center/cover no-repeat;
+      z-index: -5;
     }
 
+    /* LOADING SCREEN */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #050505;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      transition: opacity 0.8s ease;
+    }
 
-    /* =========================
-       STARS
-    ========================= */
+    .loader-text {
+      font-size: 25px;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+    }
 
+    @keyframes pulse {
+      0%,100% {
+        opacity: .4;
+        transform: scale(.95);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+
+    /* STARS */
     #stars {
       position: fixed;
       inset: 0;
       pointer-events: none;
+      z-index: -2;
       overflow: hidden;
-      z-index: -1;
     }
 
     .star {
@@ -150,596 +79,344 @@
       height: 2px;
       background: white;
       border-radius: 50%;
-      opacity: 0.6;
       animation: starMove linear infinite;
+      opacity: .7;
     }
 
     @keyframes starMove {
-      0% {
-        transform: translateY(0);
-        opacity: 0.2;
+      from {
+        transform: translateY(-20px);
       }
-
-      50% {
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(-100vh);
-        opacity: 0;
+      to {
+        transform: translateY(110vh);
       }
     }
 
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
+    /* NAVBAR */
     nav {
       position: sticky;
       top: 0;
-      z-index: 1000;
-
-      width: 100%;
-      padding: 13px 8px;
-
-      background: rgba(0,0,0,0.78);
-      backdrop-filter: blur(15px);
-
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-
-      text-align: center;
+      z-index: 5000;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(12px);
+      padding: 14px 10px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 6px;
       font-size: 13px;
-      transition: 0.3s;
+      transition: .3s;
     }
 
     nav a:hover {
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffff;
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff;
     }
 
-
-    /* =========================
-       THEME BUTTON
-    ========================= */
-
+    /* THEME BUTTON */
     .theme-btn {
       position: fixed;
       right: 15px;
       bottom: 18px;
-
+      z-index: 9000;
       width: 45px;
       height: 45px;
-
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.25);
-
-      background: rgba(0,0,0,0.7);
+      border: 1px solid rgba(255,255,255,.3);
+      background: rgba(0,0,0,.7);
       color: white;
-
       font-size: 20px;
       cursor: pointer;
-
-      z-index: 5000;
-
       backdrop-filter: blur(10px);
-
-      box-shadow: 0 0 15px rgba(0,255,255,0.25);
-
-      transition: 0.3s;
     }
 
-    .theme-btn:hover {
-      transform: scale(1.1) rotate(20deg);
+    /* MAIN */
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px 14px 50px;
     }
 
-
-    /* =========================
-       HEADER
-    ========================= */
-
+    /* HEADER */
     header {
       text-align: center;
-      padding: 55px 20px 35px;
+      padding: 45px 10px 35px;
     }
 
-    .profile {
-      width: 145px;
-      height: 145px;
-
+    .profile-img {
+      width: 135px;
+      height: 135px;
       object-fit: cover;
-
       border-radius: 50%;
-      border: 4px solid white;
-
+      border: 3px solid rgba(255,255,255,.8);
       box-shadow:
-        0 0 20px rgba(255,255,255,0.7),
-        0 0 50px rgba(0,255,255,0.35);
-
+        0 0 20px rgba(0,220,255,.5),
+        0 0 50px rgba(0,220,255,.2);
       animation: profileGlow 3s infinite alternate;
     }
 
     @keyframes profileGlow {
       from {
-        transform: scale(1);
+        box-shadow: 0 0 15px rgba(0,220,255,.4);
       }
-
       to {
-        transform: scale(1.05);
+        box-shadow: 0 0 35px rgba(0,220,255,.8);
       }
     }
 
     header h1 {
       margin-top: 18px;
       font-size: 32px;
-
-      text-shadow:
-        0 0 10px #00ffff,
-        0 0 25px #00ffff;
     }
 
     header p {
       margin-top: 8px;
-      color: #ccc;
-      font-size: 15px;
+      color: #bbb;
     }
-
-
-    /* =========================
-       CLOCK
-    ========================= */
 
     #clock {
-      margin-top: 14px;
-      color: #00ffff;
-      font-size: 14px;
-      font-weight: bold;
-
-      text-shadow: 0 0 10px #00ffff;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #00eaff;
     }
 
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-      width: 92%;
-      max-width: 900px;
-      margin: auto;
-      padding-bottom: 50px;
-    }
-
-
-    /* =========================
-       CARDS
-    ========================= */
-
+    /* CARDS */
     .card {
-      position: relative;
-
-      margin: 25px 0;
-      padding: 28px 22px;
-
+      background: rgba(15,15,15,.72);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 22px;
-
-      background: rgba(0,0,0,0.58);
-
+      padding: 25px;
+      margin: 22px 0;
       backdrop-filter: blur(12px);
-
-      border: 1px solid rgba(255,255,255,0.14);
-
-      box-shadow:
-        0 10px 35px rgba(0,0,0,0.45);
-
-      text-align: center;
-
-      overflow: hidden;
-
-      animation: cardAppear 0.8s ease both;
-    }
-
-    .card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 100px;
-      height: 100px;
-
-      background: rgba(0,255,255,0.08);
-
-      filter: blur(40px);
-
-      top: -40px;
-      left: -40px;
-
-      pointer-events: none;
-    }
-
-    .card h2 {
-      margin-bottom: 15px;
-      font-size: 24px;
-
-      text-shadow:
-        0 0 12px rgba(0,255,255,0.7);
-    }
-
-    .card p {
-      line-height: 1.7;
-      color: #ddd;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      animation: cardAppear .8s ease;
     }
 
     @keyframes cardAppear {
       from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(20px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    #about {
-      animation-delay: 0.1s;
-    }
-
-
-    /* =========================
-       BGMI
-    ========================= */
-
-    .bgmi-name {
+    .card h2 {
+      margin-bottom: 15px;
       font-size: 23px;
-      font-weight: bold;
-
-      color: #ffd700;
-
-      text-shadow:
-        0 0 12px rgba(255,215,0,0.7);
-
-      margin: 12px 0;
     }
 
-    .jonny {
-      color: #ff7777;
+    .card p {
+      color: #ddd;
+      line-height: 1.7;
+    }
+
+    /* BGMI */
+    .bgmi-name {
+      font-size: 22px;
       font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .jonathan {
+      margin-top: 8px;
+      color: #ffb6c1 !important;
     }
 
     .tag-on-top {
-      margin-top: 8px;
-
-      color: orange !important;
-
-      font-size: 20px;
+      margin-top: 12px;
+      color: orange;
       font-weight: bold;
-
-      text-shadow:
-        0 0 10px rgba(255,165,0,0.7);
+      font-size: 20px;
+      text-shadow: 0 0 12px orange;
     }
 
-
-    /* =========================
-       DHONGI
-    ========================= */
-
-    #dhongi {
+    /* DHONGI */
+    .dhongi-card {
       position: relative;
-
-      min-height: 300px;
-
+      overflow: hidden;
+      min-height: 330px;
       display: flex;
-      flex-direction: column;
-
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
+    .dhongi-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
         linear-gradient(
-          rgba(0,0,0,0.38),
-          rgba(0,0,0,0.72)
+          rgba(0,0,0,.68),
+          rgba(0,0,0,.78)
         ),
-        url("IMG_20260930_013447.jpg");
-
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-
-      border: 1px solid rgba(255,255,255,0.25);
-
-      box-shadow:
-        0 0 25px rgba(255,0,100,0.25),
-        0 0 60px rgba(255,0,100,0.12);
+        url("IMG_20260930_013447.jpg") center/cover no-repeat;
+      z-index: -1;
     }
 
     .dhongi-content {
       position: relative;
-      z-index: 5;
+      z-index: 2;
     }
 
-    .special-name {
+    .dhongi-content h2 {
       font-size: 32px;
-      color: white;
-
-      text-shadow:
-        0 0 8px #ff69b4,
-        0 0 20px #ff1493,
-        0 0 35px #ff1493;
-
-      animation: nameGlow 2s infinite alternate;
+      text-shadow: 0 0 20px rgba(255,100,180,.8);
     }
 
-    @keyframes nameGlow {
-      from {
-        text-shadow:
-          0 0 8px #ff69b4,
-          0 0 20px #ff1493;
-      }
-
-      to {
-        text-shadow:
-          0 0 15px white,
-          0 0 30px #ff1493,
-          0 0 50px #ff1493;
-      }
-    }
-
-    .dhongi-main {
-      margin-top: 15px;
-
+    .dhongi-text {
       font-size: 19px;
-      font-weight: bold;
-
-      color: white !important;
+      margin-top: 12px;
     }
 
-    .heart {
+    #heart {
       display: inline-block;
-
-      font-size: 30px;
-      margin-left: 6px;
-
-      animation: heartBeat 1.2s infinite;
-
-      filter:
-        drop-shadow(0 0 8px red);
+      cursor: default;
+      animation: heartBeat 1.3s infinite;
     }
 
     @keyframes heartBeat {
-      0%, 100% {
+      0%,100% {
         transform: scale(1);
       }
-
       50% {
-        transform: scale(1.35);
+        transform: scale(1.25);
       }
     }
 
-
-    /* =========================
-       FAVOURITE PIC
-    ========================= */
-
-    .fav-img {
+    /* FAVOURITE PIC */
+    .fav-photo {
       width: 100%;
-      max-width: 500px;
-
+      max-height: 500px;
+      object-fit: cover;
       border-radius: 18px;
-
-      margin-top: 10px;
-
-      border: 2px solid rgba(255,255,255,0.25);
-
-      box-shadow:
-        0 0 25px rgba(255,255,255,0.15);
-
-      transition: 0.4s;
+      display: block;
+      margin-top: 15px;
+      border: 1px solid rgba(255,255,255,.15);
     }
 
-    .fav-img:hover {
-      transform: scale(1.02);
-
-      box-shadow:
-        0 0 30px rgba(0,255,255,0.25);
-    }
-
-
-    /* =========================
-       GALLERY
-    ========================= */
-
+    /* GALLERY */
     .gallery {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
       margin-top: 15px;
     }
 
     .gallery-card {
-      width: 100%;
-      max-width: 500px;
-
-      border-radius: 18px;
-
       overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 0 15px rgba(255,255,255,.08);
+      transition: .3s;
+    }
 
-      border: 1px solid rgba(255,255,255,0.2);
-
-      background: rgba(255,255,255,0.05);
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,0.4);
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 25px rgba(0,220,255,.25);
     }
 
     .gallery-card img {
       width: 100%;
+      height: 190px;
+      object-fit: cover;
       display: block;
+      transition: .4s ease;
+      cursor: pointer;
     }
 
-    .gallery-card p {
-      padding: 12px;
-      color: #ccc;
+    .gallery-card img:hover {
+      transform: scale(1.08);
     }
 
-
-    /* =========================
-       SOCIAL
-    ========================= */
-
+    /* SOCIAL */
     .social-links {
       display: flex;
-
-      justify-content: center;
-
       flex-wrap: wrap;
-
       gap: 12px;
-
-      margin-top: 18px;
+      margin-top: 15px;
     }
 
     .social-links a {
-      text-decoration: none;
-
-      color: white;
-
-      padding: 12px 17px;
-
+      flex: 1;
+      min-width: 130px;
+      text-align: center;
+      padding: 12px 15px;
       border-radius: 14px;
-
-      background:
-        rgba(255,255,255,0.10);
-
-      border:
-        1px solid rgba(255,255,255,0.18);
-
-      transition: 0.3s;
-
-      font-size: 14px;
+      background: rgba(255,255,255,.07);
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.12);
+      transition: .3s;
     }
 
     .social-links a:hover {
-      transform: translateY(-5px);
-
-      background:
-        rgba(255,255,255,0.20);
-
-      box-shadow:
-        0 0 18px rgba(0,255,255,0.4);
+      transform: translateY(-3px);
+      background: rgba(0,220,255,.12);
+      box-shadow: 0 0 15px rgba(0,220,255,.3);
     }
 
-
-    /* =========================
-       DREAMS
-    ========================= */
-
+    /* DREAMS */
     .dream {
-      font-size: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
 
-      color: #eee;
+    .dream:last-child {
+      border-bottom: none;
+    }
 
+    /* VISITORS */
+    .visitor-number {
+      font-size: 35px;
+      font-weight: bold;
+      color: #00eaff;
+      text-shadow: 0 0 15px #00eaff;
       margin-top: 10px;
     }
 
-
-    /* =========================
-       VISITOR COUNTER
-    ========================= */
-
-    .counter-box {
-      margin-top: 15px;
-
-      display: inline-block;
-
-      padding: 12px 20px;
-
-      border-radius: 15px;
-
-      background:
-        rgba(255,255,255,0.08);
-
-      border:
-        1px solid rgba(255,255,255,0.15);
-
-      color: #00ffff;
-
-      font-weight: bold;
-
-      box-shadow:
-        0 0 15px rgba(0,255,255,0.12);
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
+    /* FOOTER */
     footer {
       text-align: center;
-
-      padding: 30px 15px;
-
-      color: #888;
-
+      color: #999;
       font-size: 13px;
+      padding: 25px 10px 40px;
     }
 
-
-    /* =========================
-       FLOATING EMOJI
-    ========================= */
-
+    /* FLOATING EMOJIS */
     #emojiLayer {
       position: fixed;
-
       inset: 0;
-
       width: 100%;
       height: 100%;
-
       pointer-events: none;
-
       overflow: visible;
-
       z-index: 99999;
     }
 
     .floating-emoji {
       position: fixed;
-
       pointer-events: none;
-
       font-size: 25px;
-
       opacity: 1;
-
-      will-change:
-        transform,
-        opacity;
-
-      animation:
-        floatAway 5s ease-out forwards;
+      will-change: transform, opacity;
+      animation: floatAway 5s ease-out forwards;
     }
 
     @keyframes floatAway {
-
       0% {
-        transform:
-          translate(0,0)
-          scale(0.7);
-
+        transform: translate(0,0) scale(.7);
         opacity: 0;
       }
 
@@ -748,193 +425,137 @@
       }
 
       50% {
-        opacity: 0.95;
+        opacity: .95;
       }
 
       100% {
         transform:
-          translate(
-            var(--moveX),
-            var(--moveY)
-          )
+          translate(var(--moveX), var(--moveY))
           scale(1.35);
-
         opacity: 0;
       }
     }
 
-
-    /* =========================
-       MOBILE
-    ========================= */
-
+    /* MOBILE */
     @media (max-width: 600px) {
-
-      nav {
-        padding: 12px 5px;
-      }
-
-      nav a {
-        font-size: 11px;
-        margin: 0 4px;
-      }
-
-      header {
-        padding-top: 40px;
-      }
 
       header h1 {
         font-size: 27px;
       }
 
-      .profile {
-        width: 125px;
-        height: 125px;
-      }
-
       .card {
-        padding: 24px 16px;
-        border-radius: 18px;
+        padding: 20px;
       }
 
-      .special-name {
-        font-size: 28px;
+      .gallery-card img {
+        height: 150px;
       }
 
-      .dhongi-main {
-        font-size: 17px;
+      nav {
+        gap: 12px;
       }
 
-      .floating-emoji {
-        font-size: 22px;
-      }
-
-      .theme-btn {
-        width: 42px;
-        height: 42px;
-        right: 12px;
-        bottom: 12px;
+      nav a {
+        font-size: 12px;
       }
     }
 
+    /* LIGHT MODE */
+    body.light {
+      color: #111;
+    }
+
+    body.light::before {
+      background:
+        linear-gradient(rgba(255,255,255,.78), rgba(255,255,255,.88)),
+        url("IMG_20260921_105205_456.webp") center/cover no-repeat;
+    }
+
+    body.light .card {
+      background: rgba(255,255,255,.72);
+      border-color: rgba(0,0,0,.12);
+    }
+
+    body.light .card p {
+      color: #333;
+    }
+
+    body.light nav {
+      background: rgba(255,255,255,.75);
+    }
+
+    body.light nav a {
+      color: #111;
+    }
+
+    body.light footer {
+      color: #555;
+    }
   </style>
 </head>
 
-
 <body>
 
-
-  <!-- =========================
-       LOADING SCREEN
-  ========================= -->
-
+  <!-- LOADING -->
   <div id="loader">
-
-    <div class="loader-logo">
-      🌎
-    </div>
-
-    <div class="loader-title">
-      Saikat's Mini World
-    </div>
-
-    <div class="loader-text">
-      Loading my little world...
-    </div>
-
-    <div class="loader-line"></div>
-
+    <div class="loader-text">🌎 Entering Saikat's Mini World...</div>
   </div>
 
-
   <!-- STARS -->
-
   <div id="stars"></div>
 
+  <!-- FLOATING EMOJIS -->
+  <div id="emojiLayer"></div>
 
-  <!-- NAVBAR -->
-
+  <!-- NAVIGATION -->
   <nav>
-
     <a href="#about">About</a>
     <a href="#bgmi">BGMI</a>
     <a href="#dhongi">Dhongi</a>
-    <a href="#fav">Favourite</a>
+    <a href="#fav">Favourite Pic</a>
+    <a href="#gallery">Gallery</a>
     <a href="#social">Social</a>
     <a href="#dreams">Dreams</a>
-
   </nav>
 
-
-  <!-- THEME BUTTON -->
-
-  <button
-    class="theme-btn"
-    id="themeBtn"
-    title="Change theme"
-  >
-    🌙
-  </button>
-
-
-  <!-- HEADER -->
-
-  <header>
-
-    <img
-      src="IMG_20250630_110659.jpg"
-      alt="Saikat Manna"
-      class="profile"
-    >
-
-    <h1>
-      Hey, this is Saikat's Mini World 🌎
-    </h1>
-
-    <p>
-      Welcome to my little corner of the internet ✨
-    </p>
-
-    <div id="clock"></div>
-
-  </header>
-
+  <!-- THEME -->
+  <button class="theme-btn" onclick="toggleTheme()">🌙</button>
 
   <main>
 
+    <!-- HEADER -->
+    <header>
+      <img
+        src="IMG_20250630_110659.jpg"
+        alt="Saikat Manna"
+        class="profile-img"
+      >
+
+      <h1>Hey, this is Saikat's Mini World 🌎</h1>
+
+      <p>Welcome to my little corner of the internet ✨</p>
+
+      <div id="clock">Loading time...</div>
+    </header>
+
 
     <!-- ABOUT -->
-
-    <section
-      class="card"
-      id="about"
-    >
-
-      <h2>
-        👋 About Me
-      </h2>
+    <section class="card" id="about">
+      <h2>👋 About Me</h2>
 
       <p>
-        Hey! I'm
-        <strong>Saikat Manna</strong>.
-        This is my personal mini world where I share
-        a little bit about myself, my interests,
-        gaming, dreams and the things that matter to me.
-      </p>
+        Hi, I'm <b>Saikat Manna</b>.<br><br>
 
+        This is my personal mini world where I share
+        a little bit about myself, my interests, my gaming,
+        my favourite memories and my dreams.
+      </p>
     </section>
 
 
     <!-- BGMI -->
-
-    <section
-      class="card"
-      id="bgmi"
-    >
-
-      <h2>
-        🎮 My BGMI World
-      </h2>
+    <section class="card" id="bgmi">
+      <h2>🎮 My BGMI Profile</h2>
 
       <div class="bgmi-name">
         JaCk๛DaNieL's
@@ -944,41 +565,25 @@
         I play BGMI and I'm always trying to improve my gameplay.
       </p>
 
-      <p class="jonny">
-        Big fan of Jonathan ❤️
+      <p class="jonathan">
+        ❤️ Big fan of Jonathan
       </p>
 
-      <p class="tag-on-top">
+      <div class="tag-on-top">
         TAG ON TOP 🧡
-      </p>
-
+      </div>
     </section>
 
 
     <!-- DHONGI -->
-
-    <section
-      class="card"
-      id="dhongi"
-    >
+    <section class="card dhongi-card" id="dhongi">
 
       <div class="dhongi-content">
 
-        <h2 class="special-name">
-          💫 Dhongi 🎀
-        </h2>
+        <h2>💫 Dhongi 🎀</h2>
 
-        <p class="dhongi-main">
-
-          My favourite person
-
-          <span
-            class="heart"
-            id="heart"
-          >
-            ❤️
-          </span>
-
+        <p class="dhongi-text">
+          My favourite person <span id="heart">❤️</span>
         </p>
 
       </div>
@@ -987,46 +592,100 @@
 
 
     <!-- FAVOURITE PIC -->
+    <section class="card" id="fav">
 
-    <section
-      class="card"
-      id="fav"
-    >
-
-      <h2>
-        📸 Favourite Pic
-      </h2>
+      <h2>📸 My Favourite Pic</h2>
 
       <img
         src="IMG_20260921_105205_456.webp"
-        alt="Favourite Pic"
-        class="fav-img"
+        alt="My Favourite Pic"
+        class="fav-photo"
       >
 
     </section>
 
 
-    <!-- PHOTO GALLERY STYLE -->
+    <!-- GALLERY -->
+    <section class="card" id="gallery">
 
-    <section class="card">
+      <h2>🖼️ My Mini Gallery</h2>
 
-      <h2>
-        🖼️ My Mini Gallery
-      </h2>
+      <p>
+        Some little memories from my world ✨
+      </p>
 
       <div class="gallery">
 
         <div class="gallery-card">
+          <img src="IMG_20260417_144516.jpg" alt="Gallery Photo">
+        </div>
 
-          <img
-            src="IMG_20260921_105205_456.webp"
-            alt="Saikat Gallery Photo"
-          >
+        <div class="gallery-card">
+          <img src="IMG_20260101_080151.jpg" alt="Gallery Photo">
+        </div>
 
-          <p>
-            A little piece of my world ✨
-          </p>
+        <div class="gallery-card">
+          <img src="IMG_20260105_194839.jpg" alt="Gallery Photo">
+        </div>
 
+        <div class="gallery-card">
+          <img src="IMG_20260101_075424.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20251225_204900.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20251025_114536.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20251025_115212_Burst01.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20251025_095842.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20251012_232514.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250913_204001.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250914_093723.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250827_215622.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250817_134856_278.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250813_223100.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250809_122115.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250809_121243.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250615_115801.jpg" alt="Gallery Photo">
+        </div>
+
+        <div class="gallery-card">
+          <img src="IMG_20250614_172032.jpg" alt="Gallery Photo">
         </div>
 
       </div>
@@ -1035,15 +694,9 @@
 
 
     <!-- SOCIAL MEDIA -->
+    <section class="card" id="social">
 
-    <section
-      class="card"
-      id="social"
-    >
-
-      <h2>
-        🌐 Social Media
-      </h2>
+      <h2>🌐 Social Media</h2>
 
       <div class="social-links">
 
@@ -1051,14 +704,14 @@
           href="https://www.instagram.com/saikat_manna_09/"
           target="_blank"
         >
-          📸 Instagram
+          📷 Instagram
         </a>
 
         <a
           href="https://www.facebook.com/share/1SxZssLRTX/"
           target="_blank"
         >
-          👤 Facebook
+          📘 Facebook
         </a>
 
         <a
@@ -1081,105 +734,103 @@
 
 
     <!-- DREAMS -->
+    <section class="card" id="dreams">
 
-    <section
-      class="card"
-      id="dreams"
-    >
+      <h2>🚀 My Dreams</h2>
 
-      <h2>
-        🌟 My Dreams
-      </h2>
-
-      <p class="dream">
+      <div class="dream">
         💻 Learn coding and build something of my own
-      </p>
+      </div>
 
-      <p class="dream">
+      <div class="dream">
         🚀 Keep learning, improving and moving forward
-      </p>
-
-    </section>
-
-
-    <!-- VISITOR -->
-
-    <section class="card">
-
-      <h2>
-        👀 Visitors
-      </h2>
-
-      <p>
-        Thanks for visiting my mini world ❤️
-      </p>
-
-      <div class="counter-box">
-        👁️ Visit No. <span id="visitCount">1</span>
       </div>
 
     </section>
 
 
+    <!-- VISITORS -->
+    <section class="card">
+
+      <h2>👀 Visitors</h2>
+
+      <p>
+        Thanks for visiting my mini world ❤️
+      </p>
+
+      <div class="visitor-number" id="visitorCount">
+        0
+      </div>
+
+      <p>
+        people have visited this page
+      </p>
+
+    </section>
+
   </main>
 
 
   <!-- FOOTER -->
-
   <footer>
-
-    © 2026 Saikat Manna • Made with ❤️
-
+    © 2026 Saikat Manna 🌎<br>
+    Made with ❤️ and dreams.
   </footer>
-
-
-  <!-- FLOATING EMOJI -->
-
-  <div id="emojiLayer"></div>
 
 
   <script>
 
+    /* LOADING SCREEN */
+    window.addEventListener("load", function() {
 
-    /* =========================
-       LOADER
-    ========================= */
+      setTimeout(function() {
 
-    window.addEventListener(
-      "load",
-      function() {
+        const loader = document.getElementById("loader");
 
-        setTimeout(
-          function() {
+        loader.style.opacity = "0";
 
-            document
-              .getElementById("loader")
-              .classList
-              .add("hide");
+        setTimeout(function() {
+          loader.style.display = "none";
+        }, 800);
 
-          },
-          1200
-        );
+      }, 700);
 
-      }
-    );
+    });
 
 
-    /* =========================
-       STARS
-    ========================= */
+    /* LIVE CLOCK */
+    function updateClock() {
 
-    const stars =
-      document.getElementById("stars");
+      const now = new Date();
 
-    for (
-      let i = 0;
-      i < 90;
-      i++
-    ) {
+      const time = now.toLocaleTimeString();
 
-      const star =
-        document.createElement("div");
+      const date = now.toLocaleDateString(
+        undefined,
+        {
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        }
+      );
+
+      document.getElementById("clock").innerText =
+        date + " • " + time;
+
+    }
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+
+    /* STARS */
+    const stars = document.getElementById("stars");
+
+    for (let i = 0; i < 80; i++) {
+
+      const star = document.createElement("div");
 
       star.className = "star";
 
@@ -1193,156 +844,55 @@
         (5 + Math.random() * 10) + "s";
 
       star.style.animationDelay =
-        Math.random() * 8 + "s";
+        Math.random() * 5 + "s";
 
       stars.appendChild(star);
 
     }
 
 
-    /* =========================
-       LIVE CLOCK
-    ========================= */
+    /* THEME */
+    function toggleTheme() {
 
-    function updateClock() {
+      document.body.classList.toggle("light");
 
-      const now =
-        new Date();
+      const button =
+        document.querySelector(".theme-btn");
 
-      const time =
-        now.toLocaleTimeString(
-          [],
-          {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-          }
-        );
+      if (document.body.classList.contains("light")) {
 
-      const date =
-        now.toLocaleDateString(
-          [],
-          {
-            day: "2-digit",
-            month: "short",
-            year: "numeric"
-          }
-        );
+        button.innerText = "☀️";
 
-      document.getElementById("clock")
-        .innerText =
-        "🕒 " + date + " • " + time;
+      } else {
+
+        button.innerText = "🌙";
+
+      }
 
     }
 
-    updateClock();
 
-    setInterval(
-      updateClock,
-      1000
-    );
+    /* VISITOR COUNTER */
+    let visitors =
+      localStorage.getItem("saikatVisitors");
 
-
-    /* =========================
-       THEME BUTTON
-    ========================= */
-
-    const themeBtn =
-      document.getElementById("themeBtn");
-
-    let bright =
-      false;
-
-    themeBtn.addEventListener(
-      "click",
-      function() {
-
-        bright = !bright;
-
-        if (bright) {
-
-          document.body.style.color =
-            "#111";
-
-          document.body.style.background =
-            "#e9f5ff";
-
-          themeBtn.innerText =
-            "☀️";
-
-          document.querySelectorAll(".card")
-            .forEach(
-              card => {
-
-                card.style.background =
-                  "rgba(255,255,255,0.72)";
-
-                card.style.color =
-                  "#111";
-
-              }
-            );
-
-        } else {
-
-          document.body.style.color =
-            "#fff";
-
-          document.body.style.background =
-            "#050509";
-
-          themeBtn.innerText =
-            "🌙";
-
-          document.querySelectorAll(".card")
-            .forEach(
-              card => {
-
-                card.style.background =
-                  "rgba(0,0,0,0.58)";
-
-                card.style.color =
-                  "#fff";
-
-              }
-            );
-
-        }
-
-      }
-    );
-
-
-    /* =========================
-       VISITOR COUNTER
-    ========================= */
-
-    let visits =
-      localStorage.getItem(
-        "saikatMiniWorldVisits"
-      );
-
-    if (!visits) {
-      visits = 1;
+    if (!visitors) {
+      visitors = 1;
     } else {
-      visits =
-        parseInt(visits) + 1;
+      visitors = parseInt(visitors) + 1;
     }
 
     localStorage.setItem(
-      "saikatMiniWorldVisits",
-      visits
+      "saikatVisitors",
+      visitors
     );
 
     document.getElementById(
-      "visitCount"
-    ).innerText = visits;
+      "visitorCount"
+    ).innerText = visitors;
 
 
-    /* =========================
-       FLOATING EMOJIS
-    ========================= */
-
+    /* FLOATING EMOJIS */
     const heart =
       document.getElementById("heart");
 
@@ -1416,15 +966,14 @@
       );
 
 
-      emojiLayer.appendChild(
-        emoji
-      );
+      emojiLayer.appendChild(emoji);
 
 
-      setTimeout(
-        () => emoji.remove(),
-        5200
-      );
+      setTimeout(function() {
+
+        emoji.remove();
+
+      }, 5200);
 
     }
 
@@ -1433,7 +982,6 @@
       createFloatingEmoji,
       700
     );
-
 
   </script>
 
