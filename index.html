@@ -36,6 +36,15 @@
   --shadow:0 15px 45px rgba(0,0,0,.3);
 }
 
+html,
+body{
+  width:100%;
+  min-width:100%;
+  max-width:100%;
+  transform:none !important;
+  zoom:1 !important;
+}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
   color:var(--text);
@@ -63,9 +72,7 @@ body.light-mode{
     url("IMG_20260921_105205_456.webp") center/cover fixed;
 }
 
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 #loader{
   position:fixed;
@@ -114,9 +121,7 @@ body.light-mode{
   to{transform:rotate(360deg)}
 }
 
-/* =========================
-   STARS
-========================= */
+/* STARS */
 
 #stars{
   position:fixed;
@@ -147,9 +152,7 @@ body.light-mode{
   }
 }
 
-/* =========================
-   SHOOTING STAR
-========================= */
+/* SHOOTING STAR */
 
 .shooting-star{
   position:fixed;
@@ -172,16 +175,18 @@ body.light-mode{
     opacity:0;
     transform:translate(0,0) rotate(-35deg);
   }
-  15%{opacity:1}
+
+  15%{
+    opacity:1;
+  }
+
   100%{
     opacity:0;
     transform:translate(-400px,300px) rotate(-35deg);
   }
 }
 
-/* =========================
-   TOP NAVBAR
-========================= */
+/* TOP NAVBAR */
 
 nav{
   position:sticky;
@@ -233,9 +238,7 @@ nav a:hover{
   background:rgba(0,234,255,.08);
 }
 
-/* =========================
-   APP STATUS
-========================= */
+/* APP STATUS */
 
 .app-status{
   width:min(1100px,92%);
@@ -268,18 +271,14 @@ nav a:hover{
   }
 }
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 .container{
   width:min(1100px,92%);
   margin:auto;
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero{
   min-height:650px;
@@ -300,6 +299,7 @@ nav a:hover{
     opacity:0;
     transform:translateY(35px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -328,7 +328,9 @@ nav a:hover{
 }
 
 @keyframes rotateRing{
-  to{transform:rotate(360deg)}
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 .profile-img{
@@ -381,7 +383,9 @@ nav a:hover{
 }
 
 @keyframes textFlow{
-  to{background-position:250%}
+  to{
+    background-position:250%;
+  }
 }
 
 .hero-sub{
@@ -442,9 +446,7 @@ nav a:hover{
   box-shadow:0 0 20px rgba(0,234,255,.18);
 }
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .card{
   position:relative;
@@ -477,8 +479,13 @@ nav a:hover{
 }
 
 @keyframes cardLine{
-  0%{left:-100%}
-  100%{left:130%}
+  0%{
+    left:-100%;
+  }
+
+  100%{
+    left:130%;
+  }
 }
 
 .card:hover{
@@ -499,9 +506,7 @@ nav a:hover{
   text-align:center;
 }
 
-/* =========================
-   ABOUT
-========================= */
+/* ABOUT */
 
 .about-text{
   max-width:750px;
@@ -537,9 +542,7 @@ nav a:hover{
   font-size:11px;
 }
 
-/* =========================
-   BGMI
-========================= */
+/* BGMI */
 
 .bgmi-card{
   border-color:rgba(255,138,0,.25);
@@ -617,9 +620,7 @@ nav a:hover{
   text-shadow:0 0 12px rgba(255,138,0,.8);
 }
 
-/* =========================
-   DHONGI
-========================= */
+/* DHONGI */
 
 .dhongi-section{
   min-height:520px;
@@ -658,6 +659,7 @@ nav a:hover{
       0 0 8px #ff4f91,
       0 0 18px rgba(255,79,145,.4);
   }
+
   to{
     text-shadow:
       0 0 15px #ff4f91,
@@ -715,9 +717,7 @@ nav a:hover{
   color:#ffc4d9!important;
 }
 
-/* =========================
-   FAVOURITE PIC
-========================= */
+/* FAVOURITE PIC */
 
 .fav-photo-wrap{
   max-width:700px;
@@ -743,9 +743,7 @@ nav a:hover{
   border-radius:17px;
 }
 
-/* =========================
-   GALLERY
-========================= */
+/* GALLERY */
 
 .gallery-card{
   overflow:hidden;
@@ -837,9 +835,7 @@ nav a:hover{
   font-size:12px!important;
 }
 
-/* =========================
-   FULLSCREEN
-========================= */
+/* FULLSCREEN */
 
 #galleryModal{
   position:fixed;
@@ -877,9 +873,7 @@ nav a:hover{
   cursor:pointer;
 }
 
-/* =========================
-   SOCIAL
-========================= */
+/* SOCIAL */
 
 .social-grid{
   display:grid;
@@ -926,9 +920,7 @@ nav a:hover{
   color:#fff;
 }
 
-/* =========================
-   DREAMS
-========================= */
+/* DREAMS */
 
 .dream-list{
   max-width:650px;
@@ -950,9 +942,7 @@ nav a:hover{
   border-color:var(--cyan);
 }
 
-/* =========================
-   VISITORS
-========================= */
+/* VISITORS */
 
 .visitor-card{
   text-align:center;
@@ -1005,9 +995,7 @@ nav a:hover{
   font-size:14px!important;
 }
 
-/* =========================
-   QUICK MENU
-========================= */
+/* QUICK MENU */
 
 .quick-menu{
   display:grid;
@@ -1042,9 +1030,7 @@ nav a:hover{
   box-shadow:0 0 20px rgba(0,234,255,.12);
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
   text-align:center;
@@ -1059,9 +1045,7 @@ footer{
   margin-bottom:8px;
 }
 
-/* =========================
-   THEME
-========================= */
+/* THEME */
 
 .theme-btn{
   position:fixed;
@@ -1084,9 +1068,7 @@ body.light-mode .theme-btn{
   color:#111;
 }
 
-/* =========================
-   BACK TO TOP
-========================= */
+/* BACK TO TOP */
 
 #topBtn{
   position:fixed;
@@ -1112,9 +1094,7 @@ body.light-mode .theme-btn{
   transform:translateY(0);
 }
 
-/* =========================
-   MOBILE APP NAV
-========================= */
+/* MOBILE APP NAV */
 
 .mobile-nav{
   display:none;
@@ -1143,9 +1123,7 @@ body.light-mode .theme-btn{
   text-shadow:0 0 10px rgba(0,234,255,.5);
 }
 
-/* =========================
-   FLOATING EMOJIS
-========================= */
+/* FLOATING EMOJIS */
 
 #emojiContainer{
   position:fixed;
@@ -1183,11 +1161,17 @@ body.light-mode .theme-btn{
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:700px){
+
+  html,
+  body{
+    width:100%;
+    min-width:100%;
+    max-width:100%;
+    overflow-x:hidden;
+  }
 
   body{
     padding-bottom:70px;
@@ -1204,6 +1188,8 @@ body.light-mode .theme-btn{
 
   .container{
     width:94%;
+    margin-left:auto;
+    margin-right:auto;
   }
 
   .hero{
@@ -1340,11 +1326,6 @@ body.light-mode .theme-btn{
 
 @media(max-width:420px){
 
-  nav a{
-    font-size:12px;
-    padding:8px 11px;
-  }
-
   .hero h1{
     font-size:34px;
   }
@@ -1370,9 +1351,7 @@ body.light-mode .theme-btn{
 
 <body>
 
-<!-- =========================
-     LOADER
-========================= -->
+<!-- LOADER -->
 
 <div id="loader">
 
@@ -1388,20 +1367,15 @@ body.light-mode .theme-btn{
 
 </div>
 
-
 <!-- STARS -->
 
 <div id="stars"></div>
-
 
 <!-- FLOATING EMOJIS -->
 
 <div id="emojiContainer"></div>
 
-
-<!-- =========================
-     DESKTOP NAVBAR
-========================= -->
+<!-- DESKTOP NAVBAR -->
 
 <nav>
 
@@ -1420,7 +1394,6 @@ body.light-mode .theme-btn{
 
 </nav>
 
-
 <!-- STATUS -->
 
 <div class="app-status">
@@ -1433,13 +1406,9 @@ body.light-mode .theme-btn{
 
 </div>
 
-
 <main class="container">
 
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <header class="hero" id="home">
 
@@ -1460,11 +1429,9 @@ body.light-mode .theme-btn{
 
     </div>
 
-
     <h1>
       Saikat Manna
     </h1>
-
 
     <p class="hero-sub">
 
@@ -1475,14 +1442,12 @@ body.light-mode .theme-btn{
 
     </p>
 
-
     <div
       class="clock"
       id="clock"
     >
       Loading time...
     </div>
-
 
     <div class="hero-actions">
 
@@ -1513,10 +1478,7 @@ body.light-mode .theme-btn{
 
 </header>
 
-
-<!-- =========================
-     QUICK ACCESS
-========================= -->
+<!-- QUICK ACCESS -->
 
 <section class="card">
 
@@ -1562,10 +1524,7 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     ABOUT
-========================= -->
+<!-- ABOUT -->
 
 <section
   class="card"
@@ -1594,7 +1553,6 @@ body.light-mode .theme-btn{
 
   </p>
 
-
   <div class="about-stats">
 
     <div class="about-stat">
@@ -1616,10 +1574,7 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     BGMI
-========================= -->
+<!-- BGMI -->
 
 <section
   class="card bgmi-card"
@@ -1630,11 +1585,9 @@ body.light-mode .theme-btn{
     🎮 BGMI Profile
   </h2>
 
-
   <div class="bgmi-name">
     JaCk๛DaNieL's
   </div>
-
 
   <div class="bgmi-info">
 
@@ -1665,7 +1618,6 @@ body.light-mode .theme-btn{
 
     </div>
 
-
     <div class="info-box">
 
       <span class="info-label">
@@ -1680,17 +1632,13 @@ body.light-mode .theme-btn{
 
   </div>
 
-
   <div class="tag-top">
     TAG ON TOP 🧡
   </div>
 
 </section>
 
-
-<!-- =========================
-     DHONGI
-========================= -->
+<!-- DHONGI -->
 
 <section
   class="card dhongi-section"
@@ -1703,7 +1651,6 @@ body.light-mode .theme-btn{
       💫 Dhongi 🎀
     </h2>
 
-
     <div class="dhongi-photo-frame">
 
       <img
@@ -1714,7 +1661,6 @@ body.light-mode .theme-btn{
       >
 
     </div>
-
 
     <p>
 
@@ -1729,7 +1675,6 @@ body.light-mode .theme-btn{
 
     </p>
 
-
     <p class="dhongi-special">
 
       Some people are simply special. ✨
@@ -1740,17 +1685,13 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     FAVOURITE PIC
-========================= -->
+<!-- FAVOURITE PIC -->
 
 <section class="card">
 
   <h2>
     ❤️ Favourite Pic
   </h2>
-
 
   <div class="fav-photo-wrap">
 
@@ -1765,10 +1706,7 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- GALLERY -->
 
 <section
   class="card gallery-card"
@@ -1778,7 +1716,6 @@ body.light-mode .theme-btn{
   <h2>
     Mehhh👇🎀🤭
   </h2>
-
 
   <div class="gallery-view">
 
@@ -1798,7 +1735,6 @@ body.light-mode .theme-btn{
 
     </div>
 
-
     <div class="gallery-controls">
 
       <button
@@ -1808,7 +1744,6 @@ body.light-mode .theme-btn{
       >
         ❮
       </button>
-
 
       <button
         class="gallery-btn"
@@ -1820,14 +1755,12 @@ body.light-mode .theme-btn{
 
     </div>
 
-
     <div
       class="gallery-counter"
       id="galleryCounter"
     >
       1 / 18
     </div>
-
 
     <p class="gallery-hint">
       Tap the photo for fullscreen • Swipe to change ✨
@@ -1837,10 +1770,7 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     SOCIAL
-========================= -->
+<!-- SOCIAL -->
 
 <section
   class="card"
@@ -1850,7 +1780,6 @@ body.light-mode .theme-btn{
   <h2>
     🌐 Social Media
   </h2>
-
 
   <div class="social-grid">
 
@@ -1863,7 +1792,6 @@ body.light-mode .theme-btn{
       📸 Instagram
     </a>
 
-
     <a
       class="social-btn facebook"
       href="https://www.facebook.com/share/1SxZssLRTX/"
@@ -1873,7 +1801,6 @@ body.light-mode .theme-btn{
       👤 Facebook
     </a>
 
-
     <a
       class="social-btn youtube"
       href="https://www.youtube.com/@saikatmanna-o4d"
@@ -1882,7 +1809,6 @@ body.light-mode .theme-btn{
     >
       ▶️ YouTube
     </a>
-
 
     <a
       class="social-btn github"
@@ -1897,10 +1823,7 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     DREAMS
-========================= -->
+<!-- DREAMS -->
 
 <section
   class="card"
@@ -1910,7 +1833,6 @@ body.light-mode .theme-btn{
   <h2>
     🚀 My Dreams
   </h2>
-
 
   <div class="dream-list">
 
@@ -1926,10 +1848,7 @@ body.light-mode .theme-btn{
 
 </section>
 
-
-<!-- =========================
-     VISITORS
-========================= -->
+<!-- VISITORS -->
 
 <section
   class="card visitor-card"
@@ -1940,13 +1859,11 @@ body.light-mode .theme-btn{
     👀 Visitors
   </h2>
 
-
   <p class="visitor-welcome">
 
     Thanks for visiting my mini world ❤️
 
   </p>
-
 
   <div class="visitor-box">
 
@@ -1967,7 +1884,6 @@ body.light-mode .theme-btn{
 
   </div>
 
-
   <p class="visitor-note">
 
     Every visit means something to me ✨
@@ -1978,10 +1894,7 @@ body.light-mode .theme-btn{
 
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -1995,10 +1908,7 @@ body.light-mode .theme-btn{
 
 </footer>
 
-
-<!-- =========================
-     GALLERY MODAL
-========================= -->
+<!-- GALLERY MODAL -->
 
 <div id="galleryModal">
 
@@ -2010,7 +1920,6 @@ body.light-mode .theme-btn{
     ×
   </button>
 
-
   <img
     id="modalImage"
     class="modal-img"
@@ -2020,10 +1929,7 @@ body.light-mode .theme-btn{
 
 </div>
 
-
-<!-- =========================
-     THEME BUTTON
-========================= -->
+<!-- THEME BUTTON -->
 
 <button
   class="theme-btn"
@@ -2034,10 +1940,7 @@ body.light-mode .theme-btn{
   🌙
 </button>
 
-
-<!-- =========================
-     BACK TO TOP
-========================= -->
+<!-- BACK TO TOP -->
 
 <button
   id="topBtn"
@@ -2047,10 +1950,7 @@ body.light-mode .theme-btn{
   ↑
 </button>
 
-
-<!-- =========================
-     MOBILE APP NAVIGATION
-========================= -->
+<!-- MOBILE APP NAVIGATION -->
 
 <div class="mobile-nav">
 
@@ -2063,7 +1963,6 @@ body.light-mode .theme-btn{
     Home
   </a>
 
-
   <a
     href="#bgmi"
     data-section="bgmi"
@@ -2071,7 +1970,6 @@ body.light-mode .theme-btn{
     <span>🎮</span>
     BGMI
   </a>
-
 
   <a
     href="#dhongi"
@@ -2081,7 +1979,6 @@ body.light-mode .theme-btn{
     Special
   </a>
 
-
   <a
     href="#gallery"
     data-section="gallery"
@@ -2089,7 +1986,6 @@ body.light-mode .theme-btn{
     <span>📸</span>
     Gallery
   </a>
-
 
   <a
     href="#social"
@@ -2101,18 +1997,13 @@ body.light-mode .theme-btn{
 
 </div>
 
-
-<!-- =========================
-     SUPABASE
-========================= -->
+<!-- SUPABASE -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =========================
-   SUPABASE
-========================= */
+/* SUPABASE */
 
 const SUPABASE_URL =
   "https://kxfhjuzfxehyhldtoqdr.supabase.co";
@@ -2126,10 +2017,7 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-
-/* =========================
-   VISITOR COUNTER
-========================= */
+/* VISITOR COUNTER */
 
 async function updateVisitorCount(){
 
@@ -2161,7 +2049,6 @@ async function updateVisitorCount(){
 
     }
 
-
     const {data,error} =
       await supabaseClient.rpc(
         "get_visitor_count"
@@ -2185,19 +2072,14 @@ async function updateVisitorCount(){
 
 }
 
-
 function animateNumber(
   element,
   target
 ){
 
   let current=0;
-
   const duration=1000;
-
-  const start =
-    performance.now();
-
+  const start=performance.now();
 
   function update(time){
 
@@ -2207,16 +2089,13 @@ function animateNumber(
         1
       );
 
-
     current =
       Math.floor(
         progress*target
       );
 
-
     element.innerText =
       current;
-
 
     if(progress<1){
 
@@ -2233,20 +2112,15 @@ function animateNumber(
 
   }
 
-
   requestAnimationFrame(
     update
   );
 
 }
 
-
 updateVisitorCount();
 
-
-/* =========================
-   LOADER
-========================= */
+/* LOADER */
 
 window.addEventListener(
   "load",
@@ -2266,16 +2140,12 @@ window.addEventListener(
   }
 );
 
-
-/* =========================
-   STARS
-========================= */
+/* STARS */
 
 const stars =
   document.getElementById(
     "stars"
   );
-
 
 for(let i=0;i<90;i++){
 
@@ -2284,26 +2154,20 @@ for(let i=0;i<90;i++){
       "div"
     );
 
-
   star.className =
     "star";
-
 
   star.style.left =
     Math.random()*100+"%";
 
-
   star.style.top =
     Math.random()*100+"%";
-
 
   star.style.animationDelay =
     Math.random()*3+"s";
 
-
   star.style.opacity =
     .2+Math.random()*.8;
-
 
   stars.appendChild(
     star
@@ -2311,10 +2175,7 @@ for(let i=0;i<90;i++){
 
 }
 
-
-/* =========================
-   SHOOTING STARS
-========================= */
+/* SHOOTING STARS */
 
 function createShootingStar(){
 
@@ -2323,23 +2184,18 @@ function createShootingStar(){
       "div"
     );
 
-
   star.className =
     "shooting-star";
-
 
   star.style.right =
     (-50+Math.random()*20)+"px";
 
-
   star.style.top =
     (5+Math.random()*45)+"vh";
-
 
   document.body.appendChild(
     star
   );
-
 
   setTimeout(
     ()=>star.remove(),
@@ -2348,22 +2204,17 @@ function createShootingStar(){
 
 }
 
-
 setInterval(
   createShootingStar,
   6500
 );
 
-
-/* =========================
-   TYPING ANIMATION
-========================= */
+/* TYPING ANIMATION */
 
 const typingText =
   document.getElementById(
     "typingText"
   );
-
 
 const typingWords=[
 
@@ -2375,13 +2226,9 @@ const typingWords=[
 
 ];
 
-
 let wordIndex=0;
-
 let charIndex=0;
-
 let deleting=false;
-
 
 function typeEffect(){
 
@@ -2389,7 +2236,6 @@ function typeEffect(){
     typingWords[
       wordIndex
     ];
-
 
   if(!deleting){
 
@@ -2399,9 +2245,7 @@ function typeEffect(){
         charIndex+1
       );
 
-
     charIndex++;
-
 
     if(
       charIndex===word.length
@@ -2409,12 +2253,10 @@ function typeEffect(){
 
       deleting=true;
 
-
       setTimeout(
         typeEffect,
         1400
       );
-
 
       return;
 
@@ -2428,14 +2270,11 @@ function typeEffect(){
         charIndex-1
       );
 
-
     charIndex--;
-
 
     if(charIndex===0){
 
       deleting=false;
-
 
       wordIndex =
         (wordIndex+1)
@@ -2445,7 +2284,6 @@ function typeEffect(){
 
   }
 
-
   setTimeout(
     typeEffect,
     deleting ? 55 : 90
@@ -2453,19 +2291,14 @@ function typeEffect(){
 
 }
 
-
 typeEffect();
 
-
-/* =========================
-   CLOCK
-========================= */
+/* CLOCK */
 
 function updateClock(){
 
   const now =
     new Date();
-
 
   const options={
 
@@ -2475,7 +2308,6 @@ function updateClock(){
     hour12:true
 
   };
-
 
   document.getElementById(
     "clock"
@@ -2489,19 +2321,14 @@ function updateClock(){
 
 }
 
-
 setInterval(
   updateClock,
   1000
 );
 
-
 updateClock();
 
-
-/* =========================
-   COPY UID
-========================= */
+/* COPY UID */
 
 function copyUID(){
 
@@ -2510,12 +2337,10 @@ function copyUID(){
       "uidText"
     ).innerText;
 
-
   const btn =
     document.getElementById(
       "copyBtn"
     );
-
 
   navigator.clipboard
     .writeText(uid)
@@ -2523,7 +2348,6 @@ function copyUID(){
 
       btn.innerText =
         "✓ Copied!";
-
 
       setTimeout(
         ()=>{
@@ -2541,7 +2365,6 @@ function copyUID(){
       btn.innerText =
         "Copy failed";
 
-
       setTimeout(
         ()=>{
 
@@ -2556,10 +2379,7 @@ function copyUID(){
 
 }
 
-
-/* =========================
-   GALLERY
-========================= */
+/* GALLERY */
 
 const galleryImages=[
 
@@ -2584,21 +2404,17 @@ const galleryImages=[
 
 ];
 
-
 let galleryIndex=0;
-
 
 const galleryImage =
   document.getElementById(
     "galleryImage"
   );
 
-
 const galleryCounter =
   document.getElementById(
     "galleryCounter"
   );
-
 
 function showGalleryImage(
   index
@@ -2608,11 +2424,9 @@ function showGalleryImage(
     (index+galleryImages.length)
     %galleryImages.length;
 
-
   galleryImage.classList.add(
     "fade"
   );
-
 
   setTimeout(()=>{
 
@@ -2621,10 +2435,8 @@ function showGalleryImage(
         galleryIndex
       ];
 
-
     galleryCounter.innerText =
       `${galleryIndex+1} / ${galleryImages.length}`;
-
 
     galleryImage.classList.remove(
       "fade"
@@ -2634,7 +2446,6 @@ function showGalleryImage(
 
 }
 
-
 function nextImage(){
 
   showGalleryImage(
@@ -2642,7 +2453,6 @@ function nextImage(){
   );
 
 }
-
 
 function previousImage(){
 
@@ -2652,10 +2462,7 @@ function previousImage(){
 
 }
 
-
-/* =========================
-   FULLSCREEN GALLERY
-========================= */
+/* FULLSCREEN GALLERY */
 
 function openGallery(){
 
@@ -2666,19 +2473,16 @@ function openGallery(){
       galleryIndex
     ];
 
-
   document.getElementById(
     "galleryModal"
   ).classList.add(
     "show"
   );
 
-
   document.body.style.overflow =
     "hidden";
 
 }
-
 
 function closeGallery(){
 
@@ -2688,12 +2492,10 @@ function closeGallery(){
     "show"
   );
 
-
   document.body.style.overflow =
     "";
 
 }
-
 
 document
   .getElementById(
@@ -2712,10 +2514,7 @@ document
     }
   );
 
-
-/* =========================
-   KEYBOARD GALLERY
-========================= */
+/* KEYBOARD GALLERY */
 
 document.addEventListener(
   "keydown",
@@ -2736,11 +2535,9 @@ document.addEventListener(
 
       }
 
-
       if(e.key==="ArrowRight"){
 
         nextImage();
-
 
         document.getElementById(
           "modalImage"
@@ -2751,11 +2548,9 @@ document.addEventListener(
 
       }
 
-
       if(e.key==="ArrowLeft"){
 
         previousImage();
-
 
         document.getElementById(
           "modalImage"
@@ -2771,13 +2566,9 @@ document.addEventListener(
   }
 );
 
-
-/* =========================
-   SWIPE
-========================= */
+/* SWIPE */
 
 let touchStartX=0;
-
 
 galleryImage.addEventListener(
   "touchstart",
@@ -2791,7 +2582,6 @@ galleryImage.addEventListener(
   {passive:true}
 );
 
-
 galleryImage.addEventListener(
   "touchend",
   function(e){
@@ -2800,10 +2590,8 @@ galleryImage.addEventListener(
       e.changedTouches[0]
       .screenX;
 
-
     const difference =
       touchEndX-touchStartX;
-
 
     if(
       Math.abs(difference)<50
@@ -2812,7 +2600,6 @@ galleryImage.addEventListener(
       return;
 
     }
-
 
     if(difference<0){
 
@@ -2828,16 +2615,12 @@ galleryImage.addEventListener(
   {passive:true}
 );
 
-
-/* =========================
-   FLOATING EMOJIS
-========================= */
+/* FLOATING EMOJIS */
 
 const emojiContainer =
   document.getElementById(
     "emojiContainer"
   );
-
 
 const emojis=[
 
@@ -2852,7 +2635,6 @@ const emojis=[
 
 ];
 
-
 function createFloatingEmoji(){
 
   const origin =
@@ -2860,13 +2642,10 @@ function createFloatingEmoji(){
       "heartOrigin"
     );
 
-
   if(!origin)return;
-
 
   const rect =
     origin.getBoundingClientRect();
-
 
   if(
     rect.bottom<0 ||
@@ -2877,16 +2656,13 @@ function createFloatingEmoji(){
 
   }
 
-
   const emoji =
     document.createElement(
       "div"
     );
 
-
   emoji.className =
     "floating-emoji";
-
 
   emoji.innerText =
     emojis[
@@ -2896,7 +2672,6 @@ function createFloatingEmoji(){
       )
     ];
 
-
   emoji.style.left =
 
     (
@@ -2905,14 +2680,12 @@ function createFloatingEmoji(){
       (Math.random()*80-40)
     )+"px";
 
-
   emoji.style.bottom =
 
     (
       window.innerHeight-
       rect.bottom
     )+"px";
-
 
   emoji.style.fontSize =
 
@@ -2921,7 +2694,6 @@ function createFloatingEmoji(){
       Math.random()*14
     )+"px";
 
-
   emoji.style.animationDuration =
 
     (
@@ -2929,11 +2701,9 @@ function createFloatingEmoji(){
       Math.random()*3
     )+"s";
 
-
   emojiContainer.appendChild(
     emoji
   );
-
 
   setTimeout(
     ()=>emoji.remove(),
@@ -2942,16 +2712,12 @@ function createFloatingEmoji(){
 
 }
 
-
 setInterval(
   createFloatingEmoji,
   700
 );
 
-
-/* =========================
-   THEME
-========================= */
+/* THEME */
 
 function toggleTheme(){
 
@@ -2959,12 +2725,10 @@ function toggleTheme(){
     "light-mode"
   );
 
-
   const isLight =
     document.body.classList.contains(
       "light-mode"
     );
-
 
   document.getElementById(
     "themeBtn"
@@ -2972,7 +2736,6 @@ function toggleTheme(){
     isLight
       ? "☀️"
       : "🌙";
-
 
   localStorage.setItem(
     "saikat_theme",
@@ -2982,7 +2745,6 @@ function toggleTheme(){
   );
 
 }
-
 
 if(
   localStorage.getItem(
@@ -2994,7 +2756,6 @@ if(
     "light-mode"
   );
 
-
   document.getElementById(
     "themeBtn"
   ).innerText =
@@ -3002,10 +2763,7 @@ if(
 
 }
 
-
-/* =========================
-   BACK TO TOP
-========================= */
+/* BACK TO TOP */
 
 window.addEventListener(
   "scroll",
@@ -3015,7 +2773,6 @@ window.addEventListener(
       document.getElementById(
         "topBtn"
       );
-
 
     if(window.scrollY>500){
 
@@ -3034,16 +2791,12 @@ window.addEventListener(
   }
 );
 
-
-/* =========================
-   MOBILE NAV ACTIVE STATE
-========================= */
+/* MOBILE NAV ACTIVE STATE */
 
 const mobileLinks =
   document.querySelectorAll(
     ".mobile-nav a"
   );
-
 
 const sections = [
   "home",
@@ -3053,16 +2806,13 @@ const sections = [
   "social"
 ];
 
-
 function updateMobileNav(){
 
   let current =
     "home";
 
-
   const scrollPosition =
     window.scrollY+180;
-
 
   sections.forEach(
     function(id){
@@ -3071,7 +2821,6 @@ function updateMobileNav(){
         document.getElementById(
           id
         );
-
 
       if(
         section &&
@@ -3086,14 +2835,12 @@ function updateMobileNav(){
     }
   );
 
-
   mobileLinks.forEach(
     function(link){
 
       link.classList.remove(
         "active"
       );
-
 
       if(
         link.dataset.section===
@@ -3111,19 +2858,14 @@ function updateMobileNav(){
 
 }
 
-
 window.addEventListener(
   "scroll",
   updateMobileNav
 );
 
-
 updateMobileNav();
 
-
-/* =========================
-   MOBILE NAV CLICK
-========================= */
+/* MOBILE NAV CLICK */
 
 mobileLinks.forEach(
   function(link){
@@ -3139,67 +2881,12 @@ mobileLinks.forEach(
             )
         );
 
-
         this.classList.add(
           "active"
         );
 
       }
     );
-
-  }
-);
-
-
-/* =========================
-   SMOOTH SECTION FEEL
-========================= */
-
-const cards =
-  document.querySelectorAll(
-    ".card"
-  );
-
-
-const observer =
-  new IntersectionObserver(
-    function(entries){
-
-      entries.forEach(
-        function(entry){
-
-          if(entry.isIntersecting){
-
-            entry.target.style.opacity =
-              "1";
-
-            entry.target.style.transform =
-              "translateY(0)";
-
-          }
-
-        }
-      );
-
-    },
-    {
-      threshold:.08
-    }
-  );
-
-
-cards.forEach(
-  function(card){
-
-    card.style.opacity="0";
-
-    card.style.transform=
-      "translateY(18px)";
-
-    card.style.transition=
-      "opacity .7s ease, transform .7s ease, border-color .35s";
-
-    observer.observe(card);
 
   }
 );
