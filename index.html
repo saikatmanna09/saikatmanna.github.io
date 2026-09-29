@@ -53,8 +53,15 @@ body::before{
 }
 
 @keyframes pulse{
-  0%,100%{opacity:.4;transform:scale(.95)}
-  50%{opacity:1;transform:scale(1.05)}
+  0%,100%{
+    opacity:.4;
+    transform:scale(.95);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.05);
+  }
 }
 
 /* STARS */
@@ -77,8 +84,13 @@ body::before{
 }
 
 @keyframes starMove{
-  from{transform:translateY(-20px)}
-  to{transform:translateY(110vh)}
+  from{
+    transform:translateY(-20px);
+  }
+
+  to{
+    transform:translateY(110vh);
+  }
 }
 
 /* NAV */
@@ -152,8 +164,13 @@ header{
 }
 
 @keyframes profileGlow{
-  from{box-shadow:0 0 15px rgba(0,220,255,.4)}
-  to{box-shadow:0 0 35px rgba(0,220,255,.8)}
+  from{
+    box-shadow:0 0 15px rgba(0,220,255,.4);
+  }
+
+  to{
+    box-shadow:0 0 35px rgba(0,220,255,.8);
+  }
 }
 
 header h1{
@@ -186,6 +203,7 @@ header p{
 .card h2{
   margin-bottom:15px;
   font-size:23px;
+  text-align:center;
 }
 
 .card p{
@@ -255,8 +273,13 @@ header p{
 }
 
 @keyframes heartBeat{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.25)}
+  0%,100%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.25);
+  }
 }
 
 /* FAVOURITE PIC */
@@ -270,10 +293,7 @@ header p{
   border:1px solid rgba(255,255,255,.15);
 }
 
-/* =========================
-   GALLERY SLIDER
-========================= */
-
+/* GALLERY */
 .gallery-slider{
   position:relative;
   margin-top:15px;
@@ -297,6 +317,7 @@ header p{
     opacity:0;
     transform:scale(.98);
   }
+
   to{
     opacity:1;
     transform:scale(1);
@@ -306,10 +327,11 @@ header p{
 .gallery-slide img{
   width:100%;
   height:430px;
-  object-fit:cover;
+  object-fit:contain;
   display:block;
   border-radius:20px;
   border:1px solid rgba(255,255,255,.15);
+  background:#000;
 }
 
 .gallery-controls{
@@ -382,13 +404,86 @@ header p{
   border-bottom:none;
 }
 
-/* VISITORS */
+/* VISITOR */
+.visitor-card{
+  text-align:center;
+}
+
+.visitor-welcome{
+  margin-bottom:20px;
+}
+
+.visitor-box{
+  width:180px;
+  height:180px;
+  margin:20px auto;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,234,255,.18),
+      rgba(0,0,0,.35) 65%
+    );
+
+  border:2px solid rgba(0,234,255,.35);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:
+    0 0 20px rgba(0,234,255,.25),
+    inset 0 0 25px rgba(0,234,255,.08);
+
+  animation:visitorGlow 3s infinite alternate;
+}
+
+.visitor-icon{
+  font-size:24px;
+  margin-bottom:3px;
+}
+
 .visitor-number{
-  font-size:35px;
+  font-size:42px;
   font-weight:bold;
+  line-height:1.1;
+
   color:#00eaff;
-  text-shadow:0 0 15px #00eaff;
+
+  text-shadow:
+    0 0 8px #00eaff,
+    0 0 20px rgba(0,234,255,.8);
+}
+
+.visitor-label{
+  margin-top:7px;
+  font-size:10px;
+  letter-spacing:2px;
+  color:#aaa;
+}
+
+.visitor-note{
+  font-size:13px;
+  color:#999 !important;
   margin-top:10px;
+}
+
+@keyframes visitorGlow{
+  from{
+    transform:scale(1);
+    box-shadow:
+      0 0 20px rgba(0,234,255,.2),
+      inset 0 0 20px rgba(0,234,255,.05);
+  }
+
+  to{
+    transform:scale(1.03);
+    box-shadow:
+      0 0 35px rgba(0,234,255,.4),
+      inset 0 0 30px rgba(0,234,255,.1);
+  }
 }
 
 /* FOOTER */
@@ -425,9 +520,13 @@ footer{
     opacity:0;
   }
 
-  10%{opacity:1}
+  10%{
+    opacity:1;
+  }
 
-  50%{opacity:.95}
+  50%{
+    opacity:.95;
+  }
 
   100%{
     transform:
@@ -457,7 +556,9 @@ footer{
   }
 
   .gallery-slide img{
-    height:380px;
+    height:auto;
+    max-height:70vh;
+    object-fit:contain;
   }
 }
 
@@ -521,7 +622,7 @@ body.light footer{
   <a href="#dreams">Dreams</a>
 </nav>
 
-<!-- THEME BUTTON -->
+<!-- THEME -->
 <button class="theme-btn" onclick="toggleTheme()">🌙</button>
 
 <main>
@@ -781,20 +882,32 @@ body.light footer{
 
 
 <!-- VISITORS -->
-<section class="card">
+<section class="card visitor-card">
 
   <h2>👀 Visitors</h2>
 
-  <p>
+  <p class="visitor-welcome">
     Thanks for visiting my mini world ❤️
   </p>
 
-  <div class="visitor-number" id="visitorCount">
-    0
+  <div class="visitor-box">
+
+    <div class="visitor-icon">
+      👁️
+    </div>
+
+    <div class="visitor-number" id="visitorCount">
+      0
+    </div>
+
+    <div class="visitor-label">
+      TOTAL VISITORS
+    </div>
+
   </div>
 
-  <p>
-    people have visited this page
+  <p class="visitor-note">
+    Every visit means something to me ✨
   </p>
 
 </section>
@@ -917,10 +1030,7 @@ document.getElementById(
 ).innerText=visitors;
 
 
-/* =========================
-   GALLERY SLIDER
-========================= */
-
+/* GALLERY */
 let currentPhoto=0;
 
 const gallerySlides=
@@ -1005,7 +1115,6 @@ function createFloatingEmoji(){
       )
     ];
 
-
   const startX=
     heartPosition.left+
     heartPosition.width/2;
@@ -1014,20 +1123,17 @@ function createFloatingEmoji(){
     heartPosition.top+
     heartPosition.height/2;
 
-
   emoji.style.left=
     startX+"px";
 
   emoji.style.top=
     startY+"px";
 
-
   const moveX=
     (Math.random()*240-120)+"px";
 
   const moveY=
     -(Math.random()*500+550)+"px";
-
 
   emoji.style.setProperty(
     "--moveX",
@@ -1039,16 +1145,13 @@ function createFloatingEmoji(){
     moveY
   );
 
-
   emojiLayer.appendChild(emoji);
-
 
   setTimeout(function(){
     emoji.remove();
   },5200);
 
 }
-
 
 setInterval(
   createFloatingEmoji,
