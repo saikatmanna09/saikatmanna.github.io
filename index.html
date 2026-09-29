@@ -506,9 +506,11 @@
   <div id="loader">
     <div class="loader-box">
       <div class="loader-circle"></div>
+
       <div class="loader-text">
-        WELCOME TO MY MINI WORLD
+        WELCOME TO SAikat's MINI WORLD 🌎
       </div>
+
     </div>
   </div>
 
@@ -852,6 +854,7 @@
     /* =========================
        VISITOR COUNTER
        SAME BROWSER = COUNT ONCE
+       ALWAYS SHOW GLOBAL COUNT
     ========================= */
 
     async function updateVisitorCount(){
@@ -864,60 +867,47 @@
           "saikat_visitor_counted"
         );
 
-      const savedCount =
-        localStorage.getItem(
-          "saikat_visitor_number"
-        );
-
       try{
 
-        /* SAME BROWSER */
-        if(alreadyVisited){
+        /*
+          নতুন visitor হলে
+          শুধু একবার count বাড়াবে
+        */
 
-          if(savedCount){
+        if(!alreadyVisited){
 
-            visitorElement.innerText =
-              savedCount;
+          const { data, error } =
+            await supabaseClient.rpc(
+              "increment_visitor"
+            );
 
+          if(error){
+            throw error;
           }
 
-          return;
+          localStorage.setItem(
+            "saikat_visitor_counted",
+            "true"
+          );
         }
 
 
-        /* NEW BROWSER / NEW VISITOR */
+        /*
+          প্রতিবার latest global count
+          Supabase থেকে আনবে
+        */
 
         const { data, error } =
           await supabaseClient.rpc(
-            "increment_visitor"
+            "get_visitor_count"
           );
 
         if(error){
-
-          console.error(
-            "Visitor counter error:",
-            error
-          );
-
-          return;
+          throw error;
         }
 
-        const count =
-          data ?? 0;
-
         visitorElement.innerText =
-          count;
-
-        /* Remember this browser */
-        localStorage.setItem(
-          "saikat_visitor_counted",
-          "true"
-        );
-
-        localStorage.setItem(
-          "saikat_visitor_number",
-          count
-        );
+          data ?? 0;
 
       }catch(error){
 
