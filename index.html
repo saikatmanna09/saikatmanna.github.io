@@ -225,15 +225,35 @@
       position:relative;
       min-height:390px;
       overflow:visible;
-      background:
-        linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.72)),
-        url("IMG_20260930_013447.jpg") center/cover no-repeat;
+
+      background-color:#000;
+
+      background-image:
+        linear-gradient(
+          rgba(0,0,0,.52),
+          rgba(0,0,0,.62)
+        ),
+        url("IMG_20260930_013447.jpg");
+
+      background-position:center;
+      background-repeat:no-repeat;
+
+      /* পুরো ছবিটা দেখা যাবে */
+      background-size:contain;
     }
 
     .dhongi-content{
       position:relative;
       z-index:3;
       text-align:center;
+    }
+
+    .dhongi-content p{
+      font-size:20px;
+      font-weight:bold;
+      color:#fff;
+      line-height:1.7;
+      text-shadow:0 0 10px rgba(255,255,255,.35);
     }
 
     .heart-origin{
@@ -270,12 +290,15 @@
         transform:translateY(0) scale(.6) rotate(0deg);
         opacity:0;
       }
+
       10%{
         opacity:1;
       }
+
       80%{
         opacity:.9;
       }
+
       100%{
         transform:translateY(-95vh) scale(1.3) rotate(25deg);
         opacity:0;
@@ -403,9 +426,16 @@
       flex-direction:column;
       justify-content:center;
       align-items:center;
+
       background:
-        radial-gradient(circle,rgba(0,234,255,.16),rgba(0,0,0,.75));
+        radial-gradient(
+          circle,
+          rgba(0,234,255,.16),
+          rgba(0,0,0,.75)
+        );
+
       border:2px solid #00eaff;
+
       box-shadow:
         0 0 20px rgba(0,234,255,.45),
         inset 0 0 25px rgba(0,234,255,.12);
@@ -495,6 +525,13 @@
 
       .dhongi-section{
         min-height:360px;
+
+        background-size:contain;
+        background-position:center;
+      }
+
+      .dhongi-content p{
+        font-size:20px;
       }
     }
   </style>
@@ -504,32 +541,64 @@
 
   <!-- LOADING -->
   <div id="loader">
+
     <div class="loader-box">
+
       <div class="loader-circle"></div>
 
       <div class="loader-text">
-        WELCOME TO SAikat's MINI WORLD 🌎
+        WELCOME TO SAIKAT'S MINI WORLD 🌎
       </div>
 
     </div>
+
   </div>
+
 
   <!-- STARS -->
   <div class="stars" id="stars"></div>
 
+
   <!-- FLOATING EMOJIS -->
-  <div class="emoji-container" id="emojiContainer"></div>
+  <div
+    class="emoji-container"
+    id="emojiContainer"
+  ></div>
+
 
   <!-- NAVBAR -->
   <nav>
-    <a href="#about">About</a>
-    <a href="#bgmi">BGMI</a>
-    <a href="#dhongi">Dhongi</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#social">Social</a>
-    <a href="#dreams">Dreams</a>
-    <a href="#visitors">Visitors</a>
+
+    <a href="#about">
+      About
+    </a>
+
+    <a href="#bgmi">
+      BGMI
+    </a>
+
+    <a href="#dhongi">
+      Dhongi
+    </a>
+
+    <a href="#gallery">
+      Gallery
+    </a>
+
+    <a href="#social">
+      Social
+    </a>
+
+    <a href="#dreams">
+      Dreams
+    </a>
+
+    <a href="#visitors">
+      Visitors
+    </a>
+
   </nav>
+
 
   <!-- HEADER -->
   <header>
@@ -548,19 +617,29 @@
       Welcome to my little corner of the internet ✨
     </p>
 
-    <div class="clock" id="clock"></div>
+    <div
+      class="clock"
+      id="clock"
+    ></div>
 
   </header>
+
 
   <main class="container">
 
     <!-- ABOUT -->
-    <section class="card" id="about">
+    <section
+      class="card"
+      id="about"
+    >
 
-      <h2>👋 About Me</h2>
+      <h2>
+        👋 About Me
+      </h2>
 
       <p>
-        Hey! I'm <strong>Saikat Manna</strong>.
+        Hey! I'm
+        <strong>Saikat Manna</strong>.
         This is my personal mini world where I share
         a little bit about myself, my interests,
         gaming, memories and dreams. 🌎✨
@@ -568,10 +647,16 @@
 
     </section>
 
-    <!-- BGMI -->
-    <section class="card bgmi" id="bgmi">
 
-      <h2>🎮 My BGMI Profile</h2>
+    <!-- BGMI -->
+    <section
+      class="card bgmi"
+      id="bgmi"
+    >
+
+      <h2>
+        🎮 My BGMI Profile
+      </h2>
 
       <div class="bgmi-name">
         JaCk๛DaNieL's
@@ -591,6 +676,7 @@
 
     </section>
 
+
     <!-- DHONGI -->
     <section
       class="card dhongi-section"
@@ -599,7 +685,9 @@
 
       <div class="dhongi-content">
 
-        <h2>💫 Dhongi 🎀</h2>
+        <h2>
+          💫 Dhongi 🎀
+        </h2>
 
         <p>
           My favourite person
@@ -613,10 +701,15 @@
 
     </section>
 
-    <!-- FAVOURITE PIC -->
-    <section class="card fav-pic">
 
-      <h2>❤️ Favourite Pic</h2>
+    <!-- FAVOURITE PIC -->
+    <section
+      class="card fav-pic"
+    >
+
+      <h2>
+        ❤️ Favourite Pic
+      </h2>
 
       <img
         src="IMG_20260921_105205_456.webp"
@@ -625,86 +718,147 @@
 
     </section>
 
-    <!-- GALLERY -->
-    <section class="card gallery" id="gallery">
 
-      <h2>Mehhh👇🎀🤭</h2>
+    <!-- GALLERY -->
+    <section
+      class="card gallery"
+      id="gallery"
+    >
+
+      <h2>
+        Mehhh👇🎀🤭
+      </h2>
 
       <div class="gallery-slider">
 
         <div class="gallery-slide active">
-          <img src="IMG_20260417_144516.jpg" alt="Gallery 1">
+          <img
+            src="IMG_20260417_144516.jpg"
+            alt="Gallery 1"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20260101_080151.jpg" alt="Gallery 2">
+          <img
+            src="IMG_20260101_080151.jpg"
+            alt="Gallery 2"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20260105_194839.jpg" alt="Gallery 3">
+          <img
+            src="IMG_20260105_194839.jpg"
+            alt="Gallery 3"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20260101_075424.jpg" alt="Gallery 4">
+          <img
+            src="IMG_20260101_075424.jpg"
+            alt="Gallery 4"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20251225_204900.jpg" alt="Gallery 5">
+          <img
+            src="IMG_20251225_204900.jpg"
+            alt="Gallery 5"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20251025_114536.jpg" alt="Gallery 6">
+          <img
+            src="IMG_20251025_114536.jpg"
+            alt="Gallery 6"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20251025_115212_Burst01.jpg" alt="Gallery 7">
+          <img
+            src="IMG_20251025_115212_Burst01.jpg"
+            alt="Gallery 7"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20251025_095842.jpg" alt="Gallery 8">
+          <img
+            src="IMG_20251025_095842.jpg"
+            alt="Gallery 8"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20251012_232514.jpg" alt="Gallery 9">
+          <img
+            src="IMG_20251012_232514.jpg"
+            alt="Gallery 9"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250913_204001.jpg" alt="Gallery 10">
+          <img
+            src="IMG_20250913_204001.jpg"
+            alt="Gallery 10"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250914_093723.jpg" alt="Gallery 11">
+          <img
+            src="IMG_20250914_093723.jpg"
+            alt="Gallery 11"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250827_215622.jpg" alt="Gallery 12">
+          <img
+            src="IMG_20250827_215622.jpg"
+            alt="Gallery 12"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250817_134856_278.jpg" alt="Gallery 13">
+          <img
+            src="IMG_20250817_134856_278.jpg"
+            alt="Gallery 13"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250813_223100.jpg" alt="Gallery 14">
+          <img
+            src="IMG_20250813_223100.jpg"
+            alt="Gallery 14"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250809_122115.jpg" alt="Gallery 15">
+          <img
+            src="IMG_20250809_122115.jpg"
+            alt="Gallery 15"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250809_121243.jpg" alt="Gallery 16">
+          <img
+            src="IMG_20250809_121243.jpg"
+            alt="Gallery 16"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250615_115801.jpg" alt="Gallery 17">
+          <img
+            src="IMG_20250615_115801.jpg"
+            alt="Gallery 17"
+          >
         </div>
 
         <div class="gallery-slide">
-          <img src="IMG_20250614_172032.jpg" alt="Gallery 18">
+          <img
+            src="IMG_20250614_172032.jpg"
+            alt="Gallery 18"
+          >
         </div>
 
       </div>
+
 
       <div class="gallery-controls">
 
@@ -724,10 +878,16 @@
 
     </section>
 
-    <!-- SOCIAL -->
-    <section class="card" id="social">
 
-      <h2>🌐 Social Media</h2>
+    <!-- SOCIAL -->
+    <section
+      class="card"
+      id="social"
+    >
+
+      <h2>
+        🌐 Social Media
+      </h2>
 
       <div class="socials">
 
@@ -763,10 +923,16 @@
 
     </section>
 
-    <!-- DREAMS -->
-    <section class="card dreams" id="dreams">
 
-      <h2>🌟 Dreams</h2>
+    <!-- DREAMS -->
+    <section
+      class="card dreams"
+      id="dreams"
+    >
+
+      <h2>
+        🌟 Dreams
+      </h2>
 
       <p>
         💻 Learn coding and build something of my own
@@ -778,13 +944,16 @@
 
     </section>
 
+
     <!-- VISITORS -->
     <section
       class="card visitor-card"
       id="visitors"
     >
 
-      <h2>👀 Visitors</h2>
+      <h2>
+        👀 Visitors
+      </h2>
 
       <p class="visitor-welcome">
         Thanks for visiting my mini world ❤️
@@ -817,10 +986,12 @@
 
   </main>
 
+
   <!-- FOOTER -->
   <footer>
     © 2026 Saikat Manna • My Mini World 🌎
   </footer>
+
 
   <!-- THEME BUTTON -->
   <button
@@ -854,13 +1025,14 @@
     /* =========================
        VISITOR COUNTER
        SAME BROWSER = COUNT ONCE
-       ALWAYS SHOW GLOBAL COUNT
     ========================= */
 
     async function updateVisitorCount(){
 
       const visitorElement =
-        document.getElementById("visitorCount");
+        document.getElementById(
+          "visitorCount"
+        );
 
       const alreadyVisited =
         localStorage.getItem(
@@ -869,11 +1041,7 @@
 
       try{
 
-        /*
-          নতুন visitor হলে
-          শুধু একবার count বাড়াবে
-        */
-
+        /* NEW VISITOR */
         if(!alreadyVisited){
 
           const { data, error } =
@@ -892,10 +1060,7 @@
         }
 
 
-        /*
-          প্রতিবার latest global count
-          Supabase থেকে আনবে
-        */
+        /* ALWAYS GET CURRENT GLOBAL COUNT */
 
         const { data, error } =
           await supabaseClient.rpc(
@@ -934,7 +1099,9 @@
           function(){
 
             const loader =
-              document.getElementById("loader");
+              document.getElementById(
+                "loader"
+              );
 
             loader.style.opacity = "0";
 
@@ -961,12 +1128,16 @@
     ========================= */
 
     const stars =
-      document.getElementById("stars");
+      document.getElementById(
+        "stars"
+      );
 
     for(let i=0;i<90;i++){
 
       const star =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       star.className = "star";
 
@@ -989,7 +1160,8 @@
 
     function updateClock(){
 
-      const now = new Date();
+      const now =
+        new Date();
 
       const time =
         now.toLocaleTimeString(
@@ -1059,7 +1231,9 @@
         currentPhoto = 0;
       }
 
-      showPhoto(currentPhoto);
+      showPhoto(
+        currentPhoto
+      );
     }
 
     function previousPhoto(){
@@ -1067,11 +1241,15 @@
       currentPhoto--;
 
       if(currentPhoto < 0){
+
         currentPhoto =
           slides.length - 1;
+
       }
 
-      showPhoto(currentPhoto);
+      showPhoto(
+        currentPhoto
+      );
     }
 
 
@@ -1198,7 +1376,8 @@
 
         document.querySelector(
           ".theme-btn"
-        ).innerText = "☀️";
+        ).innerText =
+          "☀️";
 
       }else{
 
@@ -1224,7 +1403,8 @@
 
         document.querySelector(
           ".theme-btn"
-        ).innerText = "🌙";
+        ).innerText =
+          "🌙";
       }
     }
 
