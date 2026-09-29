@@ -4,12 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI profile, social media and more.">
+  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI, social media and mini world.">
   <meta name="author" content="Saikat Manna">
 
   <title>Saikat Manna | Mini World 🌎</title>
 
   <style>
+
+    /* =========================
+       RESET
+    ========================= */
+
     * {
       margin: 0;
       padding: 0;
@@ -17,45 +22,228 @@
       scroll-behavior: smooth;
     }
 
+    html {
+      scroll-padding-top: 70px;
+    }
+
     body {
       font-family: Arial, sans-serif;
       color: #fff;
+      background: #050509;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: 0.4s;
+    }
+
+
+    /* =========================
+       LOADING SCREEN
+    ========================= */
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #030305;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999999;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    #loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      font-size: 45px;
+      animation: loaderPulse 1.4s infinite alternate;
+    }
+
+    .loader-title {
+      margin-top: 15px;
+      font-size: 22px;
+      text-shadow: 0 0 15px #00ffff;
+    }
+
+    .loader-text {
+      margin-top: 8px;
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    .loader-line {
+      width: 170px;
+      height: 3px;
+      margin-top: 20px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #00ffff,
+        #ff1493,
+        transparent
+      );
+      animation: loaderLine 1.3s infinite;
+    }
+
+    @keyframes loaderPulse {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes loaderLine {
+      from {
+        transform: scaleX(0.3);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+
       background:
-        linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.92)),
+        linear-gradient(
+          rgba(0,0,0,0.72),
+          rgba(0,0,0,0.92)
+        ),
         url("IMG_20260921_105205_456.webp");
+
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      min-height: 100vh;
-      overflow-x: hidden;
     }
 
-    /* NAVBAR */
+
+    /* =========================
+       STARS
+    ========================= */
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: starMove linear infinite;
+    }
+
+    @keyframes starMove {
+      0% {
+        transform: translateY(0);
+        opacity: 0.2;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
+
       width: 100%;
-      padding: 14px 10px;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      padding: 13px 8px;
+
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+
       text-align: center;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 7px;
+      margin: 0 6px;
       font-size: 13px;
       transition: 0.3s;
     }
 
     nav a:hover {
       color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
     }
 
-    /* HEADER */
+
+    /* =========================
+       THEME BUTTON
+    ========================= */
+
+    .theme-btn {
+      position: fixed;
+      right: 15px;
+      bottom: 18px;
+
+      width: 45px;
+      height: 45px;
+
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.25);
+
+      background: rgba(0,0,0,0.7);
+      color: white;
+
+      font-size: 20px;
+      cursor: pointer;
+
+      z-index: 5000;
+
+      backdrop-filter: blur(10px);
+
+      box-shadow: 0 0 15px rgba(0,255,255,0.25);
+
+      transition: 0.3s;
+    }
+
+    .theme-btn:hover {
+      transform: scale(1.1) rotate(20deg);
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
     header {
       text-align: center;
       padding: 55px 20px 35px;
@@ -64,12 +252,16 @@
     .profile {
       width: 145px;
       height: 145px;
+
       object-fit: cover;
+
       border-radius: 50%;
-      border: 4px solid #fff;
+      border: 4px solid white;
+
       box-shadow:
         0 0 20px rgba(255,255,255,0.7),
         0 0 50px rgba(0,255,255,0.35);
+
       animation: profileGlow 3s infinite alternate;
     }
 
@@ -79,14 +271,17 @@
       }
 
       to {
-        transform: scale(1.04);
+        transform: scale(1.05);
       }
     }
 
     header h1 {
       margin-top: 18px;
       font-size: 32px;
-      text-shadow: 0 0 15px #00ffff;
+
+      text-shadow:
+        0 0 10px #00ffff,
+        0 0 25px #00ffff;
     }
 
     header p {
@@ -95,7 +290,25 @@
       font-size: 15px;
     }
 
-    /* MAIN */
+
+    /* =========================
+       CLOCK
+    ========================= */
+
+    #clock {
+      margin-top: 14px;
+      color: #00ffff;
+      font-size: 14px;
+      font-weight: bold;
+
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
     main {
       width: 92%;
       max-width: 900px;
@@ -103,23 +316,59 @@
       padding-bottom: 50px;
     }
 
+
+    /* =========================
+       CARDS
+    ========================= */
+
     .card {
       position: relative;
+
       margin: 25px 0;
       padding: 28px 22px;
+
       border-radius: 22px;
-      background: rgba(0,0,0,0.60);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+
+      background: rgba(0,0,0,0.58);
+
+      backdrop-filter: blur(12px);
+
+      border: 1px solid rgba(255,255,255,0.14);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.45);
+
       text-align: center;
+
       overflow: hidden;
+
+      animation: cardAppear 0.8s ease both;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+      height: 100px;
+
+      background: rgba(0,255,255,0.08);
+
+      filter: blur(40px);
+
+      top: -40px;
+      left: -40px;
+
+      pointer-events: none;
     }
 
     .card h2 {
       margin-bottom: 15px;
       font-size: 24px;
-      text-shadow: 0 0 12px rgba(0,255,255,0.7);
+
+      text-shadow:
+        0 0 12px rgba(0,255,255,0.7);
     }
 
     .card p {
@@ -127,17 +376,41 @@
       color: #ddd;
     }
 
-    /* ABOUT */
-    #about {
-      animation: fadeUp 1s ease;
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* BGMI */
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    #about {
+      animation-delay: 0.1s;
+    }
+
+
+    /* =========================
+       BGMI
+    ========================= */
+
     .bgmi-name {
       font-size: 23px;
       font-weight: bold;
+
       color: #ffd700;
-      text-shadow: 0 0 12px rgba(255,215,0,0.7);
+
+      text-shadow:
+        0 0 12px rgba(255,215,0,0.7);
+
       margin: 12px 0;
     }
 
@@ -146,21 +419,31 @@
       font-weight: bold;
     }
 
-    /* TAG ON TOP */
     .tag-on-top {
       margin-top: 8px;
+
       color: orange !important;
+
       font-size: 20px;
       font-weight: bold;
-      text-shadow: 0 0 10px rgba(255,165,0,0.7);
+
+      text-shadow:
+        0 0 10px rgba(255,165,0,0.7);
     }
 
-    /* DHONGI SECTION */
+
+    /* =========================
+       DHONGI
+    ========================= */
+
     #dhongi {
       position: relative;
+
       min-height: 300px;
+
       display: flex;
       flex-direction: column;
+
       justify-content: center;
       align-items: center;
 
@@ -189,7 +472,7 @@
 
     .special-name {
       font-size: 32px;
-      color: #fff;
+      color: white;
 
       text-shadow:
         0 0 8px #ff69b4,
@@ -208,7 +491,7 @@
 
       to {
         text-shadow:
-          0 0 15px #fff,
+          0 0 15px white,
           0 0 30px #ff1493,
           0 0 50px #ff1493;
       }
@@ -216,18 +499,23 @@
 
     .dhongi-main {
       margin-top: 15px;
+
       font-size: 19px;
       font-weight: bold;
+
       color: white !important;
     }
 
     .heart {
       display: inline-block;
+
       font-size: 30px;
       margin-left: 6px;
-      cursor: default;
+
       animation: heartBeat 1.2s infinite;
-      filter: drop-shadow(0 0 8px red);
+
+      filter:
+        drop-shadow(0 0 8px red);
     }
 
     @keyframes heartBeat {
@@ -240,80 +528,218 @@
       }
     }
 
-    /* FAVOURITE PIC */
+
+    /* =========================
+       FAVOURITE PIC
+    ========================= */
+
     .fav-img {
       width: 100%;
       max-width: 500px;
+
       border-radius: 18px;
+
       margin-top: 10px;
+
       border: 2px solid rgba(255,255,255,0.25);
-      box-shadow: 0 0 25px rgba(255,255,255,0.15);
+
+      box-shadow:
+        0 0 25px rgba(255,255,255,0.15);
+
+      transition: 0.4s;
     }
 
-    /* SOCIAL MEDIA */
-    .social-links {
+    .fav-img:hover {
+      transform: scale(1.02);
+
+      box-shadow:
+        0 0 30px rgba(0,255,255,0.25);
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery {
       display: flex;
       justify-content: center;
+      margin-top: 15px;
+    }
+
+    .gallery-card {
+      width: 100%;
+      max-width: 500px;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(255,255,255,0.2);
+
+      background: rgba(255,255,255,0.05);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .gallery-card p {
+      padding: 12px;
+      color: #ccc;
+    }
+
+
+    /* =========================
+       SOCIAL
+    ========================= */
+
+    .social-links {
+      display: flex;
+
+      justify-content: center;
+
       flex-wrap: wrap;
+
       gap: 12px;
+
       margin-top: 18px;
     }
 
     .social-links a {
       text-decoration: none;
+
       color: white;
+
       padding: 12px 17px;
+
       border-radius: 14px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.18);
+
+      background:
+        rgba(255,255,255,0.10);
+
+      border:
+        1px solid rgba(255,255,255,0.18);
+
       transition: 0.3s;
+
       font-size: 14px;
     }
 
     .social-links a:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,0.20);
-      box-shadow: 0 0 18px rgba(0,255,255,0.4);
+      transform: translateY(-5px);
+
+      background:
+        rgba(255,255,255,0.20);
+
+      box-shadow:
+        0 0 18px rgba(0,255,255,0.4);
     }
 
-    /* DREAMS */
+
+    /* =========================
+       DREAMS
+    ========================= */
+
     .dream {
       font-size: 18px;
+
       color: #eee;
+
       margin-top: 10px;
     }
 
-    /* FOOTER */
+
+    /* =========================
+       VISITOR COUNTER
+    ========================= */
+
+    .counter-box {
+      margin-top: 15px;
+
+      display: inline-block;
+
+      padding: 12px 20px;
+
+      border-radius: 15px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      border:
+        1px solid rgba(255,255,255,0.15);
+
+      color: #00ffff;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 0 15px rgba(0,255,255,0.12);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     footer {
       text-align: center;
+
       padding: 30px 15px;
+
       color: #888;
+
       font-size: 13px;
     }
 
-    /* FLOATING EMOJI LAYER */
+
+    /* =========================
+       FLOATING EMOJI
+    ========================= */
+
     #emojiLayer {
       position: fixed;
+
       inset: 0;
+
       width: 100%;
       height: 100%;
+
       pointer-events: none;
+
       overflow: visible;
+
       z-index: 99999;
     }
 
     .floating-emoji {
       position: fixed;
+
       pointer-events: none;
+
       font-size: 25px;
+
       opacity: 1;
-      will-change: transform, opacity;
-      animation: floatAway 5s ease-out forwards;
+
+      will-change:
+        transform,
+        opacity;
+
+      animation:
+        floatAway 5s ease-out forwards;
     }
 
     @keyframes floatAway {
+
       0% {
-        transform: translate(0, 0) scale(0.7);
+        transform:
+          translate(0,0)
+          scale(0.7);
+
         opacity: 0;
       }
 
@@ -327,26 +753,21 @@
 
       100% {
         transform:
-          translate(var(--moveX), var(--moveY))
+          translate(
+            var(--moveX),
+            var(--moveY)
+          )
           scale(1.35);
+
         opacity: 0;
       }
     }
 
-    /* FADE ANIMATION */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* =========================
+       MOBILE
+    ========================= */
 
-    /* MOBILE */
     @media (max-width: 600px) {
 
       nav {
@@ -387,24 +808,77 @@
       .floating-emoji {
         font-size: 22px;
       }
+
+      .theme-btn {
+        width: 42px;
+        height: 42px;
+        right: 12px;
+        bottom: 12px;
+      }
     }
+
   </style>
 </head>
 
+
 <body>
 
+
+  <!-- =========================
+       LOADING SCREEN
+  ========================= -->
+
+  <div id="loader">
+
+    <div class="loader-logo">
+      🌎
+    </div>
+
+    <div class="loader-title">
+      Saikat's Mini World
+    </div>
+
+    <div class="loader-text">
+      Loading my little world...
+    </div>
+
+    <div class="loader-line"></div>
+
+  </div>
+
+
+  <!-- STARS -->
+
+  <div id="stars"></div>
+
+
   <!-- NAVBAR -->
+
   <nav>
+
     <a href="#about">About</a>
     <a href="#bgmi">BGMI</a>
     <a href="#dhongi">Dhongi</a>
     <a href="#fav">Favourite</a>
     <a href="#social">Social</a>
     <a href="#dreams">Dreams</a>
+
   </nav>
 
 
+  <!-- THEME BUTTON -->
+
+  <button
+    class="theme-btn"
+    id="themeBtn"
+    title="Change theme"
+  >
+    🌙
+  </button>
+
+
   <!-- HEADER -->
+
   <header>
 
     <img
@@ -421,18 +895,28 @@
       Welcome to my little corner of the internet ✨
     </p>
 
+    <div id="clock"></div>
+
   </header>
 
 
   <main>
 
-    <!-- ABOUT -->
-    <section class="card" id="about">
 
-      <h2>👋 About Me</h2>
+    <!-- ABOUT -->
+
+    <section
+      class="card"
+      id="about"
+    >
+
+      <h2>
+        👋 About Me
+      </h2>
 
       <p>
-        Hey! I'm <strong>Saikat Manna</strong>.
+        Hey! I'm
+        <strong>Saikat Manna</strong>.
         This is my personal mini world where I share
         a little bit about myself, my interests,
         gaming, dreams and the things that matter to me.
@@ -442,9 +926,15 @@
 
 
     <!-- BGMI -->
-    <section class="card" id="bgmi">
 
-      <h2>🎮 My BGMI World</h2>
+    <section
+      class="card"
+      id="bgmi"
+    >
+
+      <h2>
+        🎮 My BGMI World
+      </h2>
 
       <div class="bgmi-name">
         JaCk๛DaNieL's
@@ -466,7 +956,11 @@
 
 
     <!-- DHONGI -->
-    <section class="card" id="dhongi">
+
+    <section
+      class="card"
+      id="dhongi"
+    >
 
       <div class="dhongi-content">
 
@@ -475,8 +969,16 @@
         </h2>
 
         <p class="dhongi-main">
+
           My favourite person
-          <span class="heart" id="heart">❤️</span>
+
+          <span
+            class="heart"
+            id="heart"
+          >
+            ❤️
+          </span>
+
         </p>
 
       </div>
@@ -485,9 +987,15 @@
 
 
     <!-- FAVOURITE PIC -->
-    <section class="card" id="fav">
 
-      <h2>📸 Favourite Pic</h2>
+    <section
+      class="card"
+      id="fav"
+    >
+
+      <h2>
+        📸 Favourite Pic
+      </h2>
 
       <img
         src="IMG_20260921_105205_456.webp"
@@ -498,10 +1006,44 @@
     </section>
 
 
-    <!-- SOCIAL MEDIA -->
-    <section class="card" id="social">
+    <!-- PHOTO GALLERY STYLE -->
 
-      <h2>🌐 Social Media</h2>
+    <section class="card">
+
+      <h2>
+        🖼️ My Mini Gallery
+      </h2>
+
+      <div class="gallery">
+
+        <div class="gallery-card">
+
+          <img
+            src="IMG_20260921_105205_456.webp"
+            alt="Saikat Gallery Photo"
+          >
+
+          <p>
+            A little piece of my world ✨
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SOCIAL MEDIA -->
+
+    <section
+      class="card"
+      id="social"
+    >
+
+      <h2>
+        🌐 Social Media
+      </h2>
 
       <div class="social-links">
 
@@ -539,9 +1081,15 @@
 
 
     <!-- DREAMS -->
-    <section class="card" id="dreams">
 
-      <h2>🌟 My Dreams</h2>
+    <section
+      class="card"
+      id="dreams"
+    >
+
+      <h2>
+        🌟 My Dreams
+      </h2>
 
       <p class="dream">
         💻 Learn coding and build something of my own
@@ -553,23 +1101,253 @@
 
     </section>
 
+
+    <!-- VISITOR -->
+
+    <section class="card">
+
+      <h2>
+        👀 Visitors
+      </h2>
+
+      <p>
+        Thanks for visiting my mini world ❤️
+      </p>
+
+      <div class="counter-box">
+        👁️ Visit No. <span id="visitCount">1</span>
+      </div>
+
+    </section>
+
+
   </main>
 
 
   <!-- FOOTER -->
+
   <footer>
+
     © 2026 Saikat Manna • Made with ❤️
+
   </footer>
 
 
-  <!-- FLOATING EMOJI LAYER -->
+  <!-- FLOATING EMOJI -->
+
   <div id="emojiLayer"></div>
 
 
   <script>
 
-    const heart = document.getElementById("heart");
-    const emojiLayer = document.getElementById("emojiLayer");
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    window.addEventListener(
+      "load",
+      function() {
+
+        setTimeout(
+          function() {
+
+            document
+              .getElementById("loader")
+              .classList
+              .add("hide");
+
+          },
+          1200
+        );
+
+      }
+    );
+
+
+    /* =========================
+       STARS
+    ========================= */
+
+    const stars =
+      document.getElementById("stars");
+
+    for (
+      let i = 0;
+      i < 90;
+      i++
+    ) {
+
+      const star =
+        document.createElement("div");
+
+      star.className = "star";
+
+      star.style.left =
+        Math.random() * 100 + "%";
+
+      star.style.top =
+        Math.random() * 100 + "%";
+
+      star.style.animationDuration =
+        (5 + Math.random() * 10) + "s";
+
+      star.style.animationDelay =
+        Math.random() * 8 + "s";
+
+      stars.appendChild(star);
+
+    }
+
+
+    /* =========================
+       LIVE CLOCK
+    ========================= */
+
+    function updateClock() {
+
+      const now =
+        new Date();
+
+      const time =
+        now.toLocaleTimeString(
+          [],
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          }
+        );
+
+      const date =
+        now.toLocaleDateString(
+          [],
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+          }
+        );
+
+      document.getElementById("clock")
+        .innerText =
+        "🕒 " + date + " • " + time;
+
+    }
+
+    updateClock();
+
+    setInterval(
+      updateClock,
+      1000
+    );
+
+
+    /* =========================
+       THEME BUTTON
+    ========================= */
+
+    const themeBtn =
+      document.getElementById("themeBtn");
+
+    let bright =
+      false;
+
+    themeBtn.addEventListener(
+      "click",
+      function() {
+
+        bright = !bright;
+
+        if (bright) {
+
+          document.body.style.color =
+            "#111";
+
+          document.body.style.background =
+            "#e9f5ff";
+
+          themeBtn.innerText =
+            "☀️";
+
+          document.querySelectorAll(".card")
+            .forEach(
+              card => {
+
+                card.style.background =
+                  "rgba(255,255,255,0.72)";
+
+                card.style.color =
+                  "#111";
+
+              }
+            );
+
+        } else {
+
+          document.body.style.color =
+            "#fff";
+
+          document.body.style.background =
+            "#050509";
+
+          themeBtn.innerText =
+            "🌙";
+
+          document.querySelectorAll(".card")
+            .forEach(
+              card => {
+
+                card.style.background =
+                  "rgba(0,0,0,0.58)";
+
+                card.style.color =
+                  "#fff";
+
+              }
+            );
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       VISITOR COUNTER
+    ========================= */
+
+    let visits =
+      localStorage.getItem(
+        "saikatMiniWorldVisits"
+      );
+
+    if (!visits) {
+      visits = 1;
+    } else {
+      visits =
+        parseInt(visits) + 1;
+    }
+
+    localStorage.setItem(
+      "saikatMiniWorldVisits",
+      visits
+    );
+
+    document.getElementById(
+      "visitCount"
+    ).innerText = visits;
+
+
+    /* =========================
+       FLOATING EMOJIS
+    ========================= */
+
+    const heart =
+      document.getElementById("heart");
+
+    const emojiLayer =
+      document.getElementById("emojiLayer");
 
     const emojis = [
       "😍",
@@ -604,15 +1382,13 @@
         ];
 
 
-      /* Start from the ❤️ */
-
       const startX =
         heartPosition.left +
-        (heartPosition.width / 2);
+        heartPosition.width / 2;
 
       const startY =
         heartPosition.top +
-        (heartPosition.height / 2);
+        heartPosition.height / 2;
 
 
       emoji.style.left =
@@ -621,8 +1397,6 @@
       emoji.style.top =
         startY + "px";
 
-
-      /* Move upward */
 
       const moveX =
         (Math.random() * 240 - 120) + "px";
@@ -642,22 +1416,24 @@
       );
 
 
-      emojiLayer.appendChild(emoji);
+      emojiLayer.appendChild(
+        emoji
+      );
 
 
-      setTimeout(() => {
-        emoji.remove();
-      }, 5200);
+      setTimeout(
+        () => emoji.remove(),
+        5200
+      );
 
     }
 
-
-    /* Create emojis continuously */
 
     setInterval(
       createFloatingEmoji,
       700
     );
+
 
   </script>
 
