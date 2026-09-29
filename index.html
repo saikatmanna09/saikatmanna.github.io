@@ -15,6 +15,10 @@
       scroll-behavior: smooth;
     }
 
+    html {
+      scroll-padding-top: 65px;
+    }
+
     body {
       margin: 0;
       background: #050507;
@@ -22,55 +26,72 @@
       font-family: Arial, sans-serif;
       text-align: center;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* ===== BACKGROUND ===== */
+    /* ===== BACKGROUND IMAGE ===== */
 
-    body::before,
-    body::after {
-      content: "";
+    .background {
       position: fixed;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: -1;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.68),
+          rgba(0, 0, 0, 0.78)
+        ),
+        url("IMG_20260921_105205_456.webp") center center / cover no-repeat;
+
+      z-index: -5;
+      transform: scale(1.03);
+      animation: backgroundZoom 18s ease-in-out infinite alternate;
     }
 
-    body::before {
-      background: rgba(120, 80, 255, 0.16);
-      top: -100px;
-      left: -120px;
-      animation: glowMove 8s ease-in-out infinite alternate;
+    .background::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(120, 80, 255, 0.14),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(0, 180, 255, 0.10),
+          transparent 35%
+        );
     }
 
-    body::after {
-      background: rgba(0, 180, 255, 0.10);
-      right: -120px;
-      bottom: -100px;
-      animation: glowMove2 10s ease-in-out infinite alternate;
-    }
-
-    /* ===== NAVBAR ===== */
+    /* ===== NAVIGATION ===== */
 
     .navbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      padding: 14px 12px;
-      background: rgba(5, 5, 7, 0.78);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+      padding: 14px 10px;
+
+      background: rgba(5, 5, 7, 0.72);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
     .navbar a {
       color: #ddd;
       text-decoration: none;
+
       margin: 0 8px;
+
       font-size: 14px;
       font-weight: bold;
-      transition: 0.3s;
+
+      transition: 0.3s ease;
     }
 
     .navbar a:hover {
@@ -82,13 +103,14 @@
     .container {
       max-width: 800px;
       margin: auto;
-      padding: 55px 18px;
+      padding: 40px 18px;
     }
 
     /* ===== HERO ===== */
 
     .hero {
-      min-height: 520px;
+      min-height: 570px;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -98,64 +120,108 @@
     .profile-wrap {
       position: relative;
       display: inline-block;
+
       margin-bottom: 25px;
+
       animation: profileIn 1.2s ease-out;
     }
 
     .profile-wrap::before {
       content: "";
+
       position: absolute;
-      inset: -9px;
+      inset: -10px;
+
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.35);
+      border: 2px solid rgba(255,255,255,0.38);
+
       animation: profileRing 3s linear infinite;
+    }
+
+    .profile-wrap::after {
+      content: "";
+
+      position: absolute;
+      inset: -18px;
+
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+
+      animation: profileRing2 5s linear infinite;
     }
 
     .profile {
       width: 190px;
       height: 190px;
+
       object-fit: cover;
+
       border-radius: 50%;
       border: 4px solid white;
+
       display: block;
+
       box-shadow:
-        0 0 30px rgba(255,255,255,0.18),
-        0 0 80px rgba(130,90,255,0.20);
+        0 0 30px rgba(255,255,255,0.20),
+        0 0 80px rgba(120,90,255,0.22);
     }
 
     h1 {
       font-size: 48px;
       margin: 10px 0;
+
       animation: titleIn 1s ease-out 0.3s both;
+
+      text-shadow:
+        0 4px 25px rgba(0,0,0,0.6);
     }
 
     .welcome {
-      color: #bbb;
+      color: #ddd;
       font-size: 20px;
+
       margin-top: 5px;
+
       animation: fadeIn 1s ease-out 0.7s both;
+
+      text-shadow:
+        0 3px 15px rgba(0,0,0,0.8);
     }
 
     .scroll-text {
-      margin-top: 45px;
-      color: #777;
+      margin-top: 48px;
+
+      color: #bbb;
       font-size: 13px;
+
       animation: float 2s ease-in-out infinite;
     }
 
     /* ===== CARDS ===== */
 
     .card {
-      background: rgba(20,20,26,0.88);
+      background: rgba(15,15,21,0.78);
+
       padding: 32px 24px;
       margin: 26px 0;
+
       border-radius: 26px;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 15px 45px rgba(0,0,0,0.35);
+
+      border: 1px solid rgba(255,255,255,0.14);
+
+      box-shadow:
+        0 15px 45px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
       opacity: 0;
+
       transform: translateY(35px);
-      animation: cardReveal 0.9s ease-out forwards;
+
+      animation:
+        cardReveal 0.9s ease-out forwards;
 
       transition:
         transform 0.35s ease,
@@ -165,14 +231,23 @@
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: rgba(255,255,255,0.28);
-      box-shadow: 0 22px 55px rgba(0,0,0,0.5);
+
+      border-color:
+        rgba(255,255,255,0.28);
+
+      box-shadow:
+        0 22px 55px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.06);
     }
 
     h2 {
       font-size: 29px;
+
       margin-top: 0;
       margin-bottom: 25px;
+
+      text-shadow:
+        0 3px 15px rgba(0,0,0,0.5);
     }
 
     h3 {
@@ -186,74 +261,151 @@
       color: #ddd;
     }
 
+    /* ===== ABOUT ===== */
+
+    #about {
+      animation-delay: 0.15s;
+    }
+
     /* ===== BGMI ===== */
 
+    #bgmi {
+      animation-delay: 0.30s;
+    }
+
     .bgmi-card {
-      border-color: rgba(255,255,255,0.16);
+      border-color:
+        rgba(255,255,255,0.17);
     }
 
     .game-name {
       font-size: 28px;
       font-weight: bold;
+
       margin: 18px 0;
     }
 
     .game-status {
       display: inline-block;
+
       padding: 8px 16px;
+
       border-radius: 20px;
-      background: rgba(255,255,255,0.08);
-      color: #ccc;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      border:
+        1px solid rgba(255,255,255,0.10);
+
+      color: #ddd;
+
       font-size: 14px;
+
       margin-top: 8px;
     }
 
     /* ===== DHONGI ===== */
 
-    .special-card {
-      border-color: rgba(255,255,255,0.20);
+    #dhongi {
+      animation-delay: 0.45s;
+
+      border-color:
+        rgba(255,255,255,0.20);
     }
 
     .special-name {
       font-size: 30px;
       font-weight: bold;
-      margin-bottom: 20px;
+
+      margin-bottom: 10px;
     }
 
     .heart {
       display: inline-block;
-      animation: heartBeat 1.5s infinite;
+
+      animation:
+        heartBeat 1.5s infinite;
     }
 
     /* ===== SOCIAL ===== */
 
+    #social {
+      animation-delay: 0.60s;
+    }
+
     .social-buttons {
       display: flex;
+
       justify-content: center;
       flex-wrap: wrap;
+
       gap: 12px;
     }
 
     .btn {
       display: inline-block;
+
       padding: 13px 24px;
-      background: #fff;
+
+      background:
+        rgba(255,255,255,0.96);
+
       color: #111;
+
       text-decoration: none;
+
       border-radius: 30px;
+
       font-weight: bold;
+
       transition: 0.3s ease;
+
       position: relative;
+
       overflow: hidden;
     }
 
+    .btn::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: -120%;
+
+      width: 100%;
+      height: 100%;
+
+      background:
+        rgba(255,255,255,0.45);
+
+      transform:
+        skewX(-20deg);
+
+      transition:
+        0.5s;
+    }
+
+    .btn:hover::before {
+      left: 120%;
+    }
+
     .btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(255,255,255,0.20);
-      background: #eee;
+      transform:
+        translateY(-5px) scale(1.05);
+
+      box-shadow:
+        0 10px 30px rgba(255,255,255,0.22);
+
+      background: white;
     }
 
     /* ===== DREAMS ===== */
+
+    #dreams {
+      animation-delay: 0.75s;
+    }
 
     .dream-line {
       color: #ddd;
@@ -264,130 +416,198 @@
 
     #topBtn {
       position: fixed;
+
       right: 18px;
       bottom: 20px;
+
       width: 45px;
       height: 45px;
+
       border: none;
       border-radius: 50%;
+
       background: white;
       color: #111;
+
       font-size: 20px;
       font-weight: bold;
+
       cursor: pointer;
+
       opacity: 0;
+
       pointer-events: none;
+
       transition: 0.3s;
+
       z-index: 999;
     }
 
     #topBtn.show {
       opacity: 1;
+
       pointer-events: auto;
     }
 
     #topBtn:hover {
-      transform: translateY(-5px);
+      transform:
+        translateY(-5px);
     }
 
     /* ===== FOOTER ===== */
 
     footer {
       margin-top: 55px;
+
       padding: 25px 10px;
-      color: #666;
+
+      color: #aaa;
+
       font-size: 14px;
+
+      text-shadow:
+        0 2px 10px rgba(0,0,0,0.8);
     }
 
     /* ===== ANIMATIONS ===== */
 
+    @keyframes backgroundZoom {
+
+      from {
+        transform: scale(1.03);
+      }
+
+      to {
+        transform: scale(1.10);
+      }
+
+    }
+
     @keyframes profileIn {
+
       from {
         opacity: 0;
-        transform: scale(0.5) rotate(-10deg);
+
+        transform:
+          scale(0.5)
+          rotate(-10deg);
       }
+
       to {
         opacity: 1;
-        transform: scale(1) rotate(0);
+
+        transform:
+          scale(1)
+          rotate(0);
       }
+
     }
 
     @keyframes profileRing {
+
       0% {
         transform: scale(1);
         opacity: 0.8;
       }
+
       50% {
         transform: scale(1.08);
         opacity: 0.25;
       }
+
       100% {
         transform: scale(1);
         opacity: 0.8;
       }
+
+    }
+
+    @keyframes profileRing2 {
+
+      0% {
+        transform: scale(0.96);
+        opacity: 0.15;
+      }
+
+      50% {
+        transform: scale(1.08);
+        opacity: 0.4;
+      }
+
+      100% {
+        transform: scale(0.96);
+        opacity: 0.15;
+      }
+
     }
 
     @keyframes titleIn {
+
       from {
         opacity: 0;
-        transform: translateY(30px);
+
+        transform:
+          translateY(30px);
       }
+
       to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
       }
+
     }
 
     @keyframes fadeIn {
+
       from {
         opacity: 0;
       }
+
       to {
         opacity: 1;
       }
+
     }
 
     @keyframes cardReveal {
+
       to {
         opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
-    @keyframes glowMove {
-      from {
-        transform: translate(0,0);
+        transform:
+          translateY(0);
       }
-      to {
-        transform: translate(180px,120px);
-      }
-    }
 
-    @keyframes glowMove2 {
-      from {
-        transform: translate(0,0);
-      }
-      to {
-        transform: translate(-150px,-100px);
-      }
     }
 
     @keyframes float {
-      0%,100% {
-        transform: translateY(0);
+
+      0%, 100% {
+        transform:
+          translateY(0);
       }
+
       50% {
-        transform: translateY(-8px);
+        transform:
+          translateY(-8px);
       }
+
     }
 
     @keyframes heartBeat {
-      0%,100% {
-        transform: scale(1);
+
+      0%, 100% {
+        transform:
+          scale(1);
       }
+
       50% {
-        transform: scale(1.2);
+        transform:
+          scale(1.2);
       }
+
     }
 
     /* ===== MOBILE ===== */
@@ -396,19 +616,24 @@
 
       .navbar {
         padding: 12px 5px;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
       }
 
       .navbar a {
         margin: 0 5px;
+
         font-size: 12px;
       }
 
       .container {
-        padding: 35px 15px;
+        padding: 30px 15px;
       }
 
       .hero {
-        min-height: 470px;
+        min-height: 500px;
       }
 
       .profile {
@@ -426,6 +651,7 @@
 
       .card {
         padding: 28px 18px;
+
         border-radius: 22px;
       }
 
@@ -452,51 +678,102 @@
       .btn {
         padding: 12px 20px;
       }
+
+      #topBtn {
+        right: 14px;
+        bottom: 15px;
+      }
+
     }
 
+    /* ===== REDUCED MOTION ===== */
+
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+
+        scroll-behavior:
+          auto !important;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
+  <!-- BACKGROUND -->
+
+  <div class="background"></div>
+
+
   <!-- NAVIGATION -->
+
   <nav class="navbar">
-    <a href="#about">About</a>
-    <a href="#bgmi">BGMI</a>
-    <a href="#dhongi">Dhongi</a>
-    <a href="#social">Social</a>
-    <a href="#dreams">Dreams</a>
+
+    <a href="#about">
+      About
+    </a>
+
+    <a href="#bgmi">
+      BGMI
+    </a>
+
+    <a href="#dhongi">
+      Dhongi
+    </a>
+
+    <a href="#social">
+      Social
+    </a>
+
+    <a href="#dreams">
+      Dreams
+    </a>
+
   </nav>
 
 
   <div class="container">
 
+
     <!-- HERO -->
+
     <section class="hero">
 
       <div class="profile-wrap">
+
         <img
           src="IMG_20250630_110659.jpg"
           alt="Saikat Manna"
           class="profile"
         >
+
       </div>
 
-      <h1>Saikat Manna</h1>
+
+      <h1>
+        Saikat Manna
+      </h1>
+
 
       <div class="welcome">
         Welcome to my mini world 🌎
       </div>
+
 
       <div class="scroll-text">
         ↓ Scroll to explore ↓
@@ -505,14 +782,21 @@
     </section>
 
 
-    <!-- ABOUT -->
-    <section class="card" id="about">
+    <!-- ABOUT ME -->
 
-      <h2>👋 About Me</h2>
+    <section
+      class="card"
+      id="about">
+
+      <h2>
+        👋 About Me
+      </h2>
+
 
       <p>
         Hey, this is Saikat Manna.
       </p>
+
 
       <p>
         This is my personal mini world where I share
@@ -524,21 +808,30 @@
 
 
     <!-- BGMI -->
-    <section class="card bgmi-card" id="bgmi">
 
-      <h2>🎮 BGMI</h2>
+    <section
+      class="card bgmi-card"
+      id="bgmi">
+
+      <h2>
+        🎮 BGMI
+      </h2>
+
 
       <div class="game-name">
         JaCk๛DaNieL's
       </div>
 
+
       <p>
         BGMI player • Learning • Improving • Enjoying the game
       </p>
 
+
       <div class="game-status">
         🎯 Keep improving
       </div>
+
 
       <p>
         Big fan of Jonathan ❤️
@@ -548,47 +841,75 @@
 
 
     <!-- DHONGI -->
-    <section class="card special-card" id="dhongi">
 
-      <h2>💫 Dhongi 🎀</h2>
+    <section
+      class="card special-card"
+      id="dhongi">
+
+      <h2>
+        💫 Dhongi 🎀
+      </h2>
+
 
       <div class="special-name">
-        My favourite person <span class="heart">❤️</span>
+
+        My favourite person
+
+        <span class="heart">
+          ❤️
+        </span>
+
       </div>
 
     </section>
 
 
     <!-- SOCIAL MEDIA -->
-    <section class="card" id="social">
 
-      <h2>🌐 My Social Media</h2>
+    <section
+      class="card"
+      id="social">
+
+      <h2>
+        🌐 My Social Media
+      </h2>
+
 
       <div class="social-buttons">
+
 
         <a
           class="btn"
           href="https://www.instagram.com/saikat_manna_09/"
           target="_blank"
           rel="noopener">
+
           Instagram
+
         </a>
+
 
         <a
           class="btn"
           href="https://www.facebook.com/share/1SxZssLRTX/"
           target="_blank"
           rel="noopener">
+
           Facebook
+
         </a>
+
 
         <a
           class="btn"
           href="https://www.youtube.com/@saikatmanna-o4d"
           target="_blank"
           rel="noopener">
+
           YouTube
+
         </a>
+
 
       </div>
 
@@ -596,13 +917,20 @@
 
 
     <!-- DREAMS -->
-    <section class="card" id="dreams">
 
-      <h2>🌟 My Dreams</h2>
+    <section
+      class="card"
+      id="dreams">
+
+      <h2>
+        🌟 My Dreams
+      </h2>
+
 
       <p class="dream-line">
         Keep learning. Keep creating. Keep moving forward.
       </p>
+
 
       <p class="dream-line">
         One day, I want to turn my ideas into reality.
@@ -612,36 +940,61 @@
 
 
     <!-- FOOTER -->
+
     <footer>
+
       © 2026 Saikat Manna • Made with ❤️
+
     </footer>
 
   </div>
 
 
-  <!-- TOP BUTTON -->
-  <button id="topBtn" onclick="goTop()">↑</button>
+  <!-- SCROLL TO TOP -->
+
+  <button
+    id="topBtn"
+    onclick="goTop()">
+
+    ↑
+
+  </button>
 
 
   <script>
 
-    const topBtn = document.getElementById("topBtn");
+    const topBtn =
+      document.getElementById("topBtn");
 
-    window.addEventListener("scroll", function() {
 
-      if (window.scrollY > 350) {
-        topBtn.classList.add("show");
-      } else {
-        topBtn.classList.remove("show");
+    window.addEventListener(
+      "scroll",
+      function() {
+
+        if (window.scrollY > 350) {
+
+          topBtn.classList.add("show");
+
+        } else {
+
+          topBtn.classList.remove("show");
+
+        }
+
       }
+    );
 
-    });
 
     function goTop() {
+
       window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
       });
+
     }
 
   </script>
