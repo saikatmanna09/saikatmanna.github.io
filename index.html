@@ -9,7 +9,6 @@
 
   <title>Saikat Manna | Mini World 🌎</title>
 
-  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -24,7 +23,7 @@
     }
 
     body{
-      font-family:Arial, sans-serif;
+      font-family:Arial,sans-serif;
       color:white;
       background:
         linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.88)),
@@ -33,7 +32,7 @@
       overflow-x:hidden;
     }
 
-    /* LOADING SCREEN */
+    /* LOADING */
     #loader{
       position:fixed;
       inset:0;
@@ -507,7 +506,9 @@
   <div id="loader">
     <div class="loader-box">
       <div class="loader-circle"></div>
-      <div class="loader-text">WELCOME TO MY MINI WORLD</div>
+      <div class="loader-text">
+        WELCOME TO MY MINI WORLD
+      </div>
     </div>
   </div>
 
@@ -530,22 +531,30 @@
 
   <!-- HEADER -->
   <header>
+
     <img
       class="profile"
       src="IMG_20250630_110659.jpg"
       alt="Saikat Manna"
     >
 
-    <h1>Hey, this is Saikat's mini world 🌎</h1>
-    <p>Welcome to my little corner of the internet ✨</p>
+    <h1>
+      Hey, this is Saikat's mini world 🌎
+    </h1>
+
+    <p>
+      Welcome to my little corner of the internet ✨
+    </p>
 
     <div class="clock" id="clock"></div>
+
   </header>
 
   <main class="container">
 
     <!-- ABOUT -->
     <section class="card" id="about">
+
       <h2>👋 About Me</h2>
 
       <p>
@@ -554,10 +563,12 @@
         a little bit about myself, my interests,
         gaming, memories and dreams. 🌎✨
       </p>
+
     </section>
 
     <!-- BGMI -->
     <section class="card bgmi" id="bgmi">
+
       <h2>🎮 My BGMI Profile</h2>
 
       <div class="bgmi-name">
@@ -575,6 +586,7 @@
       <div class="tag-top">
         TAG ON TOP 🧡
       </div>
+
     </section>
 
     <!-- DHONGI -->
@@ -582,6 +594,7 @@
       class="card dhongi-section"
       id="dhongi"
     >
+
       <div class="dhongi-content">
 
         <h2>💫 Dhongi 🎀</h2>
@@ -595,20 +608,24 @@
         </p>
 
       </div>
+
     </section>
 
     <!-- FAVOURITE PIC -->
     <section class="card fav-pic">
+
       <h2>❤️ Favourite Pic</h2>
 
       <img
         src="IMG_20260921_105205_456.webp"
         alt="Favourite Pic"
       >
+
     </section>
 
     <!-- GALLERY -->
     <section class="card gallery" id="gallery">
+
       <h2>Mehhh👇🎀🤭</h2>
 
       <div class="gallery-slider">
@@ -702,10 +719,12 @@
         </button>
 
       </div>
+
     </section>
 
     <!-- SOCIAL -->
     <section class="card" id="social">
+
       <h2>🌐 Social Media</h2>
 
       <div class="socials">
@@ -739,10 +758,12 @@
         </a>
 
       </div>
+
     </section>
 
     <!-- DREAMS -->
     <section class="card dreams" id="dreams">
+
       <h2>🌟 Dreams</h2>
 
       <p>
@@ -752,10 +773,14 @@
       <p>
         🚀 Keep learning, improving and moving forward
       </p>
+
     </section>
 
     <!-- VISITORS -->
-    <section class="card visitor-card" id="visitors">
+    <section
+      class="card visitor-card"
+      id="visitors"
+    >
 
       <h2>👀 Visitors</h2>
 
@@ -825,7 +850,8 @@
 
 
     /* =========================
-       REAL GLOBAL VISITOR COUNTER
+       VISITOR COUNTER
+       SAME BROWSER = COUNT ONCE
     ========================= */
 
     async function updateVisitorCount(){
@@ -833,7 +859,33 @@
       const visitorElement =
         document.getElementById("visitorCount");
 
+      const alreadyVisited =
+        localStorage.getItem(
+          "saikat_visitor_counted"
+        );
+
+      const savedCount =
+        localStorage.getItem(
+          "saikat_visitor_number"
+        );
+
       try{
+
+        /* SAME BROWSER */
+        if(alreadyVisited){
+
+          if(savedCount){
+
+            visitorElement.innerText =
+              savedCount;
+
+          }
+
+          return;
+        }
+
+
+        /* NEW BROWSER / NEW VISITOR */
 
         const { data, error } =
           await supabaseClient.rpc(
@@ -850,8 +902,22 @@
           return;
         }
 
-        visitorElement.innerText =
+        const count =
           data ?? 0;
+
+        visitorElement.innerText =
+          count;
+
+        /* Remember this browser */
+        localStorage.setItem(
+          "saikat_visitor_counted",
+          "true"
+        );
+
+        localStorage.setItem(
+          "saikat_visitor_number",
+          count
+        );
 
       }catch(error){
 
@@ -884,7 +950,10 @@
 
             setTimeout(
               function(){
-                loader.style.display = "none";
+
+                loader.style.display =
+                  "none";
+
               },
               600
             );
@@ -972,10 +1041,14 @@
 
       slides.forEach(
         slide =>
-          slide.classList.remove("active")
+          slide.classList.remove(
+            "active"
+          )
       );
 
-      slides[index].classList.add("active");
+      slides[index].classList.add(
+        "active"
+      );
 
       document.getElementById(
         "galleryCount"
@@ -989,7 +1062,10 @@
 
       currentPhoto++;
 
-      if(currentPhoto >= slides.length){
+      if(
+        currentPhoto >=
+        slides.length
+      ){
         currentPhoto = 0;
       }
 
@@ -1001,7 +1077,8 @@
       currentPhoto--;
 
       if(currentPhoto < 0){
-        currentPhoto = slides.length - 1;
+        currentPhoto =
+          slides.length - 1;
       }
 
       showPhoto(currentPhoto);
@@ -1031,7 +1108,9 @@
     function createFloatingEmoji(){
 
       const emoji =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       emoji.className =
         "floating-emoji";
@@ -1039,7 +1118,8 @@
       emoji.innerText =
         emojis[
           Math.floor(
-            Math.random()*emojis.length
+            Math.random() *
+            emojis.length
           )
         ];
 
@@ -1054,7 +1134,7 @@
       emoji.style.left =
         (
           rect.left +
-          rect.width/2 +
+          rect.width / 2 +
           (Math.random()*80 - 40)
         ) + "px";
 
@@ -1065,12 +1145,20 @@
         ) + "px";
 
       emoji.style.fontSize =
-        (18 + Math.random()*14) + "px";
+        (
+          18 +
+          Math.random()*14
+        ) + "px";
 
       emoji.style.animationDuration =
-        (4 + Math.random()*3) + "s";
+        (
+          4 +
+          Math.random()*3
+        ) + "s";
 
-      emojiContainer.appendChild(emoji);
+      emojiContainer.appendChild(
+        emoji
+      );
 
       setTimeout(
         function(){
@@ -1108,10 +1196,13 @@
           ".card"
         ).forEach(
           card => {
+
             card.style.background =
               "rgba(255,255,255,.78)";
+
             card.style.color =
               "#111";
+
           }
         );
 
@@ -1131,10 +1222,13 @@
           ".card"
         ).forEach(
           card => {
+
             card.style.background =
               "rgba(10,10,10,.72)";
+
             card.style.color =
               "white";
+
           }
         );
 
