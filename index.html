@@ -77,6 +77,7 @@
       from {
         transform: scale(1);
       }
+
       to {
         transform: scale(1.04);
       }
@@ -145,7 +146,16 @@
       font-weight: bold;
     }
 
-    /* DHONGI SECTION */
+    /* TAG ON TOP */
+    .tag-on-top {
+      margin-top: 8px;
+      color: orange !important;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(255,165,0,0.7);
+    }
+
+    /* DHONGI */
     #dhongi {
       position: relative;
       min-height: 300px;
@@ -166,6 +176,7 @@
       background-repeat: no-repeat;
 
       border: 1px solid rgba(255,255,255,0.25);
+
       box-shadow:
         0 0 25px rgba(255,0,100,0.25),
         0 0 60px rgba(255,0,100,0.12);
@@ -179,10 +190,12 @@
     .special-name {
       font-size: 32px;
       color: #fff;
+
       text-shadow:
         0 0 8px #ff69b4,
         0 0 20px #ff1493,
         0 0 35px #ff1493;
+
       animation: nameGlow 2s infinite alternate;
     }
 
@@ -192,6 +205,7 @@
           0 0 8px #ff69b4,
           0 0 20px #ff1493;
       }
+
       to {
         text-shadow:
           0 0 15px #fff,
@@ -211,7 +225,6 @@
       display: inline-block;
       font-size: 30px;
       margin-left: 6px;
-      cursor: default;
       animation: heartBeat 1.2s infinite;
       filter: drop-shadow(0 0 8px red);
     }
@@ -220,6 +233,7 @@
       0%, 100% {
         transform: scale(1);
       }
+
       50% {
         transform: scale(1.35);
       }
@@ -276,7 +290,7 @@
       font-size: 13px;
     }
 
-    /* FLOATING EMOJI LAYER */
+    /* FLOATING EMOJI */
     #emojiLayer {
       position: fixed;
       inset: 0;
@@ -391,14 +405,21 @@
 
   <!-- HEADER -->
   <header>
+
     <img
       src="IMG_20250630_110659.jpg"
       alt="Saikat Manna"
       class="profile"
     >
 
-    <h1>Hey, this is Saikat's Mini World 🌎</h1>
-    <p>Welcome to my little corner of the internet ✨</p>
+    <h1>
+      Hey, this is Saikat's Mini World 🌎
+    </h1>
+
+    <p>
+      Welcome to my little corner of the internet ✨
+    </p>
+
   </header>
 
 
@@ -406,6 +427,7 @@
 
     <!-- ABOUT -->
     <section class="card" id="about">
+
       <h2>👋 About Me</h2>
 
       <p>
@@ -414,11 +436,13 @@
         a little bit about myself, my interests,
         gaming, dreams and the things that matter to me.
       </p>
+
     </section>
 
 
     <!-- BGMI -->
     <section class="card" id="bgmi">
+
       <h2>🎮 My BGMI World</h2>
 
       <div class="bgmi-name">
@@ -432,6 +456,11 @@
       <p class="jonny">
         Big fan of Jonathan ❤️
       </p>
+
+      <p class="tag-on-top">
+        TAG ON TOP 🧡
+      </p>
+
     </section>
 
 
@@ -565,19 +594,22 @@
 
       if (!heart) return;
 
-      const heartPosition = heart.getBoundingClientRect();
+      const heartPosition =
+        heart.getBoundingClientRect();
 
-      const emoji = document.createElement("div");
+      const emoji =
+        document.createElement("div");
 
-      emoji.className = "floating-emoji";
+      emoji.className =
+        "floating-emoji";
 
       emoji.innerText =
-        emojis[Math.floor(Math.random() * emojis.length)];
+        emojis[
+          Math.floor(
+            Math.random() * emojis.length
+          )
+        ];
 
-
-      /*
-        Emoji starts exactly around the ❤️
-      */
 
       const startX =
         heartPosition.left +
@@ -588,15 +620,12 @@
         (heartPosition.height / 2);
 
 
-      emoji.style.left = startX + "px";
-      emoji.style.top = startY + "px";
+      emoji.style.left =
+        startX + "px";
 
+      emoji.style.top =
+        startY + "px";
 
-      /*
-        Random movement:
-        - mostly upward
-        - some left/right movement
-      */
 
       const moveX =
         (Math.random() * 240 - 120) + "px";
@@ -619,22 +648,17 @@
       emojiLayer.appendChild(emoji);
 
 
-      /*
-        Remove after animation
-      */
-
       setTimeout(() => {
         emoji.remove();
       }, 5200);
+
     }
 
 
-    /*
-      Emojis continuously come from ❤️
-    */
-
-    setInterval(createFloatingEmoji, 700);
-
+    setInterval(
+      createFloatingEmoji,
+      700
+    );
 
   </script>
 
