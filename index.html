@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI profile, social media and more.">
+  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI, social media and more.">
   <meta name="author" content="Saikat Manna">
 
-  <title>Saikat Manna | Personal Website</title>
+  <title>Saikat Manna | Mini World 🌎</title>
 
   <style>
     * {
@@ -17,59 +17,95 @@
 
     body {
       margin: 0;
-      padding: 0;
-      background: #08080c;
-      color: white;
+      background: #050507;
+      color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
       overflow-x: hidden;
     }
 
-    /* Animated background glow */
+    /* ===== BACKGROUND ===== */
+
     body::before,
     body::after {
       content: "";
       position: fixed;
-      width: 330px;
-      height: 330px;
+      width: 350px;
+      height: 350px;
       border-radius: 50%;
-      filter: blur(90px);
+      filter: blur(100px);
       pointer-events: none;
       z-index: -1;
     }
 
     body::before {
-      background: rgba(120, 80, 255, 0.12);
-      top: 5%;
+      background: rgba(120, 80, 255, 0.16);
+      top: -100px;
       left: -120px;
-      animation: floatGlow 8s ease-in-out infinite alternate;
+      animation: glowMove 8s ease-in-out infinite alternate;
     }
 
     body::after {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(0, 180, 255, 0.10);
       right: -120px;
-      bottom: 5%;
-      animation: floatGlow2 10s ease-in-out infinite alternate;
+      bottom: -100px;
+      animation: glowMove2 10s ease-in-out infinite alternate;
     }
 
+    /* ===== NAVBAR ===== */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 14px 12px;
+      background: rgba(5, 5, 7, 0.78);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .navbar a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      color: white;
+    }
+
+    /* ===== MAIN ===== */
+
     .container {
-      max-width: 760px;
+      max-width: 800px;
       margin: auto;
       padding: 55px 18px;
     }
 
-    /* Profile */
+    /* ===== HERO ===== */
+
+    .hero {
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     .profile-wrap {
-      display: inline-block;
       position: relative;
-      margin-bottom: 20px;
+      display: inline-block;
+      margin-bottom: 25px;
       animation: profileIn 1.2s ease-out;
     }
 
     .profile-wrap::before {
       content: "";
       position: absolute;
-      inset: -8px;
+      inset: -9px;
       border-radius: 50%;
       border: 2px solid rgba(255,255,255,0.35);
       animation: profileRing 3s linear infinite;
@@ -81,36 +117,44 @@
       object-fit: cover;
       border-radius: 50%;
       border: 4px solid white;
-      box-shadow:
-        0 0 25px rgba(255,255,255,0.18),
-        0 0 60px rgba(140,100,255,0.12);
       display: block;
+      box-shadow:
+        0 0 30px rgba(255,255,255,0.18),
+        0 0 80px rgba(130,90,255,0.20);
     }
 
     h1 {
-      font-size: 44px;
+      font-size: 48px;
       margin: 10px 0;
       animation: titleIn 1s ease-out 0.3s both;
     }
 
     .welcome {
       color: #bbb;
-      font-size: 19px;
-      margin-bottom: 35px;
+      font-size: 20px;
+      margin-top: 5px;
       animation: fadeIn 1s ease-out 0.7s both;
     }
 
-    /* Cards */
+    .scroll-text {
+      margin-top: 45px;
+      color: #777;
+      font-size: 13px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    /* ===== CARDS ===== */
+
     .card {
-      background: rgba(23,23,29,0.92);
-      padding: 30px 24px;
-      margin: 24px 0;
-      border-radius: 24px;
-      border: 1px solid #292932;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      background: rgba(20,20,26,0.88);
+      padding: 32px 24px;
+      margin: 26px 0;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 15px 45px rgba(0,0,0,0.35);
 
       opacity: 0;
-      transform: translateY(45px);
+      transform: translateY(35px);
       animation: cardReveal 0.9s ease-out forwards;
 
       transition:
@@ -119,39 +163,20 @@
         box-shadow 0.35s ease;
     }
 
-    .card:nth-of-type(1) {
-      animation-delay: 0.2s;
-    }
-
-    .card:nth-of-type(2) {
-      animation-delay: 0.4s;
-    }
-
-    .card:nth-of-type(3) {
-      animation-delay: 0.6s;
-    }
-
-    .card:nth-of-type(4) {
-      animation-delay: 0.8s;
-    }
-
-    .card:nth-of-type(5) {
-      animation-delay: 1s;
-    }
-
     .card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: #666;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,0.28);
+      box-shadow: 0 22px 55px rgba(0,0,0,0.5);
     }
 
     h2 {
-      font-size: 28px;
+      font-size: 29px;
       margin-top: 0;
+      margin-bottom: 25px;
     }
 
     h3 {
-      font-size: 25px;
+      font-size: 26px;
       margin: 15px 0;
     }
 
@@ -161,59 +186,126 @@
       color: #ddd;
     }
 
-    /* Social buttons */
+    /* ===== BGMI ===== */
+
+    .bgmi-card {
+      border-color: rgba(255,255,255,0.16);
+    }
+
+    .game-name {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 18px 0;
+    }
+
+    .game-status {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      color: #ccc;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    /* ===== DHONGI ===== */
+
+    .special-card {
+      border-color: rgba(255,255,255,0.20);
+    }
+
+    .special-name {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .heart {
+      display: inline-block;
+      animation: heartBeat 1.5s infinite;
+    }
+
+    /* ===== SOCIAL ===== */
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
     .btn {
       display: inline-block;
-      margin: 8px;
-      padding: 13px 23px;
-      background: white;
+      padding: 13px 24px;
+      background: #fff;
       color: #111;
       text-decoration: none;
       border-radius: 30px;
       font-weight: bold;
+      transition: 0.3s ease;
       position: relative;
       overflow: hidden;
-      transition: 0.3s ease;
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.45);
-      transform: skewX(-20deg);
-      transition: 0.5s;
-    }
-
-    .btn:hover::before {
-      left: 120%;
     }
 
     .btn:hover {
-      transform: translateY(-5px) scale(1.06);
-      box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.20);
       background: #eee;
     }
 
-    /* Footer */
-    footer {
-      margin-top: 45px;
-      padding: 20px;
-      color: #777;
-      font-size: 14px;
-      animation: fadeIn 1s ease-out 1.8s both;
+    /* ===== DREAMS ===== */
+
+    .dream-line {
+      color: #ddd;
+      margin: 12px 0;
     }
 
-    /* Animations */
+    /* ===== TOP BUTTON ===== */
+
+    #topBtn {
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: white;
+      color: #111;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+      z-index: 999;
+    }
+
+    #topBtn.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #topBtn:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      margin-top: 55px;
+      padding: 25px 10px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* ===== ANIMATIONS ===== */
+
     @keyframes profileIn {
       from {
         opacity: 0;
         transform: scale(0.5) rotate(-10deg);
       }
-
       to {
         opacity: 1;
         transform: scale(1) rotate(0);
@@ -225,12 +317,10 @@
         transform: scale(1);
         opacity: 0.8;
       }
-
       50% {
         transform: scale(1.08);
         opacity: 0.25;
       }
-
       100% {
         transform: scale(1);
         opacity: 0.8;
@@ -242,7 +332,6 @@
         opacity: 0;
         transform: translateY(30px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -253,53 +342,73 @@
       from {
         opacity: 0;
       }
-
       to {
         opacity: 1;
       }
     }
 
     @keyframes cardReveal {
-      from {
-        opacity: 0;
-        transform: translateY(45px);
-      }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    @keyframes floatGlow {
+    @keyframes glowMove {
       from {
-        transform: translate(0, 0) scale(0.9);
+        transform: translate(0,0);
       }
-
       to {
-        transform: translate(180px, 100px) scale(1.2);
+        transform: translate(180px,120px);
       }
     }
 
-    @keyframes floatGlow2 {
+    @keyframes glowMove2 {
       from {
-        transform: translate(0, 0) scale(0.9);
+        transform: translate(0,0);
       }
-
       to {
-        transform: translate(-160px, -100px) scale(1.2);
+        transform: translate(-150px,-100px);
       }
     }
 
-    /* Mobile */
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes heartBeat {
+      0%,100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    /* ===== MOBILE ===== */
+
     @media (max-width: 600px) {
 
-      .container {
-        padding: 45px 15px;
+      .navbar {
+        padding: 12px 5px;
       }
 
-      h1 {
-        font-size: 36px;
+      .navbar a {
+        margin: 0 5px;
+        font-size: 12px;
+      }
+
+      .container {
+        padding: 35px 15px;
+      }
+
+      .hero {
+        min-height: 470px;
       }
 
       .profile {
@@ -307,9 +416,17 @@
         height: 155px;
       }
 
+      h1 {
+        font-size: 36px;
+      }
+
+      .welcome {
+        font-size: 17px;
+      }
+
       .card {
-        padding: 25px 18px;
-        border-radius: 20px;
+        padding: 28px 18px;
+        border-radius: 22px;
       }
 
       h2 {
@@ -324,12 +441,19 @@
         font-size: 16px;
       }
 
+      .game-name {
+        font-size: 23px;
+      }
+
+      .special-name {
+        font-size: 25px;
+      }
+
       .btn {
         padding: 12px 20px;
       }
     }
 
-    /* Reduce animation for users who prefer less motion */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -345,26 +469,45 @@
 
 <body>
 
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <a href="#about">About</a>
+    <a href="#bgmi">BGMI</a>
+    <a href="#dhongi">Dhongi</a>
+    <a href="#social">Social</a>
+    <a href="#dreams">Dreams</a>
+  </nav>
+
+
   <div class="container">
 
-    <!-- PROFILE -->
-    <div class="profile-wrap">
-      <img
-        src="IMG_20250630_110659.jpg"
-        alt="Saikat Manna"
-        class="profile"
-      >
-    </div>
+    <!-- HERO -->
+    <section class="hero">
 
-    <h1>Saikat Manna</h1>
+      <div class="profile-wrap">
+        <img
+          src="IMG_20250630_110659.jpg"
+          alt="Saikat Manna"
+          class="profile"
+        >
+      </div>
 
-    <div class="welcome">
-      Welcome to my mini world 🌎
-    </div>
+      <h1>Saikat Manna</h1>
+
+      <div class="welcome">
+        Welcome to my mini world 🌎
+      </div>
+
+      <div class="scroll-text">
+        ↓ Scroll to explore ↓
+      </div>
+
+    </section>
 
 
-    <!-- ABOUT ME -->
-    <div class="card">
+    <!-- ABOUT -->
+    <section class="card" id="about">
+
       <h2>👋 About Me</h2>
 
       <p>
@@ -376,88 +519,132 @@
         my interests, gaming, social media and a few
         things that are important to me.
       </p>
-    </div>
+
+    </section>
 
 
     <!-- BGMI -->
-    <div class="card">
+    <section class="card bgmi-card" id="bgmi">
+
       <h2>🎮 BGMI</h2>
 
-      <h3>JaCk๛DaNieL's</h3>
+      <div class="game-name">
+        JaCk๛DaNieL's
+      </div>
 
       <p>
         BGMI player • Learning • Improving • Enjoying the game
       </p>
 
+      <div class="game-status">
+        🎯 Keep improving
+      </div>
+
       <p>
         Big fan of Jonathan ❤️
       </p>
-    </div>
+
+    </section>
 
 
     <!-- DHONGI -->
-    <div class="card">
+    <section class="card special-card" id="dhongi">
+
       <h2>💫 Dhongi 🎀</h2>
 
-      <p>
-        The most important person in my life.
-      </p>
+      <div class="special-name">
+        My favourite person <span class="heart">❤️</span>
+      </div>
 
-      <p>
-        My favourite person ❤️
-      </p>
-    </div>
+    </section>
 
 
     <!-- SOCIAL MEDIA -->
-    <div class="card">
+    <section class="card" id="social">
+
       <h2>🌐 My Social Media</h2>
 
-      <a
-        class="btn"
-        href="https://www.instagram.com/saikat_manna_09/"
-        target="_blank"
-        rel="noopener">
-        Instagram
-      </a>
+      <div class="social-buttons">
 
-      <a
-        class="btn"
-        href="https://www.facebook.com/"
-        target="_blank"
-        rel="noopener">
-        Facebook
-      </a>
+        <a
+          class="btn"
+          href="https://www.instagram.com/saikat_manna_09/"
+          target="_blank"
+          rel="noopener">
+          Instagram
+        </a>
 
-      <a
-        class="btn"
-        href="https://www.youtube.com/@saikatmanna-o4d"
-        target="_blank"
-        rel="noopener">
-        YouTube
-      </a>
-    </div>
+        <a
+          class="btn"
+          href="https://www.facebook.com/share/1SxZssLRTX/"
+          target="_blank"
+          rel="noopener">
+          Facebook
+        </a>
+
+        <a
+          class="btn"
+          href="https://www.youtube.com/@saikatmanna-o4d"
+          target="_blank"
+          rel="noopener">
+          YouTube
+        </a>
+
+      </div>
+
+    </section>
 
 
     <!-- DREAMS -->
-    <div class="card">
+    <section class="card" id="dreams">
+
       <h2>🌟 My Dreams</h2>
 
-      <p>
+      <p class="dream-line">
         Keep learning. Keep creating. Keep moving forward.
       </p>
 
-      <p>
+      <p class="dream-line">
         One day, I want to turn my ideas into reality.
       </p>
-    </div>
+
+    </section>
 
 
+    <!-- FOOTER -->
     <footer>
       © 2026 Saikat Manna • Made with ❤️
     </footer>
 
   </div>
+
+
+  <!-- TOP BUTTON -->
+  <button id="topBtn" onclick="goTop()">↑</button>
+
+
+  <script>
+
+    const topBtn = document.getElementById("topBtn");
+
+    window.addEventListener("scroll", function() {
+
+      if (window.scrollY > 350) {
+        topBtn.classList.add("show");
+      } else {
+        topBtn.classList.remove("show");
+      }
+
+    });
+
+    function goTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+  </script>
 
 </body>
 </html>
