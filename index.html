@@ -7,6 +7,8 @@
 <meta name="description" content="Official personal website of Saikat Manna. Explore my mini world, BGMI profile, gallery, social media and more.">
 <meta name="author" content="Saikat Manna">
 
+<meta name="theme-color" content="#03040a">
+
 <title>Saikat Manna | Mini World 🌎</title>
 
 <style>
@@ -19,21 +21,26 @@
 
 :root{
   --bg:#03040a;
+  --bg2:#070a13;
   --card:rgba(12,15,27,.78);
+  --card2:rgba(20,24,40,.72);
   --text:#fff;
   --muted:#aeb4c5;
   --cyan:#00eaff;
   --pink:#ff4f91;
+  --purple:#8b5cf6;
   --orange:#ff8a00;
   --green:#32ff9a;
+  --red:#ff4d6d;
   --border:rgba(255,255,255,.12);
+  --shadow:0 15px 45px rgba(0,0,0,.3);
 }
 
 body{
   font-family:Arial,Helvetica,sans-serif;
   color:var(--text);
   background:
-    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.9)),
+    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.92)),
     url("IMG_20260921_105205_456.webp") center/cover fixed;
   min-height:100vh;
   overflow-x:hidden;
@@ -41,19 +48,25 @@ body{
 }
 
 /* LIGHT MODE */
+
 body.light-mode{
   --bg:#eef3f8;
-  --card:rgba(255,255,255,.82);
+  --bg2:#e7edf5;
+  --card:rgba(255,255,255,.84);
+  --card2:rgba(255,255,255,.7);
   --text:#111827;
   --muted:#4b5563;
   --border:rgba(0,0,0,.1);
 
   background:
-    linear-gradient(rgba(240,245,250,.84),rgba(240,245,250,.92)),
+    linear-gradient(rgba(240,245,250,.84),rgba(240,245,250,.94)),
     url("IMG_20260921_105205_456.webp") center/cover fixed;
 }
 
-/* LOADER */
+/* =========================
+   LOADER
+========================= */
+
 #loader{
   position:fixed;
   inset:0;
@@ -72,30 +85,39 @@ body.light-mode{
 }
 
 .loader-ring{
-  width:70px;
-  height:70px;
-  border:3px solid rgba(0,234,255,.15);
+  width:72px;
+  height:72px;
+  border:3px solid rgba(0,234,255,.12);
   border-top-color:var(--cyan);
   border-right-color:var(--pink);
   border-radius:50%;
   animation:spin 1s linear infinite;
-  box-shadow:0 0 25px rgba(0,234,255,.4);
+  box-shadow:0 0 30px rgba(0,234,255,.4);
 }
 
 .loader-text{
   margin-top:22px;
-  font-size:14px;
+  font-size:13px;
   letter-spacing:2px;
   text-align:center;
   color:#fff;
   text-shadow:0 0 12px var(--cyan);
 }
 
+.loader-sub{
+  margin-top:8px;
+  color:#8991a6;
+  font-size:11px;
+}
+
 @keyframes spin{
   to{transform:rotate(360deg)}
 }
 
-/* STARS */
+/* =========================
+   STARS
+========================= */
+
 #stars{
   position:fixed;
   inset:0;
@@ -115,16 +137,30 @@ body.light-mode{
 }
 
 @keyframes twinkle{
-  from{opacity:.15;transform:scale(.7)}
-  to{opacity:1;transform:scale(1.5)}
+  from{
+    opacity:.15;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1.5);
+  }
 }
 
-/* SHOOTING STAR */
+/* =========================
+   SHOOTING STAR
+========================= */
+
 .shooting-star{
   position:fixed;
   width:100px;
   height:2px;
-  background:linear-gradient(90deg,transparent,#fff,var(--cyan));
+  background:linear-gradient(
+    90deg,
+    transparent,
+    #fff,
+    var(--cyan)
+  );
   transform:rotate(-35deg);
   z-index:-1;
   animation:shoot 1.3s linear forwards;
@@ -143,19 +179,23 @@ body.light-mode{
   }
 }
 
-/* NAVBAR */
+/* =========================
+   TOP NAVBAR
+========================= */
+
 nav{
   position:sticky;
   top:0;
   z-index:5000;
-  backdrop-filter:blur(18px);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   background:rgba(2,4,10,.72);
   border-bottom:1px solid rgba(255,255,255,.1);
   padding:12px 10px;
 }
 
 body.light-mode nav{
-  background:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.76);
 }
 
 .nav-inner{
@@ -191,16 +231,56 @@ nav a:hover{
   border-color:var(--cyan);
   color:var(--cyan);
   background:rgba(0,234,255,.08);
-  box-shadow:0 0 15px rgba(0,234,255,.15);
 }
 
-/* MAIN */
+/* =========================
+   APP STATUS
+========================= */
+
+.app-status{
+  width:min(1100px,92%);
+  margin:16px auto 0;
+  padding:10px 14px;
+  border:1px solid rgba(50,255,154,.15);
+  background:rgba(50,255,154,.045);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--green);
+  animation:pulse 1.7s infinite;
+}
+
+@keyframes pulse{
+  50%{
+    transform:scale(1.35);
+    opacity:.5;
+  }
+}
+
+/* =========================
+   MAIN
+========================= */
+
 .container{
   width:min(1100px,92%);
   margin:auto;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
+
 .hero{
   min-height:650px;
   display:flex;
@@ -208,7 +288,7 @@ nav a:hover{
   justify-content:center;
   text-align:center;
   position:relative;
-  padding:80px 0 50px;
+  padding:70px 0 50px;
 }
 
 .hero-content{
@@ -240,7 +320,7 @@ nav a:hover{
   background:conic-gradient(
     var(--cyan),
     var(--pink),
-    #7c4dff,
+    var(--purple),
     var(--cyan)
   );
   animation:rotateRing 4s linear infinite;
@@ -261,10 +341,39 @@ nav a:hover{
   z-index:2;
 }
 
+.profile-online{
+  position:absolute;
+  right:4px;
+  bottom:8px;
+  width:22px;
+  height:22px;
+  background:#111;
+  border-radius:50%;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.profile-online::after{
+  content:"";
+  width:11px;
+  height:11px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--green);
+}
+
 .hero h1{
   margin-top:30px;
   font-size:clamp(35px,7vw,68px);
-  background:linear-gradient(90deg,#fff,var(--cyan),#fff,var(--pink));
+  background:linear-gradient(
+    90deg,
+    #fff,
+    var(--cyan),
+    #fff,
+    var(--pink)
+  );
   background-size:250%;
   -webkit-background-clip:text;
   color:transparent;
@@ -299,7 +408,44 @@ nav a:hover{
   box-shadow:0 0 20px rgba(0,234,255,.1);
 }
 
-/* CARDS */
+.hero-actions{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.hero-action{
+  text-decoration:none;
+  color:#fff;
+  padding:11px 17px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.055);
+  transition:.3s;
+  font-size:13px;
+}
+
+.hero-action.primary{
+  background:linear-gradient(
+    135deg,
+    rgba(0,234,255,.16),
+    rgba(124,77,255,.16)
+  );
+  border-color:rgba(0,234,255,.4);
+}
+
+.hero-action:hover{
+  transform:translateY(-3px);
+  border-color:var(--cyan);
+  box-shadow:0 0 20px rgba(0,234,255,.18);
+}
+
+/* =========================
+   CARDS
+========================= */
+
 .card{
   position:relative;
   margin:25px 0;
@@ -308,11 +454,31 @@ nav a:hover{
   background:var(--card);
   border:1px solid var(--border);
   backdrop-filter:blur(15px);
-  box-shadow:
-    0 15px 45px rgba(0,0,0,.28),
-    inset 0 0 30px rgba(255,255,255,.015);
+  -webkit-backdrop-filter:blur(15px);
+  box-shadow:var(--shadow);
   overflow:hidden;
   transition:.35s;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:70%;
+  height:1px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    var(--cyan),
+    transparent
+  );
+  animation:cardLine 7s linear infinite;
+}
+
+@keyframes cardLine{
+  0%{left:-100%}
+  100%{left:130%}
 }
 
 .card:hover{
@@ -333,14 +499,48 @@ nav a:hover{
   text-align:center;
 }
 
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
+
 .about-text{
   max-width:750px;
   margin:auto;
   font-size:17px;
 }
 
-/* BGMI */
+.about-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  max-width:700px;
+  margin:25px auto 0;
+}
+
+.about-stat{
+  text-align:center;
+  padding:17px 10px;
+  border-radius:17px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.about-stat strong{
+  display:block;
+  font-size:22px;
+  color:var(--cyan);
+  margin-bottom:5px;
+}
+
+.about-stat span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* =========================
+   BGMI
+========================= */
+
 .bgmi-card{
   border-color:rgba(255,138,0,.25);
   box-shadow:0 0 35px rgba(255,138,0,.08);
@@ -417,13 +617,20 @@ nav a:hover{
   text-shadow:0 0 12px rgba(255,138,0,.8);
 }
 
-/* DHONGI */
+/* =========================
+   DHONGI
+========================= */
+
 .dhongi-section{
   min-height:520px;
   overflow:visible;
   text-align:center;
   background:
-    radial-gradient(circle at center,rgba(255,70,130,.12),rgba(0,0,0,.88));
+    radial-gradient(
+      circle at center,
+      rgba(255,70,130,.12),
+      rgba(0,0,0,.88)
+    );
   border:1px solid rgba(255,80,150,.28);
   box-shadow:
     0 0 30px rgba(255,50,130,.16),
@@ -447,12 +654,14 @@ nav a:hover{
 
 @keyframes dhongiGlow{
   from{
-    text-shadow:0 0 8px #ff4f91,
-    0 0 18px rgba(255,79,145,.4);
+    text-shadow:
+      0 0 8px #ff4f91,
+      0 0 18px rgba(255,79,145,.4);
   }
   to{
-    text-shadow:0 0 15px #ff4f91,
-    0 0 35px rgba(255,79,145,.8);
+    text-shadow:
+      0 0 15px #ff4f91,
+      0 0 35px rgba(255,79,145,.8);
   }
 }
 
@@ -462,10 +671,12 @@ nav a:hover{
   padding:8px;
   border-radius:22px;
   background:
-    linear-gradient(135deg,
-    rgba(255,79,145,.7),
-    rgba(0,234,255,.35),
-    rgba(255,79,145,.7));
+    linear-gradient(
+      135deg,
+      rgba(255,79,145,.7),
+      rgba(0,234,255,.35),
+      rgba(255,79,145,.7)
+    );
   box-shadow:
     0 0 20px rgba(255,79,145,.25),
     0 0 45px rgba(0,234,255,.12);
@@ -504,40 +715,22 @@ nav a:hover{
   color:#ffc4d9!important;
 }
 
-/* FLOATING EMOJIS */
-#emojiContainer{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:1000;
-  overflow:hidden;
-}
+/* =========================
+   FAVOURITE PIC
+========================= */
 
-.floating-emoji{
-  position:absolute;
-  animation:floatEmoji linear forwards;
-  pointer-events:none;
-}
-
-@keyframes floatEmoji{
-  0%{
-    opacity:0;
-    transform:translateY(20px) scale(.7) rotate(0deg);
-  }
-  15%{opacity:1}
-  100%{
-    opacity:0;
-    transform:translateY(-280px) scale(1.15) rotate(20deg);
-  }
-}
-
-/* FAVOURITE PIC */
 .fav-photo-wrap{
   max-width:700px;
   margin:auto;
   border-radius:22px;
   padding:7px;
-  background:linear-gradient(120deg,var(--cyan),var(--pink),#7c4dff);
+  background:
+    linear-gradient(
+      120deg,
+      var(--cyan),
+      var(--pink),
+      var(--purple)
+    );
   box-shadow:0 0 30px rgba(0,234,255,.12);
 }
 
@@ -550,7 +743,10 @@ nav a:hover{
   border-radius:17px;
 }
 
-/* GALLERY */
+/* =========================
+   GALLERY
+========================= */
+
 .gallery-card{
   overflow:hidden;
 }
@@ -571,13 +767,32 @@ nav a:hover{
   background:rgba(0,0,0,.45);
   border:1px solid rgba(255,255,255,.08);
   cursor:pointer;
+  position:relative;
+}
+
+.gallery-image-box::after{
+  content:"⛶";
+  position:absolute;
+  right:14px;
+  top:14px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  opacity:.8;
 }
 
 .gallery-image{
   width:100%;
   height:420px;
   object-fit:contain;
-  transition:opacity .25s,transform .35s;
+  transition:
+    opacity .25s,
+    transform .35s;
 }
 
 .gallery-image.fade{
@@ -617,7 +832,15 @@ nav a:hover{
   font-size:13px;
 }
 
-/* FULLSCREEN */
+.gallery-hint{
+  margin-top:12px;
+  font-size:12px!important;
+}
+
+/* =========================
+   FULLSCREEN
+========================= */
+
 #galleryModal{
   position:fixed;
   inset:0;
@@ -654,7 +877,10 @@ nav a:hover{
   cursor:pointer;
 }
 
-/* SOCIAL */
+/* =========================
+   SOCIAL
+========================= */
+
 .social-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -680,12 +906,30 @@ nav a:hover{
   box-shadow:0 0 25px rgba(255,255,255,.15);
 }
 
-.instagram:hover{border-color:#ff4f91;color:#ff78ab}
-.facebook:hover{border-color:#3b82f6;color:#60a5fa}
-.youtube:hover{border-color:#ff3333;color:#ff5555}
-.github:hover{border-color:#aaa;color:#fff}
+.instagram:hover{
+  border-color:#ff4f91;
+  color:#ff78ab;
+}
 
-/* DREAMS */
+.facebook:hover{
+  border-color:#3b82f6;
+  color:#60a5fa;
+}
+
+.youtube:hover{
+  border-color:#ff3333;
+  color:#ff5555;
+}
+
+.github:hover{
+  border-color:#aaa;
+  color:#fff;
+}
+
+/* =========================
+   DREAMS
+========================= */
+
 .dream-list{
   max-width:650px;
   margin:auto;
@@ -706,7 +950,10 @@ nav a:hover{
   border-color:var(--cyan);
 }
 
-/* VISITOR */
+/* =========================
+   VISITORS
+========================= */
+
 .visitor-card{
   text-align:center;
 }
@@ -726,9 +973,11 @@ nav a:hover{
   flex-direction:column;
   border:2px solid rgba(0,234,255,.4);
   background:
-    radial-gradient(circle,
-    rgba(0,234,255,.14),
-    rgba(0,0,0,.2));
+    radial-gradient(
+      circle,
+      rgba(0,234,255,.14),
+      rgba(0,0,0,.2)
+    );
   box-shadow:
     0 0 25px rgba(0,234,255,.16),
     inset 0 0 25px rgba(0,234,255,.08);
@@ -756,19 +1005,68 @@ nav a:hover{
   font-size:14px!important;
 }
 
-/* FOOTER */
+/* =========================
+   QUICK MENU
+========================= */
+
+.quick-menu{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.quick-item{
+  text-decoration:none;
+  color:var(--text);
+  padding:18px 10px;
+  text-align:center;
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
+
+.quick-item span{
+  display:block;
+  font-size:25px;
+  margin-bottom:8px;
+}
+
+.quick-item small{
+  color:var(--muted);
+}
+
+.quick-item:hover{
+  transform:translateY(-5px);
+  border-color:var(--cyan);
+  box-shadow:0 0 20px rgba(0,234,255,.12);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   text-align:center;
-  padding:45px 15px 90px;
+  padding:45px 15px 120px;
   color:var(--muted);
   font-size:13px;
 }
 
-/* THEME */
+.footer-title{
+  color:var(--text);
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+/* =========================
+   THEME
+========================= */
+
 .theme-btn{
   position:fixed;
   right:18px;
-  bottom:18px;
+  bottom:78px;
   width:48px;
   height:48px;
   border-radius:50%;
@@ -786,11 +1084,14 @@ body.light-mode .theme-btn{
   color:#111;
 }
 
-/* BACK TO TOP */
+/* =========================
+   BACK TO TOP
+========================= */
+
 #topBtn{
   position:fixed;
   right:18px;
-  bottom:78px;
+  bottom:135px;
   width:45px;
   height:45px;
   border-radius:50%;
@@ -811,8 +1112,95 @@ body.light-mode .theme-btn{
   transform:translateY(0);
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE APP NAV
+========================= */
+
+.mobile-nav{
+  display:none;
+}
+
+.mobile-nav a{
+  color:#9299aa;
+  text-decoration:none;
+  font-size:10px;
+  text-align:center;
+  min-width:52px;
+  padding:6px 3px;
+  border-radius:13px;
+  transition:.25s;
+}
+
+.mobile-nav a span{
+  display:block;
+  font-size:20px;
+  margin-bottom:3px;
+}
+
+.mobile-nav a.active{
+  color:var(--cyan);
+  background:rgba(0,234,255,.08);
+  text-shadow:0 0 10px rgba(0,234,255,.5);
+}
+
+/* =========================
+   FLOATING EMOJIS
+========================= */
+
+#emojiContainer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1000;
+  overflow:hidden;
+}
+
+.floating-emoji{
+  position:absolute;
+  animation:floatEmoji linear forwards;
+  pointer-events:none;
+}
+
+@keyframes floatEmoji{
+  0%{
+    opacity:0;
+    transform:
+      translateY(20px)
+      scale(.7)
+      rotate(0deg);
+  }
+
+  15%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translateY(-280px)
+      scale(1.15)
+      rotate(20deg);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:700px){
+
+  body{
+    padding-bottom:70px;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .app-status{
+    width:94%;
+    margin-top:12px;
+  }
 
   .container{
     width:94%;
@@ -820,7 +1208,7 @@ body.light-mode .theme-btn{
 
   .hero{
     min-height:570px;
-    padding-top:65px;
+    padding-top:55px;
   }
 
   .profile-wrap{
@@ -836,6 +1224,14 @@ body.light-mode .theme-btn{
     font-size:15px;
   }
 
+  .hero-actions{
+    gap:8px;
+  }
+
+  .hero-action{
+    padding:10px 13px;
+  }
+
   .card{
     padding:23px 17px;
     border-radius:21px;
@@ -845,11 +1241,32 @@ body.light-mode .theme-btn{
     font-size:24px;
   }
 
+  .about-stats{
+    grid-template-columns:1fr 1fr 1fr;
+    gap:7px;
+  }
+
+  .about-stat{
+    padding:14px 5px;
+  }
+
+  .about-stat strong{
+    font-size:18px;
+  }
+
+  .about-stat span{
+    font-size:9px;
+  }
+
   .bgmi-info{
     grid-template-columns:1fr;
   }
 
   .social-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quick-menu{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -881,6 +1298,44 @@ body.light-mode .theme-btn{
     width:170px;
     height:170px;
   }
+
+  .theme-btn{
+    right:15px;
+    bottom:83px;
+  }
+
+  #topBtn{
+    right:15px;
+    bottom:140px;
+  }
+
+  /* MOBILE BOTTOM APP BAR */
+
+  .mobile-nav{
+    position:fixed;
+    left:8px;
+    right:8px;
+    bottom:8px;
+    height:62px;
+    z-index:6000;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:5px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:21px;
+    background:rgba(5,7,15,.88);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    box-shadow:
+      0 10px 35px rgba(0,0,0,.5),
+      0 0 25px rgba(0,234,255,.05);
+  }
+
+  body.light-mode .mobile-nav{
+    background:rgba(255,255,255,.9);
+    border-color:rgba(0,0,0,.1);
+  }
 }
 
 @media(max-width:420px){
@@ -901,27 +1356,58 @@ body.light-mode .theme-btn{
   .social-btn{
     font-size:13px;
   }
+
+  .mobile-nav a{
+    min-width:48px;
+  }
+
+  .mobile-nav a span{
+    font-size:18px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
+<!-- =========================
+     LOADER
+========================= -->
+
 <div id="loader">
+
   <div class="loader-ring"></div>
-  <div class="loader-text">WELCOME TO SAIKAT'S MINI WORLD 🌎</div>
+
+  <div class="loader-text">
+    WELCOME TO SAIKAT'S MINI WORLD 🌎
+  </div>
+
+  <div class="loader-sub">
+    Loading your experience...
+  </div>
+
 </div>
 
+
 <!-- STARS -->
+
 <div id="stars"></div>
 
+
 <!-- FLOATING EMOJIS -->
+
 <div id="emojiContainer"></div>
 
-<!-- NAVBAR -->
+
+<!-- =========================
+     DESKTOP NAVBAR
+========================= -->
+
 <nav>
+
   <div class="nav-inner">
+
+    <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#bgmi">BGMI</a>
     <a href="#dhongi">Dhongi</a>
@@ -929,90 +1415,271 @@ body.light-mode .theme-btn{
     <a href="#social">Social</a>
     <a href="#dreams">Dreams</a>
     <a href="#visitors">Visitors</a>
+
   </div>
+
 </nav>
+
+
+<!-- STATUS -->
+
+<div class="app-status">
+
+  <span class="status-dot"></span>
+
+  <span>
+    Saikat's Mini World is online ✨
+  </span>
+
+</div>
+
 
 <main class="container">
 
-<!-- HERO -->
-<header class="hero">
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero" id="home">
 
   <div class="hero-content">
 
     <div class="profile-wrap">
+
       <div class="profile-ring"></div>
+
       <img
         class="profile-img"
         src="IMG_20250630_110659.jpg"
         alt="Saikat Manna"
         loading="eager"
       >
+
+      <div class="profile-online"></div>
+
     </div>
 
-    <h1>Saikat Manna</h1>
+
+    <h1>
+      Saikat Manna
+    </h1>
+
 
     <p class="hero-sub">
-      <span id="typingText" class="typing"></span>
+
+      <span
+        id="typingText"
+        class="typing"
+      ></span>
+
     </p>
 
-    <div class="clock" id="clock">
+
+    <div
+      class="clock"
+      id="clock"
+    >
       Loading time...
+    </div>
+
+
+    <div class="hero-actions">
+
+      <a
+        class="hero-action primary"
+        href="#about"
+      >
+        👋 Explore Me
+      </a>
+
+      <a
+        class="hero-action"
+        href="#gallery"
+      >
+        🖼️ Gallery
+      </a>
+
+      <a
+        class="hero-action"
+        href="#social"
+      >
+        🌐 Social
+      </a>
+
     </div>
 
   </div>
 
 </header>
 
-<!-- ABOUT -->
-<section class="card" id="about">
 
-  <h2>👋 About Me</h2>
+<!-- =========================
+     QUICK ACCESS
+========================= -->
 
-  <p class="about-text">
-    Hey, this is Saikat's mini world 🌎
-    <br><br>
-    Welcome to my personal space on the internet.
-    Here you can explore a little about me, my gaming profile,
-    memories, favourite moments, social links and dreams.
-    <br><br>
-    Keep learning. Keep improving. Keep moving forward. ✨
-  </p>
+<section class="card">
+
+  <h2>
+    ⚡ Quick Access
+  </h2>
+
+  <div class="quick-menu">
+
+    <a
+      class="quick-item"
+      href="#bgmi"
+    >
+      <span>🎮</span>
+      <small>BGMI</small>
+    </a>
+
+    <a
+      class="quick-item"
+      href="#dhongi"
+    >
+      <span>💫</span>
+      <small>Special</small>
+    </a>
+
+    <a
+      class="quick-item"
+      href="#gallery"
+    >
+      <span>📸</span>
+      <small>Gallery</small>
+    </a>
+
+    <a
+      class="quick-item"
+      href="#social"
+    >
+      <span>🌐</span>
+      <small>Social</small>
+    </a>
+
+  </div>
 
 </section>
 
-<!-- BGMI -->
-<section class="card bgmi-card" id="bgmi">
 
-  <h2>🎮 BGMI Profile</h2>
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section
+  class="card"
+  id="about"
+>
+
+  <h2>
+    👋 About Me
+  </h2>
+
+  <p class="about-text">
+
+    Hey, this is Saikat's mini world 🌎
+
+    <br><br>
+
+    Welcome to my personal space on the internet.
+    Here you can explore a little about me, my gaming profile,
+    memories, favourite moments, social links and dreams.
+
+    <br><br>
+
+    Keep learning.
+    Keep improving.
+    Keep moving forward. ✨
+
+  </p>
+
+
+  <div class="about-stats">
+
+    <div class="about-stat">
+      <strong>🎮</strong>
+      <span>Gamer</span>
+    </div>
+
+    <div class="about-stat">
+      <strong>💻</strong>
+      <span>Learner</span>
+    </div>
+
+    <div class="about-stat">
+      <strong>🚀</strong>
+      <span>Dreamer</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     BGMI
+========================= -->
+
+<section
+  class="card bgmi-card"
+  id="bgmi"
+>
+
+  <h2>
+    🎮 BGMI Profile
+  </h2>
+
 
   <div class="bgmi-name">
     JaCk๛DaNieL's
   </div>
 
+
   <div class="bgmi-info">
 
     <div class="info-box">
-      <span class="info-label">UID</span>
+
+      <span class="info-label">
+        UID
+      </span>
 
       <div class="uid-row">
-        <span class="info-value" id="uidText">
+
+        <span
+          class="info-value"
+          id="uidText"
+        >
           55619352171
         </span>
 
-        <button class="copy-btn" onclick="copyUID()" id="copyBtn">
+        <button
+          class="copy-btn"
+          onclick="copyUID()"
+          id="copyBtn"
+        >
           Copy
         </button>
+
       </div>
+
     </div>
 
+
     <div class="info-box">
-      <span class="info-label">FAVOURITE PLAYER</span>
+
+      <span class="info-label">
+        FAVOURITE PLAYER
+      </span>
+
       <span class="info-value">
         Jonathan ❤️
       </span>
+
     </div>
 
   </div>
+
 
   <div class="tag-top">
     TAG ON TOP 🧡
@@ -1020,12 +1687,22 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- DHONGI -->
-<section class="card dhongi-section" id="dhongi">
+
+<!-- =========================
+     DHONGI
+========================= -->
+
+<section
+  class="card dhongi-section"
+  id="dhongi"
+>
 
   <div class="dhongi-content">
 
-    <h2>💫 Dhongi 🎀</h2>
+    <h2>
+      💫 Dhongi 🎀
+    </h2>
+
 
     <div class="dhongi-photo-frame">
 
@@ -1038,23 +1715,42 @@ body.light-mode .theme-btn{
 
     </div>
 
+
     <p>
+
       My favourite person
-      <span class="heart-origin" id="heartOrigin">❤️</span>
+
+      <span
+        class="heart-origin"
+        id="heartOrigin"
+      >
+        ❤️
+      </span>
+
     </p>
 
+
     <p class="dhongi-special">
+
       Some people are simply special. ✨
+
     </p>
 
   </div>
 
 </section>
 
-<!-- FAVOURITE PIC -->
+
+<!-- =========================
+     FAVOURITE PIC
+========================= -->
+
 <section class="card">
 
-  <h2>❤️ Favourite Pic</h2>
+  <h2>
+    ❤️ Favourite Pic
+  </h2>
+
 
   <div class="fav-photo-wrap">
 
@@ -1069,14 +1765,27 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- GALLERY -->
-<section class="card gallery-card" id="gallery">
 
-  <h2>Mehhh👇🎀🤭</h2>
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section
+  class="card gallery-card"
+  id="gallery"
+>
+
+  <h2>
+    Mehhh👇🎀🤭
+  </h2>
+
 
   <div class="gallery-view">
 
-    <div class="gallery-image-box" onclick="openGallery()">
+    <div
+      class="gallery-image-box"
+      onclick="openGallery()"
+    >
 
       <img
         id="galleryImage"
@@ -1089,6 +1798,7 @@ body.light-mode .theme-btn{
 
     </div>
 
+
     <div class="gallery-controls">
 
       <button
@@ -1098,6 +1808,7 @@ body.light-mode .theme-btn{
       >
         ❮
       </button>
+
 
       <button
         class="gallery-btn"
@@ -1109,22 +1820,37 @@ body.light-mode .theme-btn{
 
     </div>
 
-    <div class="gallery-counter" id="galleryCounter">
+
+    <div
+      class="gallery-counter"
+      id="galleryCounter"
+    >
       1 / 18
     </div>
 
-    <p style="margin-top:12px;font-size:12px;">
-      Tap the photo for fullscreen ✨
+
+    <p class="gallery-hint">
+      Tap the photo for fullscreen • Swipe to change ✨
     </p>
 
   </div>
 
 </section>
 
-<!-- SOCIAL -->
-<section class="card" id="social">
 
-  <h2>🌐 Social Media</h2>
+<!-- =========================
+     SOCIAL
+========================= -->
+
+<section
+  class="card"
+  id="social"
+>
+
+  <h2>
+    🌐 Social Media
+  </h2>
+
 
   <div class="social-grid">
 
@@ -1137,6 +1863,7 @@ body.light-mode .theme-btn{
       📸 Instagram
     </a>
 
+
     <a
       class="social-btn facebook"
       href="https://www.facebook.com/share/1SxZssLRTX/"
@@ -1146,6 +1873,7 @@ body.light-mode .theme-btn{
       👤 Facebook
     </a>
 
+
     <a
       class="social-btn youtube"
       href="https://www.youtube.com/@saikatmanna-o4d"
@@ -1154,6 +1882,7 @@ body.light-mode .theme-btn{
     >
       ▶️ YouTube
     </a>
+
 
     <a
       class="social-btn github"
@@ -1168,10 +1897,20 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- DREAMS -->
-<section class="card" id="dreams">
 
-  <h2>🚀 My Dreams</h2>
+<!-- =========================
+     DREAMS
+========================= -->
+
+<section
+  class="card"
+  id="dreams"
+>
+
+  <h2>
+    🚀 My Dreams
+  </h2>
+
 
   <div class="dream-list">
 
@@ -1187,14 +1926,27 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- VISITORS -->
-<section class="card visitor-card" id="visitors">
 
-  <h2>👀 Visitors</h2>
+<!-- =========================
+     VISITORS
+========================= -->
+
+<section
+  class="card visitor-card"
+  id="visitors"
+>
+
+  <h2>
+    👀 Visitors
+  </h2>
+
 
   <p class="visitor-welcome">
+
     Thanks for visiting my mini world ❤️
+
   </p>
+
 
   <div class="visitor-box">
 
@@ -1202,7 +1954,10 @@ body.light-mode .theme-btn{
       👁️
     </div>
 
-    <div class="visitor-number" id="visitorCount">
+    <div
+      class="visitor-number"
+      id="visitorCount"
+    >
       0
     </div>
 
@@ -1212,20 +1967,39 @@ body.light-mode .theme-btn{
 
   </div>
 
+
   <p class="visitor-note">
+
     Every visit means something to me ✨
+
   </p>
 
 </section>
 
 </main>
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  © 2026 Saikat Manna • My Mini World 🌎
+
+  <div class="footer-title">
+    Saikat's Mini World 🌎
+  </div>
+
+  <div>
+    © 2026 Saikat Manna • Made with ❤️
+  </div>
+
 </footer>
 
-<!-- GALLERY MODAL -->
+
+<!-- =========================
+     GALLERY MODAL
+========================= -->
+
 <div id="galleryModal">
 
   <button
@@ -1236,6 +2010,7 @@ body.light-mode .theme-btn{
     ×
   </button>
 
+
   <img
     id="modalImage"
     class="modal-img"
@@ -1245,7 +2020,11 @@ body.light-mode .theme-btn{
 
 </div>
 
-<!-- BUTTONS -->
+
+<!-- =========================
+     THEME BUTTON
+========================= -->
+
 <button
   class="theme-btn"
   onclick="toggleTheme()"
@@ -1255,6 +2034,11 @@ body.light-mode .theme-btn{
   🌙
 </button>
 
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
+
 <button
   id="topBtn"
   onclick="window.scrollTo({top:0,behavior:'smooth'})"
@@ -1263,7 +2047,65 @@ body.light-mode .theme-btn{
   ↑
 </button>
 
-<!-- SUPABASE -->
+
+<!-- =========================
+     MOBILE APP NAVIGATION
+========================= -->
+
+<div class="mobile-nav">
+
+  <a
+    href="#home"
+    class="active"
+    data-section="home"
+  >
+    <span>🏠</span>
+    Home
+  </a>
+
+
+  <a
+    href="#bgmi"
+    data-section="bgmi"
+  >
+    <span>🎮</span>
+    BGMI
+  </a>
+
+
+  <a
+    href="#dhongi"
+    data-section="dhongi"
+  >
+    <span>💫</span>
+    Special
+  </a>
+
+
+  <a
+    href="#gallery"
+    data-section="gallery"
+  >
+    <span>📸</span>
+    Gallery
+  </a>
+
+
+  <a
+    href="#social"
+    data-section="social"
+  >
+    <span>🌐</span>
+    Social
+  </a>
+
+</div>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -1292,10 +2134,14 @@ const supabaseClient =
 async function updateVisitorCount(){
 
   const visitorElement =
-    document.getElementById("visitorCount");
+    document.getElementById(
+      "visitorCount"
+    );
 
   const alreadyVisited =
-    localStorage.getItem("saikat_visitor_counted");
+    localStorage.getItem(
+      "saikat_visitor_counted"
+    );
 
   try{
 
@@ -1312,7 +2158,9 @@ async function updateVisitorCount(){
         "saikat_visitor_counted",
         "true"
       );
+
     }
+
 
     const {data,error} =
       await supabaseClient.rpc(
@@ -1337,36 +2185,61 @@ async function updateVisitorCount(){
 
 }
 
-function animateNumber(element,target){
+
+function animateNumber(
+  element,
+  target
+){
 
   let current=0;
 
   const duration=1000;
-  const start=performance.now();
+
+  const start =
+    performance.now();
+
 
   function update(time){
 
-    const progress=Math.min(
-      (time-start)/duration,
-      1
-    );
+    const progress =
+      Math.min(
+        (time-start)/duration,
+        1
+      );
 
-    current=Math.floor(
-      progress*target
-    );
 
-    element.innerText=current;
+    current =
+      Math.floor(
+        progress*target
+      );
+
+
+    element.innerText =
+      current;
+
 
     if(progress<1){
-      requestAnimationFrame(update);
+
+      requestAnimationFrame(
+        update
+      );
+
     }else{
-      element.innerText=target;
+
+      element.innerText =
+        target;
+
     }
 
   }
 
-  requestAnimationFrame(update);
+
+  requestAnimationFrame(
+    update
+  );
+
 }
+
 
 updateVisitorCount();
 
@@ -1381,9 +2254,11 @@ window.addEventListener(
 
     setTimeout(
       function(){
+
         document
           .getElementById("loader")
           .classList.add("hide");
+
       },
       900
     );
@@ -1397,28 +2272,43 @@ window.addEventListener(
 ========================= */
 
 const stars =
-  document.getElementById("stars");
+  document.getElementById(
+    "stars"
+  );
+
 
 for(let i=0;i<90;i++){
 
   const star =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
-  star.className="star";
+
+  star.className =
+    "star";
+
 
   star.style.left =
     Math.random()*100+"%";
 
+
   star.style.top =
     Math.random()*100+"%";
+
 
   star.style.animationDelay =
     Math.random()*3+"s";
 
+
   star.style.opacity =
     .2+Math.random()*.8;
 
-  stars.appendChild(star);
+
+  stars.appendChild(
+    star
+  );
+
 }
 
 
@@ -1429,23 +2319,35 @@ for(let i=0;i<90;i++){
 function createShootingStar(){
 
   const star =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
-  star.className="shooting-star";
+
+  star.className =
+    "shooting-star";
+
 
   star.style.right =
     (-50+Math.random()*20)+"px";
 
+
   star.style.top =
     (5+Math.random()*45)+"vh";
 
-  document.body.appendChild(star);
+
+  document.body.appendChild(
+    star
+  );
+
 
   setTimeout(
     ()=>star.remove(),
     1400
   );
+
 }
+
 
 setInterval(
   createShootingStar,
@@ -1458,67 +2360,99 @@ setInterval(
 ========================= */
 
 const typingText =
-  document.getElementById("typingText");
+  document.getElementById(
+    "typingText"
+  );
+
 
 const typingWords=[
+
   "Gamer 🎮",
   "Learner 💻",
   "Dreamer ✨",
   "Creator 🚀",
   "Just Saikat ❤️"
+
 ];
 
+
 let wordIndex=0;
+
 let charIndex=0;
+
 let deleting=false;
+
 
 function typeEffect(){
 
   const word =
-    typingWords[wordIndex];
+    typingWords[
+      wordIndex
+    ];
+
 
   if(!deleting){
 
     typingText.textContent =
-      word.substring(0,charIndex+1);
+      word.substring(
+        0,
+        charIndex+1
+      );
+
 
     charIndex++;
 
-    if(charIndex===word.length){
+
+    if(
+      charIndex===word.length
+    ){
 
       deleting=true;
+
 
       setTimeout(
         typeEffect,
         1400
       );
 
+
       return;
+
     }
 
   }else{
 
     typingText.textContent =
-      word.substring(0,charIndex-1);
+      word.substring(
+        0,
+        charIndex-1
+      );
+
 
     charIndex--;
+
 
     if(charIndex===0){
 
       deleting=false;
 
-      wordIndex=
-        (wordIndex+1)%typingWords.length;
+
+      wordIndex =
+        (wordIndex+1)
+        %typingWords.length;
 
     }
 
   }
 
+
   setTimeout(
     typeEffect,
     deleting ? 55 : 90
   );
+
 }
+
 
 typeEffect();
 
@@ -1532,27 +2466,35 @@ function updateClock(){
   const now =
     new Date();
 
+
   const options={
+
     hour:"2-digit",
     minute:"2-digit",
     second:"2-digit",
     hour12:true
+
   };
+
 
   document.getElementById(
     "clock"
   ).innerText =
-    "🕒 "+now.toLocaleTimeString(
+
+    "🕒 "+
+    now.toLocaleTimeString(
       "en-IN",
       options
     );
 
 }
 
+
 setInterval(
   updateClock,
   1000
 );
+
 
 updateClock();
 
@@ -1568,20 +2510,27 @@ function copyUID(){
       "uidText"
     ).innerText;
 
+
   const btn =
     document.getElementById(
       "copyBtn"
     );
 
+
   navigator.clipboard
     .writeText(uid)
     .then(()=>{
 
-      btn.innerText="✓ Copied!";
+      btn.innerText =
+        "✓ Copied!";
+
 
       setTimeout(
         ()=>{
-          btn.innerText="Copy";
+
+          btn.innerText =
+            "Copy";
+
         },
         1600
       );
@@ -1589,11 +2538,16 @@ function copyUID(){
     })
     .catch(()=>{
 
-      btn.innerText="Copy failed";
+      btn.innerText =
+        "Copy failed";
+
 
       setTimeout(
         ()=>{
-          btn.innerText="Copy";
+
+          btn.innerText =
+            "Copy";
+
         },
         1600
       );
@@ -1630,17 +2584,21 @@ const galleryImages=[
 
 ];
 
+
 let galleryIndex=0;
+
 
 const galleryImage =
   document.getElementById(
     "galleryImage"
   );
 
+
 const galleryCounter =
   document.getElementById(
     "galleryCounter"
   );
+
 
 function showGalleryImage(
   index
@@ -1650,17 +2608,23 @@ function showGalleryImage(
     (index+galleryImages.length)
     %galleryImages.length;
 
+
   galleryImage.classList.add(
     "fade"
   );
 
+
   setTimeout(()=>{
 
     galleryImage.src =
-      galleryImages[galleryIndex];
+      galleryImages[
+        galleryIndex
+      ];
+
 
     galleryCounter.innerText =
       `${galleryIndex+1} / ${galleryImages.length}`;
+
 
     galleryImage.classList.remove(
       "fade"
@@ -1670,21 +2634,27 @@ function showGalleryImage(
 
 }
 
+
 function nextImage(){
+
   showGalleryImage(
     galleryIndex+1
   );
+
 }
 
+
 function previousImage(){
+
   showGalleryImage(
     galleryIndex-1
   );
+
 }
 
 
 /* =========================
-   GALLERY FULLSCREEN
+   FULLSCREEN GALLERY
 ========================= */
 
 function openGallery(){
@@ -1692,32 +2662,51 @@ function openGallery(){
   document.getElementById(
     "modalImage"
   ).src =
-    galleryImages[galleryIndex];
+    galleryImages[
+      galleryIndex
+    ];
+
 
   document.getElementById(
     "galleryModal"
-  ).classList.add("show");
+  ).classList.add(
+    "show"
+  );
 
-  document.body.style.overflow="hidden";
+
+  document.body.style.overflow =
+    "hidden";
+
 }
+
 
 function closeGallery(){
 
   document.getElementById(
     "galleryModal"
-  ).classList.remove("show");
+  ).classList.remove(
+    "show"
+  );
 
-  document.body.style.overflow="";
+
+  document.body.style.overflow =
+    "";
+
 }
 
+
 document
-  .getElementById("galleryModal")
+  .getElementById(
+    "galleryModal"
+  )
   .addEventListener(
     "click",
     function(e){
 
       if(e.target===this){
+
         closeGallery();
+
       }
 
     }
@@ -1734,30 +2723,47 @@ document.addEventListener(
 
     if(
       document
-        .getElementById("galleryModal")
-        .classList.contains("show")
+        .getElementById(
+          "galleryModal"
+        )
+        .classList
+        .contains("show")
     ){
 
       if(e.key==="Escape"){
+
         closeGallery();
+
       }
+
 
       if(e.key==="ArrowRight"){
+
         nextImage();
 
+
         document.getElementById(
           "modalImage"
         ).src =
-          galleryImages[galleryIndex];
+          galleryImages[
+            galleryIndex
+          ];
+
       }
 
+
       if(e.key==="ArrowLeft"){
+
         previousImage();
+
 
         document.getElementById(
           "modalImage"
         ).src =
-          galleryImages[galleryIndex];
+          galleryImages[
+            galleryIndex
+          ];
+
       }
 
     }
@@ -1772,33 +2778,50 @@ document.addEventListener(
 
 let touchStartX=0;
 
+
 galleryImage.addEventListener(
   "touchstart",
   function(e){
+
     touchStartX =
-      e.changedTouches[0].screenX;
+      e.changedTouches[0]
+      .screenX;
+
   },
   {passive:true}
 );
+
 
 galleryImage.addEventListener(
   "touchend",
   function(e){
 
     const touchEndX =
-      e.changedTouches[0].screenX;
+      e.changedTouches[0]
+      .screenX;
+
 
     const difference =
       touchEndX-touchStartX;
 
-    if(Math.abs(difference)<50){
+
+    if(
+      Math.abs(difference)<50
+    ){
+
       return;
+
     }
 
+
     if(difference<0){
+
       nextImage();
+
     }else{
+
       previousImage();
+
     }
 
   },
@@ -1815,7 +2838,9 @@ const emojiContainer =
     "emojiContainer"
   );
 
+
 const emojis=[
+
   "😍",
   "❤️",
   "🥰",
@@ -1824,7 +2849,9 @@ const emojis=[
   "💗",
   "💓",
   "✨"
+
 ];
+
 
 function createFloatingEmoji(){
 
@@ -1833,53 +2860,80 @@ function createFloatingEmoji(){
       "heartOrigin"
     );
 
+
   if(!origin)return;
+
 
   const rect =
     origin.getBoundingClientRect();
+
 
   if(
     rect.bottom<0 ||
     rect.top>window.innerHeight
   ){
+
     return;
+
   }
 
-  const emoji =
-    document.createElement("div");
 
-  emoji.className=
+  const emoji =
+    document.createElement(
+      "div"
+    );
+
+
+  emoji.className =
     "floating-emoji";
 
-  emoji.innerText=
+
+  emoji.innerText =
     emojis[
       Math.floor(
-        Math.random()*emojis.length
+        Math.random()
+        *emojis.length
       )
     ];
 
-  emoji.style.left=
+
+  emoji.style.left =
+
     (
       rect.left+
       rect.width/2+
       (Math.random()*80-40)
     )+"px";
 
-  emoji.style.bottom=
+
+  emoji.style.bottom =
+
     (
       window.innerHeight-
       rect.bottom
     )+"px";
 
-  emoji.style.fontSize=
-    (18+Math.random()*14)+"px";
 
-  emoji.style.animationDuration=
-    (4+Math.random()*3)+"s";
+  emoji.style.fontSize =
+
+    (
+      18+
+      Math.random()*14
+    )+"px";
+
+
+  emoji.style.animationDuration =
+
+    (
+      4+
+      Math.random()*3
+    )+"s";
+
 
   emojiContainer.appendChild(
     emoji
   );
+
 
   setTimeout(
     ()=>emoji.remove(),
@@ -1887,6 +2941,7 @@ function createFloatingEmoji(){
   );
 
 }
+
 
 setInterval(
   createFloatingEmoji,
@@ -1904,21 +2959,30 @@ function toggleTheme(){
     "light-mode"
   );
 
+
   const isLight =
     document.body.classList.contains(
       "light-mode"
     );
 
+
   document.getElementById(
     "themeBtn"
   ).innerText =
-    isLight ? "☀️" : "🌙";
+    isLight
+      ? "☀️"
+      : "🌙";
+
 
   localStorage.setItem(
     "saikat_theme",
-    isLight ? "light" : "dark"
+    isLight
+      ? "light"
+      : "dark"
   );
+
 }
+
 
 if(
   localStorage.getItem(
@@ -1930,9 +2994,11 @@ if(
     "light-mode"
   );
 
+
   document.getElementById(
     "themeBtn"
-  ).innerText="☀️";
+  ).innerText =
+    "☀️";
 
 }
 
@@ -1950,15 +3016,190 @@ window.addEventListener(
         "topBtn"
       );
 
+
     if(window.scrollY>500){
 
-      btn.classList.add("show");
+      btn.classList.add(
+        "show"
+      );
 
     }else{
 
-      btn.classList.remove("show");
+      btn.classList.remove(
+        "show"
+      );
 
     }
+
+  }
+);
+
+
+/* =========================
+   MOBILE NAV ACTIVE STATE
+========================= */
+
+const mobileLinks =
+  document.querySelectorAll(
+    ".mobile-nav a"
+  );
+
+
+const sections = [
+  "home",
+  "bgmi",
+  "dhongi",
+  "gallery",
+  "social"
+];
+
+
+function updateMobileNav(){
+
+  let current =
+    "home";
+
+
+  const scrollPosition =
+    window.scrollY+180;
+
+
+  sections.forEach(
+    function(id){
+
+      const section =
+        document.getElementById(
+          id
+        );
+
+
+      if(
+        section &&
+        scrollPosition >=
+        section.offsetTop
+      ){
+
+        current=id;
+
+      }
+
+    }
+  );
+
+
+  mobileLinks.forEach(
+    function(link){
+
+      link.classList.remove(
+        "active"
+      );
+
+
+      if(
+        link.dataset.section===
+        current
+      ){
+
+        link.classList.add(
+          "active"
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+window.addEventListener(
+  "scroll",
+  updateMobileNav
+);
+
+
+updateMobileNav();
+
+
+/* =========================
+   MOBILE NAV CLICK
+========================= */
+
+mobileLinks.forEach(
+  function(link){
+
+    link.addEventListener(
+      "click",
+      function(){
+
+        mobileLinks.forEach(
+          item =>
+            item.classList.remove(
+              "active"
+            )
+        );
+
+
+        this.classList.add(
+          "active"
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================
+   SMOOTH SECTION FEEL
+========================= */
+
+const cards =
+  document.querySelectorAll(
+    ".card"
+  );
+
+
+const observer =
+  new IntersectionObserver(
+    function(entries){
+
+      entries.forEach(
+        function(entry){
+
+          if(entry.isIntersecting){
+
+            entry.target.style.opacity =
+              "1";
+
+            entry.target.style.transform =
+              "translateY(0)";
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold:.08
+    }
+  );
+
+
+cards.forEach(
+  function(card){
+
+    card.style.opacity="0";
+
+    card.style.transform=
+      "translateY(18px)";
+
+    card.style.transition=
+      "opacity .7s ease, transform .7s ease, border-color .35s";
+
+    observer.observe(card);
 
   }
 );
