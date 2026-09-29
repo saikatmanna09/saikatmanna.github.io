@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
-    content="Official personal website of Saikat Manna. Explore my profile, BGMI, favourite photo, social media and more."
+    content="Official personal website of Saikat Manna. Explore my profile, BGMI, favourite moments, social media and more."
   >
 
-  <meta name="author" content="Saikat Manna">
+  <meta
+    name="author"
+    content="Saikat Manna"
+  >
 
   <title>Saikat Manna | Mini World 🌎</title>
-
 
   <style>
 
@@ -32,115 +38,92 @@
     body {
       margin: 0;
       padding: 0;
-
       background: #050507;
       color: white;
-
       font-family: Arial, sans-serif;
       text-align: center;
-
       overflow-x: hidden;
     }
 
 
     /* =========================
-       BACKGROUND IMAGE
+       BACKGROUND PHOTO
     ========================= */
 
-    .background {
+    body::before {
+      content: "";
       position: fixed;
-
       inset: 0;
 
       background:
         linear-gradient(
-          rgba(0, 0, 0, 0.66),
-          rgba(0, 0, 0, 0.80)
+          rgba(0,0,0,0.70),
+          rgba(0,0,0,0.78)
         ),
-        url("IMG_20260921_105205_456.webp")
-        center center / cover no-repeat;
+        url("IMG_20260921_105205_456.webp");
 
-      z-index: -5;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
 
-      transform: scale(1.03);
-
-      animation:
-        backgroundZoom 18s ease-in-out infinite alternate;
+      z-index: -3;
     }
 
-
-    .background::after {
+    body::after {
       content: "";
-
-      position: absolute;
-
+      position: fixed;
       inset: 0;
 
       background:
         radial-gradient(
           circle at 20% 20%,
-          rgba(120, 80, 255, 0.15),
+          rgba(120,80,255,0.12),
           transparent 35%
         ),
-
         radial-gradient(
           circle at 80% 80%,
-          rgba(0, 180, 255, 0.10),
+          rgba(255,80,120,0.08),
           transparent 35%
         );
+
+      pointer-events: none;
+      z-index: -2;
     }
 
 
     /* =========================
-       NAVIGATION
+       TOP NAVIGATION
     ========================= */
 
     .navbar {
       position: sticky;
-
       top: 0;
-
       z-index: 1000;
 
-      padding: 14px 8px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
 
-      background:
-        rgba(5, 5, 7, 0.72);
+      padding: 16px 10px;
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(5,5,8,0.88);
+      backdrop-filter: blur(15px);
 
-      border-bottom:
-        1px solid rgba(255,255,255,0.10);
-
-      white-space: nowrap;
-
-      overflow-x: auto;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
-
     .navbar a {
-      display: inline-block;
-
       color: #ddd;
-
       text-decoration: none;
-
-      margin: 0 7px;
-
-      font-size: 14px;
-
       font-weight: bold;
+      font-size: 15px;
 
       transition: 0.3s ease;
     }
 
-
     .navbar a:hover {
       color: white;
-
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
     }
 
 
@@ -149,42 +132,26 @@
     ========================= */
 
     .container {
-      max-width: 800px;
+      width: 100%;
+      max-width: 760px;
 
       margin: auto;
-
-      padding: 35px 18px;
+      padding: 55px 18px;
     }
 
 
     /* =========================
-       HERO
+       PROFILE
     ========================= */
 
-    .hero {
-      min-height: 540px;
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: center;
-
-      align-items: center;
-    }
-
-
     .profile-wrap {
+      display: inline-block;
       position: relative;
 
-      display: inline-block;
+      margin-bottom: 20px;
 
-      margin-bottom: 25px;
-
-      animation:
-        profileIn 1.2s ease-out;
+      animation: profileIn 1.2s ease-out;
     }
-
 
     .profile-wrap::before {
       content: "";
@@ -196,29 +163,15 @@
       border-radius: 50%;
 
       border:
-        2px solid rgba(255,255,255,0.38);
+        2px solid
+        rgba(255,255,255,0.45);
+
+      box-shadow:
+        0 0 20px rgba(255,255,255,0.15);
 
       animation:
-        profileRing 3s linear infinite;
+        profileRing 3s ease-in-out infinite;
     }
-
-
-    .profile-wrap::after {
-      content: "";
-
-      position: absolute;
-
-      inset: -18px;
-
-      border-radius: 50%;
-
-      border:
-        1px solid rgba(255,255,255,0.12);
-
-      animation:
-        profileRing2 5s linear infinite;
-    }
-
 
     .profile {
       width: 190px;
@@ -228,54 +181,40 @@
 
       border-radius: 50%;
 
-      border:
-        4px solid white;
+      border: 4px solid white;
+
+      box-shadow:
+        0 0 30px rgba(255,255,255,0.18),
+        0 0 70px rgba(140,100,255,0.15);
 
       display: block;
 
-      box-shadow:
-        0 0 30px rgba(255,255,255,0.20),
-        0 0 80px rgba(120,90,255,0.22);
+      position: relative;
+      z-index: 2;
     }
 
 
-    h1 {
-      font-size: 48px;
+    /* =========================
+       TITLE
+    ========================= */
 
+    h1 {
+      font-size: 44px;
       margin: 10px 0;
 
       animation:
         titleIn 1s ease-out 0.3s both;
-
-      text-shadow:
-        0 4px 25px rgba(0,0,0,0.6);
     }
 
-
     .welcome {
-      color: #ddd;
+      color: #bbb;
 
-      font-size: 20px;
+      font-size: 19px;
 
-      margin-top: 5px;
+      margin-bottom: 35px;
 
       animation:
         fadeIn 1s ease-out 0.7s both;
-
-      text-shadow:
-        0 3px 15px rgba(0,0,0,0.8);
-    }
-
-
-    .scroll-text {
-      margin-top: 48px;
-
-      color: #bbb;
-
-      font-size: 13px;
-
-      animation:
-        floating 2s ease-in-out infinite;
     }
 
 
@@ -284,29 +223,30 @@
     ========================= */
 
     .card {
+      position: relative;
+
       background:
-        rgba(15,15,21,0.78);
+        rgba(15,15,20,0.78);
 
-      padding: 32px 24px;
+      padding: 30px 24px;
 
-      margin: 26px 0;
+      margin: 24px 0;
 
-      border-radius: 26px;
+      border-radius: 24px;
 
       border:
-        1px solid rgba(255,255,255,0.14);
+        1px solid
+        rgba(255,255,255,0.14);
 
       box-shadow:
-        0 15px 45px rgba(0,0,0,0.45),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 15px 45px rgba(0,0,0,0.45);
 
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
 
       opacity: 0;
 
       transform:
-        translateY(35px);
+        translateY(45px);
 
       animation:
         cardReveal 0.9s ease-out forwards;
@@ -317,54 +257,31 @@
         box-shadow 0.35s ease;
     }
 
-
     .card:hover {
       transform:
-        translateY(-8px);
+        translateY(-6px);
 
       border-color:
-        rgba(255,255,255,0.28);
+        rgba(255,255,255,0.30);
 
       box-shadow:
-        0 22px 55px rgba(0,0,0,0.55),
-        inset 0 1px 0 rgba(255,255,255,0.06);
+        0 20px 55px rgba(0,0,0,0.55);
     }
-
 
     h2 {
-      font-size: 29px;
-
+      font-size: 28px;
       margin-top: 0;
-
-      margin-bottom: 25px;
-
-      text-shadow:
-        0 3px 15px rgba(0,0,0,0.5);
     }
 
-
     h3 {
-      font-size: 26px;
-
+      font-size: 25px;
       margin: 15px 0;
     }
 
-
     p {
       font-size: 18px;
-
       line-height: 1.7;
-
       color: #ddd;
-    }
-
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    #about {
-      animation-delay: 0.15s;
     }
 
 
@@ -373,37 +290,28 @@
     ========================= */
 
     #bgmi {
-      animation-delay: 0.30s;
+      animation-delay: 0.25s;
     }
 
-
-    .game-name {
-      font-size: 28px;
-
-      font-weight: bold;
-
-      margin: 18px 0;
-    }
-
-
-    .game-status {
+    .improve {
       display: inline-block;
+
+      margin: 10px 0;
 
       padding: 8px 16px;
 
-      border-radius: 20px;
+      border-radius: 25px;
 
       background:
         rgba(255,255,255,0.08);
 
       border:
-        1px solid rgba(255,255,255,0.10);
+        1px solid
+        rgba(255,255,255,0.15);
 
       color: #ddd;
 
-      font-size: 14px;
-
-      margin-top: 8px;
+      font-size: 15px;
     }
 
 
@@ -414,10 +322,12 @@
     #dhongi {
       animation-delay: 0.45s;
 
-      border-color:
-        rgba(255,255,255,0.20);
-    }
+      overflow: visible;
 
+      position: relative;
+
+      min-height: 230px;
+    }
 
     .special-name {
       font-size: 30px;
@@ -427,7 +337,6 @@
       margin-bottom: 10px;
     }
 
-
     .heart {
       display: inline-block;
 
@@ -435,55 +344,127 @@
         heartBeat 1.5s infinite;
     }
 
+    .dhongi-main {
+      font-size: 28px;
+
+      font-weight: bold;
+
+      margin-top: 20px;
+
+      color: #fff;
+    }
+
 
     /* =========================
-       FAVOURITE PIC
+       LOVE EMOJIS
+    ========================= */
+
+    .love-emoji {
+      position: absolute;
+
+      left: 50%;
+      bottom: 25px;
+
+      font-size: 24px;
+
+      pointer-events: none;
+
+      z-index: 50;
+
+      opacity: 0;
+
+      animation:
+        loveFloat 5.5s ease-out forwards;
+
+      filter:
+        drop-shadow(
+          0 0 7px
+          rgba(255,80,120,0.55)
+        );
+    }
+
+    @keyframes loveFloat {
+
+      0% {
+        transform:
+          translate(-50%, 0)
+          scale(0.45)
+          rotate(0deg);
+
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      35% {
+        opacity: 1;
+      }
+
+      70% {
+        opacity: 0.75;
+      }
+
+      100% {
+        transform:
+          translate(
+            calc(-50% + var(--move-x)),
+            calc(-1 * var(--move-y))
+          )
+          scale(1.2)
+          rotate(var(--rotate));
+
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================
+       FAVOURITE PHOTO
     ========================= */
 
     #favourite {
-      animation-delay: 0.60s;
-
-      border-color:
-        rgba(255,255,255,0.20);
+      animation-delay: 0.65s;
     }
-
 
     .favourite-photo {
       width: 100%;
 
-      max-width: 600px;
+      max-width: 520px;
 
-      margin:
-        0 auto 22px;
+      margin: 20px auto;
 
-      overflow: hidden;
+      padding: 8px;
 
       border-radius: 22px;
 
-      border:
-        1px solid rgba(255,255,255,0.18);
+      background:
+        rgba(255,255,255,0.06);
 
-      box-shadow:
-        0 15px 45px rgba(0,0,0,0.55),
-        0 0 35px rgba(255,255,255,0.08);
+      border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+      overflow: hidden;
     }
 
-
     .favourite-photo img {
-      width: 100%;
-
-      height: auto;
-
       display: block;
 
+      width: 100%;
+
+      max-height: 520px;
+
       object-fit: cover;
+
+      border-radius: 17px;
 
       transition:
         transform 0.5s ease;
     }
 
-
-    .favourite-photo img:hover {
+    .favourite-photo:hover img {
       transform:
         scale(1.04);
     }
@@ -494,28 +475,17 @@
     ========================= */
 
     #social {
-      animation-delay: 0.75s;
+      animation-delay: 0.85s;
     }
-
-
-    .social-buttons {
-      display: flex;
-
-      justify-content: center;
-
-      flex-wrap: wrap;
-
-      gap: 12px;
-    }
-
 
     .btn {
       display: inline-block;
 
-      padding: 13px 24px;
+      margin: 8px;
 
-      background:
-        rgba(255,255,255,0.96);
+      padding: 13px 23px;
+
+      background: white;
 
       color: #111;
 
@@ -529,48 +499,17 @@
 
       overflow: hidden;
 
-      transition:
-        0.3s ease;
+      transition: 0.3s ease;
     }
-
-
-    .btn::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-
-      left: -120%;
-
-      width: 100%;
-
-      height: 100%;
-
-      background:
-        rgba(255,255,255,0.45);
-
-      transform:
-        skewX(-20deg);
-
-      transition:
-        0.5s;
-    }
-
-
-    .btn:hover::before {
-      left: 120%;
-    }
-
 
     .btn:hover {
       transform:
-        translateY(-5px) scale(1.05);
+        translateY(-5px)
+        scale(1.05);
 
       box-shadow:
-        0 10px 30px rgba(255,255,255,0.22);
-
-      background: white;
+        0 8px 25px
+        rgba(255,255,255,0.20);
     }
 
 
@@ -579,67 +518,7 @@
     ========================= */
 
     #dreams {
-      animation-delay: 0.90s;
-    }
-
-
-    .dream-line {
-      color: #ddd;
-
-      margin: 12px 0;
-    }
-
-
-    /* =========================
-       SCROLL TOP BUTTON
-    ========================= */
-
-    #topBtn {
-      position: fixed;
-
-      right: 18px;
-
-      bottom: 20px;
-
-      width: 45px;
-
-      height: 45px;
-
-      border: none;
-
-      border-radius: 50%;
-
-      background: white;
-
-      color: #111;
-
-      font-size: 20px;
-
-      font-weight: bold;
-
-      cursor: pointer;
-
-      opacity: 0;
-
-      pointer-events: none;
-
-      transition:
-        0.3s;
-
-      z-index: 999;
-    }
-
-
-    #topBtn.show {
-      opacity: 1;
-
-      pointer-events: auto;
-    }
-
-
-    #topBtn:hover {
-      transform:
-        translateY(-5px);
+      animation-delay: 1s;
     }
 
 
@@ -648,36 +527,22 @@
     ========================= */
 
     footer {
-      margin-top: 55px;
+      margin-top: 45px;
 
-      padding: 25px 10px;
+      padding: 20px;
 
-      color: #aaa;
+      color: #777;
 
       font-size: 14px;
 
-      text-shadow:
-        0 2px 10px rgba(0,0,0,0.8);
+      animation:
+        fadeIn 1s ease-out 1.8s both;
     }
 
 
     /* =========================
        ANIMATIONS
     ========================= */
-
-    @keyframes backgroundZoom {
-
-      from {
-        transform:
-          scale(1.03);
-      }
-
-      to {
-        transform:
-          scale(1.10);
-      }
-    }
-
 
     @keyframes profileIn {
 
@@ -698,62 +563,23 @@
       }
     }
 
-
     @keyframes profileRing {
 
       0% {
-        transform:
-          scale(1);
-
-        opacity:
-          0.8;
+        transform: scale(1);
+        opacity: 0.8;
       }
 
       50% {
-        transform:
-          scale(1.08);
-
-        opacity:
-          0.25;
+        transform: scale(1.08);
+        opacity: 0.25;
       }
 
       100% {
-        transform:
-          scale(1);
-
-        opacity:
-          0.8;
+        transform: scale(1);
+        opacity: 0.8;
       }
     }
-
-
-    @keyframes profileRing2 {
-
-      0% {
-        transform:
-          scale(0.96);
-
-        opacity:
-          0.15;
-      }
-
-      50% {
-        transform:
-          scale(1.08);
-
-        opacity:
-          0.4;
-      }
-
-      100% {
-        transform:
-          scale(0.96);
-
-        opacity:
-          0.15;
-      }
-    }
-
 
     @keyframes titleIn {
 
@@ -772,7 +598,6 @@
       }
     }
 
-
     @keyframes fadeIn {
 
       from {
@@ -784,8 +609,14 @@
       }
     }
 
-
     @keyframes cardReveal {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(45px);
+      }
 
       to {
         opacity: 1;
@@ -795,31 +626,22 @@
       }
     }
 
-
-    @keyframes floating {
-
-      0%, 100% {
-        transform:
-          translateY(0);
-      }
-
-      50% {
-        transform:
-          translateY(-8px);
-      }
-    }
-
-
     @keyframes heartBeat {
 
-      0%, 100% {
-        transform:
-          scale(1);
+      0% {
+        transform: scale(1);
       }
 
-      50% {
-        transform:
-          scale(1.2);
+      30% {
+        transform: scale(1.25);
+      }
+
+      60% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1);
       }
     }
 
@@ -831,104 +653,57 @@
     @media (max-width: 600px) {
 
       .navbar {
-        padding:
-          12px 5px;
-      }
+        gap: 18px;
 
+        padding:
+          14px 5px;
+      }
 
       .navbar a {
-        margin:
-          0 5px;
-
-        font-size:
-          12px;
+        font-size: 13px;
       }
-
 
       .container {
         padding:
-          30px 15px;
+          45px 15px;
       }
-
-
-      .hero {
-        min-height:
-          500px;
-      }
-
-
-      .profile {
-        width:
-          155px;
-
-        height:
-          155px;
-      }
-
 
       h1 {
-        font-size:
-          36px;
+        font-size: 36px;
       }
 
-
-      .welcome {
-        font-size:
-          17px;
+      .profile {
+        width: 155px;
+        height: 155px;
       }
-
 
       .card {
         padding:
-          28px 18px;
+          25px 18px;
 
         border-radius:
-          22px;
+          20px;
       }
-
 
       h2 {
-        font-size:
-          25px;
+        font-size: 25px;
       }
-
 
       h3 {
-        font-size:
-          22px;
+        font-size: 22px;
       }
-
 
       p {
-        font-size:
-          16px;
+        font-size: 16px;
       }
-
-
-      .game-name {
-        font-size:
-          23px;
-      }
-
-
-      .special-name {
-        font-size:
-          25px;
-      }
-
 
       .btn {
         padding:
           12px 20px;
       }
 
-
-      #topBtn {
-        right:
-          14px;
-
-        bottom:
-          15px;
+      .love-emoji {
+        font-size: 22px;
       }
     }
 
@@ -942,7 +717,6 @@
       *,
       *::before,
       *::after {
-
         animation-duration:
           0.01ms !important;
 
@@ -958,105 +732,77 @@
     }
 
   </style>
-
 </head>
 
 
 <body>
 
 
-  <!-- BACKGROUND -->
-
-  <div class="background"></div>
-
-
-  <!-- NAVIGATION -->
+  <!-- =========================
+       NAVIGATION
+  ========================= -->
 
   <nav class="navbar">
 
-    <a href="#about">
-      About
-    </a>
+    <a href="#about">About</a>
 
-    <a href="#bgmi">
-      BGMI
-    </a>
+    <a href="#bgmi">BGMI</a>
 
-    <a href="#dhongi">
-      Dhongi
-    </a>
+    <a href="#dhongi">Dhongi</a>
 
-    <a href="#favourite">
-      Favourite
-    </a>
+    <a href="#social">Social</a>
 
-    <a href="#social">
-      Social
-    </a>
-
-    <a href="#dreams">
-      Dreams
-    </a>
+    <a href="#dreams">Dreams</a>
 
   </nav>
 
 
-  <!-- MAIN -->
+  <!-- =========================
+       MAIN
+  ========================= -->
 
   <div class="container">
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+    <!-- PROFILE -->
 
-    <section class="hero">
+    <div class="profile-wrap">
 
-      <div class="profile-wrap">
+      <img
+        src="IMG_20250630_110659.jpg"
+        alt="Saikat Manna"
+        class="profile"
+      >
 
-        <img
-          src="IMG_20250630_110659.jpg"
-          alt="Saikat Manna"
-          class="profile"
-        >
-
-      </div>
+    </div>
 
 
-      <h1>
-        Saikat Manna
-      </h1>
+    <h1>
+      Saikat Manna
+    </h1>
 
 
-      <div class="welcome">
-        Welcome to my mini world 🌎
-      </div>
-
-
-      <div class="scroll-text">
-        ↓ Scroll to explore ↓
-      </div>
-
-    </section>
+    <div class="welcome">
+      Welcome to my mini world 🌎
+    </div>
 
 
     <!-- =========================
-         ABOUT ME
+         ABOUT
     ========================= -->
 
     <section
       class="card"
-      id="about">
+      id="about"
+    >
 
       <h2>
         👋 About Me
       </h2>
 
-
       <p>
         Hey, this is Saikat Manna.
       </p>
-
 
       <p>
         This is my personal mini world where I share
@@ -1073,27 +819,24 @@
 
     <section
       class="card"
-      id="bgmi">
+      id="bgmi"
+    >
 
       <h2>
         🎮 BGMI
       </h2>
 
-
-      <div class="game-name">
+      <h3>
         JaCk๛DaNieL's
-      </div>
-
+      </h3>
 
       <p>
         BGMI player • Learning • Improving • Enjoying the game
       </p>
 
-
-      <div class="game-status">
+      <div class="improve">
         🎯 Keep improving
       </div>
-
 
       <p>
         Big fan of Jonathan ❤️
@@ -1108,22 +851,17 @@
 
     <section
       class="card"
-      id="dhongi">
+      id="dhongi"
+    >
 
-      <h2>
+      <h2 class="special-name">
         💫 Dhongi 🎀
       </h2>
 
-
-      <div class="special-name">
-
+      <p class="dhongi-main">
         My favourite person
-
-        <span class="heart">
-          ❤️
-        </span>
-
-      </div>
+        <span class="heart">❤️</span>
+      </p>
 
     </section>
 
@@ -1134,12 +872,12 @@
 
     <section
       class="card"
-      id="favourite">
+      id="favourite"
+    >
 
       <h2>
         ⭐ My Favourite Pic
       </h2>
-
 
       <div class="favourite-photo">
 
@@ -1149,7 +887,6 @@
         >
 
       </div>
-
 
       <p>
         One of my favourite moments. ❤️
@@ -1164,50 +901,42 @@
 
     <section
       class="card"
-      id="social">
+      id="social"
+    >
 
       <h2>
         🌐 My Social Media
       </h2>
 
 
-      <div class="social-buttons">
+      <a
+        class="btn"
+        href="https://www.instagram.com/saikat_manna_09/"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram
+      </a>
 
 
-        <a
-          class="btn"
-          href="https://www.instagram.com/saikat_manna_09/"
-          target="_blank"
-          rel="noopener">
-
-          Instagram
-
-        </a>
-
-
-        <a
-          class="btn"
-          href="https://www.facebook.com/share/1SxZssLRTX/"
-          target="_blank"
-          rel="noopener">
-
-          Facebook
-
-        </a>
+      <a
+        class="btn"
+        href="https://www.facebook.com/share/1SxZssLRTX/"
+        target="_blank"
+        rel="noopener"
+      >
+        Facebook
+      </a>
 
 
-        <a
-          class="btn"
-          href="https://www.youtube.com/@saikatmanna-o4d"
-          target="_blank"
-          rel="noopener">
-
-          YouTube
-
-        </a>
-
-
-      </div>
+      <a
+        class="btn"
+        href="https://www.youtube.com/@saikatmanna-o4d"
+        target="_blank"
+        rel="noopener"
+      >
+        YouTube
+      </a>
 
     </section>
 
@@ -1218,19 +947,20 @@
 
     <section
       class="card"
-      id="dreams">
+      id="dreams"
+    >
 
       <h2>
         🌟 My Dreams
       </h2>
 
-
-      <p class="dream-line">
-        Keep learning. Keep creating. Keep moving forward.
+      <p>
+        Keep learning.
+        Keep creating.
+        Keep moving forward.
       </p>
 
-
-      <p class="dream-line">
+      <p>
         One day, I want to turn my ideas into reality.
       </p>
 
@@ -1243,7 +973,8 @@
 
     <footer>
 
-      © 2026 Saikat Manna • Made with ❤️
+      © 2026 Saikat Manna
+      • Made with ❤️
 
     </footer>
 
@@ -1252,53 +983,130 @@
 
 
   <!-- =========================
-       SCROLL TO TOP
+       DHONGI EMOJI SCRIPT
   ========================= -->
-
-  <button
-    id="topBtn"
-    onclick="goTop()">
-
-    ↑
-
-  </button>
-
 
   <script>
 
-    const topBtn =
-      document.getElementById("topBtn");
+    const loveEmojis = [
+      "😍",
+      "❤️",
+      "🥰",
+      "💖",
+      "💕",
+      "💗",
+      "💓",
+      "✨"
+    ];
 
 
-    window.addEventListener(
-      "scroll",
-      function() {
+    function createLoveEmoji() {
 
-        if (window.scrollY > 350) {
+      const dhongi =
+        document.getElementById("dhongi");
 
-          topBtn.classList.add("show");
+      if (!dhongi) return;
 
-        } else {
 
-          topBtn.classList.remove("show");
+      const emoji =
+        document.createElement("span");
 
-        }
 
-      }
+      emoji.className =
+        "love-emoji";
+
+
+      emoji.textContent =
+        loveEmojis[
+          Math.floor(
+            Math.random() *
+            loveEmojis.length
+          )
+        ];
+
+
+      const randomX =
+        Math.floor(
+          Math.random() * 260
+        ) - 130;
+
+
+      const randomY =
+        550 +
+        Math.floor(
+          Math.random() * 250
+        );
+
+
+      const randomRotate =
+        Math.floor(
+          Math.random() * 60
+        ) - 30;
+
+
+      emoji.style.left =
+        (20 +
+          Math.random() * 60) +
+        "%";
+
+
+      emoji.style.setProperty(
+        "--move-x",
+        randomX + "px"
+      );
+
+
+      emoji.style.setProperty(
+        "--move-y",
+        randomY + "px"
+      );
+
+
+      emoji.style.setProperty(
+        "--rotate",
+        randomRotate + "deg"
+      );
+
+
+      dhongi.appendChild(
+        emoji
+      );
+
+
+      setTimeout(
+        () => {
+          emoji.remove();
+        },
+        5500
+      );
+
+    }
+
+
+    /* Initial emojis */
+
+    setTimeout(
+      createLoveEmoji,
+      1000
+    );
+
+    setTimeout(
+      createLoveEmoji,
+      2500
+    );
+
+    setTimeout(
+      createLoveEmoji,
+      4000
     );
 
 
-    function goTop() {
+    /* Continuous animation */
 
-      window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-      });
-
-    }
+    setInterval(
+      createLoveEmoji,
+      1800
+    );
 
   </script>
 
