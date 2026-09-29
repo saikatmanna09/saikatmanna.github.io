@@ -1,1470 +1,1969 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Official personal website of Saikat Manna. Explore my profile, BGMI profile, social media and more.">
-  <meta name="author" content="Saikat Manna">
-
-  <title>Saikat Manna | Mini World 🌎</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-  <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:Arial,sans-serif;
-      color:white;
-      background:
-        linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.88)),
-        url("IMG_20260921_105205_456.webp") center/cover fixed;
-      min-height:100vh;
-      overflow-x:hidden;
-    }
-
-    /* LOADING */
-    #loader{
-      position:fixed;
-      inset:0;
-      background:#050505;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:9999;
-      transition:.6s;
-    }
-
-    .loader-box{
-      text-align:center;
-    }
-
-    .loader-circle{
-      width:60px;
-      height:60px;
-      border:4px solid rgba(255,255,255,.15);
-      border-top:4px solid #00eaff;
-      border-radius:50%;
-      animation:spin 1s linear infinite;
-      margin:auto;
-    }
-
-    .loader-text{
-      margin-top:15px;
-      color:#00eaff;
-      font-weight:bold;
-      letter-spacing:2px;
-      text-shadow:0 0 10px #00eaff;
-    }
-
-    @keyframes spin{
-      to{transform:rotate(360deg);}
-    }
-
-    /* STARS */
-    .stars{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:-1;
-      overflow:hidden;
-    }
-
-    .star{
-      position:absolute;
-      width:2px;
-      height:2px;
-      background:white;
-      border-radius:50%;
-      opacity:.7;
-      animation:twinkle 2s infinite alternate;
-    }
-
-    @keyframes twinkle{
-      from{opacity:.2;}
-      to{opacity:1;}
-    }
-
-    /* NAVBAR */
-    nav{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(0,0,0,.78);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(0,234,255,.25);
-      padding:12px 10px;
-      text-align:center;
-    }
-
-    nav a{
-      color:white;
-      text-decoration:none;
-      margin:0 7px;
-      font-size:13px;
-      font-weight:bold;
-      transition:.3s;
-    }
-
-    nav a:hover{
-      color:#00eaff;
-      text-shadow:0 0 10px #00eaff;
-    }
-
-    /* HEADER */
-    header{
-      text-align:center;
-      padding:55px 20px 25px;
-    }
-
-    .profile{
-      width:125px;
-      height:125px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid #00eaff;
-      box-shadow:
-        0 0 15px #00eaff,
-        0 0 40px rgba(0,234,255,.5);
-      animation:pulse 2.5s infinite;
-    }
-
-    @keyframes pulse{
-      0%,100%{
-        box-shadow:0 0 15px #00eaff;
-      }
-      50%{
-        box-shadow:0 0 35px #00eaff,0 0 60px rgba(0,234,255,.35);
-      }
-    }
-
-    header h1{
-      margin-top:18px;
-      font-size:30px;
-      text-shadow:0 0 15px #00eaff;
-    }
-
-    header p{
-      margin-top:8px;
-      color:#bbb;
-    }
-
-    /* CONTAINER */
-    .container{
-      width:min(900px,92%);
-      margin:auto;
-    }
-
-    /* CARDS */
-    .card{
-      margin:25px 0;
-      padding:25px;
-      border-radius:22px;
-      background:rgba(10,10,10,.72);
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 0 25px rgba(0,0,0,.45);
-      backdrop-filter:blur(8px);
-    }
-
-    .card h2{
-      margin-bottom:15px;
-      font-size:23px;
-      text-align:center;
-    }
-
-    .card p{
-      line-height:1.7;
-      color:#ddd;
-    }
-
-    /* BGMI */
-    .bgmi{
-      text-align:center;
-    }
-
-    .bgmi-name{
-      font-size:21px;
-      font-weight:bold;
-      color:#ffcc00;
-      text-shadow:0 0 10px rgba(255,204,0,.6);
-    }
-
-    .bgmi-uid{
-      margin-top:8px;
-      color:#00eaff;
-      font-size:15px;
-      font-weight:bold;
-      text-shadow:0 0 8px rgba(0,234,255,.6);
-    }
-
-    .jonathan{
-      margin-top:10px;
-      color:#ff6b81;
-      font-weight:bold;
-    }
-
-    .tag-top{
-      margin-top:12px;
-      color:#ff8c00;
-      font-weight:bold;
-      font-size:18px;
-      text-shadow:0 0 10px rgba(255,140,0,.8);
-    }
-
-    /* =========================
-       PREMIUM DHONGI
-    ========================= */
-
-    .dhongi-section{
-      position:relative;
-      min-height:520px;
-      overflow:visible;
-      text-align:center;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,70,130,.12),
-          rgba(0,0,0,.88)
-        );
-
-      border:1px solid rgba(255,80,150,.28);
-
-      box-shadow:
-        0 0 30px rgba(255,50,130,.16),
-        inset 0 0 35px rgba(255,50,130,.08);
-    }
-
-    .dhongi-content{
-      position:relative;
-      z-index:3;
-      text-align:center;
-    }
-
-    .dhongi-content h2{
-      font-size:28px;
-      margin-bottom:12px;
-      color:#fff;
-
-      text-shadow:
-        0 0 10px #ff4f91,
-        0 0 25px rgba(255,79,145,.65);
-
-      animation:dhongiGlow 2.5s infinite alternate;
-    }
-
-    @keyframes dhongiGlow{
-      from{
-        text-shadow:
-          0 0 8px #ff4f91,
-          0 0 18px rgba(255,79,145,.4);
-      }
-
-      to{
-        text-shadow:
-          0 0 15px #ff4f91,
-          0 0 35px rgba(255,79,145,.8);
-      }
-    }
-
-    /* EYES PHOTO FRAME */
-    .dhongi-photo-frame{
-      width:min(100%,650px);
-      margin:20px auto 18px;
-      padding:8px;
-
-      border-radius:22px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,79,145,.7),
-          rgba(0,234,255,.35),
-          rgba(255,79,145,.7)
-        );
-
-      box-shadow:
-        0 0 20px rgba(255,79,145,.25),
-        0 0 45px rgba(0,234,255,.12);
-    }
-
-    .dhongi-photo-frame img{
-      width:100%;
-      max-height:360px;
-
-      display:block;
-      margin:auto;
-
-      object-fit:contain;
-
-      border-radius:16px;
-
-      background:#050505;
-
-      box-shadow:
-        inset 0 0 25px rgba(0,0,0,.8);
-    }
-
-    .dhongi-content p{
-      font-size:21px;
-      font-weight:bold;
-      line-height:1.6;
-      color:#fff;
-
-      text-shadow:
-        0 0 10px rgba(255,255,255,.3);
-    }
-
-    .heart-origin{
-      display:inline-block;
-      color:#ff3b6b;
-      font-size:34px;
-      margin-left:4px;
-
-      text-shadow:
-        0 0 12px #ff3b6b,
-        0 0 25px rgba(255,59,107,.7);
-
-      position:relative;
-    }
-
-    .dhongi-special{
-      margin-top:10px;
-
-      font-size:15px !important;
-      font-weight:normal !important;
-
-      color:#ffc4d9 !important;
-
-      letter-spacing:.5px;
-
-      text-shadow:
-        0 0 8px rgba(255,100,160,.5) !important;
-    }
-
-    /* FLOATING EMOJIS */
-    .emoji-container{
-      position:fixed;
-      left:0;
-      bottom:0;
-      width:100%;
-      height:100vh;
-      pointer-events:none;
-      z-index:999;
-      overflow:hidden;
-    }
-
-    .floating-emoji{
-      position:absolute;
-      bottom:70px;
-      font-size:22px;
-      animation:floatUp 5s linear forwards;
-      opacity:0;
-    }
-
-    @keyframes floatUp{
-      0%{
-        transform:translateY(0) scale(.6) rotate(0deg);
-        opacity:0;
-      }
-
-      10%{
-        opacity:1;
-      }
-
-      80%{
-        opacity:.9;
-      }
-
-      100%{
-        transform:translateY(-95vh) scale(1.3) rotate(25deg);
-        opacity:0;
-      }
-    }
-
-    /* FAVOURITE PIC */
-    .fav-pic{
-      text-align:center;
-    }
-
-    .fav-pic img{
-      width:100%;
-      max-width:600px;
-      border-radius:18px;
-      display:block;
-      margin:auto;
-      box-shadow:0 0 25px rgba(0,234,255,.2);
-    }
-
-    /* GALLERY */
-    .gallery{
-      text-align:center;
-    }
-
-    .gallery-slide{
-      display:none;
-    }
-
-    .gallery-slide.active{
-      display:block;
-    }
-
-    .gallery-slide img{
-      width:100%;
-      max-width:750px;
-      height:500px;
-      object-fit:contain;
-      display:block;
-      margin:auto;
-      border-radius:18px;
-      background:rgba(0,0,0,.35);
-      box-shadow:0 0 25px rgba(0,0,0,.5);
-    }
-
-    .gallery-controls{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-
-    .gallery-controls button{
-      background:rgba(0,234,255,.12);
-      border:1px solid #00eaff;
-      color:white;
-      padding:10px 18px;
-      border-radius:30px;
-      cursor:pointer;
-      font-weight:bold;
-      transition:.3s;
-    }
-
-    .gallery-controls button:hover{
-      background:#00eaff;
-      color:#000;
-      box-shadow:0 0 15px #00eaff;
-    }
-
-    #galleryCount{
-      color:#00eaff;
-      font-weight:bold;
-    }
-
-    /* SOCIAL */
-    .socials{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:15px;
-    }
-
-    .socials a{
-      text-decoration:none;
-      color:white;
-      border:1px solid rgba(255,255,255,.2);
-      background:rgba(255,255,255,.06);
-      padding:11px 17px;
-      border-radius:30px;
-      transition:.3s;
-    }
-
-    .socials a:hover{
-      transform:translateY(-3px);
-      border-color:#00eaff;
-      box-shadow:0 0 15px rgba(0,234,255,.4);
-      color:#00eaff;
-    }
-
-    /* DREAMS */
-    .dreams p{
-      margin:10px 0;
-      color:#eee;
-    }
-
-    /* VISITOR */
-    .visitor-card{
-      text-align:center;
-    }
-
-    .visitor-welcome{
-      color:#bbb !important;
-      margin-bottom:18px;
-    }
-
-    .visitor-box{
-      width:190px;
-      height:190px;
-      margin:20px auto;
-      border-radius:50%;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(0,234,255,.16),
-          rgba(0,0,0,.75)
-        );
-
-      border:2px solid #00eaff;
-
-      box-shadow:
-        0 0 20px rgba(0,234,255,.45),
-        inset 0 0 25px rgba(0,234,255,.12);
-    }
-
-    .visitor-icon{
-      font-size:28px;
-      margin-bottom:5px;
-    }
-
-    .visitor-number{
-      font-size:42px;
-      font-weight:bold;
-      color:#00eaff;
-      text-shadow:0 0 15px #00eaff;
-    }
-
-    .visitor-label{
-      margin-top:5px;
-      font-size:11px;
-      letter-spacing:2px;
-      color:#aaa;
-    }
-
-    .visitor-note{
-      color:#aaa !important;
-      font-size:14px;
-    }
-
-    /* CLOCK */
-    .clock{
-      text-align:center;
-      color:#00eaff;
-      font-size:14px;
-      margin-top:10px;
-      text-shadow:0 0 8px rgba(0,234,255,.5);
-    }
-
-    /* THEME BUTTON */
-    .theme-btn{
-      position:fixed;
-      right:15px;
-      bottom:15px;
-      width:45px;
-      height:45px;
-      border-radius:50%;
-      border:1px solid #00eaff;
-      background:rgba(0,0,0,.75);
-      color:white;
-      cursor:pointer;
-      z-index:1500;
-      box-shadow:0 0 15px rgba(0,234,255,.3);
-    }
-
-    /* FOOTER */
-    footer{
-      text-align:center;
-      padding:30px 15px;
-      color:#888;
-      font-size:13px;
-    }
-
-    @media(max-width:600px){
-
-      nav a{
-        font-size:11px;
-        margin:0 4px;
-      }
-
-      header{
-        padding-top:40px;
-      }
-
-      header h1{
-        font-size:26px;
-      }
-
-      .card{
-        padding:20px 16px;
-      }
-
-      .gallery-slide img{
-        height:auto;
-        max-height:70vh;
-        object-fit:contain;
-      }
-
-      /* MOBILE DHONGI */
-
-      .dhongi-section{
-        min-height:480px;
-      }
-
-      .dhongi-content h2{
-        font-size:25px;
-      }
-
-      .dhongi-photo-frame{
-        padding:6px;
-      }
-
-      .dhongi-photo-frame img{
-        max-height:280px;
-      }
-
-      .dhongi-content p{
-        font-size:20px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Official personal website of Saikat Manna. Explore my mini world, BGMI profile, gallery, social media and more.">
+<meta name="author" content="Saikat Manna">
+
+<title>Saikat Manna | Mini World 🌎</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+:root{
+  --bg:#03040a;
+  --card:rgba(12,15,27,.78);
+  --text:#fff;
+  --muted:#aeb4c5;
+  --cyan:#00eaff;
+  --pink:#ff4f91;
+  --orange:#ff8a00;
+  --green:#32ff9a;
+  --border:rgba(255,255,255,.12);
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.9)),
+    url("IMG_20260921_105205_456.webp") center/cover fixed;
+  min-height:100vh;
+  overflow-x:hidden;
+  transition:.5s;
+}
+
+/* LIGHT MODE */
+body.light-mode{
+  --bg:#eef3f8;
+  --card:rgba(255,255,255,.82);
+  --text:#111827;
+  --muted:#4b5563;
+  --border:rgba(0,0,0,.1);
+
+  background:
+    linear-gradient(rgba(240,245,250,.84),rgba(240,245,250,.92)),
+    url("IMG_20260921_105205_456.webp") center/cover fixed;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  background:#02030a;
+  transition:opacity .8s,visibility .8s;
+}
+
+#loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader-ring{
+  width:70px;
+  height:70px;
+  border:3px solid rgba(0,234,255,.15);
+  border-top-color:var(--cyan);
+  border-right-color:var(--pink);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  box-shadow:0 0 25px rgba(0,234,255,.4);
+}
+
+.loader-text{
+  margin-top:22px;
+  font-size:14px;
+  letter-spacing:2px;
+  text-align:center;
+  color:#fff;
+  text-shadow:0 0 12px var(--cyan);
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+/* STARS */
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:#fff;
+  border-radius:50%;
+  opacity:.7;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:.15;transform:scale(.7)}
+  to{opacity:1;transform:scale(1.5)}
+}
+
+/* SHOOTING STAR */
+.shooting-star{
+  position:fixed;
+  width:100px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#fff,var(--cyan));
+  transform:rotate(-35deg);
+  z-index:-1;
+  animation:shoot 1.3s linear forwards;
+  pointer-events:none;
+}
+
+@keyframes shoot{
+  0%{
+    opacity:0;
+    transform:translate(0,0) rotate(-35deg);
+  }
+  15%{opacity:1}
+  100%{
+    opacity:0;
+    transform:translate(-400px,300px) rotate(-35deg);
+  }
+}
+
+/* NAVBAR */
+nav{
+  position:sticky;
+  top:0;
+  z-index:5000;
+  backdrop-filter:blur(18px);
+  background:rgba(2,4,10,.72);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  padding:12px 10px;
+}
+
+body.light-mode nav{
+  background:rgba(255,255,255,.75);
+}
+
+.nav-inner{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+  display:none;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  padding:9px 13px;
+  border-radius:30px;
+  white-space:nowrap;
+  font-size:13px;
+  border:1px solid transparent;
+  transition:.3s;
+}
+
+body.light-mode nav a{
+  color:#111;
+}
+
+nav a:hover{
+  border-color:var(--cyan);
+  color:var(--cyan);
+  background:rgba(0,234,255,.08);
+  box-shadow:0 0 15px rgba(0,234,255,.15);
+}
+
+/* MAIN */
+.container{
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  padding:80px 0 50px;
+}
+
+.hero-content{
+  animation:heroIn 1.2s ease;
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(35px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.profile-wrap{
+  position:relative;
+  width:160px;
+  height:160px;
+  margin:auto;
+}
+
+.profile-ring{
+  position:absolute;
+  inset:-8px;
+  border-radius:50%;
+  background:conic-gradient(
+    var(--cyan),
+    var(--pink),
+    #7c4dff,
+    var(--cyan)
+  );
+  animation:rotateRing 4s linear infinite;
+  filter:drop-shadow(0 0 15px rgba(0,234,255,.5));
+}
+
+@keyframes rotateRing{
+  to{transform:rotate(360deg)}
+}
+
+.profile-img{
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  border:5px solid #05060b;
+  z-index:2;
+}
+
+.hero h1{
+  margin-top:30px;
+  font-size:clamp(35px,7vw,68px);
+  background:linear-gradient(90deg,#fff,var(--cyan),#fff,var(--pink));
+  background-size:250%;
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:textFlow 5s linear infinite;
+}
+
+@keyframes textFlow{
+  to{background-position:250%}
+}
+
+.hero-sub{
+  margin-top:12px;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.typing{
+  color:var(--cyan);
+  font-weight:bold;
+  text-shadow:0 0 12px rgba(0,234,255,.6);
+}
+
+.clock{
+  margin:25px auto 0;
+  width:max-content;
+  max-width:90%;
+  padding:10px 20px;
+  border:1px solid rgba(0,234,255,.25);
+  border-radius:30px;
+  background:rgba(0,234,255,.05);
+  color:var(--cyan);
+  box-shadow:0 0 20px rgba(0,234,255,.1);
+}
+
+/* CARDS */
+.card{
+  position:relative;
+  margin:25px 0;
+  padding:32px;
+  border-radius:25px;
+  background:var(--card);
+  border:1px solid var(--border);
+  backdrop-filter:blur(15px);
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.28),
+    inset 0 0 30px rgba(255,255,255,.015);
+  overflow:hidden;
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(0,234,255,.22);
+}
+
+.card h2{
+  text-align:center;
+  margin-bottom:20px;
+  font-size:27px;
+  text-shadow:0 0 15px rgba(0,234,255,.25);
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.8;
+  text-align:center;
+}
+
+/* ABOUT */
+.about-text{
+  max-width:750px;
+  margin:auto;
+  font-size:17px;
+}
+
+/* BGMI */
+.bgmi-card{
+  border-color:rgba(255,138,0,.25);
+  box-shadow:0 0 35px rgba(255,138,0,.08);
+}
+
+.bgmi-name{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  margin:10px 0 20px;
+  color:#fff;
+  text-shadow:0 0 15px rgba(255,255,255,.3);
+}
+
+.bgmi-info{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  max-width:650px;
+  margin:20px auto;
+}
+
+.info-box{
+  padding:18px;
+  border-radius:18px;
+  text-align:center;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,138,0,.15);
+}
+
+.info-label{
+  display:block;
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:8px;
+  letter-spacing:1px;
+}
+
+.info-value{
+  font-size:17px;
+  font-weight:bold;
+}
+
+.uid-row{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.copy-btn{
+  border:1px solid var(--cyan);
+  background:rgba(0,234,255,.08);
+  color:var(--cyan);
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.copy-btn:hover{
+  background:var(--cyan);
+  color:#000;
+  box-shadow:0 0 18px rgba(0,234,255,.4);
+}
+
+.tag-top{
+  text-align:center;
+  color:var(--orange);
+  font-size:23px;
+  font-weight:bold;
+  margin-top:22px;
+  text-shadow:0 0 12px rgba(255,138,0,.8);
+}
+
+/* DHONGI */
+.dhongi-section{
+  min-height:520px;
+  overflow:visible;
+  text-align:center;
+  background:
+    radial-gradient(circle at center,rgba(255,70,130,.12),rgba(0,0,0,.88));
+  border:1px solid rgba(255,80,150,.28);
+  box-shadow:
+    0 0 30px rgba(255,50,130,.16),
+    inset 0 0 35px rgba(255,50,130,.08);
+}
+
+.dhongi-content{
+  position:relative;
+  z-index:3;
+  text-align:center;
+}
+
+.dhongi-content h2{
+  font-size:28px;
+  color:#fff;
+  text-shadow:
+    0 0 10px #ff4f91,
+    0 0 25px rgba(255,79,145,.65);
+  animation:dhongiGlow 2.5s infinite alternate;
+}
+
+@keyframes dhongiGlow{
+  from{
+    text-shadow:0 0 8px #ff4f91,
+    0 0 18px rgba(255,79,145,.4);
+  }
+  to{
+    text-shadow:0 0 15px #ff4f91,
+    0 0 35px rgba(255,79,145,.8);
+  }
+}
+
+.dhongi-photo-frame{
+  width:min(100%,650px);
+  margin:20px auto 18px;
+  padding:8px;
+  border-radius:22px;
+  background:
+    linear-gradient(135deg,
+    rgba(255,79,145,.7),
+    rgba(0,234,255,.35),
+    rgba(255,79,145,.7));
+  box-shadow:
+    0 0 20px rgba(255,79,145,.25),
+    0 0 45px rgba(0,234,255,.12);
+}
+
+.dhongi-photo-frame img{
+  width:100%;
+  max-height:360px;
+  display:block;
+  margin:auto;
+  object-fit:contain;
+  border-radius:16px;
+  background:#050505;
+}
+
+.dhongi-content p{
+  font-size:21px;
+  font-weight:bold;
+  color:#fff;
+}
+
+.heart-origin{
+  display:inline-block;
+  color:#ff3b6b;
+  font-size:34px;
+  margin-left:4px;
+  text-shadow:
+    0 0 12px #ff3b6b,
+    0 0 25px rgba(255,59,107,.7);
+}
+
+.dhongi-special{
+  margin-top:10px;
+  font-size:15px!important;
+  font-weight:normal!important;
+  color:#ffc4d9!important;
+}
+
+/* FLOATING EMOJIS */
+#emojiContainer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1000;
+  overflow:hidden;
+}
+
+.floating-emoji{
+  position:absolute;
+  animation:floatEmoji linear forwards;
+  pointer-events:none;
+}
+
+@keyframes floatEmoji{
+  0%{
+    opacity:0;
+    transform:translateY(20px) scale(.7) rotate(0deg);
+  }
+  15%{opacity:1}
+  100%{
+    opacity:0;
+    transform:translateY(-280px) scale(1.15) rotate(20deg);
+  }
+}
+
+/* FAVOURITE PIC */
+.fav-photo-wrap{
+  max-width:700px;
+  margin:auto;
+  border-radius:22px;
+  padding:7px;
+  background:linear-gradient(120deg,var(--cyan),var(--pink),#7c4dff);
+  box-shadow:0 0 30px rgba(0,234,255,.12);
+}
+
+.fav-photo-wrap img{
+  display:block;
+  width:100%;
+  max-height:600px;
+  object-fit:contain;
+  background:#000;
+  border-radius:17px;
+}
+
+/* GALLERY */
+.gallery-card{
+  overflow:hidden;
+}
+
+.gallery-view{
+  position:relative;
+  max-width:800px;
+  margin:auto;
+}
+
+.gallery-image-box{
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(0,0,0,.45);
+  border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+
+.gallery-image{
+  width:100%;
+  height:420px;
+  object-fit:contain;
+  transition:opacity .25s,transform .35s;
+}
+
+.gallery-image.fade{
+  opacity:0;
+  transform:scale(.97);
+}
+
+.gallery-controls{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:18px;
+}
+
+.gallery-btn{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--cyan);
+  background:rgba(0,234,255,.07);
+  color:var(--cyan);
+  font-size:22px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.gallery-btn:hover{
+  background:var(--cyan);
+  color:#000;
+  box-shadow:0 0 20px rgba(0,234,255,.45);
+}
+
+.gallery-counter{
+  text-align:center;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* FULLSCREEN */
+#galleryModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.94);
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:25px;
+}
+
+#galleryModal.show{
+  display:flex;
+}
+
+.modal-img{
+  max-width:95vw;
+  max-height:90vh;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.modal-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:45px;
+  height:45px;
+  border:1px solid #fff;
+  border-radius:50%;
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  font-size:25px;
+  cursor:pointer;
+}
+
+/* SOCIAL */
+.social-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+}
+
+.social-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:58px;
+  border-radius:17px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:bold;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+  transition:.3s;
+}
+
+.social-btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 25px rgba(255,255,255,.15);
+}
+
+.instagram:hover{border-color:#ff4f91;color:#ff78ab}
+.facebook:hover{border-color:#3b82f6;color:#60a5fa}
+.youtube:hover{border-color:#ff3333;color:#ff5555}
+.github:hover{border-color:#aaa;color:#fff}
+
+/* DREAMS */
+.dream-list{
+  max-width:650px;
+  margin:auto;
+  display:grid;
+  gap:14px;
+}
+
+.dream{
+  padding:18px 20px;
+  border-radius:17px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
+
+.dream:hover{
+  transform:translateX(6px);
+  border-color:var(--cyan);
+}
+
+/* VISITOR */
+.visitor-card{
+  text-align:center;
+}
+
+.visitor-welcome{
+  margin-bottom:20px;
+}
+
+.visitor-box{
+  width:190px;
+  height:190px;
+  margin:20px auto;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  border:2px solid rgba(0,234,255,.4);
+  background:
+    radial-gradient(circle,
+    rgba(0,234,255,.14),
+    rgba(0,0,0,.2));
+  box-shadow:
+    0 0 25px rgba(0,234,255,.16),
+    inset 0 0 25px rgba(0,234,255,.08);
+}
+
+.visitor-icon{
+  font-size:28px;
+}
+
+.visitor-number{
+  font-size:43px;
+  font-weight:bold;
+  color:var(--cyan);
+  text-shadow:0 0 18px rgba(0,234,255,.65);
+  margin:4px 0;
+}
+
+.visitor-label{
+  font-size:10px;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+
+.visitor-note{
+  font-size:14px!important;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:45px 15px 90px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* THEME */
+.theme-btn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid var(--cyan);
+  background:rgba(0,0,0,.7);
+  color:#fff;
+  cursor:pointer;
+  z-index:4000;
+  font-size:20px;
+  box-shadow:0 0 18px rgba(0,234,255,.2);
+}
+
+body.light-mode .theme-btn{
+  background:#fff;
+  color:#111;
+}
+
+/* BACK TO TOP */
+#topBtn{
+  position:fixed;
+  right:18px;
+  bottom:78px;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  border:1px solid var(--pink);
+  background:rgba(0,0,0,.7);
+  color:#fff;
+  cursor:pointer;
+  z-index:4000;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(15px);
+  transition:.3s;
+}
+
+#topBtn.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  .container{
+    width:94%;
+  }
+
+  .hero{
+    min-height:570px;
+    padding-top:65px;
+  }
+
+  .profile-wrap{
+    width:135px;
+    height:135px;
+  }
+
+  .hero h1{
+    font-size:39px;
+  }
+
+  .hero-sub{
+    font-size:15px;
+  }
+
+  .card{
+    padding:23px 17px;
+    border-radius:21px;
+  }
+
+  .card h2{
+    font-size:24px;
+  }
+
+  .bgmi-info{
+    grid-template-columns:1fr;
+  }
+
+  .social-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .gallery-image-box{
+    min-height:300px;
+  }
+
+  .gallery-image{
+    height:300px;
+  }
+
+  .dhongi-section{
+    min-height:480px;
+  }
+
+  .dhongi-photo-frame{
+    padding:6px;
+  }
+
+  .dhongi-photo-frame img{
+    max-height:280px;
+  }
+
+  .dhongi-content p{
+    font-size:20px;
+  }
+
+  .visitor-box{
+    width:170px;
+    height:170px;
+  }
+}
+
+@media(max-width:420px){
+
+  nav a{
+    font-size:12px;
+    padding:8px 11px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .social-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .social-btn{
+    font-size:13px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- LOADING -->
-  <div id="loader">
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">WELCOME TO SAIKAT'S MINI WORLD 🌎</div>
+</div>
 
-    <div class="loader-box">
+<!-- STARS -->
+<div id="stars"></div>
 
-      <div class="loader-circle"></div>
+<!-- FLOATING EMOJIS -->
+<div id="emojiContainer"></div>
 
-      <div class="loader-text">
-        WELCOME TO SAIKAT'S MINI WORLD 🌎
-      </div>
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#about">About</a>
+    <a href="#bgmi">BGMI</a>
+    <a href="#dhongi">Dhongi</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#social">Social</a>
+    <a href="#dreams">Dreams</a>
+    <a href="#visitors">Visitors</a>
+  </div>
+</nav>
 
+<main class="container">
+
+<!-- HERO -->
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="profile-wrap">
+      <div class="profile-ring"></div>
+      <img
+        class="profile-img"
+        src="IMG_20250630_110659.jpg"
+        alt="Saikat Manna"
+        loading="eager"
+      >
+    </div>
+
+    <h1>Saikat Manna</h1>
+
+    <p class="hero-sub">
+      <span id="typingText" class="typing"></span>
+    </p>
+
+    <div class="clock" id="clock">
+      Loading time...
     </div>
 
   </div>
 
+</header>
 
-  <!-- STARS -->
-  <div class="stars" id="stars"></div>
+<!-- ABOUT -->
+<section class="card" id="about">
 
+  <h2>👋 About Me</h2>
 
-  <!-- FLOATING EMOJIS -->
-  <div
-    class="emoji-container"
-    id="emojiContainer"
-  ></div>
+  <p class="about-text">
+    Hey, this is Saikat's mini world 🌎
+    <br><br>
+    Welcome to my personal space on the internet.
+    Here you can explore a little about me, my gaming profile,
+    memories, favourite moments, social links and dreams.
+    <br><br>
+    Keep learning. Keep improving. Keep moving forward. ✨
+  </p>
 
+</section>
 
-  <!-- NAVBAR -->
-  <nav>
+<!-- BGMI -->
+<section class="card bgmi-card" id="bgmi">
 
-    <a href="#about">
-      About
-    </a>
+  <h2>🎮 BGMI Profile</h2>
 
-    <a href="#bgmi">
-      BGMI
-    </a>
+  <div class="bgmi-name">
+    JaCk๛DaNieL's
+  </div>
 
-    <a href="#dhongi">
-      Dhongi
-    </a>
+  <div class="bgmi-info">
 
-    <a href="#gallery">
-      Gallery
-    </a>
+    <div class="info-box">
+      <span class="info-label">UID</span>
 
-    <a href="#social">
-      Social
-    </a>
-
-    <a href="#dreams">
-      Dreams
-    </a>
-
-    <a href="#visitors">
-      Visitors
-    </a>
-
-  </nav>
-
-
-  <!-- HEADER -->
-  <header>
-
-    <img
-      class="profile"
-      src="IMG_20250630_110659.jpg"
-      alt="Saikat Manna"
-    >
-
-    <h1>
-      Hey, this is Saikat's mini world 🌎
-    </h1>
-
-    <p>
-      Welcome to my little corner of the internet ✨
-    </p>
-
-    <div
-      class="clock"
-      id="clock"
-    ></div>
-
-  </header>
-
-
-  <main class="container">
-
-    <!-- ABOUT -->
-    <section
-      class="card"
-      id="about"
-    >
-
-      <h2>
-        👋 About Me
-      </h2>
-
-      <p>
-        Hey! I'm
-        <strong>Saikat Manna</strong>.
-        This is my personal mini world where I share
-        a little bit about myself, my interests,
-        gaming, memories and dreams. 🌎✨
-      </p>
-
-    </section>
-
-
-    <!-- BGMI -->
-    <section
-      class="card bgmi"
-      id="bgmi"
-    >
-
-      <h2>
-        🎮 My BGMI Profile
-      </h2>
-
-      <div class="bgmi-name">
-        JaCk๛DaNieL's
-      </div>
-
-      <div class="bgmi-uid">
-        UID: 55619352171
-      </div>
-
-      <div class="jonathan">
-        Big fan of Jonathan ❤️
-      </div>
-
-      <div class="tag-top">
-        TAG ON TOP 🧡
-      </div>
-
-    </section>
-
-
-    <!-- PREMIUM DHONGI -->
-    <section
-      class="card dhongi-section"
-      id="dhongi"
-    >
-
-      <div class="dhongi-content">
-
-        <h2>
-          💫 Dhongi 🎀
-        </h2>
-
-        <div class="dhongi-photo-frame">
-
-          <img
-            src="IMG_20260930_013447.jpg"
-            alt="Dhongi"
-          >
-
-        </div>
-
-        <p>
-
-          My favourite person
-
-          <span
-            class="heart-origin"
-            id="heartOrigin"
-          >❤️</span>
-
-        </p>
-
-        <p class="dhongi-special">
-          Some people are simply special. ✨
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- FAVOURITE PIC -->
-    <section
-      class="card fav-pic"
-    >
-
-      <h2>
-        ❤️ Favourite Pic
-      </h2>
-
-      <img
-        src="IMG_20260921_105205_456.webp"
-        alt="Favourite Pic"
-      >
-
-    </section>
-
-
-    <!-- GALLERY -->
-    <section
-      class="card gallery"
-      id="gallery"
-    >
-
-      <h2>
-        Mehhh👇🎀🤭
-      </h2>
-
-      <div class="gallery-slider">
-
-        <div class="gallery-slide active">
-          <img src="IMG_20260417_144516.jpg" alt="Gallery 1">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20260101_080151.jpg" alt="Gallery 2">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20260105_194839.jpg" alt="Gallery 3">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20260101_075424.jpg" alt="Gallery 4">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20251225_204900.jpg" alt="Gallery 5">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20251025_114536.jpg" alt="Gallery 6">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20251025_115212_Burst01.jpg" alt="Gallery 7">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20251025_095842.jpg" alt="Gallery 8">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20251012_232514.jpg" alt="Gallery 9">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250913_204001.jpg" alt="Gallery 10">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250914_093723.jpg" alt="Gallery 11">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250827_215622.jpg" alt="Gallery 12">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250817_134856_278.jpg" alt="Gallery 13">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250813_223100.jpg" alt="Gallery 14">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250809_122115.jpg" alt="Gallery 15">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250809_121243.jpg" alt="Gallery 16">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250615_115801.jpg" alt="Gallery 17">
-        </div>
-
-        <div class="gallery-slide">
-          <img src="IMG_20250614_172032.jpg" alt="Gallery 18">
-        </div>
-
-      </div>
-
-
-      <div class="gallery-controls">
-
-        <button onclick="previousPhoto()">
-          ← Previous
-        </button>
-
-        <span id="galleryCount">
-          1 / 18
+      <div class="uid-row">
+        <span class="info-value" id="uidText">
+          55619352171
         </span>
 
-        <button onclick="nextPhoto()">
-          Next →
+        <button class="copy-btn" onclick="copyUID()" id="copyBtn">
+          Copy
         </button>
-
       </div>
+    </div>
 
-    </section>
+    <div class="info-box">
+      <span class="info-label">FAVOURITE PLAYER</span>
+      <span class="info-value">
+        Jonathan ❤️
+      </span>
+    </div>
 
+  </div>
 
-    <!-- SOCIAL -->
-    <section
-      class="card"
-      id="social"
+  <div class="tag-top">
+    TAG ON TOP 🧡
+  </div>
+
+</section>
+
+<!-- DHONGI -->
+<section class="card dhongi-section" id="dhongi">
+
+  <div class="dhongi-content">
+
+    <h2>💫 Dhongi 🎀</h2>
+
+    <div class="dhongi-photo-frame">
+
+      <img
+        src="IMG_20260930_013447.jpg"
+        alt="Dhongi"
+        loading="lazy"
+        decoding="async"
+      >
+
+    </div>
+
+    <p>
+      My favourite person
+      <span class="heart-origin" id="heartOrigin">❤️</span>
+    </p>
+
+    <p class="dhongi-special">
+      Some people are simply special. ✨
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FAVOURITE PIC -->
+<section class="card">
+
+  <h2>❤️ Favourite Pic</h2>
+
+  <div class="fav-photo-wrap">
+
+    <img
+      src="IMG_20260921_105205_456.webp"
+      alt="Favourite photo"
+      loading="lazy"
+      decoding="async"
     >
 
-      <h2>
-        🌐 Social Media
-      </h2>
+  </div>
 
-      <div class="socials">
+</section>
 
-        <a
-          href="https://www.instagram.com/saikat_manna_09/"
-          target="_blank"
-        >
-          📸 Instagram
-        </a>
+<!-- GALLERY -->
+<section class="card gallery-card" id="gallery">
 
-        <a
-          href="https://www.facebook.com/share/1SxZssLRTX/"
-          target="_blank"
-        >
-          📘 Facebook
-        </a>
+  <h2>Mehhh👇🎀🤭</h2>
 
-        <a
-          href="https://www.youtube.com/@saikatmanna-o4d"
-          target="_blank"
-        >
-          ▶️ YouTube
-        </a>
+  <div class="gallery-view">
 
-        <a
-          href="https://github.com/Saikatmanna09"
-          target="_blank"
-        >
-          💻 GitHub
-        </a>
+    <div class="gallery-image-box" onclick="openGallery()">
 
-      </div>
+      <img
+        id="galleryImage"
+        class="gallery-image"
+        src="IMG_20260417_144516.jpg"
+        alt="Gallery photo"
+        loading="lazy"
+        decoding="async"
+      >
 
-    </section>
+    </div>
 
+    <div class="gallery-controls">
 
-    <!-- DREAMS -->
-    <section
-      class="card dreams"
-      id="dreams"
+      <button
+        class="gallery-btn"
+        onclick="previousImage()"
+        aria-label="Previous photo"
+      >
+        ❮
+      </button>
+
+      <button
+        class="gallery-btn"
+        onclick="nextImage()"
+        aria-label="Next photo"
+      >
+        ❯
+      </button>
+
+    </div>
+
+    <div class="gallery-counter" id="galleryCounter">
+      1 / 18
+    </div>
+
+    <p style="margin-top:12px;font-size:12px;">
+      Tap the photo for fullscreen ✨
+    </p>
+
+  </div>
+
+</section>
+
+<!-- SOCIAL -->
+<section class="card" id="social">
+
+  <h2>🌐 Social Media</h2>
+
+  <div class="social-grid">
+
+    <a
+      class="social-btn instagram"
+      href="https://www.instagram.com/saikat_manna_09/"
+      target="_blank"
+      rel="noopener noreferrer"
     >
+      📸 Instagram
+    </a>
 
-      <h2>
-        🌟 Dreams
-      </h2>
-
-      <p>
-        💻 Learn coding and build something of my own
-      </p>
-
-      <p>
-        🚀 Keep learning, improving and moving forward
-      </p>
-
-    </section>
-
-
-    <!-- VISITORS -->
-    <section
-      class="card visitor-card"
-      id="visitors"
+    <a
+      class="social-btn facebook"
+      href="https://www.facebook.com/share/1SxZssLRTX/"
+      target="_blank"
+      rel="noopener noreferrer"
     >
+      👤 Facebook
+    </a>
 
-      <h2>
-        👀 Visitors
-      </h2>
+    <a
+      class="social-btn youtube"
+      href="https://www.youtube.com/@saikatmanna-o4d"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ▶️ YouTube
+    </a>
 
-      <p class="visitor-welcome">
-        Thanks for visiting my mini world ❤️
-      </p>
+    <a
+      class="social-btn github"
+      href="https://github.com/Saikatmanna09"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      💻 GitHub
+    </a>
 
-      <div class="visitor-box">
+  </div>
 
-        <div class="visitor-icon">
-          👁️
-        </div>
+</section>
 
-        <div
-          class="visitor-number"
-          id="visitorCount"
-        >
-          0
-        </div>
+<!-- DREAMS -->
+<section class="card" id="dreams">
 
-        <div class="visitor-label">
-          TOTAL VISITORS
-        </div>
+  <h2>🚀 My Dreams</h2>
 
-      </div>
+  <div class="dream-list">
 
-      <p class="visitor-note">
-        Every visit means something to me ✨
-      </p>
+    <div class="dream">
+      💻 Learn coding and build something of my own
+    </div>
 
-    </section>
+    <div class="dream">
+      🚀 Keep learning, improving and moving forward
+    </div>
 
-  </main>
+  </div>
 
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2026 Saikat Manna • My Mini World 🌎
-  </footer>
+<!-- VISITORS -->
+<section class="card visitor-card" id="visitors">
 
+  <h2>👀 Visitors</h2>
 
-  <!-- THEME BUTTON -->
+  <p class="visitor-welcome">
+    Thanks for visiting my mini world ❤️
+  </p>
+
+  <div class="visitor-box">
+
+    <div class="visitor-icon">
+      👁️
+    </div>
+
+    <div class="visitor-number" id="visitorCount">
+      0
+    </div>
+
+    <div class="visitor-label">
+      TOTAL VISITORS
+    </div>
+
+  </div>
+
+  <p class="visitor-note">
+    Every visit means something to me ✨
+  </p>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  © 2026 Saikat Manna • My Mini World 🌎
+</footer>
+
+<!-- GALLERY MODAL -->
+<div id="galleryModal">
+
   <button
-    class="theme-btn"
-    onclick="toggleTheme()"
-    title="Toggle theme"
+    class="modal-close"
+    onclick="closeGallery()"
+    aria-label="Close"
   >
-    🌙
+    ×
   </button>
 
+  <img
+    id="modalImage"
+    class="modal-img"
+    src=""
+    alt="Fullscreen gallery photo"
+  >
 
-  <script>
+</div>
 
-    /* =========================
-       SUPABASE CONFIG
-    ========================= */
+<!-- BUTTONS -->
+<button
+  class="theme-btn"
+  onclick="toggleTheme()"
+  id="themeBtn"
+  aria-label="Toggle theme"
+>
+  🌙
+</button>
 
-    const SUPABASE_URL =
-      "https://kxfhjuzfxehyhldtoqdr.supabase.co";
+<button
+  id="topBtn"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  aria-label="Back to top"
+>
+  ↑
+</button>
 
-    const SUPABASE_ANON_KEY =
-      "sb_publishable_md-d--1yw8WSOrnQCqDNxw_DhU8S0MR";
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_ANON_KEY
+<script>
+
+/* =========================
+   SUPABASE
+========================= */
+
+const SUPABASE_URL =
+  "https://kxfhjuzfxehyhldtoqdr.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_md-d--1yw8WSOrnQCqDNxw_DhU8S0MR";
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+/* =========================
+   VISITOR COUNTER
+========================= */
+
+async function updateVisitorCount(){
+
+  const visitorElement =
+    document.getElementById("visitorCount");
+
+  const alreadyVisited =
+    localStorage.getItem("saikat_visitor_counted");
+
+  try{
+
+    if(!alreadyVisited){
+
+      const {data,error} =
+        await supabaseClient.rpc(
+          "increment_visitor"
+        );
+
+      if(error) throw error;
+
+      localStorage.setItem(
+        "saikat_visitor_counted",
+        "true"
       );
-
-
-    /* =========================
-       VISITOR COUNTER
-       SAME BROWSER = COUNT ONCE
-    ========================= */
-
-    async function updateVisitorCount(){
-
-      const visitorElement =
-        document.getElementById(
-          "visitorCount"
-        );
-
-      const alreadyVisited =
-        localStorage.getItem(
-          "saikat_visitor_counted"
-        );
-
-      try{
-
-        if(!alreadyVisited){
-
-          const { data, error } =
-            await supabaseClient.rpc(
-              "increment_visitor"
-            );
-
-          if(error){
-            throw error;
-          }
-
-          localStorage.setItem(
-            "saikat_visitor_counted",
-            "true"
-          );
-        }
-
-
-        const { data, error } =
-          await supabaseClient.rpc(
-            "get_visitor_count"
-          );
-
-        if(error){
-          throw error;
-        }
-
-        visitorElement.innerText =
-          data ?? 0;
-
-      }catch(error){
-
-        console.error(
-          "Visitor counter error:",
-          error
-        );
-
-      }
     }
 
-    updateVisitorCount();
+    const {data,error} =
+      await supabaseClient.rpc(
+        "get_visitor_count"
+      );
+
+    if(error) throw error;
+
+    animateNumber(
+      visitorElement,
+      Number(data ?? 0)
+    );
+
+  }catch(error){
+
+    console.error(
+      "Visitor counter error:",
+      error
+    );
+
+  }
+
+}
+
+function animateNumber(element,target){
+
+  let current=0;
+
+  const duration=1000;
+  const start=performance.now();
+
+  function update(time){
+
+    const progress=Math.min(
+      (time-start)/duration,
+      1
+    );
+
+    current=Math.floor(
+      progress*target
+    );
+
+    element.innerText=current;
+
+    if(progress<1){
+      requestAnimationFrame(update);
+    }else{
+      element.innerText=target;
+    }
+
+  }
+
+  requestAnimationFrame(update);
+}
+
+updateVisitorCount();
 
 
-    /* =========================
-       LOADING SCREEN
-    ========================= */
+/* =========================
+   LOADER
+========================= */
 
-    window.addEventListener(
-      "load",
+window.addEventListener(
+  "load",
+  function(){
+
+    setTimeout(
       function(){
-
-        setTimeout(
-          function(){
-
-            const loader =
-              document.getElementById(
-                "loader"
-              );
-
-            loader.style.opacity = "0";
-
-            setTimeout(
-              function(){
-
-                loader.style.display =
-                  "none";
-
-              },
-              600
-            );
-
-          },
-          700
-        );
-
-      }
+        document
+          .getElementById("loader")
+          .classList.add("hide");
+      },
+      900
     );
 
-
-    /* =========================
-       STARS
-    ========================= */
-
-    const stars =
-      document.getElementById(
-        "stars"
-      );
-
-    for(let i=0;i<90;i++){
-
-      const star =
-        document.createElement(
-          "div"
-        );
-
-      star.className = "star";
-
-      star.style.left =
-        Math.random()*100 + "%";
-
-      star.style.top =
-        Math.random()*100 + "%";
-
-      star.style.animationDelay =
-        Math.random()*2 + "s";
-
-      stars.appendChild(star);
-    }
+  }
+);
 
 
-    /* =========================
-       CLOCK
-    ========================= */
+/* =========================
+   STARS
+========================= */
 
-    function updateClock(){
+const stars =
+  document.getElementById("stars");
 
-      const now =
-        new Date();
+for(let i=0;i<90;i++){
 
-      const time =
-        now.toLocaleTimeString(
-          [],
-          {
-            hour:"2-digit",
-            minute:"2-digit",
-            second:"2-digit"
-          }
-        );
+  const star =
+    document.createElement("div");
 
-      document.getElementById(
-        "clock"
-      ).innerText =
-        "🕒 " + time;
+  star.className="star";
 
-    }
+  star.style.left =
+    Math.random()*100+"%";
 
-    updateClock();
+  star.style.top =
+    Math.random()*100+"%";
 
-    setInterval(
-      updateClock,
-      1000
-    );
+  star.style.animationDelay =
+    Math.random()*3+"s";
+
+  star.style.opacity =
+    .2+Math.random()*.8;
+
+  stars.appendChild(star);
+}
 
 
-    /* =========================
-       GALLERY
-    ========================= */
+/* =========================
+   SHOOTING STARS
+========================= */
 
-    const slides =
-      document.querySelectorAll(
-        ".gallery-slide"
-      );
+function createShootingStar(){
 
-    let currentPhoto = 0;
+  const star =
+    document.createElement("div");
 
-    function showPhoto(index){
+  star.className="shooting-star";
 
-      slides.forEach(
-        slide =>
-          slide.classList.remove(
-            "active"
-          )
-      );
+  star.style.right =
+    (-50+Math.random()*20)+"px";
 
-      slides[index].classList.add(
-        "active"
-      );
+  star.style.top =
+    (5+Math.random()*45)+"vh";
 
-      document.getElementById(
-        "galleryCount"
-      ).innerText =
-        (index + 1) +
-        " / " +
-        slides.length;
-    }
+  document.body.appendChild(star);
 
-    function nextPhoto(){
+  setTimeout(
+    ()=>star.remove(),
+    1400
+  );
+}
 
-      currentPhoto++;
-
-      if(
-        currentPhoto >=
-        slides.length
-      ){
-        currentPhoto = 0;
-      }
-
-      showPhoto(
-        currentPhoto
-      );
-    }
-
-    function previousPhoto(){
-
-      currentPhoto--;
-
-      if(currentPhoto < 0){
-
-        currentPhoto =
-          slides.length - 1;
-
-      }
-
-      showPhoto(
-        currentPhoto
-      );
-    }
+setInterval(
+  createShootingStar,
+  6500
+);
 
 
-    /* =========================
-       FLOATING EMOJIS
-    ========================= */
+/* =========================
+   TYPING ANIMATION
+========================= */
 
-    const emojiContainer =
-      document.getElementById(
-        "emojiContainer"
-      );
+const typingText =
+  document.getElementById("typingText");
 
-    const emojis = [
-      "😍",
-      "❤️",
-      "🥰",
-      "💖",
-      "💕",
-      "💗",
-      "💓",
-      "✨"
-    ];
+const typingWords=[
+  "Gamer 🎮",
+  "Learner 💻",
+  "Dreamer ✨",
+  "Creator 🚀",
+  "Just Saikat ❤️"
+];
 
-    function createFloatingEmoji(){
+let wordIndex=0;
+let charIndex=0;
+let deleting=false;
 
-      const emoji =
-        document.createElement(
-          "div"
-        );
+function typeEffect(){
 
-      emoji.className =
-        "floating-emoji";
+  const word =
+    typingWords[wordIndex];
 
-      emoji.innerText =
-        emojis[
-          Math.floor(
-            Math.random() *
-            emojis.length
-          )
-        ];
+  if(!deleting){
 
-      const origin =
-        document.getElementById(
-          "heartOrigin"
-        );
+    typingText.textContent =
+      word.substring(0,charIndex+1);
 
-      const rect =
-        origin.getBoundingClientRect();
+    charIndex++;
 
-      emoji.style.left =
-        (
-          rect.left +
-          rect.width / 2 +
-          (Math.random()*80 - 40)
-        ) + "px";
+    if(charIndex===word.length){
 
-      emoji.style.bottom =
-        (
-          window.innerHeight -
-          rect.bottom
-        ) + "px";
-
-      emoji.style.fontSize =
-        (
-          18 +
-          Math.random()*14
-        ) + "px";
-
-      emoji.style.animationDuration =
-        (
-          4 +
-          Math.random()*3
-        ) + "s";
-
-      emojiContainer.appendChild(
-        emoji
-      );
+      deleting=true;
 
       setTimeout(
-        function(){
-          emoji.remove();
-        },
-        7000
+        typeEffect,
+        1400
       );
+
+      return;
     }
 
-    setInterval(
-      createFloatingEmoji,
-      700
+  }else{
+
+    typingText.textContent =
+      word.substring(0,charIndex-1);
+
+    charIndex--;
+
+    if(charIndex===0){
+
+      deleting=false;
+
+      wordIndex=
+        (wordIndex+1)%typingWords.length;
+
+    }
+
+  }
+
+  setTimeout(
+    typeEffect,
+    deleting ? 55 : 90
+  );
+}
+
+typeEffect();
+
+
+/* =========================
+   CLOCK
+========================= */
+
+function updateClock(){
+
+  const now =
+    new Date();
+
+  const options={
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:true
+  };
+
+  document.getElementById(
+    "clock"
+  ).innerText =
+    "🕒 "+now.toLocaleTimeString(
+      "en-IN",
+      options
     );
 
+}
 
-    /* =========================
-       THEME TOGGLE
-    ========================= */
+setInterval(
+  updateClock,
+  1000
+);
 
-    let lightMode = false;
+updateClock();
 
-    function toggleTheme(){
 
-      lightMode = !lightMode;
+/* =========================
+   COPY UID
+========================= */
 
-      if(lightMode){
+function copyUID(){
 
-        document.body.style.color =
-          "#111";
+  const uid =
+    document.getElementById(
+      "uidText"
+    ).innerText;
 
-        document.body.style.background =
-          "linear-gradient(rgba(255,255,255,.82),rgba(255,255,255,.9)),url('IMG_20260921_105205_456.webp') center/cover fixed";
+  const btn =
+    document.getElementById(
+      "copyBtn"
+    );
 
-        document.querySelectorAll(
-          ".card"
-        ).forEach(
-          card => {
+  navigator.clipboard
+    .writeText(uid)
+    .then(()=>{
 
-            card.style.background =
-              "rgba(255,255,255,.78)";
+      btn.innerText="✓ Copied!";
 
-            card.style.color =
-              "#111";
+      setTimeout(
+        ()=>{
+          btn.innerText="Copy";
+        },
+        1600
+      );
 
-          }
-        );
+    })
+    .catch(()=>{
 
-        document.querySelector(
-          ".theme-btn"
-        ).innerText =
-          "☀️";
+      btn.innerText="Copy failed";
 
-      }else{
+      setTimeout(
+        ()=>{
+          btn.innerText="Copy";
+        },
+        1600
+      );
 
-        document.body.style.color =
-          "white";
+    });
 
-        document.body.style.background =
-          "linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.88)),url('IMG_20260921_105205_456.webp') center/cover fixed";
+}
 
-        document.querySelectorAll(
-          ".card"
-        ).forEach(
-          card => {
 
-            card.style.background =
-              "rgba(10,10,10,.72)";
+/* =========================
+   GALLERY
+========================= */
 
-            card.style.color =
-              "white";
+const galleryImages=[
 
-          }
-        );
+  "IMG_20260417_144516.jpg",
+  "IMG_20260101_080151.jpg",
+  "IMG_20260105_194839.jpg",
+  "IMG_20260101_075424.jpg",
+  "IMG_20251225_204900.jpg",
+  "IMG_20251025_114536.jpg",
+  "IMG_20251025_115212_Burst01.jpg",
+  "IMG_20251025_095842.jpg",
+  "IMG_20251012_232514.jpg",
+  "IMG_20250913_204001.jpg",
+  "IMG_20250914_093723.jpg",
+  "IMG_20250827_215622.jpg",
+  "IMG_20250817_134856_278.jpg",
+  "IMG_20250813_223100.jpg",
+  "IMG_20250809_122115.jpg",
+  "IMG_20250809_121243.jpg",
+  "IMG_20250615_115801.jpg",
+  "IMG_20250614_172032.jpg"
 
-        document.querySelector(
-          ".theme-btn"
-        ).innerText =
-          "🌙";
+];
+
+let galleryIndex=0;
+
+const galleryImage =
+  document.getElementById(
+    "galleryImage"
+  );
+
+const galleryCounter =
+  document.getElementById(
+    "galleryCounter"
+  );
+
+function showGalleryImage(
+  index
+){
+
+  galleryIndex =
+    (index+galleryImages.length)
+    %galleryImages.length;
+
+  galleryImage.classList.add(
+    "fade"
+  );
+
+  setTimeout(()=>{
+
+    galleryImage.src =
+      galleryImages[galleryIndex];
+
+    galleryCounter.innerText =
+      `${galleryIndex+1} / ${galleryImages.length}`;
+
+    galleryImage.classList.remove(
+      "fade"
+    );
+
+  },180);
+
+}
+
+function nextImage(){
+  showGalleryImage(
+    galleryIndex+1
+  );
+}
+
+function previousImage(){
+  showGalleryImage(
+    galleryIndex-1
+  );
+}
+
+
+/* =========================
+   GALLERY FULLSCREEN
+========================= */
+
+function openGallery(){
+
+  document.getElementById(
+    "modalImage"
+  ).src =
+    galleryImages[galleryIndex];
+
+  document.getElementById(
+    "galleryModal"
+  ).classList.add("show");
+
+  document.body.style.overflow="hidden";
+}
+
+function closeGallery(){
+
+  document.getElementById(
+    "galleryModal"
+  ).classList.remove("show");
+
+  document.body.style.overflow="";
+}
+
+document
+  .getElementById("galleryModal")
+  .addEventListener(
+    "click",
+    function(e){
+
+      if(e.target===this){
+        closeGallery();
       }
+
+    }
+  );
+
+
+/* =========================
+   KEYBOARD GALLERY
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(
+      document
+        .getElementById("galleryModal")
+        .classList.contains("show")
+    ){
+
+      if(e.key==="Escape"){
+        closeGallery();
+      }
+
+      if(e.key==="ArrowRight"){
+        nextImage();
+
+        document.getElementById(
+          "modalImage"
+        ).src =
+          galleryImages[galleryIndex];
+      }
+
+      if(e.key==="ArrowLeft"){
+        previousImage();
+
+        document.getElementById(
+          "modalImage"
+        ).src =
+          galleryImages[galleryIndex];
+      }
+
     }
 
-  </script>
+  }
+);
+
+
+/* =========================
+   SWIPE
+========================= */
+
+let touchStartX=0;
+
+galleryImage.addEventListener(
+  "touchstart",
+  function(e){
+    touchStartX =
+      e.changedTouches[0].screenX;
+  },
+  {passive:true}
+);
+
+galleryImage.addEventListener(
+  "touchend",
+  function(e){
+
+    const touchEndX =
+      e.changedTouches[0].screenX;
+
+    const difference =
+      touchEndX-touchStartX;
+
+    if(Math.abs(difference)<50){
+      return;
+    }
+
+    if(difference<0){
+      nextImage();
+    }else{
+      previousImage();
+    }
+
+  },
+  {passive:true}
+);
+
+
+/* =========================
+   FLOATING EMOJIS
+========================= */
+
+const emojiContainer =
+  document.getElementById(
+    "emojiContainer"
+  );
+
+const emojis=[
+  "😍",
+  "❤️",
+  "🥰",
+  "💖",
+  "💕",
+  "💗",
+  "💓",
+  "✨"
+];
+
+function createFloatingEmoji(){
+
+  const origin =
+    document.getElementById(
+      "heartOrigin"
+    );
+
+  if(!origin)return;
+
+  const rect =
+    origin.getBoundingClientRect();
+
+  if(
+    rect.bottom<0 ||
+    rect.top>window.innerHeight
+  ){
+    return;
+  }
+
+  const emoji =
+    document.createElement("div");
+
+  emoji.className=
+    "floating-emoji";
+
+  emoji.innerText=
+    emojis[
+      Math.floor(
+        Math.random()*emojis.length
+      )
+    ];
+
+  emoji.style.left=
+    (
+      rect.left+
+      rect.width/2+
+      (Math.random()*80-40)
+    )+"px";
+
+  emoji.style.bottom=
+    (
+      window.innerHeight-
+      rect.bottom
+    )+"px";
+
+  emoji.style.fontSize=
+    (18+Math.random()*14)+"px";
+
+  emoji.style.animationDuration=
+    (4+Math.random()*3)+"s";
+
+  emojiContainer.appendChild(
+    emoji
+  );
+
+  setTimeout(
+    ()=>emoji.remove(),
+    7000
+  );
+
+}
+
+setInterval(
+  createFloatingEmoji,
+  700
+);
+
+
+/* =========================
+   THEME
+========================= */
+
+function toggleTheme(){
+
+  document.body.classList.toggle(
+    "light-mode"
+  );
+
+  const isLight =
+    document.body.classList.contains(
+      "light-mode"
+    );
+
+  document.getElementById(
+    "themeBtn"
+  ).innerText =
+    isLight ? "☀️" : "🌙";
+
+  localStorage.setItem(
+    "saikat_theme",
+    isLight ? "light" : "dark"
+  );
+}
+
+if(
+  localStorage.getItem(
+    "saikat_theme"
+  )==="light"
+){
+
+  document.body.classList.add(
+    "light-mode"
+  );
+
+  document.getElementById(
+    "themeBtn"
+  ).innerText="☀️";
+
+}
+
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+window.addEventListener(
+  "scroll",
+  function(){
+
+    const btn =
+      document.getElementById(
+        "topBtn"
+      );
+
+    if(window.scrollY>500){
+
+      btn.classList.add("show");
+
+    }else{
+
+      btn.classList.remove("show");
+
+    }
+
+  }
+);
+
+</script>
 
 </body>
 </html>
