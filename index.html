@@ -155,7 +155,7 @@
       text-shadow: 0 0 10px rgba(255,165,0,0.7);
     }
 
-    /* DHONGI */
+    /* DHONGI SECTION */
     #dhongi {
       position: relative;
       min-height: 300px;
@@ -225,6 +225,7 @@
       display: inline-block;
       font-size: 30px;
       margin-left: 6px;
+      cursor: default;
       animation: heartBeat 1.2s infinite;
       filter: drop-shadow(0 0 8px red);
     }
@@ -249,7 +250,7 @@
       box-shadow: 0 0 25px rgba(255,255,255,0.15);
     }
 
-    /* SOCIAL */
+    /* SOCIAL MEDIA */
     .social-links {
       display: flex;
       justify-content: center;
@@ -290,7 +291,7 @@
       font-size: 13px;
     }
 
-    /* FLOATING EMOJI */
+    /* FLOATING EMOJI LAYER */
     #emojiLayer {
       position: fixed;
       inset: 0;
@@ -332,7 +333,7 @@
       }
     }
 
-    /* ANIMATION */
+    /* FADE ANIMATION */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -543,14 +544,6 @@
       <h2>🌟 My Dreams</h2>
 
       <p class="dream">
-        🎥 Become a YouTuber
-      </p>
-
-      <p class="dream">
-        🍽️ Build my own restaurant — Chanchala
-      </p>
-
-      <p class="dream">
         💻 Learn coding and build something of my own
       </p>
 
@@ -611,6 +604,8 @@
         ];
 
 
+      /* Start from the ❤️ */
+
       const startX =
         heartPosition.left +
         (heartPosition.width / 2);
@@ -626,6 +621,8 @@
       emoji.style.top =
         startY + "px";
 
+
+      /* Move upward */
 
       const moveX =
         (Math.random() * 240 - 120) + "px";
@@ -654,6 +651,8 @@
 
     }
 
+
+    /* Create emojis continuously */
 
     setInterval(
       createFloatingEmoji,
