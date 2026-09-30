@@ -44,22 +44,34 @@
   content="IMG_20250630_110659.jpg"
 >
 
-<title>
-  Saikat Manna | Mini World 🌎
-</title>
-
+<title>Saikat Manna | Mini World 🌎</title>
 
 <style>
 
-/* =========================
+/* =====================================================
    RESET
-========================= */
+===================================================== */
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  width:100%;
+  min-width:100%;
+  overflow-x:hidden;
   scroll-behavior:smooth;
+  scroll-padding-top:20px;
+}
+
+body{
+  width:100%;
+  min-width:100%;
+  margin:0;
+  overflow-x:hidden;
 }
 
 :root{
@@ -83,34 +95,9 @@
   --border:rgba(255,255,255,.12);
 
   --shadow:
-    0 15px 45px rgba(0,0,0,.3);
-}
+    0 15px 45px rgba(0,0,0,.30);
 
-
-/* =========================
-   PAGE BASE
-========================= */
-
-html,
-body{
-
-  width:100%;
-  min-width:100%;
-  max-width:100%;
-
-  /*
-    IMPORTANT:
-    zoom:1 removed.
-    It was causing browser zoom/layout
-    behaviour to fight with the page.
-  */
-
-  transform:none;
-
-}
-
-html{
-  overflow-x:hidden;
+  --ease:cubic-bezier(.2,.8,.2,1);
 }
 
 body{
@@ -132,18 +119,17 @@ body{
 
   min-height:100vh;
 
-  overflow-x:hidden;
-
   transition:
-    background .5s,
-    color .3s;
+    background .5s ease,
+    color .3s ease;
 
+  overscroll-behavior-x:none;
 }
 
 
-/* =========================
+/* =====================================================
    LIGHT MODE
-========================= */
+===================================================== */
 
 body.light-mode{
 
@@ -156,7 +142,7 @@ body.light-mode{
   --text:#111827;
   --muted:#4b5563;
 
-  --border:rgba(0,0,0,.1);
+  --border:rgba(0,0,0,.10);
 
   background:
     linear-gradient(
@@ -165,44 +151,35 @@ body.light-mode{
     ),
     url("IMG_20260921_105205_456.webp")
     center/cover fixed;
-
 }
 
 
-/* =========================
+/* =====================================================
    LOADER
-========================= */
+===================================================== */
 
 #loader{
 
   position:fixed;
-
   inset:0;
-
   z-index:99999;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   flex-direction:column;
 
   background:#02030a;
 
   transition:
-    opacity .8s,
-    visibility .8s;
-
+    opacity .8s ease,
+    visibility .8s ease;
 }
 
 #loader.hide{
-
   opacity:0;
-
   visibility:hidden;
-
+  pointer-events:none;
 }
 
 .loader-ring{
@@ -215,7 +192,6 @@ body.light-mode{
     rgba(0,234,255,.12);
 
   border-top-color:var(--cyan);
-
   border-right-color:var(--pink);
 
   border-radius:50%;
@@ -226,12 +202,13 @@ body.light-mode{
   box-shadow:
     0 0 30px
     rgba(0,234,255,.4);
-
 }
 
 .loader-text{
 
   margin-top:22px;
+
+  padding:0 20px;
 
   font-size:13px;
 
@@ -244,7 +221,6 @@ body.light-mode{
   text-shadow:
     0 0 12px
     var(--cyan);
-
 }
 
 .loader-sub{
@@ -254,26 +230,22 @@ body.light-mode{
   color:#8991a6;
 
   font-size:11px;
-
 }
 
 @keyframes spin{
-
   to{
     transform:rotate(360deg);
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    STARS
-========================= */
+===================================================== */
 
 #stars{
 
   position:fixed;
-
   inset:0;
 
   z-index:-1;
@@ -281,7 +253,6 @@ body.light-mode{
   pointer-events:none;
 
   overflow:hidden;
-
 }
 
 .star{
@@ -299,33 +270,25 @@ body.light-mode{
 
   animation:
     twinkle 2s infinite alternate;
-
 }
 
 @keyframes twinkle{
 
   from{
-
     opacity:.15;
-
     transform:scale(.7);
-
   }
 
   to{
-
     opacity:1;
-
     transform:scale(1.5);
-
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    SHOOTING STAR
-========================= */
+===================================================== */
 
 .shooting-star{
 
@@ -350,19 +313,15 @@ body.light-mode{
     shoot 1.3s linear forwards;
 
   pointer-events:none;
-
 }
 
 @keyframes shoot{
 
   0%{
-
     opacity:0;
-
     transform:
       translate(0,0)
       rotate(-35deg);
-
   }
 
   15%{
@@ -370,32 +329,26 @@ body.light-mode{
   }
 
   100%{
-
     opacity:0;
-
     transform:
       translate(-400px,300px)
       rotate(-35deg);
-
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    TOP NAV
-========================= */
+===================================================== */
 
 nav{
 
   position:sticky;
-
   top:0;
 
   z-index:5000;
 
   backdrop-filter:blur(20px);
-
   -webkit-backdrop-filter:blur(20px);
 
   background:
@@ -403,17 +356,15 @@ nav{
 
   border-bottom:
     1px solid
-    rgba(255,255,255,.1);
+    rgba(255,255,255,.10);
 
-  padding:12px 10px;
-
+  padding:
+    10px;
 }
 
 body.light-mode nav{
-
   background:
     rgba(255,255,255,.76);
-
 }
 
 .nav-inner{
@@ -431,7 +382,6 @@ body.light-mode nav{
   overflow-x:auto;
 
   scrollbar-width:none;
-
 }
 
 .nav-inner::-webkit-scrollbar{
@@ -444,7 +394,8 @@ nav a{
 
   text-decoration:none;
 
-  padding:9px 13px;
+  padding:
+    9px 13px;
 
   border-radius:30px;
 
@@ -456,15 +407,16 @@ nav a{
     1px solid
     transparent;
 
-  transition:.3s;
-
+  transition:
+    .25s var(--ease);
 }
 
 body.light-mode nav a{
   color:#111;
 }
 
-nav a:hover{
+nav a:hover,
+nav a.active{
 
   border-color:
     var(--cyan);
@@ -478,17 +430,19 @@ nav a:hover{
 }
 
 
-/* =========================
+/* =====================================================
    STATUS
-========================= */
+===================================================== */
 
 .app-status{
 
   width:min(1100px,92%);
 
-  margin:16px auto 0;
+  margin:
+    16px auto 0;
 
-  padding:10px 14px;
+  padding:
+    10px 14px;
 
   border:
     1px solid
@@ -510,13 +464,14 @@ nav a:hover{
   color:var(--muted);
 
   font-size:12px;
-
 }
 
 .status-dot{
 
   width:7px;
   height:7px;
+
+  flex:none;
 
   background:
     var(--green);
@@ -529,38 +484,32 @@ nav a:hover{
 
   animation:
     pulse 1.7s infinite;
-
 }
 
 @keyframes pulse{
 
   50%{
-
     transform:scale(1.35);
-
     opacity:.5;
-
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    MAIN
-========================= */
+===================================================== */
 
 .container{
 
   width:min(1100px,92%);
 
   margin:auto;
-
 }
 
 
-/* =========================
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
 
@@ -576,37 +525,27 @@ nav a:hover{
 
   position:relative;
 
-  padding:70px 0 50px;
-
+  padding:
+    70px 0 50px;
 }
 
 .hero-content{
 
   animation:
-    heroIn 1.2s ease;
-
+    heroIn 1.2s var(--ease);
 }
 
 @keyframes heroIn{
 
   from{
-
     opacity:0;
-
-    transform:
-      translateY(35px);
-
+    transform:translateY(35px);
   }
 
   to{
-
     opacity:1;
-
-    transform:
-      translateY(0);
-
+    transform:translateY(0);
   }
-
 }
 
 .profile-wrap{
@@ -614,11 +553,9 @@ nav a:hover{
   position:relative;
 
   width:160px;
-
   height:160px;
 
   margin:auto;
-
 }
 
 .profile-ring{
@@ -645,15 +582,12 @@ nav a:hover{
       0 0 15px
       rgba(0,234,255,.5)
     );
-
 }
 
 @keyframes rotateRing{
-
   to{
     transform:rotate(360deg);
   }
-
 }
 
 .profile-img{
@@ -672,7 +606,6 @@ nav a:hover{
     #05060b;
 
   z-index:2;
-
 }
 
 .profile-online{
@@ -680,7 +613,6 @@ nav a:hover{
   position:absolute;
 
   right:4px;
-
   bottom:8px;
 
   width:22px;
@@ -695,9 +627,7 @@ nav a:hover{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
-
 }
 
 .profile-online::after{
@@ -715,7 +645,6 @@ nav a:hover{
   box-shadow:
     0 0 12px
     var(--green);
-
 }
 
 .hero h1{
@@ -737,12 +666,12 @@ nav a:hover{
   background-size:250%;
 
   -webkit-background-clip:text;
+  background-clip:text;
 
   color:transparent;
 
   animation:
     textFlow 5s linear infinite;
-
 }
 
 @keyframes textFlow{
@@ -750,7 +679,6 @@ nav a:hover{
   to{
     background-position:250%;
   }
-
 }
 
 .hero-sub{
@@ -760,31 +688,29 @@ nav a:hover{
   color:var(--muted);
 
   font-size:18px;
-
 }
 
 .typing{
 
-  color:
-    var(--cyan);
+  color:var(--cyan);
 
   font-weight:bold;
 
   text-shadow:
     0 0 12px
     rgba(0,234,255,.6);
-
 }
 
 .clock{
 
-  margin:25px auto 0;
+  margin:
+    25px auto 0;
 
   width:max-content;
-
   max-width:90%;
 
-  padding:10px 20px;
+  padding:
+    10px 20px;
 
   border:
     1px solid
@@ -801,7 +727,6 @@ nav a:hover{
   box-shadow:
     0 0 20px
     rgba(0,234,255,.1);
-
 }
 
 .hero-actions{
@@ -815,16 +740,20 @@ nav a:hover{
   gap:10px;
 
   flex-wrap:wrap;
-
 }
 
 .hero-action{
+
+  position:relative;
+
+  overflow:hidden;
 
   text-decoration:none;
 
   color:#fff;
 
-  padding:11px 17px;
+  padding:
+    11px 17px;
 
   border-radius:25px;
 
@@ -835,9 +764,10 @@ nav a:hover{
   background:
     rgba(255,255,255,.055);
 
-  transition:.3s;
-
-  font-size:13px;
+  transition:
+    transform .25s var(--ease),
+    border-color .25s ease,
+    box-shadow .25s ease;
 
 }
 
@@ -852,7 +782,6 @@ nav a:hover{
 
   border-color:
     rgba(0,234,255,.4);
-
 }
 
 .hero-action:hover{
@@ -866,21 +795,26 @@ nav a:hover{
   box-shadow:
     0 0 20px
     rgba(0,234,255,.18);
+}
 
+.hero-action:active{
+  transform:scale(.96);
 }
 
 
-/* =========================
+/* =====================================================
    CARDS
-========================= */
+===================================================== */
 
 .card{
 
   position:relative;
 
-  margin:25px 0;
+  margin:
+    25px 0;
 
-  padding:32px;
+  padding:
+    32px;
 
   border-radius:25px;
 
@@ -903,10 +837,20 @@ nav a:hover{
   overflow:hidden;
 
   transition:
-    transform .35s,
-    border-color .35s,
-    background .35s;
+    transform .35s var(--ease),
+    border-color .35s ease,
+    background .35s ease;
 
+  opacity:0;
+  transform:translateY(28px);
+}
+
+.card.revealed{
+
+  opacity:1;
+
+  transform:
+    translateY(0);
 }
 
 .card::before{
@@ -931,7 +875,6 @@ nav a:hover{
 
   animation:
     cardLine 7s linear infinite;
-
 }
 
 @keyframes cardLine{
@@ -943,7 +886,6 @@ nav a:hover{
   100%{
     left:130%;
   }
-
 }
 
 .card:hover{
@@ -953,7 +895,11 @@ nav a:hover{
 
   border-color:
     rgba(0,234,255,.22);
+}
 
+.card.revealed:hover{
+  transform:
+    translateY(-3px);
 }
 
 .card h2{
@@ -967,7 +913,6 @@ nav a:hover{
   text-shadow:
     0 0 15px
     rgba(0,234,255,.25);
-
 }
 
 .card p{
@@ -978,13 +923,12 @@ nav a:hover{
   line-height:1.8;
 
   text-align:center;
-
 }
 
 
-/* =========================
+/* =====================================================
    ABOUT
-========================= */
+===================================================== */
 
 .about-text{
 
@@ -993,7 +937,6 @@ nav a:hover{
   margin:auto;
 
   font-size:17px;
-
 }
 
 .about-stats{
@@ -1007,15 +950,16 @@ nav a:hover{
 
   max-width:700px;
 
-  margin:25px auto 0;
-
+  margin:
+    25px auto 0;
 }
 
 .about-stat{
 
   text-align:center;
 
-  padding:17px 10px;
+  padding:
+    17px 10px;
 
   border-radius:17px;
 
@@ -1026,6 +970,18 @@ nav a:hover{
     1px solid
     rgba(255,255,255,.07);
 
+  transition:
+    transform .25s var(--ease),
+    border-color .25s ease;
+}
+
+.about-stat:hover{
+
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(0,234,255,.25);
 }
 
 body.light-mode .about-stat,
@@ -1038,7 +994,6 @@ body.light-mode .quick-item{
 
   border-color:
     rgba(0,0,0,.08);
-
 }
 
 .about-stat strong{
@@ -1051,7 +1006,6 @@ body.light-mode .quick-item{
     var(--cyan);
 
   margin-bottom:5px;
-
 }
 
 .about-stat span{
@@ -1060,13 +1014,12 @@ body.light-mode .quick-item{
     var(--muted);
 
   font-size:11px;
-
 }
 
 
-/* =========================
+/* =====================================================
    BGMI
-========================= */
+===================================================== */
 
 .bgmi-card{
 
@@ -1076,7 +1029,6 @@ body.light-mode .quick-item{
   box-shadow:
     0 0 35px
     rgba(255,138,0,.08);
-
 }
 
 .bgmi-name{
@@ -1087,7 +1039,8 @@ body.light-mode .quick-item{
 
   font-weight:bold;
 
-  margin:10px 0 20px;
+  margin:
+    10px 0 20px;
 
   color:
     var(--text);
@@ -1095,7 +1048,6 @@ body.light-mode .quick-item{
   text-shadow:
     0 0 15px
     rgba(255,255,255,.3);
-
 }
 
 .bgmi-info{
@@ -1109,8 +1061,8 @@ body.light-mode .quick-item{
 
   max-width:650px;
 
-  margin:20px auto;
-
+  margin:
+    20px auto;
 }
 
 .info-box{
@@ -1127,7 +1079,6 @@ body.light-mode .quick-item{
   border:
     1px solid
     rgba(255,138,0,.15);
-
 }
 
 .info-label{
@@ -1142,7 +1093,6 @@ body.light-mode .quick-item{
   margin-bottom:8px;
 
   letter-spacing:1px;
-
 }
 
 .info-value{
@@ -1150,7 +1100,6 @@ body.light-mode .quick-item{
   font-size:17px;
 
   font-weight:bold;
-
 }
 
 .uid-row{
@@ -1164,7 +1113,6 @@ body.light-mode .quick-item{
   gap:10px;
 
   flex-wrap:wrap;
-
 }
 
 .copy-btn{
@@ -1179,14 +1127,14 @@ body.light-mode .quick-item{
   color:
     var(--cyan);
 
-  padding:8px 14px;
+  padding:
+    8px 14px;
 
   border-radius:20px;
 
   cursor:pointer;
 
-  transition:.3s;
-
+  transition:.25s var(--ease);
 }
 
 .copy-btn:hover{
@@ -1199,7 +1147,10 @@ body.light-mode .quick-item{
   box-shadow:
     0 0 18px
     rgba(0,234,255,.4);
+}
 
+.copy-btn:active{
+  transform:scale(.92);
 }
 
 .tag-top{
@@ -1218,13 +1169,12 @@ body.light-mode .quick-item{
   text-shadow:
     0 0 12px
     rgba(255,138,0,.8);
-
 }
 
 
-/* =========================
+/* =====================================================
    DHONGI
-========================= */
+===================================================== */
 
 .dhongi-section{
 
@@ -1250,7 +1200,6 @@ body.light-mode .quick-item{
       rgba(255,50,130,.16),
     inset 0 0 35px
       rgba(255,50,130,.08);
-
 }
 
 body.light-mode .dhongi-section{
@@ -1261,7 +1210,6 @@ body.light-mode .dhongi-section{
       rgba(255,70,130,.12),
       rgba(255,255,255,.88)
     );
-
 }
 
 .dhongi-content{
@@ -1271,7 +1219,6 @@ body.light-mode .dhongi-section{
   z-index:3;
 
   text-align:center;
-
 }
 
 .dhongi-content h2{
@@ -1286,7 +1233,6 @@ body.light-mode .dhongi-section{
 
   animation:
     dhongiGlow 2.5s infinite alternate;
-
 }
 
 @keyframes dhongiGlow{
@@ -1297,7 +1243,6 @@ body.light-mode .dhongi-section{
       0 0 8px #ff4f91,
       0 0 18px
       rgba(255,79,145,.4);
-
   }
 
   to{
@@ -1306,9 +1251,7 @@ body.light-mode .dhongi-section{
       0 0 15px #ff4f91,
       0 0 35px
       rgba(255,79,145,.8);
-
   }
-
 }
 
 .dhongi-photo-frame{
@@ -1335,7 +1278,6 @@ body.light-mode .dhongi-section{
       rgba(255,79,145,.25),
     0 0 45px
       rgba(0,234,255,.12);
-
 }
 
 .dhongi-photo-frame img{
@@ -1353,7 +1295,6 @@ body.light-mode .dhongi-section{
   border-radius:16px;
 
   background:#050505;
-
 }
 
 .dhongi-content p{
@@ -1363,7 +1304,6 @@ body.light-mode .dhongi-section{
   font-weight:bold;
 
   color:#fff;
-
 }
 
 .heart-origin{
@@ -1380,7 +1320,6 @@ body.light-mode .dhongi-section{
     0 0 12px #ff3b6b,
     0 0 25px
     rgba(255,59,107,.7);
-
 }
 
 .dhongi-special{
@@ -1392,13 +1331,12 @@ body.light-mode .dhongi-section{
   font-weight:normal!important;
 
   color:#ffc4d9!important;
-
 }
 
 
-/* =========================
+/* =====================================================
    FAVOURITE PIC
-========================= */
+===================================================== */
 
 .fav-photo-wrap{
 
@@ -1421,7 +1359,6 @@ body.light-mode .dhongi-section{
   box-shadow:
     0 0 30px
     rgba(0,234,255,.12);
-
 }
 
 .fav-photo-wrap img{
@@ -1437,18 +1374,15 @@ body.light-mode .dhongi-section{
   background:#000;
 
   border-radius:17px;
-
 }
 
 
-/* =========================
+/* =====================================================
    GALLERY
-========================= */
+===================================================== */
 
 .gallery-card{
-
   overflow:hidden;
-
 }
 
 .gallery-view{
@@ -1458,7 +1392,6 @@ body.light-mode .dhongi-section{
   max-width:800px;
 
   margin:auto;
-
 }
 
 .gallery-image-box{
@@ -1487,7 +1420,6 @@ body.light-mode .dhongi-section{
   position:relative;
 
   touch-action:pan-y;
-
 }
 
 .gallery-image-box::after{
@@ -1497,7 +1429,6 @@ body.light-mode .dhongi-section{
   position:absolute;
 
   right:14px;
-
   top:14px;
 
   width:38px;
@@ -1508,7 +1439,6 @@ body.light-mode .dhongi-section{
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   background:
@@ -1519,25 +1449,22 @@ body.light-mode .dhongi-section{
   opacity:.8;
 
   pointer-events:none;
-
 }
 
 .gallery-image{
 
   width:100%;
-
   height:420px;
 
   object-fit:contain;
 
   transition:
-    opacity .25s,
-    transform .35s;
+    opacity .25s ease,
+    transform .35s var(--ease);
 
   user-select:none;
 
   -webkit-user-drag:none;
-
 }
 
 .gallery-image.fade{
@@ -1546,7 +1473,6 @@ body.light-mode .dhongi-section{
 
   transform:
     scale(.97);
-
 }
 
 .gallery-controls{
@@ -1558,7 +1484,6 @@ body.light-mode .dhongi-section{
   gap:14px;
 
   margin-top:18px;
-
 }
 
 .gallery-btn{
@@ -1582,8 +1507,7 @@ body.light-mode .dhongi-section{
 
   cursor:pointer;
 
-  transition:.3s;
-
+  transition:.25s var(--ease);
 }
 
 .gallery-btn:hover{
@@ -1596,14 +1520,12 @@ body.light-mode .dhongi-section{
   box-shadow:
     0 0 20px
     rgba(0,234,255,.45);
-
 }
 
 .gallery-btn:active{
 
   transform:
-    scale(.92);
-
+    scale(.90);
 }
 
 .gallery-counter{
@@ -1616,7 +1538,6 @@ body.light-mode .dhongi-section{
     var(--muted);
 
   font-size:13px;
-
 }
 
 .gallery-hint{
@@ -1624,13 +1545,12 @@ body.light-mode .dhongi-section{
   margin-top:12px;
 
   font-size:12px!important;
-
 }
 
 
-/* =========================
+/* =====================================================
    FULLSCREEN MODAL
-========================= */
+===================================================== */
 
 #galleryModal{
 
@@ -1646,19 +1566,15 @@ body.light-mode .dhongi-section{
   display:none;
 
   align-items:center;
-
   justify-content:center;
 
   padding:25px;
 
   touch-action:none;
-
 }
 
 #galleryModal.show{
-
   display:flex;
-
 }
 
 .modal-img{
@@ -1675,6 +1591,8 @@ body.light-mode .dhongi-section{
 
   -webkit-user-drag:none;
 
+  transition:
+    transform .25s ease;
 }
 
 .modal-close{
@@ -1682,10 +1600,10 @@ body.light-mode .dhongi-section{
   position:absolute;
 
   top:
-    max(20px, env(safe-area-inset-top));
+    max(20px,env(safe-area-inset-top));
 
   right:
-    max(20px, env(safe-area-inset-right));
+    max(20px,env(safe-area-inset-right));
 
   width:45px;
   height:45px;
@@ -1706,12 +1624,17 @@ body.light-mode .dhongi-section{
 
   z-index:2;
 
+  transition:.2s ease;
+}
+
+.modal-close:active{
+  transform:scale(.88);
 }
 
 
-/* =========================
+/* =====================================================
    SOCIAL
-========================= */
+===================================================== */
 
 .social-grid{
 
@@ -1721,10 +1644,13 @@ body.light-mode .dhongi-section{
     repeat(4,1fr);
 
   gap:14px;
-
 }
 
 .social-btn{
+
+  position:relative;
+
+  overflow:hidden;
 
   display:flex;
 
@@ -1749,8 +1675,10 @@ body.light-mode .dhongi-section{
   background:
     rgba(255,255,255,.04);
 
-  transition:.3s;
-
+  transition:
+    transform .25s var(--ease),
+    box-shadow .25s ease,
+    border-color .25s ease;
 }
 
 .social-btn:hover{
@@ -1761,45 +1689,36 @@ body.light-mode .dhongi-section{
   box-shadow:
     0 0 25px
     rgba(255,255,255,.15);
+}
 
+.social-btn:active{
+  transform:scale(.96);
 }
 
 .instagram:hover{
-
   border-color:#ff4f91;
-
   color:#ff78ab;
-
 }
 
 .facebook:hover{
-
   border-color:#3b82f6;
-
   color:#60a5fa;
-
 }
 
 .youtube:hover{
-
   border-color:#ff3333;
-
   color:#ff5555;
-
 }
 
 .github:hover{
-
   border-color:#aaa;
-
   color:#fff;
-
 }
 
 
-/* =========================
+/* =====================================================
    DREAMS
-========================= */
+===================================================== */
 
 .dream-list{
 
@@ -1810,12 +1729,12 @@ body.light-mode .dhongi-section{
   display:grid;
 
   gap:14px;
-
 }
 
 .dream{
 
-  padding:18px 20px;
+  padding:
+    18px 20px;
 
   border-radius:17px;
 
@@ -1826,8 +1745,9 @@ body.light-mode .dhongi-section{
     1px solid
     rgba(255,255,255,.08);
 
-  transition:.3s;
-
+  transition:
+    transform .25s var(--ease),
+    border-color .25s ease;
 }
 
 .dream:hover{
@@ -1837,24 +1757,19 @@ body.light-mode .dhongi-section{
 
   border-color:
     var(--cyan);
-
 }
 
 
-/* =========================
+/* =====================================================
    VISITORS
-========================= */
+===================================================== */
 
 .visitor-card{
-
   text-align:center;
-
 }
 
 .visitor-welcome{
-
   margin-bottom:20px;
-
 }
 
 .visitor-box{
@@ -1862,14 +1777,14 @@ body.light-mode .dhongi-section{
   width:190px;
   height:190px;
 
-  margin:20px auto;
+  margin:
+    20px auto;
 
   border-radius:50%;
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   flex-direction:column;
@@ -1890,13 +1805,10 @@ body.light-mode .dhongi-section{
       rgba(0,234,255,.16),
     inset 0 0 25px
       rgba(0,234,255,.08);
-
 }
 
 .visitor-icon{
-
   font-size:28px;
-
 }
 
 .visitor-number{
@@ -1913,7 +1825,6 @@ body.light-mode .dhongi-section{
     rgba(0,234,255,.65);
 
   margin:4px 0;
-
 }
 
 .visitor-label{
@@ -1924,19 +1835,16 @@ body.light-mode .dhongi-section{
 
   color:
     var(--muted);
-
 }
 
 .visitor-note{
-
   font-size:14px!important;
-
 }
 
 
-/* =========================
+/* =====================================================
    QUICK MENU
-========================= */
+===================================================== */
 
 .quick-menu{
 
@@ -1946,17 +1854,21 @@ body.light-mode .dhongi-section{
     repeat(4,1fr);
 
   gap:12px;
-
 }
 
 .quick-item{
+
+  position:relative;
+
+  overflow:hidden;
 
   text-decoration:none;
 
   color:
     var(--text);
 
-  padding:18px 10px;
+  padding:
+    18px 10px;
 
   text-align:center;
 
@@ -1969,8 +1881,10 @@ body.light-mode .dhongi-section{
     1px solid
     rgba(255,255,255,.08);
 
-  transition:.3s;
-
+  transition:
+    transform .25s var(--ease),
+    border-color .25s ease,
+    box-shadow .25s ease;
 }
 
 .quick-item span{
@@ -1980,14 +1894,11 @@ body.light-mode .dhongi-section{
   font-size:25px;
 
   margin-bottom:8px;
-
 }
 
 .quick-item small{
-
   color:
     var(--muted);
-
 }
 
 .quick-item:hover{
@@ -2001,13 +1912,16 @@ body.light-mode .dhongi-section{
   box-shadow:
     0 0 20px
     rgba(0,234,255,.12);
+}
 
+.quick-item:active{
+  transform:scale(.96);
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
 
@@ -2022,7 +1936,6 @@ footer{
     var(--muted);
 
   font-size:13px;
-
 }
 
 .footer-title{
@@ -2033,20 +1946,18 @@ footer{
   font-size:18px;
 
   margin-bottom:8px;
-
 }
 
 
-/* =========================
+/* =====================================================
    THEME BUTTON
-========================= */
+===================================================== */
 
 .theme-btn{
 
   position:fixed;
 
   right:18px;
-
   bottom:78px;
 
   width:48px;
@@ -2073,6 +1984,17 @@ footer{
     0 0 18px
     rgba(0,234,255,.2);
 
+  transition:
+    transform .25s var(--ease),
+    background .3s ease;
+}
+
+.theme-btn:hover{
+  transform:rotate(15deg) scale(1.05);
+}
+
+.theme-btn:active{
+  transform:scale(.88);
 }
 
 body.light-mode .theme-btn{
@@ -2080,20 +2002,18 @@ body.light-mode .theme-btn{
   background:#fff;
 
   color:#111;
-
 }
 
 
-/* =========================
+/* =====================================================
    BACK TO TOP
-========================= */
+===================================================== */
 
 #topBtn{
 
   position:fixed;
 
   right:18px;
-
   bottom:135px;
 
   width:45px;
@@ -2121,8 +2041,8 @@ body.light-mode .theme-btn{
   transform:
     translateY(15px);
 
-  transition:.3s;
-
+  transition:
+    .3s var(--ease);
 }
 
 #topBtn.show{
@@ -2133,21 +2053,24 @@ body.light-mode .theme-btn{
 
   transform:
     translateY(0);
+}
 
+#topBtn:active{
+  transform:scale(.88);
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE NAV
-========================= */
+===================================================== */
 
 .mobile-nav{
-
   display:none;
-
 }
 
 .mobile-nav a{
+
+  position:relative;
 
   color:#9299aa;
 
@@ -2163,8 +2086,8 @@ body.light-mode .theme-btn{
 
   border-radius:13px;
 
-  transition:.25s;
-
+  transition:
+    .25s var(--ease);
 }
 
 .mobile-nav a span{
@@ -2174,7 +2097,6 @@ body.light-mode .theme-btn{
   font-size:20px;
 
   margin-bottom:3px;
-
 }
 
 .mobile-nav a.active{
@@ -2189,12 +2111,13 @@ body.light-mode .theme-btn{
     0 0 10px
     rgba(0,234,255,.5);
 
+  transform:translateY(-2px);
 }
 
 
-/* =========================
+/* =====================================================
    FLOATING EMOJIS
-========================= */
+===================================================== */
 
 #emojiContainer{
 
@@ -2207,7 +2130,6 @@ body.light-mode .theme-btn{
   z-index:1000;
 
   overflow:hidden;
-
 }
 
 .floating-emoji{
@@ -2220,7 +2142,6 @@ body.light-mode .theme-btn{
     forwards;
 
   pointer-events:none;
-
 }
 
 @keyframes floatEmoji{
@@ -2233,7 +2154,6 @@ body.light-mode .theme-btn{
       translateY(20px)
       scale(.7)
       rotate(0deg);
-
   }
 
   15%{
@@ -2248,15 +2168,43 @@ body.light-mode .theme-btn{
       translateY(-280px)
       scale(1.15)
       rotate(20deg);
-
   }
-
 }
 
 
-/* =========================
+/* =====================================================
+   RIPPLE
+===================================================== */
+
+.ripple{
+
+  position:absolute;
+
+  border-radius:50%;
+
+  transform:scale(0);
+
+  animation:
+    rippleEffect .55s ease-out;
+
+  background:
+    rgba(255,255,255,.25);
+
+  pointer-events:none;
+}
+
+@keyframes rippleEffect{
+
+  to{
+    transform:scale(4);
+    opacity:0;
+  }
+}
+
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:700px){
 
@@ -2264,13 +2212,10 @@ body.light-mode .theme-btn{
   body{
 
     width:100%;
-
     min-width:100%;
-
     max-width:100%;
 
     overflow-x:hidden;
-
   }
 
   body{
@@ -2279,13 +2224,10 @@ body.light-mode .theme-btn{
 
     background-attachment:
       scroll;
-
   }
 
   nav{
-
     display:none;
-
   }
 
   .app-status{
@@ -2293,7 +2235,6 @@ body.light-mode .theme-btn{
     width:94%;
 
     margin-top:12px;
-
   }
 
   .container{
@@ -2301,9 +2242,7 @@ body.light-mode .theme-btn{
     width:94%;
 
     margin-left:auto;
-
     margin-right:auto;
-
   }
 
   .hero{
@@ -2311,39 +2250,28 @@ body.light-mode .theme-btn{
     min-height:570px;
 
     padding-top:55px;
-
   }
 
   .profile-wrap{
 
     width:135px;
-
     height:135px;
-
   }
 
   .hero h1{
-
     font-size:39px;
-
   }
 
   .hero-sub{
-
     font-size:15px;
-
   }
 
   .hero-actions{
-
     gap:8px;
-
   }
 
   .hero-action{
-
     padding:10px 13px;
-
   }
 
   .card{
@@ -2353,12 +2281,12 @@ body.light-mode .theme-btn{
 
     border-radius:21px;
 
+    margin:
+      20px 0;
   }
 
   .card h2{
-
     font-size:24px;
-
   }
 
   .about-stats{
@@ -2367,112 +2295,81 @@ body.light-mode .theme-btn{
       1fr 1fr 1fr;
 
     gap:7px;
-
   }
 
   .about-stat{
-
     padding:
       14px 5px;
-
   }
 
   .about-stat strong{
-
     font-size:18px;
-
   }
 
   .about-stat span{
-
     font-size:9px;
-
   }
 
   .bgmi-info{
-
     grid-template-columns:1fr;
-
   }
 
   .social-grid{
-
     grid-template-columns:
       repeat(2,1fr);
-
   }
 
   .quick-menu{
-
     grid-template-columns:
       repeat(2,1fr);
-
   }
 
   .gallery-image-box{
-
     min-height:300px;
-
   }
 
   .gallery-image{
-
     height:300px;
-
   }
 
   .dhongi-section{
-
     min-height:480px;
-
   }
 
   .dhongi-photo-frame{
-
     padding:6px;
-
   }
 
   .dhongi-photo-frame img{
-
     max-height:280px;
-
   }
 
   .dhongi-content p{
-
     font-size:20px;
-
   }
 
   .visitor-box{
 
     width:170px;
-
     height:170px;
-
   }
 
   .theme-btn{
 
     right:15px;
-
     bottom:83px;
-
   }
 
   #topBtn{
 
     right:15px;
-
     bottom:140px;
-
   }
 
 
-  /* =====================
+  /* ===================================================
      MOBILE APP BAR
-  ===================== */
+  =================================================== */
 
   .mobile-nav{
 
@@ -2482,7 +2379,7 @@ body.light-mode .theme-btn{
     right:8px;
 
     bottom:
-      max(8px, env(safe-area-inset-bottom));
+      max(8px,env(safe-area-inset-bottom));
 
     height:62px;
 
@@ -2517,6 +2414,8 @@ body.light-mode .theme-btn{
       0 0 25px
         rgba(0,234,255,.05);
 
+    padding-bottom:
+      max(5px,env(safe-area-inset-bottom));
   }
 
   body.light-mode .mobile-nav{
@@ -2526,55 +2425,46 @@ body.light-mode .theme-btn{
 
     border-color:
       rgba(0,0,0,.1);
-
   }
-
 }
 
 
-/* =========================
+/* =====================================================
    SMALL PHONES
-========================= */
+===================================================== */
 
 @media(max-width:420px){
 
   .hero h1{
-
     font-size:34px;
-
   }
 
   .social-grid{
-
     grid-template-columns:
       1fr 1fr;
-
   }
 
   .social-btn{
-
     font-size:13px;
-
   }
 
   .mobile-nav a{
-
     min-width:48px;
-
   }
 
   .mobile-nav a span{
-
     font-size:18px;
-
   }
 
+  .clock{
+    font-size:13px;
+  }
 }
 
 
-/* =========================
+/* =====================================================
    REDUCED MOTION
-========================= */
+===================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2589,9 +2479,7 @@ body.light-mode .theme-btn{
     scroll-behavior:auto!important;
 
     transition-duration:.01ms!important;
-
   }
-
 }
 
 </style>
@@ -2601,9 +2489,9 @@ body.light-mode .theme-btn{
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      LOADER
-========================= -->
+===================================================== -->
 
 <div id="loader">
 
@@ -2620,52 +2508,45 @@ body.light-mode .theme-btn{
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      STARS
-========================= -->
+===================================================== -->
 
 <div id="stars"></div>
 
 
-<!-- =========================
+<!-- =====================================================
      FLOATING EMOJIS
-========================= -->
+===================================================== -->
 
 <div id="emojiContainer"></div>
 
 
-<!-- =========================
+<!-- =====================================================
      DESKTOP NAV
-========================= -->
+===================================================== -->
 
 <nav>
 
   <div class="nav-inner">
 
-    <a href="#home">Home</a>
-
-    <a href="#about">About</a>
-
-    <a href="#bgmi">BGMI</a>
-
-    <a href="#dhongi">Dhongi</a>
-
-    <a href="#gallery">Gallery</a>
-
-    <a href="#social">Social</a>
-
-    <a href="#dreams">Dreams</a>
-
-    <a href="#visitors">Visitors</a>
+    <a href="#home" data-nav="home">Home</a>
+    <a href="#about" data-nav="about">About</a>
+    <a href="#bgmi" data-nav="bgmi">BGMI</a>
+    <a href="#dhongi" data-nav="dhongi">Dhongi</a>
+    <a href="#gallery" data-nav="gallery">Gallery</a>
+    <a href="#social" data-nav="social">Social</a>
+    <a href="#dreams" data-nav="dreams">Dreams</a>
+    <a href="#visitors" data-nav="visitors">Visitors</a>
 
   </div>
 
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      STATUS
-========================= -->
+===================================================== -->
 
 <div class="app-status">
 
@@ -2681,9 +2562,9 @@ body.light-mode .theme-btn{
 <main class="container">
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <header
   class="hero"
@@ -2761,9 +2642,9 @@ body.light-mode .theme-btn{
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      QUICK ACCESS
-========================= -->
+===================================================== -->
 
 <section class="card">
 
@@ -2777,55 +2658,32 @@ body.light-mode .theme-btn{
       class="quick-item"
       href="#bgmi"
     >
-
       <span>🎮</span>
-
-      <small>
-        BGMI
-      </small>
-
+      <small>BGMI</small>
     </a>
-
 
     <a
       class="quick-item"
       href="#dhongi"
     >
-
       <span>💫</span>
-
-      <small>
-        Special
-      </small>
-
+      <small>Special</small>
     </a>
-
 
     <a
       class="quick-item"
       href="#gallery"
     >
-
       <span>📸</span>
-
-      <small>
-        Gallery
-      </small>
-
+      <small>Gallery</small>
     </a>
-
 
     <a
       class="quick-item"
       href="#social"
     >
-
       <span>🌐</span>
-
-      <small>
-        Social
-      </small>
-
+      <small>Social</small>
     </a>
 
   </div>
@@ -2833,9 +2691,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      ABOUT
-========================= -->
+===================================================== -->
 
 <section
   class="card"
@@ -2868,35 +2726,18 @@ body.light-mode .theme-btn{
   <div class="about-stats">
 
     <div class="about-stat">
-
       <strong>🎮</strong>
-
-      <span>
-        Gamer
-      </span>
-
+      <span>Gamer</span>
     </div>
 
-
     <div class="about-stat">
-
       <strong>💻</strong>
-
-      <span>
-        Learner
-      </span>
-
+      <span>Learner</span>
     </div>
 
-
     <div class="about-stat">
-
       <strong>🚀</strong>
-
-      <span>
-        Dreamer
-      </span>
-
+      <span>Dreamer</span>
     </div>
 
   </div>
@@ -2904,9 +2745,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      BGMI
-========================= -->
+===================================================== -->
 
 <section
   class="card bgmi-card"
@@ -2917,11 +2758,9 @@ body.light-mode .theme-btn{
     🎮 BGMI Profile
   </h2>
 
-
   <div class="bgmi-name">
     JaCk๛DaNieL's
   </div>
-
 
   <div class="bgmi-info">
 
@@ -2931,7 +2770,6 @@ body.light-mode .theme-btn{
         UID
       </span>
 
-
       <div class="uid-row">
 
         <span
@@ -2940,7 +2778,6 @@ body.light-mode .theme-btn{
         >
           55619352171
         </span>
-
 
         <button
           class="copy-btn"
@@ -2978,9 +2815,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      DHONGI
-========================= -->
+===================================================== -->
 
 <section
   class="card dhongi-section"
@@ -2993,7 +2830,6 @@ body.light-mode .theme-btn{
       💫 Dhongi 🎀
     </h2>
 
-
     <div class="dhongi-photo-frame">
 
       <img
@@ -3004,7 +2840,6 @@ body.light-mode .theme-btn{
       >
 
     </div>
-
 
     <p>
 
@@ -3019,11 +2854,8 @@ body.light-mode .theme-btn{
 
     </p>
 
-
     <p class="dhongi-special">
-
       Some people are simply special. ✨
-
     </p>
 
   </div>
@@ -3031,16 +2863,15 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FAVOURITE PIC
-========================= -->
+===================================================== -->
 
 <section class="card">
 
   <h2>
     ❤️ Favourite Pic
   </h2>
-
 
   <div class="fav-photo-wrap">
 
@@ -3056,9 +2887,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      GALLERY
-========================= -->
+===================================================== -->
 
 <section
   class="card gallery-card"
@@ -3069,13 +2900,11 @@ body.light-mode .theme-btn{
     Mehhh👇🎀🤭
   </h2>
 
-
   <div class="gallery-view">
 
     <div
       class="gallery-image-box"
       id="galleryImageBox"
-      onclick="handleGalleryImageClick(event)"
     >
 
       <img
@@ -3095,17 +2924,16 @@ body.light-mode .theme-btn{
 
       <button
         class="gallery-btn"
-        onclick="previousImage()"
+        id="prevGallery"
         aria-label="Previous photo"
         type="button"
       >
         ❮
       </button>
 
-
       <button
         class="gallery-btn"
-        onclick="nextImage()"
+        id="nextGallery"
         aria-label="Next photo"
         type="button"
       >
@@ -3124,9 +2952,7 @@ body.light-mode .theme-btn{
 
 
     <p class="gallery-hint">
-
       Tap the photo for fullscreen • Swipe to change ✨
-
     </p>
 
   </div>
@@ -3134,9 +2960,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SOCIAL
-========================= -->
+===================================================== -->
 
 <section
   class="card"
@@ -3146,7 +2972,6 @@ body.light-mode .theme-btn{
   <h2>
     🌐 Social Media
   </h2>
-
 
   <div class="social-grid">
 
@@ -3159,7 +2984,6 @@ body.light-mode .theme-btn{
       📸 Instagram
     </a>
 
-
     <a
       class="social-btn facebook"
       href="https://www.facebook.com/share/1SxZssLRTX/"
@@ -3169,7 +2993,6 @@ body.light-mode .theme-btn{
       👤 Facebook
     </a>
 
-
     <a
       class="social-btn youtube"
       href="https://www.youtube.com/@saikatmanna-o4d"
@@ -3178,7 +3001,6 @@ body.light-mode .theme-btn{
     >
       ▶️ YouTube
     </a>
-
 
     <a
       class="social-btn github"
@@ -3194,9 +3016,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      DREAMS
-========================= -->
+===================================================== -->
 
 <section
   class="card"
@@ -3207,13 +3029,11 @@ body.light-mode .theme-btn{
     🚀 My Dreams
   </h2>
 
-
   <div class="dream-list">
 
     <div class="dream">
       💻 Learn coding and build something of my own
     </div>
-
 
     <div class="dream">
       🚀 Keep learning, improving and moving forward
@@ -3224,9 +3044,9 @@ body.light-mode .theme-btn{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      VISITORS
-========================= -->
+===================================================== -->
 
 <section
   class="card visitor-card"
@@ -3237,20 +3057,15 @@ body.light-mode .theme-btn{
     👀 Visitors
   </h2>
 
-
   <p class="visitor-welcome">
-
     Thanks for visiting my mini world ❤️
-
   </p>
-
 
   <div class="visitor-box">
 
     <div class="visitor-icon">
       👁️
     </div>
-
 
     <div
       class="visitor-number"
@@ -3259,18 +3074,14 @@ body.light-mode .theme-btn{
       0
     </div>
 
-
     <div class="visitor-label">
       TOTAL VISITORS
     </div>
 
   </div>
 
-
   <p class="visitor-note">
-
     Every visit means something to me ✨
-
   </p>
 
 </section>
@@ -3278,9 +3089,9 @@ body.light-mode .theme-btn{
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -3295,9 +3106,9 @@ body.light-mode .theme-btn{
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      GALLERY MODAL
-========================= -->
+===================================================== -->
 
 <div
   id="galleryModal"
@@ -3308,13 +3119,12 @@ body.light-mode .theme-btn{
 
   <button
     class="modal-close"
-    onclick="closeGallery()"
+    id="modalClose"
     aria-label="Close fullscreen gallery"
     type="button"
   >
     ×
   </button>
-
 
   <img
     id="modalImage"
@@ -3327,13 +3137,12 @@ body.light-mode .theme-btn{
 </div>
 
 
-<!-- =========================
-     THEME BUTTON
-========================= -->
+<!-- =====================================================
+     THEME
+===================================================== -->
 
 <button
   class="theme-btn"
-  onclick="toggleTheme()"
   id="themeBtn"
   aria-label="Toggle theme"
   type="button"
@@ -3342,13 +3151,12 @@ body.light-mode .theme-btn{
 </button>
 
 
-<!-- =========================
+<!-- =====================================================
      BACK TO TOP
-========================= -->
+===================================================== -->
 
 <button
   id="topBtn"
-  onclick="window.scrollTo({top:0,behavior:'smooth'})"
   aria-label="Back to top"
   type="button"
 >
@@ -3356,9 +3164,9 @@ body.light-mode .theme-btn{
 </button>
 
 
-<!-- =========================
+<!-- =====================================================
      MOBILE NAV
-========================= -->
+===================================================== -->
 
 <div class="mobile-nav">
 
@@ -3367,70 +3175,50 @@ body.light-mode .theme-btn{
     class="active"
     data-section="home"
   >
-
     <span>🏠</span>
-
     Home
-
   </a>
-
 
   <a
     href="#bgmi"
     data-section="bgmi"
   >
-
     <span>🎮</span>
-
     BGMI
-
   </a>
-
 
   <a
     href="#dhongi"
     data-section="dhongi"
   >
-
     <span>💫</span>
-
     Special
-
   </a>
-
 
   <a
     href="#gallery"
     data-section="gallery"
   >
-
     <span>📸</span>
-
     Gallery
-
   </a>
-
 
   <a
     href="#social"
     data-section="social"
   >
-
     <span>🌐</span>
-
     Social
-
   </a>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      SUPABASE
-========================= -->
+===================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <script>
 
@@ -3442,7 +3230,7 @@ const SUPABASE_URL =
   "https://kxfhjuzfxehyhldtoqdr.supabase.co";
 
 const SUPABASE_KEY =
-  "sb_publishable_md-d--1yw8WSOrnQCqDNxw_DhU8S0MR";
+  "sb_publishable_md-d--1yw8WSOrnQCqDNxw_DUhU8S0MR";
 
 const supabaseClient =
   supabase.createClient(
@@ -3458,9 +3246,7 @@ const supabaseClient =
 async function updateVisitorCount(){
 
   const visitorElement =
-    document.getElementById(
-      "visitorCount"
-    );
+    document.getElementById("visitorCount");
 
   if(!visitorElement){
     return;
@@ -3480,47 +3266,37 @@ async function updateVisitorCount(){
           "increment_visitor"
         );
 
-      if(error){
-
-        console.error(
-          "Increment visitor error:",
-          error
-        );
-
-      }else{
+      if(!error){
 
         localStorage.setItem(
           "saikat_visitor_counted",
           "true"
         );
 
+      }else{
+
+        console.error(
+          "Increment visitor error:",
+          error
+        );
+
       }
 
     }
-
 
     const {data,error} =
       await supabaseClient.rpc(
         "get_visitor_count"
       );
 
-
     if(error){
-
       throw error;
-
     }
-
-
-    const number =
-      Number(data ?? 0);
-
 
     animateNumber(
       visitorElement,
-      number
+      Number(data ?? 0)
     );
-
 
   }catch(error){
 
@@ -3529,11 +3305,8 @@ async function updateVisitorCount(){
       error
     );
 
-    visitorElement.innerText =
-      "—";
-
+    visitorElement.innerText = "—";
   }
-
 }
 
 
@@ -3553,7 +3326,6 @@ function animateNumber(
   const start =
     performance.now();
 
-
   function update(time){
 
     const progress =
@@ -3562,39 +3334,27 @@ function animateNumber(
         1
       );
 
-
     current =
       Math.floor(
         progress*target
       );
 
-
     element.innerText =
       current;
 
-
     if(progress < 1){
 
-      requestAnimationFrame(
-        update
-      );
+      requestAnimationFrame(update);
 
     }else{
 
       element.innerText =
         target;
-
     }
-
   }
 
-
-  requestAnimationFrame(
-    update
-  );
-
+  requestAnimationFrame(update);
 }
-
 
 updateVisitorCount();
 
@@ -3611,16 +3371,10 @@ window.addEventListener(
       function(){
 
         const loader =
-          document.getElementById(
-            "loader"
-          );
+          document.getElementById("loader");
 
         if(loader){
-
-          loader.classList.add(
-            "hide"
-          );
-
+          loader.classList.add("hide");
         }
 
       },
@@ -3636,48 +3390,32 @@ window.addEventListener(
 ===================================================== */
 
 const stars =
-  document.getElementById(
-    "stars"
-  );
+  document.getElementById("stars");
 
+if(stars){
 
-for(
-  let i=0;
-  i<90;
-  i++
-){
+  for(let i=0;i<90;i++){
 
-  const star =
-    document.createElement(
-      "div"
-    );
+    const star =
+      document.createElement("div");
 
+    star.className = "star";
 
-  star.className =
-    "star";
+    star.style.left =
+      Math.random()*100+"%";
 
+    star.style.top =
+      Math.random()*100+"%";
 
-  star.style.left =
-    Math.random()*100+"%";
+    star.style.animationDelay =
+      Math.random()*3+"s";
 
+    star.style.opacity =
+      .2+
+      Math.random()*.8;
 
-  star.style.top =
-    Math.random()*100+"%";
-
-
-  star.style.animationDelay =
-    Math.random()*3+"s";
-
-
-  star.style.opacity =
-    .2+
-    Math.random()*.8;
-
-
-  stars.appendChild(
-    star
-  );
-
+    stars.appendChild(star);
+  }
 }
 
 
@@ -3688,29 +3426,20 @@ for(
 function createShootingStar(){
 
   const star =
-    document.createElement(
-      "div"
-    );
-
+    document.createElement("div");
 
   star.className =
     "shooting-star";
-
 
   star.style.right =
     (-50+
     Math.random()*20)+"px";
 
-
   star.style.top =
     (5+
     Math.random()*45)+"vh";
 
-
-  document.body.appendChild(
-    star
-  );
-
+  document.body.appendChild(star);
 
   setTimeout(
     ()=>{
@@ -3718,9 +3447,7 @@ function createShootingStar(){
     },
     1400
   );
-
 }
-
 
 setInterval(
   createShootingStar,
@@ -3729,14 +3456,13 @@ setInterval(
 
 
 /* =====================================================
-   TYPING ANIMATION
+   TYPING
 ===================================================== */
 
 const typingText =
   document.getElementById(
     "typingText"
   );
-
 
 const typingWords = [
 
@@ -3748,13 +3474,9 @@ const typingWords = [
 
 ];
 
-
 let wordIndex = 0;
-
 let charIndex = 0;
-
 let deleting = false;
-
 
 function typeEffect(){
 
@@ -3762,12 +3484,8 @@ function typeEffect(){
     return;
   }
 
-
   const word =
-    typingWords[
-      wordIndex
-    ];
-
+    typingWords[wordIndex];
 
   if(!deleting){
 
@@ -3777,26 +3495,18 @@ function typeEffect(){
         charIndex+1
       );
 
-
     charIndex++;
 
-
-    if(
-      charIndex ===
-      word.length
-    ){
+    if(charIndex === word.length){
 
       deleting = true;
-
 
       setTimeout(
         typeEffect,
         1400
       );
 
-
       return;
-
     }
 
   }else{
@@ -3807,34 +3517,24 @@ function typeEffect(){
         charIndex-1
       );
 
-
     charIndex--;
-
 
     if(charIndex === 0){
 
       deleting = false;
 
-
       wordIndex =
         (wordIndex+1)
         %
         typingWords.length;
-
     }
-
   }
-
 
   setTimeout(
     typeEffect,
-    deleting
-      ? 55
-      : 90
+    deleting ? 55 : 90
   );
-
 }
-
 
 typeEffect();
 
@@ -3846,49 +3546,36 @@ typeEffect();
 function updateClock(){
 
   const clock =
-    document.getElementById(
-      "clock"
-    );
-
+    document.getElementById("clock");
 
   if(!clock){
     return;
   }
 
-
   const now =
     new Date();
-
 
   const options = {
 
     hour:"2-digit",
-
     minute:"2-digit",
-
     second:"2-digit",
-
     hour12:true
 
   };
 
-
   clock.innerText =
-
     "🕒 "+
     now.toLocaleTimeString(
       "en-IN",
       options
     );
-
 }
-
 
 setInterval(
   updateClock,
   1000
 );
-
 
 updateClock();
 
@@ -3900,29 +3587,17 @@ updateClock();
 async function copyUID(){
 
   const uidElement =
-    document.getElementById(
-      "uidText"
-    );
+    document.getElementById("uidText");
 
   const btn =
-    document.getElementById(
-      "copyBtn"
-    );
+    document.getElementById("copyBtn");
 
-
-  if(
-    !uidElement ||
-    !btn
-  ){
-
+  if(!uidElement || !btn){
     return;
-
   }
-
 
   const uid =
     uidElement.innerText.trim();
-
 
   try{
 
@@ -3931,46 +3606,29 @@ async function copyUID(){
       window.isSecureContext
     ){
 
-      await navigator.clipboard.writeText(
-        uid
-      );
+      await navigator.clipboard.writeText(uid);
 
     }else{
 
       const temp =
-        document.createElement(
-          "textarea"
-        );
+        document.createElement("textarea");
 
-      temp.value =
-        uid;
+      temp.value = uid;
 
-      temp.style.position =
-        "fixed";
+      temp.style.position = "fixed";
+      temp.style.opacity = "0";
 
-      temp.style.opacity =
-        "0";
-
-      document.body.appendChild(
-        temp
-      );
+      document.body.appendChild(temp);
 
       temp.focus();
-
       temp.select();
 
-      document.execCommand(
-        "copy"
-      );
+      document.execCommand("copy");
 
       temp.remove();
-
     }
 
-
-    btn.innerText =
-      "✓ Copied!";
-
+    btn.innerText = "✓ Copied!";
 
   }catch(error){
 
@@ -3979,21 +3637,16 @@ async function copyUID(){
       error
     );
 
-
     btn.innerText =
       "Copy failed";
-
   }
-
 
   setTimeout(
     ()=>{
-      btn.innerText =
-        "Copy";
+      btn.innerText = "Copy";
     },
     1600
   );
-
 }
 
 
@@ -4024,27 +3677,22 @@ const galleryImages = [
 
 ];
 
-
 let galleryIndex = 0;
-
 
 const galleryImage =
   document.getElementById(
     "galleryImage"
   );
 
-
 const galleryCounter =
   document.getElementById(
     "galleryCounter"
   );
 
-
 const galleryModal =
   document.getElementById(
     "galleryModal"
   );
-
 
 const modalImage =
   document.getElementById(
@@ -4052,7 +3700,7 @@ const modalImage =
   );
 
 
-/* PRELOAD FIRST FEW IMAGES */
+/* PRELOAD */
 
 function preloadGalleryImages(){
 
@@ -4064,22 +3712,18 @@ function preloadGalleryImages(){
         const img =
           new Image();
 
-        img.src =
-          src;
-
+        img.src = src;
       }
     );
-
 }
 
 preloadGalleryImages();
 
 
-/* SHOW IMAGE */
+/* SHOW */
 
 function showGalleryImage(
-  index,
-  openFullscreen = false
+  index
 ){
 
   galleryIndex =
@@ -4090,104 +3734,58 @@ function showGalleryImage(
     %
     galleryImages.length;
 
-
   if(!galleryImage){
     return;
   }
 
-
-  galleryImage.classList.add(
-    "fade"
-  );
-
+  galleryImage.classList.add("fade");
 
   setTimeout(
     ()=>{
 
       galleryImage.src =
-        galleryImages[
-          galleryIndex
-        ];
-
+        galleryImages[galleryIndex];
 
       galleryImage.alt =
         "Gallery photo "+
         (galleryIndex+1);
 
-
       if(galleryCounter){
 
         galleryCounter.innerText =
           `${galleryIndex+1} / ${galleryImages.length}`;
-
       }
 
+      galleryImage.classList.remove("fade");
 
-      galleryImage.classList.remove(
-        "fade"
-      );
-
-
-      if(openFullscreen){
-
+      if(
+        galleryModal &&
+        galleryModal.classList.contains("show")
+      ){
         updateModalImage();
-
       }
 
     },
-    180
+    160
   );
-
 }
 
-
-/* NEXT */
 
 function nextImage(){
 
   showGalleryImage(
     galleryIndex+1
   );
-
-
-  if(
-    galleryModal &&
-    galleryModal.classList.contains(
-      "show"
-    )
-  ){
-
-    updateModalImage();
-
-  }
-
 }
 
-
-/* PREVIOUS */
 
 function previousImage(){
 
   showGalleryImage(
     galleryIndex-1
   );
-
-
-  if(
-    galleryModal &&
-    galleryModal.classList.contains(
-      "show"
-    )
-  ){
-
-    updateModalImage();
-
-  }
-
 }
 
-
-/* MODAL IMAGE */
 
 function updateModalImage(){
 
@@ -4195,21 +3793,14 @@ function updateModalImage(){
     return;
   }
 
-
   modalImage.src =
-    galleryImages[
-      galleryIndex
-    ];
-
+    galleryImages[galleryIndex];
 
   modalImage.alt =
     "Fullscreen gallery photo "+
     (galleryIndex+1);
-
 }
 
-
-/* OPEN */
 
 function openGallery(){
 
@@ -4217,22 +3808,14 @@ function openGallery(){
     return;
   }
 
-
   updateModalImage();
 
-
-  galleryModal.classList.add(
-    "show"
-  );
-
+  galleryModal.classList.add("show");
 
   document.body.style.overflow =
     "hidden";
-
 }
 
-
-/* CLOSE */
 
 function closeGallery(){
 
@@ -4240,45 +3823,78 @@ function closeGallery(){
     return;
   }
 
-
-  galleryModal.classList.remove(
-    "show"
-  );
-
+  galleryModal.classList.remove("show");
 
   document.body.style.overflow =
     "";
-
 }
 
 
-/* IMAGE CLICK */
+/* Gallery controls */
 
-function handleGalleryImageClick(event){
+const prevGallery =
+  document.getElementById(
+    "prevGallery"
+  );
 
-  /*
-    Prevent accidental fullscreen
-    after a swipe.
-  */
+const nextGallery =
+  document.getElementById(
+    "nextGallery"
+  );
 
-  if(
-    window.galleryWasSwiped
-  ){
+if(prevGallery){
 
-    window.galleryWasSwiped =
-      false;
+  prevGallery.addEventListener(
+    "click",
+    previousImage
+  );
+}
 
-    return;
+if(nextGallery){
 
-  }
-
-
-  openGallery();
-
+  nextGallery.addEventListener(
+    "click",
+    nextImage
+  );
 }
 
 
-/* MODAL BACKGROUND CLICK */
+/* Gallery image */
+
+if(galleryImage){
+
+  galleryImage.addEventListener(
+    "click",
+    function(){
+
+      if(window.galleryWasSwiped){
+
+        window.galleryWasSwiped =
+          false;
+
+        return;
+      }
+
+      openGallery();
+    }
+  );
+}
+
+
+/* Modal */
+
+const modalClose =
+  document.getElementById(
+    "modalClose"
+  );
+
+if(modalClose){
+
+  modalClose.addEventListener(
+    "click",
+    closeGallery
+  );
+}
 
 if(galleryModal){
 
@@ -4286,22 +3902,16 @@ if(galleryModal){
     "click",
     function(e){
 
-      if(
-        e.target ===
-        galleryModal
-      ){
+      if(e.target === galleryModal){
 
         closeGallery();
-
       }
-
     }
   );
-
 }
 
 
-/* KEYBOARD */
+/* Keyboard */
 
 document.addEventListener(
   "keydown",
@@ -4309,51 +3919,22 @@ document.addEventListener(
 
     if(
       !galleryModal ||
-      !galleryModal.classList.contains(
-        "show"
-      )
+      !galleryModal.classList.contains("show")
     ){
-
       return;
-
     }
-
 
     if(e.key === "Escape"){
-
       closeGallery();
-
     }
-
 
     if(e.key === "ArrowRight"){
-
-      galleryIndex =
-        (
-          galleryIndex+1
-        )
-        %
-        galleryImages.length;
-
-      updateModalImage();
-
+      nextImage();
     }
-
 
     if(e.key === "ArrowLeft"){
-
-      galleryIndex =
-        (
-          galleryIndex-1+
-          galleryImages.length
-        )
-        %
-        galleryImages.length;
-
-      updateModalImage();
-
+      previousImage();
     }
-
   }
 );
 
@@ -4363,11 +3944,7 @@ document.addEventListener(
 ===================================================== */
 
 let touchStartX = 0;
-
 let touchStartY = 0;
-
-let touchMoved = false;
-
 
 if(galleryImage){
 
@@ -4378,52 +3955,11 @@ if(galleryImage){
       const touch =
         e.changedTouches[0];
 
-
       touchStartX =
         touch.screenX;
 
-
       touchStartY =
         touch.screenY;
-
-
-      touchMoved =
-        false;
-
-    },
-    {
-      passive:true
-    }
-  );
-
-
-  galleryImage.addEventListener(
-    "touchmove",
-    function(e){
-
-      const touch =
-        e.changedTouches[0];
-
-
-      const dx =
-        touch.screenX-
-        touchStartX;
-
-
-      const dy =
-        touch.screenY-
-        touchStartY;
-
-
-      if(
-        Math.abs(dx)>20 ||
-        Math.abs(dy)>20
-      ){
-
-        touchMoved =
-          true;
-
-      }
 
     },
     {
@@ -4439,48 +3975,32 @@ if(galleryImage){
       const touch =
         e.changedTouches[0];
 
-
-      const touchEndX =
-        touch.screenX;
-
-
-      const touchEndY =
-        touch.screenY;
-
-
       const differenceX =
-        touchEndX-
+        touch.screenX -
         touchStartX;
 
-
       const differenceY =
-        touchEndY-
+        touch.screenY -
         touchStartY;
-
 
       if(
         Math.abs(differenceX)<50 ||
         Math.abs(differenceX)<
         Math.abs(differenceY)
       ){
-
         return;
-
       }
-
 
       window.galleryWasSwiped =
         true;
 
-
-      if(differenceX<0){
+      if(differenceX < 0){
 
         nextImage();
 
       }else{
 
         previousImage();
-
       }
 
     },
@@ -4488,7 +4008,6 @@ if(galleryImage){
       passive:true
     }
   );
-
 }
 
 
@@ -4500,7 +4019,6 @@ const emojiContainer =
   document.getElementById(
     "emojiContainer"
   );
-
 
 const emojis = [
 
@@ -4515,109 +4033,72 @@ const emojis = [
 
 ];
 
-
 let lastEmojiTime = 0;
 
-
 function createFloatingEmoji(){
+
+  if(!emojiContainer){
+    return;
+  }
 
   const origin =
     document.getElementById(
       "heartOrigin"
     );
 
-
   if(!origin){
-
     return;
-
   }
-
 
   const rect =
     origin.getBoundingClientRect();
 
-
-  /*
-    FIX:
-    Emojis are only generated when
-    the Dhongi section is actually
-    visible.
-  */
-
   if(
-
     rect.bottom < 0 ||
-
-    rect.top >
-    window.innerHeight
-
+    rect.top > window.innerHeight
   ){
-
     return;
-
   }
 
-
   const emoji =
-    document.createElement(
-      "div"
-    );
-
+    document.createElement("div");
 
   emoji.className =
     "floating-emoji";
 
-
   emoji.innerText =
     emojis[
       Math.floor(
-        Math.random()*
-        emojis.length
+        Math.random()*emojis.length
       )
     ];
 
-
   emoji.style.left =
-
     (
       rect.left+
       rect.width/2+
-      (
-        Math.random()*80-
-        40
-      )
+      (Math.random()*80-40)
     )+"px";
 
-
   emoji.style.bottom =
-
     (
       window.innerHeight-
       rect.bottom
     )+"px";
 
-
   emoji.style.fontSize =
-
     (
       18+
       Math.random()*14
     )+"px";
 
-
   emoji.style.animationDuration =
-
     (
       4+
       Math.random()*3
     )+"s";
 
-
-  emojiContainer.appendChild(
-    emoji
-  );
-
+  emojiContainer.appendChild(emoji);
 
   setTimeout(
     ()=>{
@@ -4625,16 +4106,7 @@ function createFloatingEmoji(){
     },
     7000
   );
-
 }
-
-
-/*
-  Instead of creating an emoji
-  every 700ms forever, check
-  periodically but only when
-  needed.
-*/
 
 setInterval(
   function(){
@@ -4642,25 +4114,20 @@ setInterval(
     const now =
       Date.now();
 
-
     if(
       now-lastEmojiTime <
-      900
+      1100
     ){
-
       return;
-
     }
-
 
     lastEmojiTime =
       now;
 
-
     createFloatingEmoji();
 
   },
-  900
+  1000
 );
 
 
@@ -4675,28 +4142,19 @@ function applySavedTheme(){
       "saikat_theme"
     );
 
-
   const themeBtn =
     document.getElementById(
       "themeBtn"
     );
 
-
-  if(
-    savedTheme ===
-    "light"
-  ){
+  if(savedTheme === "light"){
 
     document.body.classList.add(
       "light-mode"
     );
 
-
     if(themeBtn){
-
-      themeBtn.innerText =
-        "☀️";
-
+      themeBtn.innerText = "☀️";
     }
 
   }else{
@@ -4705,16 +4163,10 @@ function applySavedTheme(){
       "light-mode"
     );
 
-
     if(themeBtn){
-
-      themeBtn.innerText =
-        "🌙";
-
+      themeBtn.innerText = "🌙";
     }
-
   }
-
 }
 
 
@@ -4724,18 +4176,15 @@ function toggleTheme(){
     "light-mode"
   );
 
-
   const isLight =
     document.body.classList.contains(
       "light-mode"
     );
 
-
   const themeBtn =
     document.getElementById(
       "themeBtn"
     );
-
 
   if(themeBtn){
 
@@ -4743,9 +4192,7 @@ function toggleTheme(){
       isLight
         ? "☀️"
         : "🌙";
-
   }
-
 
   localStorage.setItem(
     "saikat_theme",
@@ -4753,9 +4200,20 @@ function toggleTheme(){
       ? "light"
       : "dark"
   );
-
 }
 
+const themeBtn =
+  document.getElementById(
+    "themeBtn"
+  );
+
+if(themeBtn){
+
+  themeBtn.addEventListener(
+    "click",
+    toggleTheme
+  );
+}
 
 applySavedTheme();
 
@@ -4769,7 +4227,6 @@ const topBtn =
     "topBtn"
   );
 
-
 window.addEventListener(
   "scroll",
   function(){
@@ -4778,22 +4235,13 @@ window.addEventListener(
       return;
     }
 
+    if(window.scrollY > 500){
 
-    if(
-      window.scrollY >
-      500
-    ){
-
-      topBtn.classList.add(
-        "show"
-      );
+      topBtn.classList.add("show");
 
     }else{
 
-      topBtn.classList.remove(
-        "show"
-      );
-
+      topBtn.classList.remove("show");
     }
 
   },
@@ -4802,9 +4250,78 @@ window.addEventListener(
   }
 );
 
+if(topBtn){
+
+  topBtn.addEventListener(
+    "click",
+    function(){
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    }
+  );
+}
+
 
 /* =====================================================
-   MOBILE NAV
+   SCROLL REVEAL
+===================================================== */
+
+const revealCards =
+  document.querySelectorAll(
+    ".card"
+  );
+
+if("IntersectionObserver" in window){
+
+  const revealObserver =
+    new IntersectionObserver(
+      function(entries,observer){
+
+        entries.forEach(
+          entry=>{
+
+            if(entry.isIntersecting){
+
+              entry.target.classList.add(
+                "revealed"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold:.08
+      }
+    );
+
+  revealCards.forEach(
+    card=>{
+      revealObserver.observe(card);
+    }
+  );
+
+}else{
+
+  revealCards.forEach(
+    card=>{
+      card.classList.add("revealed");
+    }
+  );
+}
+
+
+/* =====================================================
+   MOBILE + DESKTOP ACTIVE NAV
 ===================================================== */
 
 const mobileLinks =
@@ -4812,99 +4329,108 @@ const mobileLinks =
     ".mobile-nav a"
   );
 
+const desktopLinks =
+  document.querySelectorAll(
+    "nav a[data-nav]"
+  );
 
 const sections = [
 
   "home",
+  "about",
   "bgmi",
   "dhongi",
   "gallery",
-  "social"
+  "social",
+  "dreams",
+  "visitors"
 
 ];
 
 
-function updateMobileNav(){
+let ticking = false;
 
-  if(!mobileLinks.length){
+function updateNavigation(){
+
+  if(ticking){
     return;
   }
 
+  ticking = true;
 
-  let current =
-    "home";
+  requestAnimationFrame(
+    function(){
 
+      let current =
+        "home";
 
-  const scrollPosition =
-    window.scrollY+
-    220;
+      const scrollPosition =
+        window.scrollY+
+        window.innerHeight*.28;
 
+      sections.forEach(
+        function(id){
 
-  sections.forEach(
-    function(id){
+          const section =
+            document.getElementById(id);
 
-      const section =
-        document.getElementById(
-          id
-        );
+          if(
+            section &&
+            scrollPosition >=
+            section.offsetTop
+          ){
 
+            current = id;
+          }
 
-      if(
-        section &&
-        scrollPosition >=
-        section.offsetTop
-      ){
-
-        current =
-          id;
-
-      }
-
-    }
-  );
-
-
-  mobileLinks.forEach(
-    function(link){
-
-      link.classList.remove(
-        "active"
+        }
       );
 
 
-      if(
-        link.dataset.section ===
-        current
-      ){
+      mobileLinks.forEach(
+        function(link){
 
-        link.classList.add(
-          "active"
-        );
+          link.classList.toggle(
+            "active",
+            link.dataset.section === current
+          );
 
-      }
+        }
+      );
 
+
+      desktopLinks.forEach(
+        function(link){
+
+          link.classList.toggle(
+            "active",
+            link.dataset.nav === current
+          );
+
+        }
+      );
+
+
+      ticking = false;
     }
   );
-
 }
 
 
 window.addEventListener(
   "scroll",
-  updateMobileNav,
+  updateNavigation,
   {
     passive:true
   }
 );
 
-
 window.addEventListener(
   "resize",
-  updateMobileNav
+  updateNavigation
 );
 
-
-updateMobileNav();
+updateNavigation();
 
 
 /* =====================================================
@@ -4919,18 +4445,78 @@ mobileLinks.forEach(
       function(){
 
         mobileLinks.forEach(
-          item =>
-            item.classList.remove(
-              "active"
-            )
+          item=>{
+            item.classList.remove("active");
+          }
         );
 
-
-        this.classList.add(
-          "active"
-        );
+        this.classList.add("active");
 
       }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   RIPPLE TOUCH EFFECT
+===================================================== */
+
+document.addEventListener(
+  "pointerdown",
+  function(e){
+
+    const target =
+      e.target.closest(
+        ".hero-action, .quick-item, .social-btn, .gallery-btn, .copy-btn"
+      );
+
+    if(!target){
+      return;
+    }
+
+    const rect =
+      target.getBoundingClientRect();
+
+    const ripple =
+      document.createElement("span");
+
+    ripple.className = "ripple";
+
+    const size =
+      Math.max(
+        rect.width,
+        rect.height
+      );
+
+    ripple.style.width =
+      size+"px";
+
+    ripple.style.height =
+      size+"px";
+
+    ripple.style.left =
+      (
+        e.clientX-
+        rect.left-
+        size/2
+      )+"px";
+
+    ripple.style.top =
+      (
+        e.clientY-
+        rect.top-
+        size/2
+      )+"px";
+
+    target.appendChild(ripple);
+
+    setTimeout(
+      ()=>{
+        ripple.remove();
+      },
+      600
     );
 
   }
@@ -4960,6 +4546,27 @@ document
 
     }
   );
+
+
+/* =====================================================
+   PAGE VISIBILITY
+===================================================== */
+
+document.addEventListener(
+  "visibilitychange",
+  function(){
+
+    if(
+      document.hidden &&
+      galleryModal &&
+      galleryModal.classList.contains("show")
+    ){
+
+      closeGallery();
+    }
+
+  }
+);
 
 
 /* =====================================================
