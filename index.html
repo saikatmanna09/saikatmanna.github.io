@@ -1112,6 +1112,132 @@ body.light-mode .quick-item{
 
 
 /* =====================================================
+   FAVORITE SONG
+===================================================== */
+
+.song-card{
+
+  text-align:center;
+
+  border-color:
+    rgba(0,234,255,.22);
+
+  box-shadow:
+    0 0 30px
+    rgba(0,234,255,.07);
+}
+
+.song-note{
+
+  margin-top:-8px;
+
+  margin-bottom:20px;
+
+  color:var(--muted);
+
+  font-size:14px;
+}
+
+.song-player{
+
+  max-width:650px;
+
+  margin:auto;
+
+  padding:20px;
+
+  border-radius:20px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid
+    rgba(0,234,255,.14);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+}
+
+.song-icon{
+
+  width:55px;
+  height:55px;
+
+  flex:none;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,234,255,.18),
+      rgba(139,92,246,.18)
+    );
+
+  border:
+    1px solid
+    rgba(0,234,255,.35);
+
+  font-size:25px;
+
+  box-shadow:
+    0 0 20px
+    rgba(0,234,255,.12);
+}
+
+.song-info{
+
+  display:flex;
+
+  flex-direction:column;
+
+  text-align:left;
+
+  flex:1;
+
+  min-width:150px;
+}
+
+.song-info strong{
+
+  color:var(--text);
+
+  font-size:15px;
+}
+
+.song-info span{
+
+  margin-top:4px;
+
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+.song-player audio{
+
+  width:100%;
+
+  max-width:500px;
+
+  margin-top:8px;
+}
+
+
+/* =====================================================
    DHONGI
 ===================================================== */
 
@@ -2239,6 +2365,19 @@ body.light-mode .theme-btn{
     border-color:
       rgba(0,0,0,.1);
   }
+
+  .song-player{
+    padding:17px;
+  }
+
+  .song-info{
+    min-width:0;
+  }
+
+  .song-player audio{
+    width:100%;
+  }
+
 }
 
 @media(max-width:420px){
@@ -2559,6 +2698,61 @@ body.light-mode .theme-btn{
 
   <div class="tag-top">
     TAG ON TOP 🧡
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAVORITE SONG
+===================================================== -->
+
+<section
+  class="card song-card"
+  id="song"
+>
+
+  <h2>
+    🎵 My Favourite Song
+  </h2>
+
+  <p class="song-note">
+    A song I like ❤️
+  </p>
+
+  <div class="song-player">
+
+    <div class="song-icon">
+      🎧
+    </div>
+
+    <div class="song-info">
+
+      <strong>
+        My Favourite Song
+      </strong>
+
+      <span>
+        Saikat's Mini World 🌎
+      </span>
+
+    </div>
+
+    <audio
+      id="favoriteSong"
+      controls
+      preload="metadata"
+    >
+
+      <source
+        src="./AUD-20260930-WA0000.mp3"
+        type="audio/mpeg"
+      >
+
+      Your browser does not support audio playback.
+
+    </audio>
+
   </div>
 
 </section>
