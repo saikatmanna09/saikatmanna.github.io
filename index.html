@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Official personal website of Saikat Manna. Explore my mini world, BGMI profile, gallery, social media and more.">
-<meta name="author" content="Saikat Manna">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
-<meta name="theme-color" content="#03040a">
+<meta
+  name="description"
+  content="Official personal website of Saikat Manna. Explore my mini world, BGMI profile, gallery, social media and more."
+>
 
-<title>Saikat Manna | Mini World 🌎</title>
+<meta
+  name="author"
+  content="Saikat Manna"
+>
+
+<meta
+  name="theme-color"
+  content="#03040a"
+>
+
+<meta
+  property="og:title"
+  content="Saikat Manna | Mini World 🌎"
+>
+
+<meta
+  property="og:description"
+  content="Welcome to Saikat's Mini World 🌎"
+>
+
+<meta
+  property="og:type"
+  content="website"
+>
+
+<meta
+  property="og:image"
+  content="IMG_20250630_110659.jpg"
+>
+
+<title>
+  Saikat Manna | Mini World 🌎
+</title>
+
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
   margin:0;
   padding:0;
@@ -20,160 +63,306 @@
 }
 
 :root{
+
   --bg:#03040a;
   --bg2:#070a13;
+
   --card:rgba(12,15,27,.78);
   --card2:rgba(20,24,40,.72);
-  --text:#fff;
+
+  --text:#ffffff;
   --muted:#aeb4c5;
+
   --cyan:#00eaff;
   --pink:#ff4f91;
   --purple:#8b5cf6;
   --orange:#ff8a00;
   --green:#32ff9a;
   --red:#ff4d6d;
+
   --border:rgba(255,255,255,.12);
-  --shadow:0 15px 45px rgba(0,0,0,.3);
+
+  --shadow:
+    0 15px 45px rgba(0,0,0,.3);
 }
+
+
+/* =========================
+   PAGE BASE
+========================= */
 
 html,
 body{
+
   width:100%;
   min-width:100%;
   max-width:100%;
-  transform:none !important;
-  zoom:1 !important;
+
+  /*
+    IMPORTANT:
+    zoom:1 removed.
+    It was causing browser zoom/layout
+    behaviour to fight with the page.
+  */
+
+  transform:none;
+
+}
+
+html{
+  overflow-x:hidden;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   color:var(--text);
+
   background:
-    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.92)),
-    url("IMG_20260921_105205_456.webp") center/cover fixed;
+    linear-gradient(
+      rgba(0,0,0,.78),
+      rgba(0,0,0,.92)
+    ),
+    url("IMG_20260921_105205_456.webp")
+    center/cover fixed;
+
   min-height:100vh;
+
   overflow-x:hidden;
-  transition:.5s;
+
+  transition:
+    background .5s,
+    color .3s;
+
 }
 
-/* LIGHT MODE */
+
+/* =========================
+   LIGHT MODE
+========================= */
 
 body.light-mode{
+
   --bg:#eef3f8;
   --bg2:#e7edf5;
-  --card:rgba(255,255,255,.84);
-  --card2:rgba(255,255,255,.7);
+
+  --card:rgba(255,255,255,.88);
+  --card2:rgba(255,255,255,.75);
+
   --text:#111827;
   --muted:#4b5563;
+
   --border:rgba(0,0,0,.1);
 
   background:
-    linear-gradient(rgba(240,245,250,.84),rgba(240,245,250,.94)),
-    url("IMG_20260921_105205_456.webp") center/cover fixed;
+    linear-gradient(
+      rgba(240,245,250,.84),
+      rgba(240,245,250,.94)
+    ),
+    url("IMG_20260921_105205_456.webp")
+    center/cover fixed;
+
 }
 
-/* LOADER */
+
+/* =========================
+   LOADER
+========================= */
 
 #loader{
+
   position:fixed;
+
   inset:0;
+
   z-index:99999;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   flex-direction:column;
+
   background:#02030a;
-  transition:opacity .8s,visibility .8s;
+
+  transition:
+    opacity .8s,
+    visibility .8s;
+
 }
 
 #loader.hide{
+
   opacity:0;
+
   visibility:hidden;
+
 }
 
 .loader-ring{
+
   width:72px;
   height:72px;
-  border:3px solid rgba(0,234,255,.12);
+
+  border:
+    3px solid
+    rgba(0,234,255,.12);
+
   border-top-color:var(--cyan);
+
   border-right-color:var(--pink);
+
   border-radius:50%;
-  animation:spin 1s linear infinite;
-  box-shadow:0 0 30px rgba(0,234,255,.4);
+
+  animation:
+    spin 1s linear infinite;
+
+  box-shadow:
+    0 0 30px
+    rgba(0,234,255,.4);
+
 }
 
 .loader-text{
+
   margin-top:22px;
+
   font-size:13px;
+
   letter-spacing:2px;
+
   text-align:center;
+
   color:#fff;
-  text-shadow:0 0 12px var(--cyan);
+
+  text-shadow:
+    0 0 12px
+    var(--cyan);
+
 }
 
 .loader-sub{
+
   margin-top:8px;
+
   color:#8991a6;
+
   font-size:11px;
+
 }
 
 @keyframes spin{
-  to{transform:rotate(360deg)}
+
+  to{
+    transform:rotate(360deg);
+  }
+
 }
 
-/* STARS */
+
+/* =========================
+   STARS
+========================= */
 
 #stars{
+
   position:fixed;
+
   inset:0;
+
   z-index:-1;
+
   pointer-events:none;
+
   overflow:hidden;
+
 }
 
 .star{
+
   position:absolute;
+
   width:2px;
   height:2px;
+
   background:#fff;
+
   border-radius:50%;
+
   opacity:.7;
-  animation:twinkle 2s infinite alternate;
+
+  animation:
+    twinkle 2s infinite alternate;
+
 }
 
 @keyframes twinkle{
+
   from{
+
     opacity:.15;
+
     transform:scale(.7);
+
   }
+
   to{
+
     opacity:1;
+
     transform:scale(1.5);
+
   }
+
 }
 
-/* SHOOTING STAR */
+
+/* =========================
+   SHOOTING STAR
+========================= */
 
 .shooting-star{
+
   position:fixed;
+
   width:100px;
   height:2px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #fff,
-    var(--cyan)
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #fff,
+      var(--cyan)
+    );
+
   transform:rotate(-35deg);
+
   z-index:-1;
-  animation:shoot 1.3s linear forwards;
+
+  animation:
+    shoot 1.3s linear forwards;
+
   pointer-events:none;
+
 }
 
 @keyframes shoot{
+
   0%{
+
     opacity:0;
-    transform:translate(0,0) rotate(-35deg);
+
+    transform:
+      translate(0,0)
+      rotate(-35deg);
+
   }
 
   15%{
@@ -181,36 +370,68 @@ body.light-mode{
   }
 
   100%{
+
     opacity:0;
-    transform:translate(-400px,300px) rotate(-35deg);
+
+    transform:
+      translate(-400px,300px)
+      rotate(-35deg);
+
   }
+
 }
 
-/* TOP NAVBAR */
+
+/* =========================
+   TOP NAV
+========================= */
 
 nav{
+
   position:sticky;
+
   top:0;
+
   z-index:5000;
+
   backdrop-filter:blur(20px);
+
   -webkit-backdrop-filter:blur(20px);
-  background:rgba(2,4,10,.72);
-  border-bottom:1px solid rgba(255,255,255,.1);
+
+  background:
+    rgba(2,4,10,.72);
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.1);
+
   padding:12px 10px;
+
 }
 
 body.light-mode nav{
-  background:rgba(255,255,255,.76);
+
+  background:
+    rgba(255,255,255,.76);
+
 }
 
 .nav-inner{
+
   max-width:1100px;
+
   margin:auto;
+
   display:flex;
+
   align-items:center;
+
   gap:8px;
+
   overflow-x:auto;
+
   scrollbar-width:none;
+
 }
 
 .nav-inner::-webkit-scrollbar{
@@ -218,14 +439,25 @@ body.light-mode nav{
 }
 
 nav a{
+
   color:#fff;
+
   text-decoration:none;
+
   padding:9px 13px;
+
   border-radius:30px;
+
   white-space:nowrap;
+
   font-size:13px;
-  border:1px solid transparent;
+
+  border:
+    1px solid
+    transparent;
+
   transition:.3s;
+
 }
 
 body.light-mode nav a{
@@ -233,252 +465,477 @@ body.light-mode nav a{
 }
 
 nav a:hover{
-  border-color:var(--cyan);
-  color:var(--cyan);
-  background:rgba(0,234,255,.08);
+
+  border-color:
+    var(--cyan);
+
+  color:
+    var(--cyan);
+
+  background:
+    rgba(0,234,255,.08);
+
 }
 
-/* APP STATUS */
+
+/* =========================
+   STATUS
+========================= */
 
 .app-status{
+
   width:min(1100px,92%);
+
   margin:16px auto 0;
+
   padding:10px 14px;
-  border:1px solid rgba(50,255,154,.15);
-  background:rgba(50,255,154,.045);
+
+  border:
+    1px solid
+    rgba(50,255,154,.15);
+
+  background:
+    rgba(50,255,154,.045);
+
   border-radius:16px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   gap:8px;
+
   color:var(--muted);
+
   font-size:12px;
+
 }
 
 .status-dot{
+
   width:7px;
   height:7px;
-  background:var(--green);
+
+  background:
+    var(--green);
+
   border-radius:50%;
-  box-shadow:0 0 12px var(--green);
-  animation:pulse 1.7s infinite;
+
+  box-shadow:
+    0 0 12px
+    var(--green);
+
+  animation:
+    pulse 1.7s infinite;
+
 }
 
 @keyframes pulse{
+
   50%{
+
     transform:scale(1.35);
+
     opacity:.5;
+
   }
+
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
 
 .container{
+
   width:min(1100px,92%);
+
   margin:auto;
+
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
+
   min-height:650px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   text-align:center;
+
   position:relative;
+
   padding:70px 0 50px;
+
 }
 
 .hero-content{
-  animation:heroIn 1.2s ease;
+
+  animation:
+    heroIn 1.2s ease;
+
 }
 
 @keyframes heroIn{
+
   from{
+
     opacity:0;
-    transform:translateY(35px);
+
+    transform:
+      translateY(35px);
+
   }
 
   to{
+
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+      translateY(0);
+
   }
+
 }
 
 .profile-wrap{
+
   position:relative;
+
   width:160px;
+
   height:160px;
+
   margin:auto;
+
 }
 
 .profile-ring{
+
   position:absolute;
+
   inset:-8px;
+
   border-radius:50%;
-  background:conic-gradient(
-    var(--cyan),
-    var(--pink),
-    var(--purple),
-    var(--cyan)
-  );
-  animation:rotateRing 4s linear infinite;
-  filter:drop-shadow(0 0 15px rgba(0,234,255,.5));
+
+  background:
+    conic-gradient(
+      var(--cyan),
+      var(--pink),
+      var(--purple),
+      var(--cyan)
+    );
+
+  animation:
+    rotateRing 4s linear infinite;
+
+  filter:
+    drop-shadow(
+      0 0 15px
+      rgba(0,234,255,.5)
+    );
+
 }
 
 @keyframes rotateRing{
+
   to{
     transform:rotate(360deg);
   }
+
 }
 
 .profile-img{
+
   position:relative;
+
   width:100%;
   height:100%;
+
   border-radius:50%;
+
   object-fit:cover;
-  border:5px solid #05060b;
+
+  border:
+    5px solid
+    #05060b;
+
   z-index:2;
+
 }
 
 .profile-online{
+
   position:absolute;
+
   right:4px;
+
   bottom:8px;
+
   width:22px;
   height:22px;
+
   background:#111;
+
   border-radius:50%;
+
   z-index:5;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
 }
 
 .profile-online::after{
+
   content:"";
+
   width:11px;
   height:11px;
-  background:var(--green);
+
+  background:
+    var(--green);
+
   border-radius:50%;
-  box-shadow:0 0 12px var(--green);
+
+  box-shadow:
+    0 0 12px
+    var(--green);
+
 }
 
 .hero h1{
+
   margin-top:30px;
-  font-size:clamp(35px,7vw,68px);
-  background:linear-gradient(
-    90deg,
-    #fff,
-    var(--cyan),
-    #fff,
-    var(--pink)
-  );
+
+  font-size:
+    clamp(35px,7vw,68px);
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      var(--cyan),
+      #fff,
+      var(--pink)
+    );
+
   background-size:250%;
+
   -webkit-background-clip:text;
+
   color:transparent;
-  animation:textFlow 5s linear infinite;
+
+  animation:
+    textFlow 5s linear infinite;
+
 }
 
 @keyframes textFlow{
+
   to{
     background-position:250%;
   }
+
 }
 
 .hero-sub{
+
   margin-top:12px;
+
   color:var(--muted);
+
   font-size:18px;
+
 }
 
 .typing{
-  color:var(--cyan);
+
+  color:
+    var(--cyan);
+
   font-weight:bold;
-  text-shadow:0 0 12px rgba(0,234,255,.6);
+
+  text-shadow:
+    0 0 12px
+    rgba(0,234,255,.6);
+
 }
 
 .clock{
+
   margin:25px auto 0;
+
   width:max-content;
+
   max-width:90%;
+
   padding:10px 20px;
-  border:1px solid rgba(0,234,255,.25);
+
+  border:
+    1px solid
+    rgba(0,234,255,.25);
+
   border-radius:30px;
-  background:rgba(0,234,255,.05);
-  color:var(--cyan);
-  box-shadow:0 0 20px rgba(0,234,255,.1);
+
+  background:
+    rgba(0,234,255,.05);
+
+  color:
+    var(--cyan);
+
+  box-shadow:
+    0 0 20px
+    rgba(0,234,255,.1);
+
 }
 
 .hero-actions{
+
   margin-top:25px;
+
   display:flex;
+
   justify-content:center;
+
   gap:10px;
+
   flex-wrap:wrap;
+
 }
 
 .hero-action{
+
   text-decoration:none;
+
   color:#fff;
+
   padding:11px 17px;
+
   border-radius:25px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.055);
+
+  border:
+    1px solid
+    rgba(255,255,255,.14);
+
+  background:
+    rgba(255,255,255,.055);
+
   transition:.3s;
+
   font-size:13px;
+
 }
 
 .hero-action.primary{
-  background:linear-gradient(
-    135deg,
-    rgba(0,234,255,.16),
-    rgba(124,77,255,.16)
-  );
-  border-color:rgba(0,234,255,.4);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,234,255,.16),
+      rgba(124,77,255,.16)
+    );
+
+  border-color:
+    rgba(0,234,255,.4);
+
 }
 
 .hero-action:hover{
-  transform:translateY(-3px);
-  border-color:var(--cyan);
-  box-shadow:0 0 20px rgba(0,234,255,.18);
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    var(--cyan);
+
+  box-shadow:
+    0 0 20px
+    rgba(0,234,255,.18);
+
 }
 
-/* CARDS */
+
+/* =========================
+   CARDS
+========================= */
 
 .card{
+
   position:relative;
+
   margin:25px 0;
+
   padding:32px;
+
   border-radius:25px;
-  background:var(--card);
-  border:1px solid var(--border);
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px);
-  box-shadow:var(--shadow);
+
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--border);
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  box-shadow:
+    var(--shadow);
+
   overflow:hidden;
-  transition:.35s;
+
+  transition:
+    transform .35s,
+    border-color .35s,
+    background .35s;
+
 }
 
 .card::before{
+
   content:"";
+
   position:absolute;
+
   top:0;
   left:-100%;
+
   width:70%;
   height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-  animation:cardLine 7s linear infinite;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--cyan),
+      transparent
+    );
+
+  animation:
+    cardLine 7s linear infinite;
+
 }
 
 @keyframes cardLine{
+
   0%{
     left:-100%;
   }
@@ -486,192 +943,385 @@ nav a:hover{
   100%{
     left:130%;
   }
+
 }
 
 .card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(0,234,255,.22);
+
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(0,234,255,.22);
+
 }
 
 .card h2{
+
   text-align:center;
+
   margin-bottom:20px;
+
   font-size:27px;
-  text-shadow:0 0 15px rgba(0,234,255,.25);
+
+  text-shadow:
+    0 0 15px
+    rgba(0,234,255,.25);
+
 }
 
 .card p{
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   line-height:1.8;
+
   text-align:center;
+
 }
 
-/* ABOUT */
+
+/* =========================
+   ABOUT
+========================= */
 
 .about-text{
+
   max-width:750px;
+
   margin:auto;
+
   font-size:17px;
+
 }
 
 .about-stats{
+
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:12px;
+
   max-width:700px;
+
   margin:25px auto 0;
+
 }
 
 .about-stat{
+
   text-align:center;
+
   padding:17px 10px;
+
   border-radius:17px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.07);
+
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid
+    rgba(255,255,255,.07);
+
+}
+
+body.light-mode .about-stat,
+body.light-mode .info-box,
+body.light-mode .dream,
+body.light-mode .quick-item{
+
+  background:
+    rgba(0,0,0,.025);
+
+  border-color:
+    rgba(0,0,0,.08);
+
 }
 
 .about-stat strong{
+
   display:block;
+
   font-size:22px;
-  color:var(--cyan);
+
+  color:
+    var(--cyan);
+
   margin-bottom:5px;
+
 }
 
 .about-stat span{
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   font-size:11px;
+
 }
 
-/* BGMI */
+
+/* =========================
+   BGMI
+========================= */
 
 .bgmi-card{
-  border-color:rgba(255,138,0,.25);
-  box-shadow:0 0 35px rgba(255,138,0,.08);
+
+  border-color:
+    rgba(255,138,0,.25);
+
+  box-shadow:
+    0 0 35px
+    rgba(255,138,0,.08);
+
 }
 
 .bgmi-name{
+
   text-align:center;
+
   font-size:28px;
+
   font-weight:bold;
+
   margin:10px 0 20px;
-  color:#fff;
-  text-shadow:0 0 15px rgba(255,255,255,.3);
+
+  color:
+    var(--text);
+
+  text-shadow:
+    0 0 15px
+    rgba(255,255,255,.3);
+
 }
 
 .bgmi-info{
+
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:14px;
+
   max-width:650px;
+
   margin:20px auto;
+
 }
 
 .info-box{
+
   padding:18px;
+
   border-radius:18px;
+
   text-align:center;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,138,0,.15);
+
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid
+    rgba(255,138,0,.15);
+
 }
 
 .info-label{
+
   display:block;
+
   font-size:12px;
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   margin-bottom:8px;
+
   letter-spacing:1px;
+
 }
 
 .info-value{
+
   font-size:17px;
+
   font-weight:bold;
+
 }
 
 .uid-row{
+
   display:flex;
+
   justify-content:center;
+
   align-items:center;
+
   gap:10px;
+
   flex-wrap:wrap;
+
 }
 
 .copy-btn{
-  border:1px solid var(--cyan);
-  background:rgba(0,234,255,.08);
-  color:var(--cyan);
+
+  border:
+    1px solid
+    var(--cyan);
+
+  background:
+    rgba(0,234,255,.08);
+
+  color:
+    var(--cyan);
+
   padding:8px 14px;
+
   border-radius:20px;
+
   cursor:pointer;
+
   transition:.3s;
+
 }
 
 .copy-btn:hover{
-  background:var(--cyan);
+
+  background:
+    var(--cyan);
+
   color:#000;
-  box-shadow:0 0 18px rgba(0,234,255,.4);
+
+  box-shadow:
+    0 0 18px
+    rgba(0,234,255,.4);
+
 }
 
 .tag-top{
+
   text-align:center;
-  color:var(--orange);
+
+  color:
+    var(--orange);
+
   font-size:23px;
+
   font-weight:bold;
+
   margin-top:22px;
-  text-shadow:0 0 12px rgba(255,138,0,.8);
+
+  text-shadow:
+    0 0 12px
+    rgba(255,138,0,.8);
+
 }
 
-/* DHONGI */
+
+/* =========================
+   DHONGI
+========================= */
 
 .dhongi-section{
+
   min-height:520px;
+
   overflow:visible;
+
   text-align:center;
+
   background:
     radial-gradient(
       circle at center,
       rgba(255,70,130,.12),
       rgba(0,0,0,.88)
     );
-  border:1px solid rgba(255,80,150,.28);
+
+  border:
+    1px solid
+    rgba(255,80,150,.28);
+
   box-shadow:
-    0 0 30px rgba(255,50,130,.16),
-    inset 0 0 35px rgba(255,50,130,.08);
+    0 0 30px
+      rgba(255,50,130,.16),
+    inset 0 0 35px
+      rgba(255,50,130,.08);
+
+}
+
+body.light-mode .dhongi-section{
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,70,130,.12),
+      rgba(255,255,255,.88)
+    );
+
 }
 
 .dhongi-content{
+
   position:relative;
+
   z-index:3;
+
   text-align:center;
+
 }
 
 .dhongi-content h2{
+
   font-size:28px;
+
   color:#fff;
+
   text-shadow:
     0 0 10px #ff4f91,
     0 0 25px rgba(255,79,145,.65);
-  animation:dhongiGlow 2.5s infinite alternate;
+
+  animation:
+    dhongiGlow 2.5s infinite alternate;
+
 }
 
 @keyframes dhongiGlow{
+
   from{
+
     text-shadow:
       0 0 8px #ff4f91,
-      0 0 18px rgba(255,79,145,.4);
+      0 0 18px
+      rgba(255,79,145,.4);
+
   }
 
   to{
+
     text-shadow:
       0 0 15px #ff4f91,
-      0 0 35px rgba(255,79,145,.8);
+      0 0 35px
+      rgba(255,79,145,.8);
+
   }
+
 }
 
 .dhongi-photo-frame{
+
   width:min(100%,650px);
-  margin:20px auto 18px;
+
+  margin:
+    20px auto 18px;
+
   padding:8px;
+
   border-radius:22px;
+
   background:
     linear-gradient(
       135deg,
@@ -679,51 +1329,87 @@ nav a:hover{
       rgba(0,234,255,.35),
       rgba(255,79,145,.7)
     );
+
   box-shadow:
-    0 0 20px rgba(255,79,145,.25),
-    0 0 45px rgba(0,234,255,.12);
+    0 0 20px
+      rgba(255,79,145,.25),
+    0 0 45px
+      rgba(0,234,255,.12);
+
 }
 
 .dhongi-photo-frame img{
+
   width:100%;
+
   max-height:360px;
+
   display:block;
+
   margin:auto;
+
   object-fit:contain;
+
   border-radius:16px;
+
   background:#050505;
+
 }
 
 .dhongi-content p{
+
   font-size:21px;
+
   font-weight:bold;
+
   color:#fff;
+
 }
 
 .heart-origin{
+
   display:inline-block;
+
   color:#ff3b6b;
+
   font-size:34px;
+
   margin-left:4px;
+
   text-shadow:
     0 0 12px #ff3b6b,
-    0 0 25px rgba(255,59,107,.7);
+    0 0 25px
+    rgba(255,59,107,.7);
+
 }
 
 .dhongi-special{
+
   margin-top:10px;
+
   font-size:15px!important;
+
   font-weight:normal!important;
+
   color:#ffc4d9!important;
+
 }
 
-/* FAVOURITE PIC */
+
+/* =========================
+   FAVOURITE PIC
+========================= */
 
 .fav-photo-wrap{
+
   max-width:700px;
+
   margin:auto;
+
   border-radius:22px;
+
   padding:7px;
+
   background:
     linear-gradient(
       120deg,
@@ -731,421 +1417,823 @@ nav a:hover{
       var(--pink),
       var(--purple)
     );
-  box-shadow:0 0 30px rgba(0,234,255,.12);
+
+  box-shadow:
+    0 0 30px
+    rgba(0,234,255,.12);
+
 }
 
 .fav-photo-wrap img{
+
   display:block;
+
   width:100%;
+
   max-height:600px;
+
   object-fit:contain;
+
   background:#000;
+
   border-radius:17px;
+
 }
 
-/* GALLERY */
+
+/* =========================
+   GALLERY
+========================= */
 
 .gallery-card{
+
   overflow:hidden;
+
 }
 
 .gallery-view{
+
   position:relative;
+
   max-width:800px;
+
   margin:auto;
+
 }
 
 .gallery-image-box{
+
   min-height:420px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   border-radius:20px;
+
   overflow:hidden;
-  background:rgba(0,0,0,.45);
-  border:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(0,0,0,.45);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
   cursor:pointer;
+
   position:relative;
+
+  touch-action:pan-y;
+
 }
 
 .gallery-image-box::after{
+
   content:"⛶";
+
   position:absolute;
+
   right:14px;
+
   top:14px;
+
   width:38px;
   height:38px;
+
   border-radius:50%;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
-  background:rgba(0,0,0,.6);
+
+  background:
+    rgba(0,0,0,.6);
+
   color:#fff;
+
   opacity:.8;
+
+  pointer-events:none;
+
 }
 
 .gallery-image{
+
   width:100%;
+
   height:420px;
+
   object-fit:contain;
+
   transition:
     opacity .25s,
     transform .35s;
+
+  user-select:none;
+
+  -webkit-user-drag:none;
+
 }
 
 .gallery-image.fade{
+
   opacity:0;
-  transform:scale(.97);
+
+  transform:
+    scale(.97);
+
 }
 
 .gallery-controls{
+
   display:flex;
+
   justify-content:center;
+
   gap:14px;
+
   margin-top:18px;
+
 }
 
 .gallery-btn{
+
   width:48px;
   height:48px;
+
   border-radius:50%;
-  border:1px solid var(--cyan);
-  background:rgba(0,234,255,.07);
-  color:var(--cyan);
+
+  border:
+    1px solid
+    var(--cyan);
+
+  background:
+    rgba(0,234,255,.07);
+
+  color:
+    var(--cyan);
+
   font-size:22px;
+
   cursor:pointer;
+
   transition:.3s;
+
 }
 
 .gallery-btn:hover{
-  background:var(--cyan);
+
+  background:
+    var(--cyan);
+
   color:#000;
-  box-shadow:0 0 20px rgba(0,234,255,.45);
+
+  box-shadow:
+    0 0 20px
+    rgba(0,234,255,.45);
+
+}
+
+.gallery-btn:active{
+
+  transform:
+    scale(.92);
+
 }
 
 .gallery-counter{
+
   text-align:center;
+
   margin-top:12px;
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
   font-size:13px;
+
 }
 
 .gallery-hint{
+
   margin-top:12px;
+
   font-size:12px!important;
+
 }
 
-/* FULLSCREEN */
+
+/* =========================
+   FULLSCREEN MODAL
+========================= */
 
 #galleryModal{
+
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.94);
+
+  background:
+    rgba(0,0,0,.94);
+
   z-index:10000;
+
   display:none;
+
   align-items:center;
+
   justify-content:center;
+
   padding:25px;
+
+  touch-action:none;
+
 }
 
 #galleryModal.show{
+
   display:flex;
+
 }
 
 .modal-img{
+
   max-width:95vw;
+
   max-height:90vh;
+
   object-fit:contain;
+
   border-radius:12px;
+
+  user-select:none;
+
+  -webkit-user-drag:none;
+
 }
 
 .modal-close{
+
   position:absolute;
-  top:20px;
-  right:20px;
+
+  top:
+    max(20px, env(safe-area-inset-top));
+
+  right:
+    max(20px, env(safe-area-inset-right));
+
   width:45px;
   height:45px;
-  border:1px solid #fff;
+
+  border:
+    1px solid #fff;
+
   border-radius:50%;
-  background:rgba(255,255,255,.1);
+
+  background:
+    rgba(255,255,255,.1);
+
   color:#fff;
+
   font-size:25px;
+
   cursor:pointer;
+
+  z-index:2;
+
 }
 
-/* SOCIAL */
+
+/* =========================
+   SOCIAL
+========================= */
 
 .social-grid{
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:14px;
+
 }
 
 .social-btn{
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   min-height:58px;
+
   border-radius:17px;
+
   text-decoration:none;
+
   color:#fff;
+
   font-weight:bold;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.04);
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  background:
+    rgba(255,255,255,.04);
+
   transition:.3s;
+
 }
 
 .social-btn:hover{
-  transform:translateY(-5px);
-  box-shadow:0 0 25px rgba(255,255,255,.15);
+
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 0 25px
+    rgba(255,255,255,.15);
+
 }
 
 .instagram:hover{
+
   border-color:#ff4f91;
+
   color:#ff78ab;
+
 }
 
 .facebook:hover{
+
   border-color:#3b82f6;
+
   color:#60a5fa;
+
 }
 
 .youtube:hover{
+
   border-color:#ff3333;
+
   color:#ff5555;
+
 }
 
 .github:hover{
+
   border-color:#aaa;
+
   color:#fff;
+
 }
 
-/* DREAMS */
+
+/* =========================
+   DREAMS
+========================= */
 
 .dream-list{
+
   max-width:650px;
+
   margin:auto;
+
   display:grid;
+
   gap:14px;
+
 }
 
 .dream{
+
   padding:18px 20px;
+
   border-radius:17px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
   transition:.3s;
+
 }
 
 .dream:hover{
-  transform:translateX(6px);
-  border-color:var(--cyan);
+
+  transform:
+    translateX(6px);
+
+  border-color:
+    var(--cyan);
+
 }
 
-/* VISITORS */
+
+/* =========================
+   VISITORS
+========================= */
 
 .visitor-card{
+
   text-align:center;
+
 }
 
 .visitor-welcome{
+
   margin-bottom:20px;
+
 }
 
 .visitor-box{
+
   width:190px;
   height:190px;
+
   margin:20px auto;
+
   border-radius:50%;
+
   display:flex;
+
   align-items:center;
+
   justify-content:center;
+
   flex-direction:column;
-  border:2px solid rgba(0,234,255,.4);
+
+  border:
+    2px solid
+    rgba(0,234,255,.4);
+
   background:
     radial-gradient(
       circle,
       rgba(0,234,255,.14),
       rgba(0,0,0,.2)
     );
+
   box-shadow:
-    0 0 25px rgba(0,234,255,.16),
-    inset 0 0 25px rgba(0,234,255,.08);
+    0 0 25px
+      rgba(0,234,255,.16),
+    inset 0 0 25px
+      rgba(0,234,255,.08);
+
 }
 
 .visitor-icon{
+
   font-size:28px;
+
 }
 
 .visitor-number{
+
   font-size:43px;
+
   font-weight:bold;
-  color:var(--cyan);
-  text-shadow:0 0 18px rgba(0,234,255,.65);
+
+  color:
+    var(--cyan);
+
+  text-shadow:
+    0 0 18px
+    rgba(0,234,255,.65);
+
   margin:4px 0;
+
 }
 
 .visitor-label{
+
   font-size:10px;
+
   letter-spacing:2px;
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
 }
 
 .visitor-note{
+
   font-size:14px!important;
+
 }
 
-/* QUICK MENU */
+
+/* =========================
+   QUICK MENU
+========================= */
 
 .quick-menu{
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:12px;
+
 }
 
 .quick-item{
+
   text-decoration:none;
-  color:var(--text);
+
+  color:
+    var(--text);
+
   padding:18px 10px;
+
   text-align:center;
+
   border-radius:18px;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(255,255,255,.08);
+
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
   transition:.3s;
+
 }
 
 .quick-item span{
+
   display:block;
+
   font-size:25px;
+
   margin-bottom:8px;
+
 }
 
 .quick-item small{
-  color:var(--muted);
+
+  color:
+    var(--muted);
+
 }
 
 .quick-item:hover{
-  transform:translateY(-5px);
-  border-color:var(--cyan);
-  box-shadow:0 0 20px rgba(0,234,255,.12);
+
+  transform:
+    translateY(-5px);
+
+  border-color:
+    var(--cyan);
+
+  box-shadow:
+    0 0 20px
+    rgba(0,234,255,.12);
+
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
+
   text-align:center;
-  padding:45px 15px 120px;
-  color:var(--muted);
+
+  padding:
+    45px
+    15px
+    120px;
+
+  color:
+    var(--muted);
+
   font-size:13px;
+
 }
 
 .footer-title{
-  color:var(--text);
+
+  color:
+    var(--text);
+
   font-size:18px;
+
   margin-bottom:8px;
+
 }
 
-/* THEME */
+
+/* =========================
+   THEME BUTTON
+========================= */
 
 .theme-btn{
+
   position:fixed;
+
   right:18px;
+
   bottom:78px;
+
   width:48px;
   height:48px;
+
   border-radius:50%;
-  border:1px solid var(--cyan);
-  background:rgba(0,0,0,.7);
+
+  border:
+    1px solid
+    var(--cyan);
+
+  background:
+    rgba(0,0,0,.7);
+
   color:#fff;
+
   cursor:pointer;
+
   z-index:4000;
+
   font-size:20px;
-  box-shadow:0 0 18px rgba(0,234,255,.2);
+
+  box-shadow:
+    0 0 18px
+    rgba(0,234,255,.2);
+
 }
 
 body.light-mode .theme-btn{
+
   background:#fff;
+
   color:#111;
+
 }
 
-/* BACK TO TOP */
+
+/* =========================
+   BACK TO TOP
+========================= */
 
 #topBtn{
+
   position:fixed;
+
   right:18px;
+
   bottom:135px;
+
   width:45px;
   height:45px;
+
   border-radius:50%;
-  border:1px solid var(--pink);
-  background:rgba(0,0,0,.7);
+
+  border:
+    1px solid
+    var(--pink);
+
+  background:
+    rgba(0,0,0,.7);
+
   color:#fff;
+
   cursor:pointer;
+
   z-index:4000;
+
   opacity:0;
+
   visibility:hidden;
-  transform:translateY(15px);
+
+  transform:
+    translateY(15px);
+
   transition:.3s;
+
 }
 
 #topBtn.show{
+
   opacity:1;
+
   visibility:visible;
-  transform:translateY(0);
+
+  transform:
+    translateY(0);
+
 }
 
-/* MOBILE APP NAV */
+
+/* =========================
+   MOBILE NAV
+========================= */
 
 .mobile-nav{
+
   display:none;
+
 }
 
 .mobile-nav a{
+
   color:#9299aa;
+
   text-decoration:none;
+
   font-size:10px;
+
   text-align:center;
+
   min-width:52px;
+
   padding:6px 3px;
+
   border-radius:13px;
+
   transition:.25s;
+
 }
 
 .mobile-nav a span{
+
   display:block;
+
   font-size:20px;
+
   margin-bottom:3px;
+
 }
 
 .mobile-nav a.active{
-  color:var(--cyan);
-  background:rgba(0,234,255,.08);
-  text-shadow:0 0 10px rgba(0,234,255,.5);
+
+  color:
+    var(--cyan);
+
+  background:
+    rgba(0,234,255,.08);
+
+  text-shadow:
+    0 0 10px
+    rgba(0,234,255,.5);
+
 }
 
-/* FLOATING EMOJIS */
+
+/* =========================
+   FLOATING EMOJIS
+========================= */
 
 #emojiContainer{
+
   position:fixed;
+
   inset:0;
+
   pointer-events:none;
+
   z-index:1000;
+
   overflow:hidden;
+
 }
 
 .floating-emoji{
+
   position:absolute;
-  animation:floatEmoji linear forwards;
+
+  animation:
+    floatEmoji
+    linear
+    forwards;
+
   pointer-events:none;
+
 }
 
 @keyframes floatEmoji{
+
   0%{
+
     opacity:0;
+
     transform:
       translateY(20px)
       scale(.7)
       rotate(0deg);
+
   }
 
   15%{
@@ -1153,205 +2241,369 @@ body.light-mode .theme-btn{
   }
 
   100%{
+
     opacity:0;
+
     transform:
       translateY(-280px)
       scale(1.15)
       rotate(20deg);
+
   }
+
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
   html,
   body{
+
     width:100%;
+
     min-width:100%;
+
     max-width:100%;
+
     overflow-x:hidden;
+
   }
 
   body{
+
     padding-bottom:70px;
+
+    background-attachment:
+      scroll;
+
   }
 
   nav{
+
     display:none;
+
   }
 
   .app-status{
+
     width:94%;
+
     margin-top:12px;
+
   }
 
   .container{
+
     width:94%;
+
     margin-left:auto;
+
     margin-right:auto;
+
   }
 
   .hero{
+
     min-height:570px;
+
     padding-top:55px;
+
   }
 
   .profile-wrap{
+
     width:135px;
+
     height:135px;
+
   }
 
   .hero h1{
+
     font-size:39px;
+
   }
 
   .hero-sub{
+
     font-size:15px;
+
   }
 
   .hero-actions{
+
     gap:8px;
+
   }
 
   .hero-action{
+
     padding:10px 13px;
+
   }
 
   .card{
-    padding:23px 17px;
+
+    padding:
+      23px 17px;
+
     border-radius:21px;
+
   }
 
   .card h2{
+
     font-size:24px;
+
   }
 
   .about-stats{
-    grid-template-columns:1fr 1fr 1fr;
+
+    grid-template-columns:
+      1fr 1fr 1fr;
+
     gap:7px;
+
   }
 
   .about-stat{
-    padding:14px 5px;
+
+    padding:
+      14px 5px;
+
   }
 
   .about-stat strong{
+
     font-size:18px;
+
   }
 
   .about-stat span{
+
     font-size:9px;
+
   }
 
   .bgmi-info{
+
     grid-template-columns:1fr;
+
   }
 
   .social-grid{
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+      repeat(2,1fr);
+
   }
 
   .quick-menu{
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+      repeat(2,1fr);
+
   }
 
   .gallery-image-box{
+
     min-height:300px;
+
   }
 
   .gallery-image{
+
     height:300px;
+
   }
 
   .dhongi-section{
+
     min-height:480px;
+
   }
 
   .dhongi-photo-frame{
+
     padding:6px;
+
   }
 
   .dhongi-photo-frame img{
+
     max-height:280px;
+
   }
 
   .dhongi-content p{
+
     font-size:20px;
+
   }
 
   .visitor-box{
+
     width:170px;
+
     height:170px;
+
   }
 
   .theme-btn{
+
     right:15px;
+
     bottom:83px;
+
   }
 
   #topBtn{
+
     right:15px;
+
     bottom:140px;
+
   }
 
-  /* MOBILE BOTTOM APP BAR */
+
+  /* =====================
+     MOBILE APP BAR
+  ===================== */
 
   .mobile-nav{
+
     position:fixed;
+
     left:8px;
     right:8px;
-    bottom:8px;
+
+    bottom:
+      max(8px, env(safe-area-inset-bottom));
+
     height:62px;
+
     z-index:6000;
+
     display:flex;
+
     justify-content:space-around;
+
     align-items:center;
+
     padding:5px;
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+      1px solid
+      rgba(255,255,255,.12);
+
     border-radius:21px;
-    background:rgba(5,7,15,.88);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+
+    background:
+      rgba(5,7,15,.88);
+
+    backdrop-filter:
+      blur(20px);
+
+    -webkit-backdrop-filter:
+      blur(20px);
+
     box-shadow:
-      0 10px 35px rgba(0,0,0,.5),
-      0 0 25px rgba(0,234,255,.05);
+      0 10px 35px
+        rgba(0,0,0,.5),
+      0 0 25px
+        rgba(0,234,255,.05);
+
   }
 
   body.light-mode .mobile-nav{
-    background:rgba(255,255,255,.9);
-    border-color:rgba(0,0,0,.1);
+
+    background:
+      rgba(255,255,255,.9);
+
+    border-color:
+      rgba(0,0,0,.1);
+
   }
+
 }
+
+
+/* =========================
+   SMALL PHONES
+========================= */
 
 @media(max-width:420px){
 
   .hero h1{
+
     font-size:34px;
+
   }
 
   .social-grid{
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+      1fr 1fr;
+
   }
 
   .social-btn{
+
     font-size:13px;
+
   }
 
   .mobile-nav a{
+
     min-width:48px;
+
   }
 
   .mobile-nav a span{
+
     font-size:18px;
+
   }
+
 }
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+
+    animation-duration:.01ms!important;
+
+    animation-iteration-count:1!important;
+
+    scroll-behavior:auto!important;
+
+    transition-duration:.01ms!important;
+
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- LOADER -->
+
+<!-- =========================
+     LOADER
+========================= -->
 
 <div id="loader">
 
@@ -1367,34 +2619,53 @@ body.light-mode .theme-btn{
 
 </div>
 
-<!-- STARS -->
+
+<!-- =========================
+     STARS
+========================= -->
 
 <div id="stars"></div>
 
-<!-- FLOATING EMOJIS -->
+
+<!-- =========================
+     FLOATING EMOJIS
+========================= -->
 
 <div id="emojiContainer"></div>
 
-<!-- DESKTOP NAVBAR -->
+
+<!-- =========================
+     DESKTOP NAV
+========================= -->
 
 <nav>
 
   <div class="nav-inner">
 
     <a href="#home">Home</a>
+
     <a href="#about">About</a>
+
     <a href="#bgmi">BGMI</a>
+
     <a href="#dhongi">Dhongi</a>
+
     <a href="#gallery">Gallery</a>
+
     <a href="#social">Social</a>
+
     <a href="#dreams">Dreams</a>
+
     <a href="#visitors">Visitors</a>
 
   </div>
 
 </nav>
 
-<!-- STATUS -->
+
+<!-- =========================
+     STATUS
+========================= -->
 
 <div class="app-status">
 
@@ -1406,11 +2677,18 @@ body.light-mode .theme-btn{
 
 </div>
 
+
 <main class="container">
 
-<!-- HERO -->
 
-<header class="hero" id="home">
+<!-- =========================
+     HERO
+========================= -->
+
+<header
+  class="hero"
+  id="home"
+>
 
   <div class="hero-content">
 
@@ -1429,9 +2707,11 @@ body.light-mode .theme-btn{
 
     </div>
 
+
     <h1>
       Saikat Manna
     </h1>
+
 
     <p class="hero-sub">
 
@@ -1442,12 +2722,14 @@ body.light-mode .theme-btn{
 
     </p>
 
+
     <div
       class="clock"
       id="clock"
     >
       Loading time...
     </div>
+
 
     <div class="hero-actions">
 
@@ -1478,7 +2760,10 @@ body.light-mode .theme-btn{
 
 </header>
 
-<!-- QUICK ACCESS -->
+
+<!-- =========================
+     QUICK ACCESS
+========================= -->
 
 <section class="card">
 
@@ -1492,39 +2777,65 @@ body.light-mode .theme-btn{
       class="quick-item"
       href="#bgmi"
     >
+
       <span>🎮</span>
-      <small>BGMI</small>
+
+      <small>
+        BGMI
+      </small>
+
     </a>
+
 
     <a
       class="quick-item"
       href="#dhongi"
     >
+
       <span>💫</span>
-      <small>Special</small>
+
+      <small>
+        Special
+      </small>
+
     </a>
+
 
     <a
       class="quick-item"
       href="#gallery"
     >
+
       <span>📸</span>
-      <small>Gallery</small>
+
+      <small>
+        Gallery
+      </small>
+
     </a>
+
 
     <a
       class="quick-item"
       href="#social"
     >
+
       <span>🌐</span>
-      <small>Social</small>
+
+      <small>
+        Social
+      </small>
+
     </a>
 
   </div>
 
 </section>
 
-<!-- ABOUT -->
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section
   class="card"
@@ -1553,28 +2864,49 @@ body.light-mode .theme-btn{
 
   </p>
 
+
   <div class="about-stats">
 
     <div class="about-stat">
+
       <strong>🎮</strong>
-      <span>Gamer</span>
+
+      <span>
+        Gamer
+      </span>
+
     </div>
 
+
     <div class="about-stat">
+
       <strong>💻</strong>
-      <span>Learner</span>
+
+      <span>
+        Learner
+      </span>
+
     </div>
 
+
     <div class="about-stat">
+
       <strong>🚀</strong>
-      <span>Dreamer</span>
+
+      <span>
+        Dreamer
+      </span>
+
     </div>
 
   </div>
 
 </section>
 
-<!-- BGMI -->
+
+<!-- =========================
+     BGMI
+========================= -->
 
 <section
   class="card bgmi-card"
@@ -1585,9 +2917,11 @@ body.light-mode .theme-btn{
     🎮 BGMI Profile
   </h2>
 
+
   <div class="bgmi-name">
     JaCk๛DaNieL's
   </div>
+
 
   <div class="bgmi-info">
 
@@ -1596,6 +2930,7 @@ body.light-mode .theme-btn{
       <span class="info-label">
         UID
       </span>
+
 
       <div class="uid-row">
 
@@ -1606,10 +2941,12 @@ body.light-mode .theme-btn{
           55619352171
         </span>
 
+
         <button
           class="copy-btn"
           onclick="copyUID()"
           id="copyBtn"
+          type="button"
         >
           Copy
         </button>
@@ -1617,6 +2954,7 @@ body.light-mode .theme-btn{
       </div>
 
     </div>
+
 
     <div class="info-box">
 
@@ -1632,13 +2970,17 @@ body.light-mode .theme-btn{
 
   </div>
 
+
   <div class="tag-top">
     TAG ON TOP 🧡
   </div>
 
 </section>
 
-<!-- DHONGI -->
+
+<!-- =========================
+     DHONGI
+========================= -->
 
 <section
   class="card dhongi-section"
@@ -1651,6 +2993,7 @@ body.light-mode .theme-btn{
       💫 Dhongi 🎀
     </h2>
 
+
     <div class="dhongi-photo-frame">
 
       <img
@@ -1661,6 +3004,7 @@ body.light-mode .theme-btn{
       >
 
     </div>
+
 
     <p>
 
@@ -1675,6 +3019,7 @@ body.light-mode .theme-btn{
 
     </p>
 
+
     <p class="dhongi-special">
 
       Some people are simply special. ✨
@@ -1685,13 +3030,17 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- FAVOURITE PIC -->
+
+<!-- =========================
+     FAVOURITE PIC
+========================= -->
 
 <section class="card">
 
   <h2>
     ❤️ Favourite Pic
   </h2>
+
 
   <div class="fav-photo-wrap">
 
@@ -1706,7 +3055,10 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- GALLERY -->
+
+<!-- =========================
+     GALLERY
+========================= -->
 
 <section
   class="card gallery-card"
@@ -1717,11 +3069,13 @@ body.light-mode .theme-btn{
     Mehhh👇🎀🤭
   </h2>
 
+
   <div class="gallery-view">
 
     <div
       class="gallery-image-box"
-      onclick="openGallery()"
+      id="galleryImageBox"
+      onclick="handleGalleryImageClick(event)"
     >
 
       <img
@@ -1731,9 +3085,11 @@ body.light-mode .theme-btn{
         alt="Gallery photo"
         loading="lazy"
         decoding="async"
+        draggable="false"
       >
 
     </div>
+
 
     <div class="gallery-controls">
 
@@ -1741,19 +3097,23 @@ body.light-mode .theme-btn{
         class="gallery-btn"
         onclick="previousImage()"
         aria-label="Previous photo"
+        type="button"
       >
         ❮
       </button>
+
 
       <button
         class="gallery-btn"
         onclick="nextImage()"
         aria-label="Next photo"
+        type="button"
       >
         ❯
       </button>
 
     </div>
+
 
     <div
       class="gallery-counter"
@@ -1762,15 +3122,21 @@ body.light-mode .theme-btn{
       1 / 18
     </div>
 
+
     <p class="gallery-hint">
+
       Tap the photo for fullscreen • Swipe to change ✨
+
     </p>
 
   </div>
 
 </section>
 
-<!-- SOCIAL -->
+
+<!-- =========================
+     SOCIAL
+========================= -->
 
 <section
   class="card"
@@ -1780,6 +3146,7 @@ body.light-mode .theme-btn{
   <h2>
     🌐 Social Media
   </h2>
+
 
   <div class="social-grid">
 
@@ -1792,6 +3159,7 @@ body.light-mode .theme-btn{
       📸 Instagram
     </a>
 
+
     <a
       class="social-btn facebook"
       href="https://www.facebook.com/share/1SxZssLRTX/"
@@ -1801,6 +3169,7 @@ body.light-mode .theme-btn{
       👤 Facebook
     </a>
 
+
     <a
       class="social-btn youtube"
       href="https://www.youtube.com/@saikatmanna-o4d"
@@ -1809,6 +3178,7 @@ body.light-mode .theme-btn{
     >
       ▶️ YouTube
     </a>
+
 
     <a
       class="social-btn github"
@@ -1823,7 +3193,10 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- DREAMS -->
+
+<!-- =========================
+     DREAMS
+========================= -->
 
 <section
   class="card"
@@ -1834,11 +3207,13 @@ body.light-mode .theme-btn{
     🚀 My Dreams
   </h2>
 
+
   <div class="dream-list">
 
     <div class="dream">
       💻 Learn coding and build something of my own
     </div>
+
 
     <div class="dream">
       🚀 Keep learning, improving and moving forward
@@ -1848,7 +3223,10 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- VISITORS -->
+
+<!-- =========================
+     VISITORS
+========================= -->
 
 <section
   class="card visitor-card"
@@ -1859,17 +3237,20 @@ body.light-mode .theme-btn{
     👀 Visitors
   </h2>
 
+
   <p class="visitor-welcome">
 
     Thanks for visiting my mini world ❤️
 
   </p>
 
+
   <div class="visitor-box">
 
     <div class="visitor-icon">
       👁️
     </div>
+
 
     <div
       class="visitor-number"
@@ -1878,11 +3259,13 @@ body.light-mode .theme-btn{
       0
     </div>
 
+
     <div class="visitor-label">
       TOTAL VISITORS
     </div>
 
   </div>
+
 
   <p class="visitor-note">
 
@@ -1894,7 +3277,10 @@ body.light-mode .theme-btn{
 
 </main>
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1908,49 +3294,71 @@ body.light-mode .theme-btn{
 
 </footer>
 
-<!-- GALLERY MODAL -->
 
-<div id="galleryModal">
+<!-- =========================
+     GALLERY MODAL
+========================= -->
+
+<div
+  id="galleryModal"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Fullscreen gallery"
+>
 
   <button
     class="modal-close"
     onclick="closeGallery()"
-    aria-label="Close"
+    aria-label="Close fullscreen gallery"
+    type="button"
   >
     ×
   </button>
+
 
   <img
     id="modalImage"
     class="modal-img"
     src=""
     alt="Fullscreen gallery photo"
+    draggable="false"
   >
 
 </div>
 
-<!-- THEME BUTTON -->
+
+<!-- =========================
+     THEME BUTTON
+========================= -->
 
 <button
   class="theme-btn"
   onclick="toggleTheme()"
   id="themeBtn"
   aria-label="Toggle theme"
+  type="button"
 >
   🌙
 </button>
 
-<!-- BACK TO TOP -->
+
+<!-- =========================
+     BACK TO TOP
+========================= -->
 
 <button
   id="topBtn"
   onclick="window.scrollTo({top:0,behavior:'smooth'})"
   aria-label="Back to top"
+  type="button"
 >
   ↑
 </button>
 
-<!-- MOBILE APP NAVIGATION -->
+
+<!-- =========================
+     MOBILE NAV
+========================= -->
 
 <div class="mobile-nav">
 
@@ -1959,51 +3367,76 @@ body.light-mode .theme-btn{
     class="active"
     data-section="home"
   >
+
     <span>🏠</span>
+
     Home
+
   </a>
+
 
   <a
     href="#bgmi"
     data-section="bgmi"
   >
+
     <span>🎮</span>
+
     BGMI
+
   </a>
+
 
   <a
     href="#dhongi"
     data-section="dhongi"
   >
+
     <span>💫</span>
+
     Special
+
   </a>
+
 
   <a
     href="#gallery"
     data-section="gallery"
   >
+
     <span>📸</span>
+
     Gallery
+
   </a>
+
 
   <a
     href="#social"
     data-section="social"
   >
+
     <span>🌐</span>
+
     Social
+
   </a>
 
 </div>
 
-<!-- SUPABASE -->
+
+<!-- =========================
+     SUPABASE
+========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 
-/* SUPABASE */
+/* =====================================================
+   SUPABASE
+===================================================== */
 
 const SUPABASE_URL =
   "https://kxfhjuzfxehyhldtoqdr.supabase.co";
@@ -2017,7 +3450,10 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-/* VISITOR COUNTER */
+
+/* =====================================================
+   VISITOR COUNTER
+===================================================== */
 
 async function updateVisitorCount(){
 
@@ -2025,6 +3461,10 @@ async function updateVisitorCount(){
     document.getElementById(
       "visitorCount"
     );
+
+  if(!visitorElement){
+    return;
+  }
 
   const alreadyVisited =
     localStorage.getItem(
@@ -2035,31 +3475,52 @@ async function updateVisitorCount(){
 
     if(!alreadyVisited){
 
-      const {data,error} =
+      const {error} =
         await supabaseClient.rpc(
           "increment_visitor"
         );
 
-      if(error) throw error;
+      if(error){
 
-      localStorage.setItem(
-        "saikat_visitor_counted",
-        "true"
-      );
+        console.error(
+          "Increment visitor error:",
+          error
+        );
+
+      }else{
+
+        localStorage.setItem(
+          "saikat_visitor_counted",
+          "true"
+        );
+
+      }
 
     }
+
 
     const {data,error} =
       await supabaseClient.rpc(
         "get_visitor_count"
       );
 
-    if(error) throw error;
+
+    if(error){
+
+      throw error;
+
+    }
+
+
+    const number =
+      Number(data ?? 0);
+
 
     animateNumber(
       visitorElement,
-      Number(data ?? 0)
+      number
     );
+
 
   }catch(error){
 
@@ -2068,18 +3529,30 @@ async function updateVisitorCount(){
       error
     );
 
+    visitorElement.innerText =
+      "—";
+
   }
 
 }
+
 
 function animateNumber(
   element,
   target
 ){
 
-  let current=0;
-  const duration=1000;
-  const start=performance.now();
+  if(!element){
+    return;
+  }
+
+  let current = 0;
+
+  const duration = 1000;
+
+  const start =
+    performance.now();
+
 
   function update(time){
 
@@ -2089,15 +3562,18 @@ function animateNumber(
         1
       );
 
+
     current =
       Math.floor(
         progress*target
       );
 
+
     element.innerText =
       current;
 
-    if(progress<1){
+
+    if(progress < 1){
 
       requestAnimationFrame(
         update
@@ -2112,15 +3588,20 @@ function animateNumber(
 
   }
 
+
   requestAnimationFrame(
     update
   );
 
 }
 
+
 updateVisitorCount();
 
-/* LOADER */
+
+/* =====================================================
+   LOADER
+===================================================== */
 
 window.addEventListener(
   "load",
@@ -2129,9 +3610,18 @@ window.addEventListener(
     setTimeout(
       function(){
 
-        document
-          .getElementById("loader")
-          .classList.add("hide");
+        const loader =
+          document.getElementById(
+            "loader"
+          );
+
+        if(loader){
+
+          loader.classList.add(
+            "hide"
+          );
+
+        }
 
       },
       900
@@ -2140,34 +3630,49 @@ window.addEventListener(
   }
 );
 
-/* STARS */
+
+/* =====================================================
+   STARS
+===================================================== */
 
 const stars =
   document.getElementById(
     "stars"
   );
 
-for(let i=0;i<90;i++){
+
+for(
+  let i=0;
+  i<90;
+  i++
+){
 
   const star =
     document.createElement(
       "div"
     );
 
+
   star.className =
     "star";
+
 
   star.style.left =
     Math.random()*100+"%";
 
+
   star.style.top =
     Math.random()*100+"%";
+
 
   star.style.animationDelay =
     Math.random()*3+"s";
 
+
   star.style.opacity =
-    .2+Math.random()*.8;
+    .2+
+    Math.random()*.8;
+
 
   stars.appendChild(
     star
@@ -2175,7 +3680,10 @@ for(let i=0;i<90;i++){
 
 }
 
-/* SHOOTING STARS */
+
+/* =====================================================
+   SHOOTING STARS
+===================================================== */
 
 function createShootingStar(){
 
@@ -2184,39 +3692,53 @@ function createShootingStar(){
       "div"
     );
 
+
   star.className =
     "shooting-star";
 
+
   star.style.right =
-    (-50+Math.random()*20)+"px";
+    (-50+
+    Math.random()*20)+"px";
+
 
   star.style.top =
-    (5+Math.random()*45)+"vh";
+    (5+
+    Math.random()*45)+"vh";
+
 
   document.body.appendChild(
     star
   );
 
+
   setTimeout(
-    ()=>star.remove(),
+    ()=>{
+      star.remove();
+    },
     1400
   );
 
 }
+
 
 setInterval(
   createShootingStar,
   6500
 );
 
-/* TYPING ANIMATION */
+
+/* =====================================================
+   TYPING ANIMATION
+===================================================== */
 
 const typingText =
   document.getElementById(
     "typingText"
   );
 
-const typingWords=[
+
+const typingWords = [
 
   "Gamer 🎮",
   "Learner 💻",
@@ -2226,16 +3748,26 @@ const typingWords=[
 
 ];
 
-let wordIndex=0;
-let charIndex=0;
-let deleting=false;
+
+let wordIndex = 0;
+
+let charIndex = 0;
+
+let deleting = false;
+
 
 function typeEffect(){
+
+  if(!typingText){
+    return;
+  }
+
 
   const word =
     typingWords[
       wordIndex
     ];
+
 
   if(!deleting){
 
@@ -2245,18 +3777,23 @@ function typeEffect(){
         charIndex+1
       );
 
+
     charIndex++;
 
+
     if(
-      charIndex===word.length
+      charIndex ===
+      word.length
     ){
 
-      deleting=true;
+      deleting = true;
+
 
       setTimeout(
         typeEffect,
         1400
       );
+
 
       return;
 
@@ -2270,48 +3807,73 @@ function typeEffect(){
         charIndex-1
       );
 
+
     charIndex--;
 
-    if(charIndex===0){
 
-      deleting=false;
+    if(charIndex === 0){
+
+      deleting = false;
+
 
       wordIndex =
         (wordIndex+1)
-        %typingWords.length;
+        %
+        typingWords.length;
 
     }
 
   }
 
+
   setTimeout(
     typeEffect,
-    deleting ? 55 : 90
+    deleting
+      ? 55
+      : 90
   );
 
 }
 
+
 typeEffect();
 
-/* CLOCK */
+
+/* =====================================================
+   CLOCK
+===================================================== */
 
 function updateClock(){
+
+  const clock =
+    document.getElementById(
+      "clock"
+    );
+
+
+  if(!clock){
+    return;
+  }
+
 
   const now =
     new Date();
 
-  const options={
+
+  const options = {
 
     hour:"2-digit",
+
     minute:"2-digit",
+
     second:"2-digit",
+
     hour12:true
 
   };
 
-  document.getElementById(
-    "clock"
-  ).innerText =
+
+  clock.innerText =
 
     "🕒 "+
     now.toLocaleTimeString(
@@ -2321,67 +3883,125 @@ function updateClock(){
 
 }
 
+
 setInterval(
   updateClock,
   1000
 );
 
+
 updateClock();
 
-/* COPY UID */
 
-function copyUID(){
+/* =====================================================
+   COPY UID
+===================================================== */
 
-  const uid =
+async function copyUID(){
+
+  const uidElement =
     document.getElementById(
       "uidText"
-    ).innerText;
+    );
 
   const btn =
     document.getElementById(
       "copyBtn"
     );
 
-  navigator.clipboard
-    .writeText(uid)
-    .then(()=>{
 
-      btn.innerText =
-        "✓ Copied!";
+  if(
+    !uidElement ||
+    !btn
+  ){
 
-      setTimeout(
-        ()=>{
+    return;
 
-          btn.innerText =
-            "Copy";
+  }
 
-        },
-        1600
+
+  const uid =
+    uidElement.innerText.trim();
+
+
+  try{
+
+    if(
+      navigator.clipboard &&
+      window.isSecureContext
+    ){
+
+      await navigator.clipboard.writeText(
+        uid
       );
 
-    })
-    .catch(()=>{
+    }else{
 
-      btn.innerText =
-        "Copy failed";
+      const temp =
+        document.createElement(
+          "textarea"
+        );
 
-      setTimeout(
-        ()=>{
+      temp.value =
+        uid;
 
-          btn.innerText =
-            "Copy";
+      temp.style.position =
+        "fixed";
 
-        },
-        1600
+      temp.style.opacity =
+        "0";
+
+      document.body.appendChild(
+        temp
       );
 
-    });
+      temp.focus();
+
+      temp.select();
+
+      document.execCommand(
+        "copy"
+      );
+
+      temp.remove();
+
+    }
+
+
+    btn.innerText =
+      "✓ Copied!";
+
+
+  }catch(error){
+
+    console.error(
+      "Copy error:",
+      error
+    );
+
+
+    btn.innerText =
+      "Copy failed";
+
+  }
+
+
+  setTimeout(
+    ()=>{
+      btn.innerText =
+        "Copy";
+    },
+    1600
+  );
 
 }
 
-/* GALLERY */
 
-const galleryImages=[
+/* =====================================================
+   GALLERY
+===================================================== */
+
+const galleryImages = [
 
   "IMG_20260417_144516.jpg",
   "IMG_20260101_080151.jpg",
@@ -2404,47 +4024,124 @@ const galleryImages=[
 
 ];
 
-let galleryIndex=0;
+
+let galleryIndex = 0;
+
 
 const galleryImage =
   document.getElementById(
     "galleryImage"
   );
 
+
 const galleryCounter =
   document.getElementById(
     "galleryCounter"
   );
 
+
+const galleryModal =
+  document.getElementById(
+    "galleryModal"
+  );
+
+
+const modalImage =
+  document.getElementById(
+    "modalImage"
+  );
+
+
+/* PRELOAD FIRST FEW IMAGES */
+
+function preloadGalleryImages(){
+
+  galleryImages
+    .slice(0,5)
+    .forEach(
+      src=>{
+
+        const img =
+          new Image();
+
+        img.src =
+          src;
+
+      }
+    );
+
+}
+
+preloadGalleryImages();
+
+
+/* SHOW IMAGE */
+
 function showGalleryImage(
-  index
+  index,
+  openFullscreen = false
 ){
 
   galleryIndex =
-    (index+galleryImages.length)
-    %galleryImages.length;
+    (
+      index+
+      galleryImages.length
+    )
+    %
+    galleryImages.length;
+
+
+  if(!galleryImage){
+    return;
+  }
+
 
   galleryImage.classList.add(
     "fade"
   );
 
-  setTimeout(()=>{
 
-    galleryImage.src =
-      galleryImages[
-        galleryIndex
-      ];
+  setTimeout(
+    ()=>{
 
-    galleryCounter.innerText =
-      `${galleryIndex+1} / ${galleryImages.length}`;
+      galleryImage.src =
+        galleryImages[
+          galleryIndex
+        ];
 
-    galleryImage.classList.remove(
-      "fade"
-    );
 
-  },180);
+      galleryImage.alt =
+        "Gallery photo "+
+        (galleryIndex+1);
+
+
+      if(galleryCounter){
+
+        galleryCounter.innerText =
+          `${galleryIndex+1} / ${galleryImages.length}`;
+
+      }
+
+
+      galleryImage.classList.remove(
+        "fade"
+      );
+
+
+      if(openFullscreen){
+
+        updateModalImage();
+
+      }
+
+    },
+    180
+  );
 
 }
+
+
+/* NEXT */
 
 function nextImage(){
 
@@ -2452,7 +4149,22 @@ function nextImage(){
     galleryIndex+1
   );
 
+
+  if(
+    galleryModal &&
+    galleryModal.classList.contains(
+      "show"
+    )
+  ){
+
+    updateModalImage();
+
+  }
+
 }
+
+
+/* PREVIOUS */
 
 function previousImage(){
 
@@ -2460,52 +4172,124 @@ function previousImage(){
     galleryIndex-1
   );
 
+
+  if(
+    galleryModal &&
+    galleryModal.classList.contains(
+      "show"
+    )
+  ){
+
+    updateModalImage();
+
+  }
+
 }
 
-/* FULLSCREEN GALLERY */
 
-function openGallery(){
+/* MODAL IMAGE */
 
-  document.getElementById(
-    "modalImage"
-  ).src =
+function updateModalImage(){
+
+  if(!modalImage){
+    return;
+  }
+
+
+  modalImage.src =
     galleryImages[
       galleryIndex
     ];
 
-  document.getElementById(
-    "galleryModal"
-  ).classList.add(
+
+  modalImage.alt =
+    "Fullscreen gallery photo "+
+    (galleryIndex+1);
+
+}
+
+
+/* OPEN */
+
+function openGallery(){
+
+  if(!galleryModal){
+    return;
+  }
+
+
+  updateModalImage();
+
+
+  galleryModal.classList.add(
     "show"
   );
+
 
   document.body.style.overflow =
     "hidden";
 
 }
 
+
+/* CLOSE */
+
 function closeGallery(){
 
-  document.getElementById(
-    "galleryModal"
-  ).classList.remove(
+  if(!galleryModal){
+    return;
+  }
+
+
+  galleryModal.classList.remove(
     "show"
   );
+
 
   document.body.style.overflow =
     "";
 
 }
 
-document
-  .getElementById(
-    "galleryModal"
-  )
-  .addEventListener(
+
+/* IMAGE CLICK */
+
+function handleGalleryImageClick(event){
+
+  /*
+    Prevent accidental fullscreen
+    after a swipe.
+  */
+
+  if(
+    window.galleryWasSwiped
+  ){
+
+    window.galleryWasSwiped =
+      false;
+
+    return;
+
+  }
+
+
+  openGallery();
+
+}
+
+
+/* MODAL BACKGROUND CLICK */
+
+if(galleryModal){
+
+  galleryModal.addEventListener(
     "click",
     function(e){
 
-      if(e.target===this){
+      if(
+        e.target ===
+        galleryModal
+      ){
 
         closeGallery();
 
@@ -2514,115 +4298,211 @@ document
     }
   );
 
-/* KEYBOARD GALLERY */
+}
+
+
+/* KEYBOARD */
 
 document.addEventListener(
   "keydown",
   function(e){
 
     if(
-      document
-        .getElementById(
-          "galleryModal"
-        )
-        .classList
-        .contains("show")
-    ){
-
-      if(e.key==="Escape"){
-
-        closeGallery();
-
-      }
-
-      if(e.key==="ArrowRight"){
-
-        nextImage();
-
-        document.getElementById(
-          "modalImage"
-        ).src =
-          galleryImages[
-            galleryIndex
-          ];
-
-      }
-
-      if(e.key==="ArrowLeft"){
-
-        previousImage();
-
-        document.getElementById(
-          "modalImage"
-        ).src =
-          galleryImages[
-            galleryIndex
-          ];
-
-      }
-
-    }
-
-  }
-);
-
-/* SWIPE */
-
-let touchStartX=0;
-
-galleryImage.addEventListener(
-  "touchstart",
-  function(e){
-
-    touchStartX =
-      e.changedTouches[0]
-      .screenX;
-
-  },
-  {passive:true}
-);
-
-galleryImage.addEventListener(
-  "touchend",
-  function(e){
-
-    const touchEndX =
-      e.changedTouches[0]
-      .screenX;
-
-    const difference =
-      touchEndX-touchStartX;
-
-    if(
-      Math.abs(difference)<50
+      !galleryModal ||
+      !galleryModal.classList.contains(
+        "show"
+      )
     ){
 
       return;
 
     }
 
-    if(difference<0){
 
-      nextImage();
+    if(e.key === "Escape"){
 
-    }else{
-
-      previousImage();
+      closeGallery();
 
     }
 
-  },
-  {passive:true}
+
+    if(e.key === "ArrowRight"){
+
+      galleryIndex =
+        (
+          galleryIndex+1
+        )
+        %
+        galleryImages.length;
+
+      updateModalImage();
+
+    }
+
+
+    if(e.key === "ArrowLeft"){
+
+      galleryIndex =
+        (
+          galleryIndex-1+
+          galleryImages.length
+        )
+        %
+        galleryImages.length;
+
+      updateModalImage();
+
+    }
+
+  }
 );
 
-/* FLOATING EMOJIS */
+
+/* =====================================================
+   GALLERY SWIPE
+===================================================== */
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+let touchMoved = false;
+
+
+if(galleryImage){
+
+  galleryImage.addEventListener(
+    "touchstart",
+    function(e){
+
+      const touch =
+        e.changedTouches[0];
+
+
+      touchStartX =
+        touch.screenX;
+
+
+      touchStartY =
+        touch.screenY;
+
+
+      touchMoved =
+        false;
+
+    },
+    {
+      passive:true
+    }
+  );
+
+
+  galleryImage.addEventListener(
+    "touchmove",
+    function(e){
+
+      const touch =
+        e.changedTouches[0];
+
+
+      const dx =
+        touch.screenX-
+        touchStartX;
+
+
+      const dy =
+        touch.screenY-
+        touchStartY;
+
+
+      if(
+        Math.abs(dx)>20 ||
+        Math.abs(dy)>20
+      ){
+
+        touchMoved =
+          true;
+
+      }
+
+    },
+    {
+      passive:true
+    }
+  );
+
+
+  galleryImage.addEventListener(
+    "touchend",
+    function(e){
+
+      const touch =
+        e.changedTouches[0];
+
+
+      const touchEndX =
+        touch.screenX;
+
+
+      const touchEndY =
+        touch.screenY;
+
+
+      const differenceX =
+        touchEndX-
+        touchStartX;
+
+
+      const differenceY =
+        touchEndY-
+        touchStartY;
+
+
+      if(
+        Math.abs(differenceX)<50 ||
+        Math.abs(differenceX)<
+        Math.abs(differenceY)
+      ){
+
+        return;
+
+      }
+
+
+      window.galleryWasSwiped =
+        true;
+
+
+      if(differenceX<0){
+
+        nextImage();
+
+      }else{
+
+        previousImage();
+
+      }
+
+    },
+    {
+      passive:true
+    }
+  );
+
+}
+
+
+/* =====================================================
+   FLOATING EMOJIS
+===================================================== */
 
 const emojiContainer =
   document.getElementById(
     "emojiContainer"
   );
 
-const emojis=[
+
+const emojis = [
 
   "😍",
   "❤️",
@@ -2635,6 +4515,10 @@ const emojis=[
 
 ];
 
+
+let lastEmojiTime = 0;
+
+
 function createFloatingEmoji(){
 
   const origin =
@@ -2642,43 +4526,69 @@ function createFloatingEmoji(){
       "heartOrigin"
     );
 
-  if(!origin)return;
+
+  if(!origin){
+
+    return;
+
+  }
+
 
   const rect =
     origin.getBoundingClientRect();
 
+
+  /*
+    FIX:
+    Emojis are only generated when
+    the Dhongi section is actually
+    visible.
+  */
+
   if(
-    rect.bottom<0 ||
-    rect.top>window.innerHeight
+
+    rect.bottom < 0 ||
+
+    rect.top >
+    window.innerHeight
+
   ){
 
     return;
 
   }
 
+
   const emoji =
     document.createElement(
       "div"
     );
 
+
   emoji.className =
     "floating-emoji";
+
 
   emoji.innerText =
     emojis[
       Math.floor(
-        Math.random()
-        *emojis.length
+        Math.random()*
+        emojis.length
       )
     ];
+
 
   emoji.style.left =
 
     (
       rect.left+
       rect.width/2+
-      (Math.random()*80-40)
+      (
+        Math.random()*80-
+        40
+      )
     )+"px";
+
 
   emoji.style.bottom =
 
@@ -2687,12 +4597,14 @@ function createFloatingEmoji(){
       rect.bottom
     )+"px";
 
+
   emoji.style.fontSize =
 
     (
       18+
       Math.random()*14
     )+"px";
+
 
   emoji.style.animationDuration =
 
@@ -2701,23 +4613,110 @@ function createFloatingEmoji(){
       Math.random()*3
     )+"s";
 
+
   emojiContainer.appendChild(
     emoji
   );
 
+
   setTimeout(
-    ()=>emoji.remove(),
+    ()=>{
+      emoji.remove();
+    },
     7000
   );
 
 }
 
+
+/*
+  Instead of creating an emoji
+  every 700ms forever, check
+  periodically but only when
+  needed.
+*/
+
 setInterval(
-  createFloatingEmoji,
-  700
+  function(){
+
+    const now =
+      Date.now();
+
+
+    if(
+      now-lastEmojiTime <
+      900
+    ){
+
+      return;
+
+    }
+
+
+    lastEmojiTime =
+      now;
+
+
+    createFloatingEmoji();
+
+  },
+  900
 );
 
-/* THEME */
+
+/* =====================================================
+   THEME
+===================================================== */
+
+function applySavedTheme(){
+
+  const savedTheme =
+    localStorage.getItem(
+      "saikat_theme"
+    );
+
+
+  const themeBtn =
+    document.getElementById(
+      "themeBtn"
+    );
+
+
+  if(
+    savedTheme ===
+    "light"
+  ){
+
+    document.body.classList.add(
+      "light-mode"
+    );
+
+
+    if(themeBtn){
+
+      themeBtn.innerText =
+        "☀️";
+
+    }
+
+  }else{
+
+    document.body.classList.remove(
+      "light-mode"
+    );
+
+
+    if(themeBtn){
+
+      themeBtn.innerText =
+        "🌙";
+
+    }
+
+  }
+
+}
+
 
 function toggleTheme(){
 
@@ -2725,17 +4724,28 @@ function toggleTheme(){
     "light-mode"
   );
 
+
   const isLight =
     document.body.classList.contains(
       "light-mode"
     );
 
-  document.getElementById(
-    "themeBtn"
-  ).innerText =
-    isLight
-      ? "☀️"
-      : "🌙";
+
+  const themeBtn =
+    document.getElementById(
+      "themeBtn"
+    );
+
+
+  if(themeBtn){
+
+    themeBtn.innerText =
+      isLight
+        ? "☀️"
+        : "🌙";
+
+  }
+
 
   localStorage.setItem(
     "saikat_theme",
@@ -2746,73 +4756,89 @@ function toggleTheme(){
 
 }
 
-if(
-  localStorage.getItem(
-    "saikat_theme"
-  )==="light"
-){
 
-  document.body.classList.add(
-    "light-mode"
+applySavedTheme();
+
+
+/* =====================================================
+   BACK TO TOP
+===================================================== */
+
+const topBtn =
+  document.getElementById(
+    "topBtn"
   );
 
-  document.getElementById(
-    "themeBtn"
-  ).innerText =
-    "☀️";
-
-}
-
-/* BACK TO TOP */
 
 window.addEventListener(
   "scroll",
   function(){
 
-    const btn =
-      document.getElementById(
-        "topBtn"
-      );
+    if(!topBtn){
+      return;
+    }
 
-    if(window.scrollY>500){
 
-      btn.classList.add(
+    if(
+      window.scrollY >
+      500
+    ){
+
+      topBtn.classList.add(
         "show"
       );
 
     }else{
 
-      btn.classList.remove(
+      topBtn.classList.remove(
         "show"
       );
 
     }
 
+  },
+  {
+    passive:true
   }
 );
 
-/* MOBILE NAV ACTIVE STATE */
+
+/* =====================================================
+   MOBILE NAV
+===================================================== */
 
 const mobileLinks =
   document.querySelectorAll(
     ".mobile-nav a"
   );
 
+
 const sections = [
+
   "home",
   "bgmi",
   "dhongi",
   "gallery",
   "social"
+
 ];
 
+
 function updateMobileNav(){
+
+  if(!mobileLinks.length){
+    return;
+  }
+
 
   let current =
     "home";
 
+
   const scrollPosition =
-    window.scrollY+180;
+    window.scrollY+
+    220;
+
 
   sections.forEach(
     function(id){
@@ -2822,18 +4848,21 @@ function updateMobileNav(){
           id
         );
 
+
       if(
         section &&
         scrollPosition >=
         section.offsetTop
       ){
 
-        current=id;
+        current =
+          id;
 
       }
 
     }
   );
+
 
   mobileLinks.forEach(
     function(link){
@@ -2842,8 +4871,9 @@ function updateMobileNav(){
         "active"
       );
 
+
       if(
-        link.dataset.section===
+        link.dataset.section ===
         current
       ){
 
@@ -2858,14 +4888,28 @@ function updateMobileNav(){
 
 }
 
+
 window.addEventListener(
   "scroll",
+  updateMobileNav,
+  {
+    passive:true
+  }
+);
+
+
+window.addEventListener(
+  "resize",
   updateMobileNav
 );
 
+
 updateMobileNav();
 
-/* MOBILE NAV CLICK */
+
+/* =====================================================
+   MOBILE NAV CLICK
+===================================================== */
 
 mobileLinks.forEach(
   function(link){
@@ -2881,12 +4925,53 @@ mobileLinks.forEach(
             )
         );
 
+
         this.classList.add(
           "active"
         );
 
       }
     );
+
+  }
+);
+
+
+/* =====================================================
+   IMAGE ERROR HANDLING
+===================================================== */
+
+document
+  .querySelectorAll("img")
+  .forEach(
+    function(img){
+
+      img.addEventListener(
+        "error",
+        function(){
+
+          console.warn(
+            "Image not found:",
+            this.src
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   CLEANUP
+===================================================== */
+
+window.addEventListener(
+  "pagehide",
+  function(){
+
+    document.body.style.overflow =
+      "";
 
   }
 );
