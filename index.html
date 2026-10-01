@@ -48,6 +48,10 @@
 
 <style>
 
+/* =========================
+   GLOBAL
+========================= */
+
 *{
   margin:0;
   padding:0;
@@ -113,6 +117,7 @@ body.light-mode{
   --text:#111827;
   --muted:#4b5563;
   --border:rgba(0,0,0,.10);
+
   background:
     linear-gradient(
       rgba(240,245,250,.84),
@@ -121,6 +126,11 @@ body.light-mode{
     url("IMG_20260921_105205_456.webp")
     center/cover fixed;
 }
+
+
+/* =========================
+   LOADER
+========================= */
 
 #loader{
   position:fixed;
@@ -181,6 +191,11 @@ body.light-mode{
   }
 }
 
+
+/* =========================
+   STARS
+========================= */
+
 #stars{
   position:fixed;
   inset:0;
@@ -234,9 +249,11 @@ body.light-mode{
       translate(0,0)
       rotate(-35deg);
   }
+
   15%{
     opacity:1;
   }
+
   100%{
     opacity:0;
     transform:
@@ -244,6 +261,11 @@ body.light-mode{
       rotate(-35deg);
   }
 }
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav{
   position:sticky;
@@ -298,6 +320,11 @@ nav a.active{
   background:rgba(0,234,255,.08);
 }
 
+
+/* =========================
+   STATUS
+========================= */
+
 .app-status{
   width:min(1100px,92%);
   margin:16px auto 0;
@@ -332,6 +359,11 @@ nav a.active{
   }
 }
 
+
+/* =========================
+   CONTAINER / HERO
+========================= */
+
 .container{
   width:min(1100px,92%);
   margin:auto;
@@ -356,6 +388,7 @@ nav a.active{
     opacity:0;
     transform:translateY(35px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -528,6 +561,11 @@ nav a.active{
   transform:scale(.96);
 }
 
+
+/* =========================
+   COMMON CARD
+========================= */
+
 .card{
   position:relative;
   margin:25px 0;
@@ -573,6 +611,7 @@ nav a.active{
   0%{
     left:-100%;
   }
+
   100%{
     left:130%;
   }
@@ -601,6 +640,11 @@ nav a.active{
   line-height:1.8;
   text-align:center;
 }
+
+
+/* =========================
+   ABOUT
+========================= */
 
 .about-text{
   max-width:750px;
@@ -635,7 +679,9 @@ nav a.active{
 body.light-mode .about-stat,
 body.light-mode .info-box,
 body.light-mode .dream,
-body.light-mode .quick-item{
+body.light-mode .quick-item,
+body.light-mode .thought,
+body.light-mode .journey-item{
   background:rgba(0,0,0,.025);
   border-color:rgba(0,0,0,.08);
 }
@@ -651,6 +697,162 @@ body.light-mode .quick-item{
   color:var(--muted);
   font-size:11px;
 }
+
+
+/* =========================
+   MY THOUGHTS
+========================= */
+
+.thoughts-card{
+  border-color:rgba(139,92,246,.25);
+  box-shadow:
+    0 0 35px
+    rgba(139,92,246,.08);
+}
+
+.thought-list{
+  max-width:800px;
+  margin:auto;
+  display:grid;
+  gap:15px;
+}
+
+.thought{
+  position:relative;
+  padding:20px 22px;
+  border-radius:19px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(139,92,246,.16);
+  transition:
+    transform .3s var(--ease),
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.thought:hover{
+  transform:translateX(6px);
+  border-color:rgba(139,92,246,.55);
+  box-shadow:
+    0 0 22px
+    rgba(139,92,246,.10);
+}
+
+.thought-icon{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.thought-text{
+  color:var(--text)!important;
+  font-size:16px;
+  line-height:1.7!important;
+  text-align:left!important;
+}
+
+.thought-small{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+
+/* =========================
+   MY JOURNEY
+========================= */
+
+.journey-card{
+  border-color:rgba(0,234,255,.22);
+  box-shadow:
+    0 0 35px
+    rgba(0,234,255,.07);
+}
+
+.journey{
+  max-width:800px;
+  margin:10px auto 0;
+  position:relative;
+  padding-left:28px;
+}
+
+.journey::before{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:4px;
+  bottom:4px;
+  width:2px;
+  background:
+    linear-gradient(
+      180deg,
+      var(--cyan),
+      var(--purple),
+      var(--pink)
+    );
+  box-shadow:
+    0 0 12px
+    rgba(0,234,255,.3);
+}
+
+.journey-item{
+  position:relative;
+  margin-bottom:18px;
+  padding:19px 20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  transition:
+    transform .3s var(--ease),
+    border-color .3s ease;
+}
+
+.journey-item:last-child{
+  margin-bottom:0;
+}
+
+.journey-item:hover{
+  transform:translateX(6px);
+  border-color:rgba(0,234,255,.35);
+}
+
+.journey-dot{
+  position:absolute;
+  left:-27px;
+  top:23px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:var(--bg);
+  border:3px solid var(--cyan);
+  box-shadow:
+    0 0 15px
+    rgba(0,234,255,.7);
+}
+
+.journey-year{
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:7px;
+}
+
+.journey-title{
+  color:var(--text);
+  font-size:18px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.journey-desc{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+}
+
+
+/* =========================
+   BGMI
+========================= */
 
 .bgmi-card{
   border-color:rgba(255,138,0,.25);
@@ -741,7 +943,9 @@ body.light-mode .quick-item{
 }
 
 
-/* FAVORITE SONG */
+/* =========================
+   FAVORITE SONG
+========================= */
 
 .song-card{
   text-align:center;
@@ -819,7 +1023,9 @@ body.light-mode .quick-item{
 }
 
 
-/* DHONGI */
+/* =========================
+   DHONGI
+========================= */
 
 .dhongi-section{
   min-height:520px;
@@ -870,6 +1076,7 @@ body.light-mode .dhongi-section{
       0 0 18px
       rgba(255,79,145,.4);
   }
+
   to{
     text-shadow:
       0 0 15px #ff4f91,
@@ -901,6 +1108,11 @@ body.light-mode .dhongi-section{
   color:#ffc4d9!important;
 }
 
+
+/* =========================
+   FAVOURITE PIC
+========================= */
+
 .fav-photo-wrap{
   max-width:700px;
   margin:auto;
@@ -926,6 +1138,11 @@ body.light-mode .dhongi-section{
   background:#000;
   border-radius:17px;
 }
+
+
+/* =========================
+   GALLERY
+========================= */
 
 .gallery-card{
   overflow:hidden;
@@ -1074,7 +1291,9 @@ body.light-mode .dhongi-section{
 }
 
 
-/* SOCIAL MEDIA */
+/* =========================
+   SOCIAL MEDIA
+========================= */
 
 .social-grid{
   display:grid;
@@ -1127,6 +1346,11 @@ body.light-mode .dhongi-section{
   color:#ff5555;
 }
 
+
+/* =========================
+   DREAMS
+========================= */
+
 .dream-list{
   max-width:650px;
   margin:auto;
@@ -1148,6 +1372,11 @@ body.light-mode .dhongi-section{
   transform:translateX(6px);
   border-color:var(--cyan);
 }
+
+
+/* =========================
+   VISITOR
+========================= */
 
 .visitor-card{
   text-align:center;
@@ -1204,6 +1433,11 @@ body.light-mode .dhongi-section{
   font-size:14px!important;
 }
 
+
+/* =========================
+   QUICK ACCESS
+========================= */
+
 .quick-menu{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -1247,6 +1481,11 @@ body.light-mode .dhongi-section{
 .quick-item:active{
   transform:scale(.96);
 }
+
+
+/* =========================
+   FOOTER / BUTTONS
+========================= */
 
 footer{
   text-align:center;
@@ -1323,6 +1562,11 @@ body.light-mode .theme-btn{
   transform:scale(.88);
 }
 
+
+/* =========================
+   MOBILE NAV
+========================= */
+
 .mobile-nav{
   display:none;
 }
@@ -1354,6 +1598,11 @@ body.light-mode .theme-btn{
   transform:translateY(-2px);
 }
 
+
+/* =========================
+   EFFECTS
+========================= */
+
 #emojiContainer{
   position:fixed;
   inset:0;
@@ -1376,9 +1625,11 @@ body.light-mode .theme-btn{
       scale(.7)
       rotate(0deg);
   }
+
   15%{
     opacity:1;
   }
+
   100%{
     opacity:0;
     transform:
@@ -1403,6 +1654,11 @@ body.light-mode .theme-btn{
     opacity:0;
   }
 }
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
@@ -1570,6 +1826,26 @@ body.light-mode .theme-btn{
   .song-player audio{
     width:100%;
   }
+
+  .journey{
+    padding-left:24px;
+  }
+
+  .journey::before{
+    left:7px;
+  }
+
+  .journey-dot{
+    left:-24px;
+  }
+
+  .thought{
+    padding:18px;
+  }
+
+  .thought-text{
+    font-size:14px;
+  }
 }
 
 @media(max-width:420px){
@@ -1616,6 +1892,11 @@ body.light-mode .theme-btn{
 
 <body>
 
+
+<!-- =========================
+     LOADER
+========================= -->
+
 <div id="loader">
 
   <div class="loader-ring"></div>
@@ -1630,26 +1911,46 @@ body.light-mode .theme-btn{
 
 </div>
 
+
 <div id="stars"></div>
 
 <div id="emojiContainer"></div>
+
+
+<!-- =========================
+     DESKTOP NAV
+========================= -->
 
 <nav>
 
   <div class="nav-inner">
 
     <a href="#home" data-nav="home">Home</a>
+
     <a href="#about" data-nav="about">About</a>
+
+    <a href="#thoughts" data-nav="thoughts">Thoughts</a>
+
+    <a href="#journey" data-nav="journey">Journey</a>
+
     <a href="#bgmi" data-nav="bgmi">BGMI</a>
+
     <a href="#dhongi" data-nav="dhongi">Dhongi</a>
+
     <a href="#gallery" data-nav="gallery">Gallery</a>
+
     <a href="#social" data-nav="social">Social</a>
+
     <a href="#dreams" data-nav="dreams">Dreams</a>
+
     <a href="#visitors" data-nav="visitors">Visitors</a>
 
   </div>
 
 </nav>
+
+
+<!-- STATUS -->
 
 <div class="app-status">
 
@@ -1661,7 +1962,13 @@ body.light-mode .theme-btn{
 
 </div>
 
+
 <main class="container">
+
+
+<!-- =========================
+     HOME
+========================= -->
 
 <header
   class="hero"
@@ -1734,6 +2041,11 @@ body.light-mode .theme-btn{
 
 </header>
 
+
+<!-- =========================
+     QUICK ACCESS
+========================= -->
+
 <section class="card">
 
   <h2>
@@ -1752,10 +2064,18 @@ body.light-mode .theme-btn{
 
     <a
       class="quick-item"
-      href="#dhongi"
+      href="#thoughts"
     >
-      <span>💫</span>
-      <small>Special</small>
+      <span>💭</span>
+      <small>Thoughts</small>
+    </a>
+
+    <a
+      class="quick-item"
+      href="#journey"
+    >
+      <span>🚀</span>
+      <small>Journey</small>
     </a>
 
     <a
@@ -1766,17 +2086,14 @@ body.light-mode .theme-btn{
       <small>Gallery</small>
     </a>
 
-    <a
-      class="quick-item"
-      href="#social"
-    >
-      <span>🌐</span>
-      <small>Social</small>
-    </a>
-
   </div>
 
 </section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section
   class="card"
@@ -1826,6 +2143,184 @@ body.light-mode .theme-btn{
 
 </section>
 
+
+<!-- =========================
+     MY THOUGHTS
+========================= -->
+
+<section
+  class="card thoughts-card"
+  id="thoughts"
+>
+
+  <h2>
+    💭 My Thoughts
+  </h2>
+
+  <div class="thought-list">
+
+    <div class="thought">
+
+      <div class="thought-icon">
+        ✨
+      </div>
+
+      <p class="thought-text">
+        I’m always trying to become a better version of myself.
+      </p>
+
+      <div class="thought-small">
+        — Saikat
+      </div>
+
+    </div>
+
+
+    <div class="thought">
+
+      <div class="thought-icon">
+        🌱
+      </div>
+
+      <p class="thought-text">
+        Every day is a chance to learn something new and move one step forward.
+      </p>
+
+      <div class="thought-small">
+        — Keep growing
+      </div>
+
+    </div>
+
+
+    <div class="thought">
+
+      <div class="thought-icon">
+        🚀
+      </div>
+
+      <p class="thought-text">
+        Dreams become possible when you keep working on them, even when progress feels slow.
+      </p>
+
+      <div class="thought-small">
+        — Keep moving
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MY JOURNEY
+========================= -->
+
+<section
+  class="card journey-card"
+  id="journey"
+>
+
+  <h2>
+    🚀 My Journey
+  </h2>
+
+  <p>
+    A small timeline of the things I am learning, building and dreaming about.
+  </p>
+
+  <div class="journey">
+
+    <div class="journey-item">
+
+      <div class="journey-dot"></div>
+
+      <div class="journey-year">
+        🎮 GAMING
+      </div>
+
+      <div class="journey-title">
+        My BGMI Journey
+      </div>
+
+      <div class="journey-desc">
+        Gaming became one of the things I enjoy in my free time.
+        I keep playing, learning and trying to improve.
+      </div>
+
+    </div>
+
+
+    <div class="journey-item">
+
+      <div class="journey-dot"></div>
+
+      <div class="journey-year">
+        💻 LEARNING
+      </div>
+
+      <div class="journey-title">
+        Started Learning Coding
+      </div>
+
+      <div class="journey-desc">
+        I started exploring HTML, CSS and JavaScript and began building
+        my own ideas on the internet.
+      </div>
+
+    </div>
+
+
+    <div class="journey-item">
+
+      <div class="journey-dot"></div>
+
+      <div class="journey-year">
+        🌎 BUILDING
+      </div>
+
+      <div class="journey-title">
+        Saikat's Mini World
+      </div>
+
+      <div class="journey-desc">
+        I created my own personal website to keep my memories,
+        interests, dreams and projects in one place.
+      </div>
+
+    </div>
+
+
+    <div class="journey-item">
+
+      <div class="journey-dot"></div>
+
+      <div class="journey-year">
+        🚀 FUTURE
+      </div>
+
+      <div class="journey-title">
+        More Ideas Are Coming
+      </div>
+
+      <div class="journey-desc">
+        I want to keep learning new skills, create new projects
+        and turn more of my ideas into reality.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     BGMI
+========================= -->
+
 <section
   class="card bgmi-card"
   id="bgmi"
@@ -1869,6 +2364,7 @@ body.light-mode .theme-btn{
 
     </div>
 
+
     <div class="info-box">
 
       <span class="info-label">
@@ -1888,6 +2384,11 @@ body.light-mode .theme-btn{
   </div>
 
 </section>
+
+
+<!-- =========================
+     SONG
+========================= -->
 
 <section
   class="card song-card"
@@ -1939,6 +2440,11 @@ body.light-mode .theme-btn{
 
 </section>
 
+
+<!-- =========================
+     DHONGI
+========================= -->
+
 <section
   class="card dhongi-section"
   id="dhongi"
@@ -1971,6 +2477,11 @@ body.light-mode .theme-btn{
 
 </section>
 
+
+<!-- =========================
+     FAVOURITE PIC
+========================= -->
+
 <section class="card">
 
   <h2>
@@ -1989,6 +2500,11 @@ body.light-mode .theme-btn{
   </div>
 
 </section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
 
 <section
   class="card gallery-card"
@@ -2055,7 +2571,10 @@ body.light-mode .theme-btn{
 
 </section>
 
-<!-- SOCIAL MEDIA -->
+
+<!-- =========================
+     SOCIAL
+========================= -->
 
 <section
   class="card"
@@ -2099,6 +2618,11 @@ body.light-mode .theme-btn{
 
 </section>
 
+
+<!-- =========================
+     DREAMS
+========================= -->
+
 <section
   class="card"
   id="dreams"
@@ -2121,6 +2645,11 @@ body.light-mode .theme-btn{
   </div>
 
 </section>
+
+
+<!-- =========================
+     VISITORS
+========================= -->
 
 <section
   class="card visitor-card"
@@ -2162,6 +2691,11 @@ body.light-mode .theme-btn{
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
   <div class="footer-title">
@@ -2173,6 +2707,11 @@ body.light-mode .theme-btn{
   </div>
 
 </footer>
+
+
+<!-- =========================
+     GALLERY MODAL
+========================= -->
 
 <div
   id="galleryModal"
@@ -2200,6 +2739,9 @@ body.light-mode .theme-btn{
 
 </div>
 
+
+<!-- THEME -->
+
 <button
   class="theme-btn"
   id="themeBtn"
@@ -2209,6 +2751,9 @@ body.light-mode .theme-btn{
   🌙
 </button>
 
+
+<!-- TOP -->
+
 <button
   id="topBtn"
   aria-label="Back to top"
@@ -2216,6 +2761,11 @@ body.light-mode .theme-btn{
 >
   ↑
 </button>
+
+
+<!-- =========================
+     MOBILE NAV
+========================= -->
 
 <div class="mobile-nav">
 
@@ -2229,19 +2779,19 @@ body.light-mode .theme-btn{
   </a>
 
   <a
-    href="#bgmi"
-    data-section="bgmi"
+    href="#about"
+    data-section="about"
   >
-    <span>🎮</span>
-    BGMI
+    <span>👋</span>
+    About
   </a>
 
   <a
-    href="#dhongi"
-    data-section="dhongi"
+    href="#thoughts"
+    data-section="thoughts"
   >
-    <span>💫</span>
-    Special
+    <span>💭</span>
+    Thoughts
   </a>
 
   <a
@@ -2262,9 +2812,14 @@ body.light-mode .theme-btn{
 
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+
+/* =========================
+   SUPABASE
+========================= */
 
 const SUPABASE_URL =
   "https://kxfhjuzfxehyhldtoqdr.supabase.co";
@@ -2279,7 +2834,9 @@ const supabaseClient =
   );
 
 
-/* VISITOR COUNTER */
+/* =========================
+   VISITOR COUNTER
+========================= */
 
 async function updateVisitorCount(){
 
@@ -2388,7 +2945,9 @@ function animateNumber(
 
       element.innerText =
         target;
+
     }
+
   }
 
   requestAnimationFrame(update);
@@ -2397,7 +2956,9 @@ function animateNumber(
 updateVisitorCount();
 
 
-/* LOADER */
+/* =========================
+   LOADER
+========================= */
 
 window.addEventListener(
   "load",
@@ -2421,7 +2982,9 @@ window.addEventListener(
 );
 
 
-/* STARS */
+/* =========================
+   STARS
+========================= */
 
 const stars =
   document.getElementById("stars");
@@ -2453,7 +3016,9 @@ if(stars){
 }
 
 
-/* SHOOTING STARS */
+/* =========================
+   SHOOTING STARS
+========================= */
 
 function createShootingStar(){
 
@@ -2487,7 +3052,9 @@ setInterval(
 );
 
 
-/* TYPING */
+/* =========================
+   TYPING
+========================= */
 
 const typingText =
   document.getElementById(
@@ -2557,7 +3124,9 @@ function typeEffect(){
         (wordIndex+1)
         %
         typingWords.length;
+
     }
+
   }
 
   setTimeout(
@@ -2569,7 +3138,9 @@ function typeEffect(){
 typeEffect();
 
 
-/* CLOCK */
+/* =========================
+   CLOCK
+========================= */
 
 function updateClock(){
 
@@ -2608,7 +3179,9 @@ setInterval(
 updateClock();
 
 
-/* COPY UID */
+/* =========================
+   COPY UID
+========================= */
 
 async function copyUID(){
 
@@ -2676,7 +3249,9 @@ async function copyUID(){
 }
 
 
-/* GALLERY */
+/* =========================
+   GALLERY
+========================= */
 
 const galleryImages = [
 
@@ -2735,6 +3310,7 @@ function preloadGalleryImages(){
           new Image();
 
         img.src = src;
+
       }
     );
 }
@@ -2774,6 +3350,7 @@ function showGalleryImage(
 
         galleryCounter.innerText =
           `${galleryIndex+1} / ${galleryImages.length}`;
+
       }
 
       galleryImage.classList.remove("fade");
@@ -2782,7 +3359,9 @@ function showGalleryImage(
         galleryModal &&
         galleryModal.classList.contains("show")
       ){
+
         updateModalImage();
+
       }
 
     },
@@ -2866,6 +3445,7 @@ if(prevGallery){
     "click",
     previousImage
   );
+
 }
 
 if(nextGallery){
@@ -2874,6 +3454,7 @@ if(nextGallery){
     "click",
     nextImage
   );
+
 }
 
 
@@ -2892,8 +3473,10 @@ if(galleryImage){
       }
 
       openGallery();
+
     }
   );
+
 }
 
 
@@ -2908,7 +3491,9 @@ if(modalClose){
     "click",
     closeGallery
   );
+
 }
+
 
 if(galleryModal){
 
@@ -2919,9 +3504,12 @@ if(galleryModal){
       if(e.target === galleryModal){
 
         closeGallery();
+
       }
+
     }
   );
+
 }
 
 
@@ -2947,6 +3535,7 @@ document.addEventListener(
     if(e.key === "ArrowLeft"){
       previousImage();
     }
+
   }
 );
 
@@ -3011,6 +3600,7 @@ if(galleryImage){
       }else{
 
         previousImage();
+
       }
 
     },
@@ -3018,10 +3608,13 @@ if(galleryImage){
       passive:true
     }
   );
+
 }
 
 
-/* FLOATING EMOJIS */
+/* =========================
+   FLOATING EMOJIS
+========================= */
 
 const emojiContainer =
   document.getElementById(
@@ -3139,7 +3732,9 @@ setInterval(
 );
 
 
-/* THEME */
+/* =========================
+   THEME
+========================= */
 
 function applySavedTheme(){
 
@@ -3172,7 +3767,9 @@ function applySavedTheme(){
     if(themeBtn){
       themeBtn.innerText = "🌙";
     }
+
   }
+
 }
 
 
@@ -3198,6 +3795,7 @@ function toggleTheme(){
       isLight
         ? "☀️"
         : "🌙";
+
   }
 
   localStorage.setItem(
@@ -3206,6 +3804,7 @@ function toggleTheme(){
       ? "light"
       : "dark"
   );
+
 }
 
 const themeBtn =
@@ -3219,12 +3818,15 @@ if(themeBtn){
     "click",
     toggleTheme
   );
+
 }
 
 applySavedTheme();
 
 
-/* BACK TO TOP */
+/* =========================
+   BACK TO TOP
+========================= */
 
 const topBtn =
   document.getElementById(
@@ -3246,6 +3848,7 @@ window.addEventListener(
     }else{
 
       topBtn.classList.remove("show");
+
     }
 
   },
@@ -3267,10 +3870,13 @@ if(topBtn){
 
     }
   );
+
 }
 
 
-/* SCROLL REVEAL */
+/* =========================
+   SCROLL REVEAL
+========================= */
 
 const revealCards =
   document.querySelectorAll(
@@ -3295,6 +3901,7 @@ if("IntersectionObserver" in window){
               observer.unobserve(
                 entry.target
               );
+
             }
 
           }
@@ -3319,10 +3926,13 @@ if("IntersectionObserver" in window){
       card.classList.add("revealed");
     }
   );
+
 }
 
 
-/* MOBILE + DESKTOP ACTIVE NAV */
+/* =========================
+   NAVIGATION
+========================= */
 
 const mobileLinks =
   document.querySelectorAll(
@@ -3334,10 +3944,13 @@ const desktopLinks =
     "nav a[data-nav]"
   );
 
+
 const sections = [
 
   "home",
   "about",
+  "thoughts",
+  "journey",
   "bgmi",
   "dhongi",
   "gallery",
@@ -3380,6 +3993,7 @@ function updateNavigation(){
           ){
 
             current = id;
+
           }
 
         }
@@ -3411,8 +4025,10 @@ function updateNavigation(){
 
 
       ticking = false;
+
     }
   );
+
 }
 
 
@@ -3432,7 +4048,9 @@ window.addEventListener(
 updateNavigation();
 
 
-/* MOBILE NAV CLICK */
+/* =========================
+   MOBILE NAV CLICK
+========================= */
 
 mobileLinks.forEach(
   function(link){
@@ -3456,7 +4074,9 @@ mobileLinks.forEach(
 );
 
 
-/* RIPPLE TOUCH EFFECT */
+/* =========================
+   RIPPLE
+========================= */
 
 document.addEventListener(
   "pointerdown",
@@ -3518,7 +4138,9 @@ document.addEventListener(
 );
 
 
-/* IMAGE ERROR HANDLING */
+/* =========================
+   IMAGE ERROR
+========================= */
 
 document
   .querySelectorAll("img")
@@ -3541,7 +4163,9 @@ document
   );
 
 
-/* PAGE VISIBILITY */
+/* =========================
+   PAGE VISIBILITY
+========================= */
 
 document.addEventListener(
   "visibilitychange",
@@ -3554,13 +4178,16 @@ document.addEventListener(
     ){
 
       closeGallery();
+
     }
 
   }
 );
 
 
-/* CLEANUP */
+/* =========================
+   CLEANUP
+========================= */
 
 window.addEventListener(
   "pagehide",
