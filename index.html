@@ -48,10 +48,6 @@
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
-
 *{
   margin:0;
   padding:0;
@@ -696,6 +692,89 @@ body.light-mode .journey-item{
 .about-stat span{
   color:var(--muted);
   font-size:11px;
+}
+
+
+/* =========================
+   MY MAA — MEMORIAL
+========================= */
+
+.maa-card{
+  text-align:center;
+  border-color:rgba(255,255,255,.16);
+  box-shadow:
+    0 0 35px
+    rgba(255,255,255,.045);
+}
+
+.maa-card h2{
+  color:var(--text);
+  text-shadow:
+    0 0 15px
+    rgba(255,255,255,.16);
+}
+
+.maa-photo-wrap{
+  width:min(430px,100%);
+  margin:10px auto 22px;
+  padding:6px;
+  border-radius:25px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.55),
+      rgba(255,255,255,.12),
+      rgba(255,255,255,.35)
+    );
+  box-shadow:
+    0 0 30px
+    rgba(255,255,255,.08);
+}
+
+.maa-photo-wrap img{
+  display:block;
+  width:100%;
+  max-height:520px;
+  object-fit:cover;
+  border-radius:20px;
+  background:#000;
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.maa-title{
+  margin-top:8px;
+  font-size:25px;
+  color:var(--text);
+  font-weight:bold;
+}
+
+.maa-forever{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:14px;
+  font-style:italic;
+}
+
+.maa-line{
+  width:70px;
+  height:1px;
+  margin:18px auto;
+  background:rgba(255,255,255,.28);
+}
+
+.maa-message{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.8;
+}
+
+.maa-memory{
+  margin-top:20px;
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.5px;
 }
 
 
@@ -1846,6 +1925,30 @@ body.light-mode .theme-btn{
   .thought-text{
     font-size:14px;
   }
+
+  .maa-card{
+    padding:23px 17px;
+  }
+
+  .maa-photo-wrap{
+    padding:5px;
+    border-radius:22px;
+  }
+
+  .maa-photo-wrap img{
+    max-height:450px;
+    border-radius:18px;
+  }
+
+  .maa-title{
+    font-size:23px;
+  }
+
+  .maa-message{
+    font-size:14px;
+    line-height:1.75;
+  }
+
 }
 
 @media(max-width:420px){
@@ -1892,11 +1995,6 @@ body.light-mode .theme-btn{
 
 <body>
 
-
-<!-- =========================
-     LOADER
-========================= -->
-
 <div id="loader">
 
   <div class="loader-ring"></div>
@@ -1929,6 +2027,8 @@ body.light-mode .theme-btn{
 
     <a href="#about" data-nav="about">About</a>
 
+    <a href="#maa" data-nav="maa">My Maa</a>
+
     <a href="#thoughts" data-nav="thoughts">Thoughts</a>
 
     <a href="#journey" data-nav="journey">Journey</a>
@@ -1950,8 +2050,6 @@ body.light-mode .theme-btn{
 </nav>
 
 
-<!-- STATUS -->
-
 <div class="app-status">
 
   <span class="status-dot"></span>
@@ -1965,10 +2063,6 @@ body.light-mode .theme-btn{
 
 <main class="container">
 
-
-<!-- =========================
-     HOME
-========================= -->
 
 <header
   class="hero"
@@ -2139,6 +2233,52 @@ body.light-mode .theme-btn{
       <span>Dreamer</span>
     </div>
 
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MY MAA — MEMORIAL
+========================= -->
+
+<section
+  class="card maa-card"
+  id="maa"
+>
+
+  <h2>
+    🌸 My Maa
+  </h2>
+
+  <div class="maa-photo-wrap">
+
+    <img
+      src="file_00000000f0f4821198d8d9ffcc0e504e.png"
+      alt="My Maa"
+      loading="lazy"
+      decoding="async"
+    >
+
+  </div>
+
+  <h3 class="maa-title">
+    My Maa ❤️
+  </h3>
+
+  <p class="maa-forever">
+    Forever in my heart.
+  </p>
+
+  <div class="maa-line"></div>
+
+  <p class="maa-message">
+    She is no longer with us, but her love and memories
+    will always remain a part of my life.
+  </p>
+
+  <div class="maa-memory">
+    In loving memory 🕊️
   </div>
 
 </section>
@@ -2816,10 +2956,6 @@ body.light-mode .theme-btn{
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
-/* =========================
-   SUPABASE
-========================= */
 
 const SUPABASE_URL =
   "https://kxfhjuzfxehyhldtoqdr.supabase.co";
@@ -3949,6 +4085,7 @@ const sections = [
 
   "home",
   "about",
+  "maa",
   "thoughts",
   "journey",
   "bgmi",
@@ -4157,6 +4294,7 @@ document
           );
 
         }
+
       );
 
     }
