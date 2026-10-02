@@ -677,7 +677,8 @@ body.light-mode .info-box,
 body.light-mode .dream,
 body.light-mode .quick-item,
 body.light-mode .thought,
-body.light-mode .journey-item{
+body.light-mode .journey-item,
+body.light-mode .school-card{
   background:rgba(0,0,0,.025);
   border-color:rgba(0,0,0,.08);
 }
@@ -999,6 +1000,261 @@ body.light-mode .journey-item{
   color:var(--muted);
   font-size:14px;
   line-height:1.7;
+}
+
+
+/* =========================
+   MY SCHOOL JOURNEY
+========================= */
+
+.school-journey-card{
+  border-color:rgba(139,92,246,.25);
+  box-shadow:
+    0 0 40px
+    rgba(139,92,246,.08);
+}
+
+.school-intro{
+  max-width:700px;
+  margin:0 auto 28px;
+  color:var(--muted);
+  text-align:center;
+  line-height:1.8;
+}
+
+.school-intro strong{
+  color:var(--text);
+}
+
+.school-timeline{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+  padding:10px 0;
+}
+
+.school-timeline::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:2px;
+  transform:translateX(-50%);
+  background:
+    linear-gradient(
+      180deg,
+      var(--cyan),
+      var(--purple),
+      var(--pink)
+    );
+  box-shadow:
+    0 0 15px
+    rgba(0,234,255,.35);
+}
+
+.school-card{
+  position:relative;
+  width:calc(50% - 35px);
+  padding:24px;
+  margin-bottom:28px;
+  border-radius:22px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,.25);
+  transition:
+    transform .35s var(--ease),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.school-card:nth-child(odd){
+  margin-right:auto;
+}
+
+.school-card:nth-child(even){
+  margin-left:auto;
+}
+
+.school-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  padding:1px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,234,255,.45),
+      rgba(139,92,246,.20),
+      rgba(255,79,145,.35)
+    );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  opacity:.55;
+  pointer-events:none;
+}
+
+.school-card:hover{
+  transform:
+    translateY(-8px)
+    scale(1.015);
+  border-color:rgba(0,234,255,.45);
+  box-shadow:
+    0 15px 45px
+    rgba(0,0,0,.35),
+    0 0 30px
+    rgba(0,234,255,.10);
+}
+
+.school-card:nth-child(2):hover{
+  border-color:rgba(139,92,246,.5);
+  box-shadow:
+    0 15px 45px
+    rgba(0,0,0,.35),
+    0 0 30px
+    rgba(139,92,246,.13);
+}
+
+.school-card:nth-child(3):hover{
+  border-color:rgba(255,79,145,.45);
+  box-shadow:
+    0 15px 45px
+    rgba(0,0,0,.35),
+    0 0 30px
+    rgba(255,79,145,.10);
+}
+
+.school-number{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:45px;
+  height:45px;
+  margin-bottom:15px;
+  border-radius:50%;
+  color:var(--cyan);
+  font-size:18px;
+  font-weight:bold;
+  background:
+    rgba(0,234,255,.08);
+  border:1px solid
+    rgba(0,234,255,.35);
+  box-shadow:
+    0 0 18px
+    rgba(0,234,255,.12);
+}
+
+.school-card:nth-child(2) .school-number{
+  color:var(--purple);
+  background:rgba(139,92,246,.08);
+  border-color:rgba(139,92,246,.35);
+  box-shadow:
+    0 0 18px
+    rgba(139,92,246,.13);
+}
+
+.school-card:nth-child(3) .school-number{
+  color:var(--pink);
+  background:rgba(255,79,145,.08);
+  border-color:rgba(255,79,145,.35);
+  box-shadow:
+    0 0 18px
+    rgba(255,79,145,.13);
+}
+
+.school-card h3{
+  color:var(--text);
+  font-size:19px;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+
+.school-class{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:20px;
+  color:var(--cyan);
+  background:rgba(0,234,255,.07);
+  border:1px solid rgba(0,234,255,.16);
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:.5px;
+  margin-bottom:14px;
+}
+
+.school-card:nth-child(2) .school-class{
+  color:var(--purple);
+  background:rgba(139,92,246,.07);
+  border-color:rgba(139,92,246,.16);
+}
+
+.school-card:nth-child(3) .school-class{
+  color:var(--pink);
+  background:rgba(255,79,145,.07);
+  border-color:rgba(255,79,145,.16);
+}
+
+.school-card p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+  text-align:left;
+}
+
+.school-dot{
+  position:absolute;
+  top:50%;
+  width:18px;
+  height:18px;
+  transform:translateY(-50%);
+  border-radius:50%;
+  background:var(--bg);
+  border:3px solid var(--cyan);
+  box-shadow:
+    0 0 18px
+    rgba(0,234,255,.75);
+  z-index:3;
+}
+
+.school-card:nth-child(odd) .school-dot{
+  right:-45px;
+}
+
+.school-card:nth-child(even) .school-dot{
+  left:-45px;
+}
+
+.school-card:nth-child(2) .school-dot{
+  border-color:var(--purple);
+  box-shadow:
+    0 0 18px
+    rgba(139,92,246,.75);
+}
+
+.school-card:nth-child(3) .school-dot{
+  border-color:var(--pink);
+  box-shadow:
+    0 0 18px
+    rgba(255,79,145,.75);
+}
+
+.school-footer{
+  margin-top:10px;
+  text-align:center;
+  color:var(--text);
+  font-size:15px;
+  font-style:italic;
+  text-shadow:
+    0 0 12px
+    rgba(0,234,255,.18);
 }
 
 
@@ -1592,7 +1848,7 @@ body.light-mode .dhongi-section{
 
 .quick-menu{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:12px;
 }
 
@@ -2045,6 +2301,63 @@ body.light-mode .theme-btn{
     font-size:23px;
   }
 
+
+  /* SCHOOL JOURNEY MOBILE */
+
+  .school-timeline{
+    padding-left:26px;
+  }
+
+  .school-timeline::before{
+    left:8px;
+    transform:none;
+  }
+
+  .school-card,
+  .school-card:nth-child(odd),
+  .school-card:nth-child(even){
+    width:100%;
+    margin-left:0;
+    margin-right:0;
+    margin-bottom:22px;
+  }
+
+  .school-card:last-child{
+    margin-bottom:0;
+  }
+
+  .school-card:hover{
+    transform:translateY(-5px);
+  }
+
+  .school-dot,
+  .school-card:nth-child(odd) .school-dot,
+  .school-card:nth-child(even) .school-dot{
+    left:-26px;
+    right:auto;
+    top:31px;
+    width:16px;
+    height:16px;
+    transform:none;
+  }
+
+  .school-card{
+    padding:20px 18px;
+    border-radius:19px;
+  }
+
+  .school-card h3{
+    font-size:17px;
+  }
+
+  .school-card p{
+    font-size:13px;
+  }
+
+  .school-intro{
+    font-size:14px;
+  }
+
 }
 
 @media(max-width:420px){
@@ -2072,6 +2385,15 @@ body.light-mode .theme-btn{
   .clock{
     font-size:13px;
   }
+
+  .school-card{
+    padding:18px 16px;
+  }
+
+  .school-card h3{
+    font-size:16px;
+  }
+
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -2129,6 +2451,8 @@ body.light-mode .theme-btn{
     <a href="#thoughts" data-nav="thoughts">Thoughts</a>
 
     <a href="#journey" data-nav="journey">Journey</a>
+
+    <a href="#school" data-nav="school">School</a>
 
     <a href="#bgmi" data-nav="bgmi">BGMI</a>
 
@@ -2271,6 +2595,14 @@ body.light-mode .theme-btn{
     >
       <span>🚀</span>
       <small>Journey</small>
+    </a>
+
+    <a
+      class="quick-item"
+      href="#school"
+    >
+      <span>🎒</span>
+      <small>School</small>
     </a>
 
     <a
@@ -2708,6 +3040,125 @@ body.light-mode .theme-btn{
 
     </div>
 
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MY SCHOOL JOURNEY
+========================= -->
+
+<section
+  class="card school-journey-card"
+  id="school"
+>
+
+  <h2>
+    🎒 My School Journey
+  </h2>
+
+  <p class="school-intro">
+    <strong>
+      Three schools, twelve classes, countless memories. ✨
+    </strong>
+    <br><br>
+    Every school was a different chapter of my life,
+    and each chapter gave me memories and lessons
+    that I still carry with me.
+  </p>
+
+  <div class="school-timeline">
+
+
+    <!-- SCHOOL 01 -->
+
+    <div class="school-card">
+
+      <div class="school-dot"></div>
+
+      <div class="school-number">
+        01
+      </div>
+
+      <h3>
+        🏫 Bar Basudevpur Prathamik Vidyalay
+      </h3>
+
+      <div class="school-class">
+        CLASS 1 – CLASS 4
+      </div>
+
+      <p>
+        My school journey began here.
+        These were the early years of my education,
+        filled with childhood memories, new experiences,
+        and the first steps of learning.
+      </p>
+
+    </div>
+
+
+    <!-- SCHOOL 02 -->
+
+    <div class="school-card">
+
+      <div class="school-dot"></div>
+
+      <div class="school-number">
+        02
+      </div>
+
+      <h3>
+        🏫 Bherir Bazar Yogoda Satsanga Vidyalay (H.S.)
+      </h3>
+
+      <div class="school-class">
+        CLASS 5 – CLASS 10
+      </div>
+
+      <p>
+        A major chapter of my school life.
+        This is where I grew through the years,
+        made memories, learned many lessons,
+        and slowly started discovering more about myself.
+      </p>
+
+    </div>
+
+
+    <!-- SCHOOL 03 -->
+
+    <div class="school-card">
+
+      <div class="school-dot"></div>
+
+      <div class="school-number">
+        03
+      </div>
+
+      <h3>
+        🏫 Bibhisanpur High School (H.S.)
+      </h3>
+
+      <div class="school-class">
+        CLASS 11 – CLASS 12
+      </div>
+
+      <p>
+        The final chapter of my school life.
+        These years brought new experiences and slowly
+        took me closer to the next chapter of my life
+        and future.
+      </p>
+
+    </div>
+
+
+  </div>
+
+  <div class="school-footer">
+    “Three schools, one journey, a lifetime of memories.” 🎒✨
   </div>
 
 </section>
@@ -4364,6 +4815,7 @@ const sections = [
   "father",
   "thoughts",
   "journey",
+  "school",
   "bgmi",
   "dhongi",
   "gallery",
