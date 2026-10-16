@@ -48,6 +48,196 @@
 
 <style>
 
+  /* =========================
+SAIKAT OS + LIVING DIARY
+========================= */
+
+.saikat-os,
+.living-diary {
+margin: 24px 0;
+padding: 22px;
+border: 1px solid rgba(0, 229, 255, .22);
+border-radius: 24px;
+background: linear-gradient(
+135deg,
+rgba(0, 229, 255, .07),
+rgba(190, 70, 255, .08),
+rgba(255, 70, 160, .05)
+);
+box-shadow: 0 12px 35px rgba(0, 0, 0, .16);
+backdrop-filter: blur(16px);
+}
+
+.os-heading,
+.diary-heading {
+margin: 0 0 8px;
+font-size: 24px;
+font-weight: 800;
+letter-spacing: .3px;
+}
+
+.os-subtitle,
+.diary-subtitle {
+color: var(--muted);
+font-size: 13px;
+line-height: 1.7;
+}
+
+.os-clock {
+margin: 20px 0 5px;
+font-size: clamp(32px, 8vw, 48px);
+font-weight: 900;
+letter-spacing: 2px;
+background: linear-gradient(90deg, #00e5ff, #d580ff, #ff80bf);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+
+.os-date {
+color: var(--muted);
+font-size: 14px;
+}
+
+.os-widgets {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 12px;
+margin-top: 22px;
+}
+
+.os-widget {
+padding: 16px;
+border-radius: 18px;
+border: 1px solid rgba(255, 255, 255, .1);
+background: rgba(255, 255, 255, .035);
+}
+
+.os-widget-icon {
+display: block;
+font-size: 25px;
+margin-bottom: 8px;
+}
+
+.os-widget strong {
+display: block;
+font-size: 14px;
+}
+
+.os-widget small {
+display: block;
+margin-top: 5px;
+color: var(--muted);
+line-height: 1.6;
+}
+
+.diary-form {
+display: grid;
+gap: 12px;
+margin-top: 20px;
+}
+
+.diary-input,
+.diary-select {
+width: 100%;
+box-sizing: border-box;
+padding: 14px;
+border-radius: 14px;
+border: 1px solid rgba(0, 229, 255, .2);
+background: rgba(100, 100, 100, .07);
+color: var(--text);
+font: inherit;
+outline: none;
+}
+
+.diary-input:focus,
+.diary-select:focus {
+border-color: #00e5ff;
+box-shadow: 0 0 0 3px rgba(0, 229, 255, .08);
+}
+
+.diary-textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+.diary-btn {
+padding: 13px 18px;
+border: 0;
+border-radius: 14px;
+background: linear-gradient(100deg, #00cfe8, #a855f7, #ec4899);
+color: white;
+font: inherit;
+font-weight: 800;
+cursor: pointer;
+}
+
+.diary-btn:active {
+transform: scale(.98);
+}
+
+.diary-list {
+display: grid;
+gap: 12px;
+margin-top: 22px;
+}
+
+.diary-entry {
+padding: 16px;
+border: 1px solid rgba(255, 255, 255, .1);
+border-radius: 17px;
+background: rgba(255, 255, 255, .035);
+overflow-wrap: anywhere;
+}
+
+.diary-entry h3 {
+margin: 0 0 8px;
+font-size: 17px;
+}
+
+.diary-entry p {
+margin: 0;
+line-height: 1.8;
+white-space: pre-wrap;
+}
+
+.diary-entry small {
+display: block;
+margin-top: 12px;
+color: var(--muted);
+}
+
+.diary-delete {
+margin-top: 12px;
+padding: 8px 12px;
+border: 1px solid rgba(255, 100, 130, .35);
+border-radius: 10px;
+background: transparent;
+color: var(--text);
+cursor: pointer;
+}
+
+.diary-status {
+margin-top: 12px;
+color: var(--muted);
+font-size: 13px;
+line-height: 1.7;
+}
+
+@media (max-width: 420px) {
+.saikat-os,
+.living-diary {
+padding: 17px;
+}
+
+.os-widgets {
+gap: 9px;
+}
+
+.os-widget {
+padding: 12px;
+}
+  }
 *{
   margin:0;
   padding:0;
@@ -2797,6 +2987,106 @@ body.light-mode .pp-crown{
 
 <div id="emojiContainer"></div>
 
+  <!-- =========================
+     SAIKAT OS DASHBOARD
+========================= -->
+
+<section class="saikat-os" id="saikatOS">
+
+  <h2 class="os-heading">🖥️ Saikat OS</h2>
+
+  <p class="os-subtitle">
+    Welcome to your little world, Saikat.
+    A place to think, learn and grow.
+  </p>
+
+  <div class="os-clock" id="osClock">00:00:00</div>
+
+  <div class="os-date" id="osDate">Loading date...</div>
+
+  <div class="os-widgets">
+
+    <div class="os-widget">
+      <span class="os-widget-icon">🌎</span>
+      <strong>My Mini World</strong>
+      <small>A little world created by me.</small>
+    </div>
+
+    <div class="os-widget">
+      <span class="os-widget-icon">🚀</span>
+      <strong>My Journey</strong>
+      <small>Learning something new every day.</small>
+    </div>
+
+    <div class="os-widget">
+      <span class="os-widget-icon">💭</span>
+      <strong>My Thoughts</strong>
+      <small>Every thought has a story.</small>
+    </div>
+
+    <div class="os-widget">
+      <span class="os-widget-icon">✨</span>
+      <strong>My Dreams</strong>
+      <small>Dream it. Learn it. Build it.</small>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     MY LIVING DIARY
+========================= -->
+
+<section class="living-diary" id="livingDiary">
+
+  <h2 class="diary-heading">📖 My Living Diary</h2>
+
+  <p class="diary-subtitle">
+    My little space for thoughts, memories and dreams.
+    Some words are meant to stay with me.
+  </p>
+
+  <form class="diary-form" id="diaryForm">
+
+    <input
+      class="diary-input"
+      id="diaryTitle"
+      type="text"
+      maxlength="100"
+      placeholder="Give your memory a title..."
+      required
+    >
+
+    <select class="diary-select" id="diaryCategory">
+      <option value="My Thoughts">💭 My Thoughts</option>
+      <option value="My Memories">📸 My Memories</option>
+      <option value="My Journey">🚀 My Journey</option>
+      <option value="My Dreams">✨ My Dreams</option>
+    </select>
+
+    <textarea
+      class="diary-input diary-textarea"
+      id="diaryContent"
+      maxlength="5000"
+      placeholder="Write whatever is in your heart..."
+      required
+    ></textarea>
+
+    <button class="diary-btn" type="submit">
+      💖 Save to My Diary
+    </button>
+
+  </form>
+
+  <div class="diary-status" id="diaryStatus" aria-live="polite">
+    Your entries will be saved in this browser on this device.
+  </div>
+
+  <div class="diary-list" id="diaryList"></div>
+
+</section>
 
 <!-- =========================
      DESKTOP NAV
@@ -5645,6 +5935,225 @@ window.addEventListener(
 );
 
 </script>
+<!-- =========================
+     SAIKAT OS + LIVING DIARY JS
+========================= -->
 
+<script>
+(function () {
+  "use strict";
+
+  /* LIVE CLOCK */
+  const clock = document.getElementById("osClock");
+  const date = document.getElementById("osDate");
+
+  function updateOSClock() {
+    const now = new Date();
+
+    if (clock) {
+      clock.textContent = now.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true
+      });
+    }
+
+    if (date) {
+      date.textContent = now.toLocaleDateString("en-IN", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+    }
+  }
+
+  updateOSClock();
+  setInterval(updateOSClock, 1000);
+
+
+  /* MY LIVING DIARY */
+  const form = document.getElementById("diaryForm");
+  const titleInput = document.getElementById("diaryTitle");
+  const categoryInput = document.getElementById("diaryCategory");
+  const contentInput = document.getElementById("diaryContent");
+  const list = document.getElementById("diaryList");
+  const status = document.getElementById("diaryStatus");
+
+  if (!form || !list) return;
+
+  const STORAGE_KEY = "saikatLivingDiary_v1";
+  let entries = [];
+
+  function loadEntries() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const parsed = saved ? JSON.parse(saved) : [];
+
+      entries = Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      entries = [];
+
+      if (status) {
+        status.textContent =
+          "Saved entries could not be read in this browser.";
+      }
+    }
+  }
+
+  function saveEntries() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+
+      if (status) {
+        status.textContent =
+          "Your diary is saved on this device. ❤️";
+      }
+
+      return true;
+    } catch (error) {
+      if (status) {
+        status.textContent =
+          "Unable to save. Your browser storage may be full or unavailable.";
+      }
+
+      return false;
+    }
+  }
+
+  function createElement(tag, className, text) {
+    const element = document.createElement(tag);
+
+    if (className) {
+      element.className = className;
+    }
+
+    if (text !== undefined) {
+      element.textContent = text;
+    }
+
+    return element;
+  }
+
+  function renderEntries() {
+    list.replaceChildren();
+
+    if (entries.length === 0) {
+      list.appendChild(
+        createElement(
+          "p",
+          "diary-status",
+          "Your diary is waiting for its first story. ✨"
+        )
+      );
+
+      return;
+    }
+
+    entries.forEach(function (entry) {
+      const card = createElement("article", "diary-entry");
+
+      const heading = createElement("h3", "", entry.title);
+      const category = createElement(
+        "small",
+        "",
+        "📖 " + entry.category
+      );
+      const content = createElement("p", "", entry.content);
+      const timestamp = createElement(
+        "small",
+        "",
+        entry.date
+      );
+
+      const deleteButton = createElement(
+        "button",
+        "diary-delete",
+        "🗑️ Delete entry"
+      );
+
+      deleteButton.type = "button";
+      deleteButton.setAttribute(
+        "aria-label",
+        "Delete diary entry: " + entry.title
+      );
+
+      deleteButton.addEventListener("click", function () {
+        const confirmed = window.confirm(
+          "Delete this diary entry?"
+        );
+
+        if (!confirmed) return;
+
+        const previousEntries = entries.slice();
+
+        entries = entries.filter(function (item) {
+          return item.id !== entry.id;
+        });
+
+        if (saveEntries()) {
+          renderEntries();
+        } else {
+          entries = previousEntries;
+          renderEntries();
+        }
+      });
+
+      card.appendChild(heading);
+      card.appendChild(category);
+      card.appendChild(content);
+      card.appendChild(timestamp);
+      card.appendChild(deleteButton);
+
+      list.appendChild(card);
+    });
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const title = titleInput.value.trim();
+    const content = contentInput.value.trim();
+    const category = categoryInput.value;
+
+    if (!title || !content) {
+      if (status) {
+        status.textContent =
+          "Please add a title and write something first. 💭";
+      }
+
+      return;
+    }
+
+    const entry = {
+      id: Date.now().toString() +
+          Math.random().toString(36).slice(2),
+      title: title,
+      category: category,
+      content: content,
+      date: new Date().toLocaleString("en-IN")
+    };
+
+    entries.unshift(entry);
+
+    if (saveEntries()) {
+      form.reset();
+      renderEntries();
+
+      if (status) {
+        status.textContent =
+          "A new memory has been saved to your diary. 💖";
+      }
+    } else {
+      entries.shift();
+    }
+  });
+
+  loadEntries();
+  renderEntries();
+
+})();
+</script>
 </body>
 </html>
